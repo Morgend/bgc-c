@@ -64,6 +64,9 @@ extern inline void bgc_versor_turn_vector_fp64(const BgcVersorFP64* versor, cons
 extern inline void bgc_versor_turn_vector_back_fp32(const BgcVersorFP32* versor, const BgcVector3FP32* vector, BgcVector3FP32* result);
 extern inline void bgc_versor_turn_vector_back_fp64(const BgcVersorFP64* versor, const BgcVector3FP64* vector, BgcVector3FP64* result);
 
+extern inline int bgc_versor_are_close_fp32(const BgcVersorFP32* versor1, const BgcVersorFP32* versor2);
+extern inline int bgc_versor_are_close_fp64(const BgcVersorFP64* versor1, const BgcVersorFP64* versor2);
+
 // =============== Normalization ================ //
 
 void _bgc_versor_normalize_fp32(const float square_modulus, _BgcDarkTwinVersorFP32* twin)

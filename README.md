@@ -1,40 +1,40 @@
-# Basic Geometry
+# Basic Geometry Computations
 
-## Библиотека базовых геометрических вычислений
+## Library of basic geometric computations for C
 
-(English: library of basic geometric computations)
+[Версия на русском языке / Russian version](./README.md)
 
-[English version / версия на английском языке](./README-Eng.md)
+Programming language: C (C99)
 
-Язык программирования: Си (C99)
+Version: 0.2.0-dev
 
-Версия: 0.2.0-dev
+License: Apache-2.0
 
-Лицензия: Apache-2.0
+The main goals of development of the library were:
 
-Основными целями разработки данной библиотеки были:
+1. Performance
+2. Functionality
+3. Versatility
 
-1. Производительность
-2. Функциональность
-3. Универсальность
+Performance was the main goal of making of the library. That fact affected
+the implementation of the library.
 
-Производительность была на первом месте, что оказало влияние на особенности
-реализации библиотеки.
+For example, the main way to return data structures as a function result
+was chosen to be returning via a parameter, which avoids redundant copying
+of data through the call stack.
 
-Например, в качестве основного способа возврата структур данных в качестве
-результата выполнения функции был выбран возврат через параметр, что позволяет
-избежать избыточного копирования данных через стек вызова.
+Also the majority of functions were made as inline functions. That allows
+a compiller to replace a call of some function onto the body of that
+function.
 
-Также большинство функций выполнены как inline, давая возможность компилятору
-заменять вызов функции на тело функции.
+The library uses two types of floating point numbers: **float** и **double**
+(**binary32** and **binary64** types of the **IEEE 754** standard). That
+affected the implementation of the library too.
 
-Библиотека использует два типа чисел с плавающей запятой: **float** и **double**
-(типы **binary32** и **binary64** стандарта **IEEE 754**). Что также повлияло на
-особенности дизайна библиотеки.
+The library is implicitly divided into two halves: one half is for data and
+functions of **float** type and another one is for date of th **double** type.
+And there are several bridges connect both of the halves. Those bridges are
+the functions of the type conversion.
 
-Библиотека как бы неявно разделена на две половины - одна половина для данных
-типа **float**, а другая - для данных типа **double**. Но между этими половинами
-есть мостики - функции преобразования типа.
-
-Однако в библиотеке нет функций, которые используют для вычисления данные разных
-типов (**float** и *double* одновременно).
+But there are just few functions which use data of different types (**float**
+and **double** at the same time) for the computations.

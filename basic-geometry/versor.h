@@ -600,4 +600,26 @@ inline void bgc_versor_turn_vector_back_fp64(const BgcVersorFP64* versor, const 
     result->x3 = x3;
 }
 
+// ================== Are Close ================= //
+
+inline int bgc_versor_are_close_fp32(const BgcVersorFP32* versor1, const BgcVersorFP32* versor2)
+{
+    const float ds0 = versor1->s0 - versor2->s0;
+    const float dx1 = versor1->x1 - versor2->x1;
+    const float dx2 = versor1->x2 - versor2->x2;
+    const float dx3 = versor1->x3 - versor2->x3;
+
+    return (ds0 * ds0 + dx1 * dx1) + (dx2 * dx2 + dx3 * dx3) <= BGC_SQUARE_EPSYLON_FP32;
+}
+
+inline int bgc_versor_are_close_fp64(const BgcVersorFP64* versor1, const BgcVersorFP64* versor2)
+{
+    const double ds0 = versor1->s0 - versor2->s0;
+    const double dx1 = versor1->x1 - versor2->x1;
+    const double dx2 = versor1->x2 - versor2->x2;
+    const double dx3 = versor1->x3 - versor2->x3;
+
+    return (ds0 * ds0 + dx1 * dx1) + (dx2 * dx2 + dx3 * dx3) <= BGC_SQUARE_EPSYLON_FP32;
+}
+
 #endif

@@ -1,4 +1,4 @@
-# Префиксы
+# Префиксы и суффиксы
 
 Библиотека использует префиксы в названиях типов, констант и функций.
 
@@ -33,9 +33,9 @@ BgcVector3FP32, BgcMatrix3x2FP32, BgcQuaternionFP32
 Типы структур, использующие тип **double** имеют суффикс **FP64**:
 BgcVector2FP64, BgcMatrix2x3FP64, BgcVersorFP64
 
-Константы типа **float** имеют суффикс **FP32_**: BGC_PI_FP32, BGC_EPSYLON_FP32.
+Константы типа **float** имеют суффикс **_FP32**: BGC_PI_FP32, BGC_EPSYLON_FP32.
 
-Константы типа **double** имеют суффикс **FP64_**: BGC_HALF_PI_FP64,
+Константы типа **double** имеют суффикс **_FP64**: BGC_HALF_PI_FP64,
 BGC_ONE_THIRD_FP64.
 
 Функции, которые работают с данными типа **float** имеют суффикс **_fp32**:

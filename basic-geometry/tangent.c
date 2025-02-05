@@ -46,6 +46,9 @@ extern inline void bgc_tangent_turn_vector_fp64(const BgcTangentFP64* tangent, c
 extern inline void bgc_tangent_turn_vector_back_fp32(const BgcTangentFP32* tangent, const BgcVector2FP32* vector, BgcVector2FP32* result);
 extern inline void bgc_tangent_turn_vector_back_fp64(const BgcTangentFP64* tangent, const BgcVector2FP64* vector, BgcVector2FP64* result);
 
+extern inline int bgc_tangent_are_close_fp32(const BgcTangentFP32* tangent1, const BgcTangentFP32* tangent2);
+extern inline int bgc_tangent_are_close_fp64(const BgcTangentFP64* tangent1, const BgcTangentFP64* tangent2);
+
 void _bgc_tangent_normalize_fp32(const float square_modulus, _BgcDarkTwinTangentFP32* twin)
 {
     // (square_modulus != square_modulus) is true when square_modulus is NaN

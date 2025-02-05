@@ -1,7 +1,7 @@
 #ifndef _BGC_UTILITIES_H_
 #define _BGC_UTILITIES_H_
 
-#define BGC_EPSYLON_EFFECTIVENESS_LIMIT_FP32 10.0f
+#define BGC_EPSYLON_EFFECTIVENESS_LIMIT_FP32 1.0f
 
 #define BGC_EPSYLON_FP32 5E-7f
 #define BGC_SQUARE_EPSYLON_FP32 2.5E-13f
@@ -13,7 +13,7 @@
 #define BGC_GOLDEN_RATIO_HIGH_FP32 1.618034f
 #define BGC_GOLDEN_RATIO_LOW_FP32 0.618034f
 
-#define BGC_EPSYLON_EFFECTIVENESS_LIMIT_FP64 10.0
+#define BGC_EPSYLON_EFFECTIVENESS_LIMIT_FP64 1.0
 
 #define BGC_EPSYLON_FP64 5E-14
 #define BGC_SQUARE_EPSYLON_FP64 2.5E-27
@@ -57,31 +57,34 @@ inline int bgc_is_sqare_value_unit_fp64(const double square_value)
     return (1.0 - 2.0 * BGC_EPSYLON_FP64 <= square_value) && (square_value <= 1.0 + 2.0 * BGC_EPSYLON_FP64);
 }
 
+// ================== Are Close ================= //
 
-inline int bgc_are_equal_fp32(const float value1, const float value2)
+inline int bgc_are_close_fp32(const float value1, const float value2)
 {
-    if (-BGC_EPSYLON_EFFECTIVENESS_LIMIT_FP32 < value1 && value1 < BGC_EPSYLON_EFFECTIVENESS_LIMIT_FP32) {
-        return -BGC_EPSYLON_FP32 <= (value1 - value2) && (value1 - value2) <= BGC_EPSYLON_FP32;
+    const float difference = value1 - value2;
+    const float square_value1 = value1 * value1;
+    const float square_value2 = value2 * value2;
+    const float square_difference = difference * difference;
+
+    if (square_value1 <= BGC_EPSYLON_EFFECTIVENESS_LIMIT_FP32 || square_value2 <= BGC_EPSYLON_EFFECTIVENESS_LIMIT_FP32) {
+        return square_difference <= BGC_SQUARE_EPSYLON_FP32;
     }
 
-    if (value1 < 0.0f) {
-        return (1.0f + BGC_EPSYLON_FP32) * value2 <= value1 && (1.0f + BGC_EPSYLON_FP32) * value1 <= value2;
-    }
-
-    return value2 <= value1 * (1.0f + BGC_EPSYLON_FP32) && value1 <= value2 * (1.0f + BGC_EPSYLON_FP32);
+    return square_difference <= BGC_SQUARE_EPSYLON_FP32 * square_value1 && square_difference <= BGC_SQUARE_EPSYLON_FP32 * square_value2;
 }
 
-inline int bgc_are_equal_fp64(const double value1, const double value2)
+inline int bgc_are_close_fp64(const double value1, const double value2)
 {
-    if (-BGC_EPSYLON_EFFECTIVENESS_LIMIT_FP64 < value1 && value1 < BGC_EPSYLON_EFFECTIVENESS_LIMIT_FP64) {
-        return -BGC_EPSYLON_FP64 <= (value1 - value2) && (value1 - value2) <= BGC_EPSYLON_FP64;
+    const double difference = value1 - value2;
+    const double square_value1 = value1 * value1;
+    const double square_value2 = value2 * value2;
+    const double square_difference = difference * difference;
+
+    if (square_value1 <= BGC_EPSYLON_EFFECTIVENESS_LIMIT_FP64 || square_value2 <= BGC_EPSYLON_EFFECTIVENESS_LIMIT_FP64) {
+        return square_difference <= BGC_SQUARE_EPSYLON_FP64;
     }
 
-    if (value1 < 0.0) {
-        return (1.0 + BGC_EPSYLON_FP64) * value2 <= value1 && (1.0 + BGC_EPSYLON_FP64) * value1 <= value2;
-    }
-
-    return value2 <= value1 * (1.0 + BGC_EPSYLON_FP64) && value1 <= value2 * (1.0 + BGC_EPSYLON_FP64);
+    return square_difference <= BGC_SQUARE_EPSYLON_FP64 * square_value1 && square_difference <= BGC_SQUARE_EPSYLON_FP64 * square_value2;
 }
 
 #endif

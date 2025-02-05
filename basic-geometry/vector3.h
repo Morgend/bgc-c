@@ -476,42 +476,44 @@ inline double bgc_vector3_get_distance_fp64(const BgcVector3FP64* vector1, const
     return sqrt(bgc_vector3_get_square_distance_fp64(vector1, vector2));
 }
 
-// ================== Are Equal ================= //
+// ============== Are Close Enough ============== //
 
-inline int bgc_vector3_are_equal_fp32(const BgcVector3FP32* vector1, const BgcVector3FP32* vector2)
+inline int bgc_vector3_are_close_enough_fp32(const BgcVector3FP32* vector1, const BgcVector3FP32* vector2, const float distance)
+{
+    return bgc_vector3_get_square_distance_fp32(vector1, vector2) <= distance * distance;
+}
+
+inline int bgc_vector3_are_close_enough_fp64(const BgcVector3FP64* vector1, const BgcVector3FP64* vector2, const double distance)
+{
+    return bgc_vector3_get_square_distance_fp64(vector1, vector2) <= distance * distance;
+}
+
+// ================== Are Close ================= //
+
+inline int bgc_vector3_are_close_fp32(const BgcVector3FP32* vector1, const BgcVector3FP32* vector2)
 {
     const float square_modulus1 = bgc_vector3_get_square_modulus_fp32(vector1);
     const float square_modulus2 = bgc_vector3_get_square_modulus_fp32(vector2);
-    const float square_modulus3 = bgc_vector3_get_square_distance_fp32(vector1, vector2);
+    const float square_distance = bgc_vector3_get_square_distance_fp32(vector1, vector2);
 
-    // 3.0f means dimension amount
-    if (square_modulus1 < BGC_EPSYLON_EFFECTIVENESS_LIMIT_FP32 || square_modulus2 < BGC_EPSYLON_EFFECTIVENESS_LIMIT_FP32) {
-        return square_modulus3 < (3.0f * BGC_SQUARE_EPSYLON_FP32);
+    if (square_modulus1 <= BGC_EPSYLON_EFFECTIVENESS_LIMIT_FP32 || square_modulus2 <= BGC_EPSYLON_EFFECTIVENESS_LIMIT_FP32) {
+        return square_distance <= BGC_SQUARE_EPSYLON_FP32;
     }
 
-    if (square_modulus1 <= square_modulus2) {
-        return square_modulus3 <= (3.0f * BGC_SQUARE_EPSYLON_FP32) * square_modulus2;
-    }
-
-    return square_modulus3 <= (3.0f * BGC_SQUARE_EPSYLON_FP32) * square_modulus1;
+    return square_distance <= BGC_SQUARE_EPSYLON_FP32 * square_modulus1 && square_distance <= BGC_SQUARE_EPSYLON_FP32 * square_modulus2;
 }
 
-inline int bgc_vector3_are_equal_fp64(const BgcVector3FP64* vector1, const BgcVector3FP64* vector2)
+inline int bgc_vector3_are_close_fp64(const BgcVector3FP64* vector1, const BgcVector3FP64* vector2)
 {
     const double square_modulus1 = bgc_vector3_get_square_modulus_fp64(vector1);
     const double square_modulus2 = bgc_vector3_get_square_modulus_fp64(vector2);
-    const double square_modulus3 = bgc_vector3_get_square_distance_fp64(vector1, vector2);
+    const double square_distance = bgc_vector3_get_square_distance_fp64(vector1, vector2);
 
-    // 3.0 means dimension amount
-    if (square_modulus1 < BGC_EPSYLON_EFFECTIVENESS_LIMIT_FP64 || square_modulus2 < BGC_EPSYLON_EFFECTIVENESS_LIMIT_FP64) {
-        return square_modulus3 < (3.0 * BGC_SQUARE_EPSYLON_FP64);
+    if (square_modulus1 <= BGC_EPSYLON_EFFECTIVENESS_LIMIT_FP64 || square_modulus2 <= BGC_EPSYLON_EFFECTIVENESS_LIMIT_FP64) {
+        return square_distance <= BGC_SQUARE_EPSYLON_FP64;
     }
 
-    if (square_modulus1 <= square_modulus2) {
-        return square_modulus3 <= (3.0 * BGC_SQUARE_EPSYLON_FP64) * square_modulus2;
-    }
-
-    return square_modulus3 <= (3.0 * BGC_SQUARE_EPSYLON_FP64) * square_modulus1;
+    return square_distance <= BGC_SQUARE_EPSYLON_FP32 * square_modulus1 && square_distance <= BGC_SQUARE_EPSYLON_FP32 * square_modulus2;
 }
 
 #endif

@@ -81,8 +81,11 @@ extern inline double bgc_vector3_get_square_distance_fp64(const BgcVector3FP64* 
 extern inline float bgc_vector3_get_distance_fp32(const BgcVector3FP32* vector1, const BgcVector3FP32* vector2);
 extern inline double bgc_vector3_get_distance_fp64(const BgcVector3FP64* vector1, const BgcVector3FP64* vector2);
 
-extern inline int bgc_vector3_are_equal_fp32(const BgcVector3FP32* vector1, const BgcVector3FP32* vector2);
-extern inline int bgc_vector3_are_equal_fp64(const BgcVector3FP64* vector1, const BgcVector3FP64* vector2);
+extern inline int bgc_vector3_are_close_enough_fp32(const BgcVector3FP32* vector1, const BgcVector3FP32* vector2, const float distance);
+extern inline int bgc_vector3_are_close_enough_fp64(const BgcVector3FP64* vector1, const BgcVector3FP64* vector2, const double distance);
+
+extern inline int bgc_vector3_are_close_fp32(const BgcVector3FP32* vector1, const BgcVector3FP32* vector2);
+extern inline int bgc_vector3_are_close_fp64(const BgcVector3FP64* vector1, const BgcVector3FP64* vector2);
 
 // =================== Angle ==================== //
 

@@ -343,4 +343,22 @@ inline void bgc_tangent_turn_vector_back_fp64(const BgcTangentFP64* tangent, con
     result->x2 = x2;
 }
 
+// ================== Are Close ================= //
+
+inline int bgc_tangent_are_close_fp32(const BgcTangentFP32* tangent1, const BgcTangentFP32* tangent2)
+{
+    const float d_cos = tangent1->cos - tangent2->cos;
+    const float d_sin = tangent1->sin - tangent2->sin;
+
+    return d_cos * d_cos + d_sin * d_sin <= BGC_SQUARE_EPSYLON_FP32;
+}
+
+inline int bgc_tangent_are_close_fp64(const BgcTangentFP64* tangent1, const BgcTangentFP64* tangent2)
+{
+    const double d_cos = tangent1->cos - tangent2->cos;
+    const double d_sin = tangent1->sin - tangent2->sin;
+
+    return d_cos * d_cos + d_sin * d_sin <= BGC_SQUARE_EPSYLON_FP64;
+}
+
 #endif

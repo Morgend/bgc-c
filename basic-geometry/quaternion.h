@@ -535,4 +535,42 @@ inline void bgc_quaternion_get_product_fp64(const BgcQuaternionFP64* left, const
     product->x3 = x3;
 }
 
+// ================== Are Close ================= //
+
+inline int bgc_quaternion_are_close_fp32(const BgcQuaternionFP32* quaternion1, const BgcQuaternionFP32* quaternion2)
+{
+    const float ds0 = quaternion1->s0 - quaternion2->s0;
+    const float dx1 = quaternion1->x1 - quaternion2->x1;
+    const float dx2 = quaternion1->x2 - quaternion2->x2;
+    const float dx3 = quaternion1->x3 - quaternion2->x3;
+
+    const float square_modulus1 = bgc_quaternion_get_square_modulus_fp32(quaternion1);
+    const float square_modulus2 = bgc_quaternion_get_square_modulus_fp32(quaternion2);
+    const float square_distance = (ds0 * ds0 + dx1 * dx1) + (dx2 * dx2 + dx3 * dx3);
+
+    if (square_modulus1 <= BGC_EPSYLON_EFFECTIVENESS_LIMIT_FP32 || square_modulus2 <= BGC_EPSYLON_EFFECTIVENESS_LIMIT_FP32) {
+        return square_distance <= BGC_SQUARE_EPSYLON_FP32;
+    }
+
+    return square_distance <= BGC_SQUARE_EPSYLON_FP32 * square_modulus1 && square_distance <= BGC_SQUARE_EPSYLON_FP32 * square_modulus2;
+}
+
+inline int bgc_quaternion_are_close_fp64(const BgcQuaternionFP64* quaternion1, const BgcQuaternionFP64* quaternion2)
+{
+    const double ds0 = quaternion1->s0 - quaternion2->s0;
+    const double dx1 = quaternion1->x1 - quaternion2->x1;
+    const double dx2 = quaternion1->x2 - quaternion2->x2;
+    const double dx3 = quaternion1->x3 - quaternion2->x3;
+
+    const double square_modulus1 = bgc_quaternion_get_square_modulus_fp64(quaternion1);
+    const double square_modulus2 = bgc_quaternion_get_square_modulus_fp64(quaternion2);
+    const double square_distance = (ds0 * ds0 + dx1 * dx1) + (dx2 * dx2 + dx3 * dx3);
+
+    if (square_modulus1 <= BGC_EPSYLON_EFFECTIVENESS_LIMIT_FP64 || square_modulus2 <= BGC_EPSYLON_EFFECTIVENESS_LIMIT_FP64) {
+        return square_distance <= BGC_SQUARE_EPSYLON_FP64;
+    }
+
+    return square_distance <= BGC_SQUARE_EPSYLON_FP64 * square_modulus1 && square_distance <= BGC_SQUARE_EPSYLON_FP64 * square_modulus2;
+}
+
 #endif // _BGC_QUATERNION_H_
