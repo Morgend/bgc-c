@@ -1,4 +1,6 @@
-# Prefixes and Suffixes
+# Naming
+
+## Prefixes
 
 The library uses prefixes in names of types, constants and functions.
 
@@ -12,6 +14,8 @@ BGC_TWO_PI_FP64.
 
 The functions have prefix in the form **bgc_**. For example:
 bgc_versor_combine_fp32, bgc_matrix3x3_subtract_fp32.
+
+## Suffixes
 
 Suffixs of type ends the names of constats, types and functions of the library.
 The library uses two types of floating point numbers: **float** and  **double**
@@ -42,3 +46,9 @@ the type suffix: bgc_vector2_get_modulus_fp64, bgc_radians_to_degrees_fp32.
 
 The functions which works with data of the **double** type have **_fp64** as
 the type suffix: bgc_vector3_reset_fp64, bgc_radians_normalize_fp64.
+
+## Entities
+
+- Vectors 2D and 3D
+- [Versors](./versor-eng.md)
+

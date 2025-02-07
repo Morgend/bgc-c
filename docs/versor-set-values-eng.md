@@ -1,14 +1,14 @@
-# Functions that set the values ??of the versor components
+# Functions that set the values of the versor components
 
 Special functions are provided to specify specific values ??for the versor components.
 
 For the **BgFP32Versor** type, the function has the form:
 
-inline void bgc_versor_set_values_fp32(const float s0, const float x1, const float x2, const float x3, BgcVersorFP32* versor);
+    inline void bgc_versor_set_values_fp32(const float s0, const float x1, const float x2, const float x3, BgcVersorFP32* versor);
 
 For the **BgFP64Versor** type, the function has the form:
 
-inline void bgc_versor_set_values_fp64(const double s0, const double x1, const double x2, const double x3, BgcVersorFP64* versor);
+    inline void bgc_versor_set_values_fp64(const double s0, const double x1, const double x2, const double x3, BgcVersorFP64* versor);
 
 These functions set the values ??passed in the **s0**, **x1**, **x2**, and **x3** parameters to the corresponding components of the versor passed by pointer in the **versor** parameter. But if the resulting state is not a normalized quaternion, then the functions normalize the versor.
 
