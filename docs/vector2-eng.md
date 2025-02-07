@@ -1,4 +1,4 @@
-# Two dimensional vectors
+# Two-dimensional vectors
 
 There are two types of 2D vectors in the library:
 - **BgcVector2FP32** - vector using single-precision floating-point numbers

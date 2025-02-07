@@ -52,7 +52,8 @@ bgc_vector3_reset_fp64, bgc_radians_normalize_fp64.
 
 ## Сущности
 
-- [2D векторы](vector-rus.md)
-- 3D векторы
+- [Углы](angle-rus.md)
+- [2D векторы](vector2-rus.md)
+- [3D векторы](vector2-rus.md)
 - [Кватернионы](quaternion-rus.md)
 - [Версоры](versor-rus.md)

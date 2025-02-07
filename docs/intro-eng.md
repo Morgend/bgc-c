@@ -51,8 +51,9 @@ the type suffix: bgc_vector3_reset_fp64, bgc_radians_normalize_fp64.
 
 ## Entities
 
-- [Vectors 2D](vector-eng.md)
-- Vectors 3D
+- [Angles](angle-eng.md)
+- [Vectors 2D](vector2-eng.md)
+- [Vectors 3D](vector3-eng.md)
 - [Quaternions](quaternion-eng.md)
 - [Versors](versor-eng.md)
 

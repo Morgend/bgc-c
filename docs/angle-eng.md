@@ -51,5 +51,4 @@ The ranges of angles are defined with an enumerated type:
 * BGC_ANGLE_RANGE_UNSIGNED is for the unsigned range of values;
 * BGC_ANGLE_RANGE_SIGNED is for the signed range of values.
 
-
 [Documentation](intro-eng.md)
