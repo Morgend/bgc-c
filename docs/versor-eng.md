@@ -1,6 +1,6 @@
 # Versors
 
-[Quaternions](./quaternion-eng.md) are hypercomplex numbers that have one real component and three imaginary components:
+[Quaternions](quaternion-eng.md) are hypercomplex numbers that have one real component and three imaginary components:
 
 q = w + ix + jy + kz
 
@@ -60,21 +60,12 @@ Fields:
 - s0 is the real part of the versor.
 - x1, x2, x3 are the imaginary components of the versor.
 
-## Operation with versors
+## Functions
 
-- [Reset state](./versor-reset-eng.md)
-- [Specify component values](./versor-set-values-eng.md)
-- Copy component values
-- Swap component values
-- Build based on rotation
-- Check for absence of rotation
-- Type conversion
-- Rotation reduction
-- Inversion
-- Combination
-- Get rotation description
-- Get rotation matrix
-- Get inverse rotation matrix
-- Rotate vector
-- Inverse vector rotation
-- Compare
+| Funtions for BgcVersorFP32                                    | Funtions for BgcVersorFP64                                    |
+|:-------------------------------------------------------------:|:-------------------------------------------------------------:|
+| [bgc_versor_reset_fp32](versor/reset-eng.md)                  | [bgc_versor_reset_fp64](versor/reset-eng.md)                  |
+| [bgc_versor_set_values_fp32](versor/set-values-eng.md)        | [bgc_versor_set_values_fp64](versor/set-values-eng.md)        |
+
+
+[Documentation](intro-eng.md)

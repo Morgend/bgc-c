@@ -4,7 +4,9 @@
 
 (English: library of basic geometric computations)
 
-[English version / версия на английском языке](./README-Eng.md)
+[English version / версия на английском языке](README-Eng.md)
+
+[Документация](docs/intro-rus.md)
 
 Язык программирования: Си (C99)
 

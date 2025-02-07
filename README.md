@@ -2,7 +2,9 @@
 
 ## Library of basic geometric computations for C
 
-[Версия на русском языке / Russian version](./README.md)
+[Версия на русском языке / Russian version](README-rus.md)
+
+[Documentation](docs/intro-eng.md)
 
 Programming language: C (C99)
 

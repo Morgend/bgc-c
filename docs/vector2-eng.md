@@ -1,19 +1,12 @@
 # Two dimensional vectors
 
-There are two types for two dimensional vectors:
-- BgcVector2FP32 for single precision vectors
-- BgcVector2FP64 for double precision vectors
+There are two types of 2D vectors in the library:
+- **BgcVector2FP32** - vector using single-precision floating-point numbers
+- **BgcVector2FP64** - vector using double-precision floating-point numbers
 
-Vectors of BgFP32Vecto2 type use **float** (binary32 of IEEE 754) type to store
-coordinate values.
+Structure definitions:
 
-Vectors of BgFP64Vecto2 type use **double** (binary64 of IEEE 754) type to store
-coordinate values.
-
-The both types are structures with two fields: **x1** and **x2**
-
-The definition of the types:
-
+```c
     typedef struct
     {
         float x1, x2;
@@ -23,4 +16,16 @@ The definition of the types:
     {
         double x1, x2;
     } BgcVector2FP64;
+```
 
+## Functions
+
+| Funtions for BgcVector2FP32                                   | Funtions for BgcVector2FP64                                   |
+|:-------------------------------------------------------------:|:-------------------------------------------------------------:|
+| [bgc_vector2_reset_fp32](vector2/reset-eng.md)                | [bgc_vector2_reset_fp64](vector2/reset-eng.md)                |
+| [bgc_vector2_set_values_fp32](vector2/set-values-eng.md)      | [bgc_vector2_set_values_fp64](vector2/set-values-eng.md)      |
+| [bgc_vector2_copy_fp32](vector2/copy-eng.md)                  | [bgc_vector2_copy_fp64](vector2/copy-eng.md)                  |
+| [bgc_vector2_swap_fp32](vector2/swap-eng.md)                  | [bgc_vector2_swap_fp64](vector2/swap-eng.md)                  |
+
+
+[Documentation](intro-eng.md)

@@ -59,3 +59,5 @@ Fields:
 The versor fields are declared as const so that the developer uses the library functions to work with versors, and does not change them directly.
 
 The quaternion fields are free to be changed by the developer using the library.
+
+[Documentation](intro-eng.md)
