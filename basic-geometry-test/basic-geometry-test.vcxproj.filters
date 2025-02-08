@@ -1,36 +1,153 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="Исходные файлы">
-      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
-      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
-    </Filter>
-    <Filter Include="Файлы заголовков">
-      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
-      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
-    </Filter>
-    <Filter Include="Файлы ресурсов">
-      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
-      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
-    </Filter>
+    <ClCompile Include="main.c" />
+    <ClCompile Include="helpers.c" />
+    <ClCompile Include="tests\utilities.c">
+      <Filter>tests</Filter>
+    </ClCompile>
+    <ClCompile Include="tests\vector2.c">
+      <Filter>tests</Filter>
+    </ClCompile>
+    <ClCompile Include="tests\vector3.c">
+      <Filter>tests</Filter>
+    </ClCompile>
+    <ClCompile Include="tests\versor.c">
+      <Filter>tests</Filter>
+    </ClCompile>
+    <ClCompile Include="tests\utilities\is_zero.c">
+      <Filter>tests\utilities</Filter>
+    </ClCompile>
+    <ClCompile Include="tests\utilities\is_unit.c">
+      <Filter>tests\utilities</Filter>
+    </ClCompile>
+    <ClCompile Include="tests\utilities\are_close.c">
+      <Filter>tests\utilities</Filter>
+    </ClCompile>
+    <ClCompile Include="tests\versor\versor_are_close.c">
+      <Filter>tests\versor</Filter>
+    </ClCompile>
+    <ClCompile Include="tests\versor\versor_set_values.c">
+      <Filter>tests\versor</Filter>
+    </ClCompile>
+    <ClCompile Include="tests\versor\versor_combine.c">
+      <Filter>tests\versor</Filter>
+    </ClCompile>
+    <ClCompile Include="tests\versor\versor_reset.c">
+      <Filter>tests\versor</Filter>
+    </ClCompile>
+    <ClCompile Include="tests\vector2\vector2_reset.c">
+      <Filter>tests\vector2</Filter>
+    </ClCompile>
+    <ClCompile Include="tests\vector2\vector2_set_values.c">
+      <Filter>tests\vector2</Filter>
+    </ClCompile>
+    <ClCompile Include="tests\vector3\vector3_reset.c">
+      <Filter>tests\vector3</Filter>
+    </ClCompile>
+    <ClCompile Include="tests\vector3\vector3_set_values.c">
+      <Filter>tests\vector3</Filter>
+    </ClCompile>
+    <ClCompile Include="tests\vector2\vector2_copy.c">
+      <Filter>tests\vector2</Filter>
+    </ClCompile>
+    <ClCompile Include="tests\vector2\vector2_swap.c">
+      <Filter>tests\vector2</Filter>
+    </ClCompile>
+    <ClCompile Include="tests\vector3\vector3_copy.c">
+      <Filter>tests\vector3</Filter>
+    </ClCompile>
+    <ClCompile Include="tests\vector3\vector3_swap.c">
+      <Filter>tests\vector3</Filter>
+    </ClCompile>
+    <ClCompile Include="tests\versor\versor_copy.c">
+      <Filter>tests\versor</Filter>
+    </ClCompile>
+    <ClCompile Include="tests\versor\versor_swap.c">
+      <Filter>tests\versor</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="main.c">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
-    <ClCompile Include="geometry_test.c">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
-    <ClCompile Include="fp32_vector2_test.c">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
+    <ClInclude Include="helpers.h" />
+    <ClInclude Include="tests\utilities.h">
+      <Filter>tests</Filter>
+    </ClInclude>
+    <ClInclude Include="tests\vector2.h">
+      <Filter>tests</Filter>
+    </ClInclude>
+    <ClInclude Include="tests\vector3.h">
+      <Filter>tests</Filter>
+    </ClInclude>
+    <ClInclude Include="tests\versor.h">
+      <Filter>tests</Filter>
+    </ClInclude>
+    <ClInclude Include="tests\utilities\is_zero.h">
+      <Filter>tests\utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="tests\utilities\is_unit.h">
+      <Filter>tests\utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="tests\utilities\are_close.h">
+      <Filter>tests\utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="tests\versor\versor_are_close.h">
+      <Filter>tests\versor</Filter>
+    </ClInclude>
+    <ClInclude Include="tests\versor\versor_set_values.h">
+      <Filter>tests\versor</Filter>
+    </ClInclude>
+    <ClInclude Include="tests\versor\versor_combine.h">
+      <Filter>tests\versor</Filter>
+    </ClInclude>
+    <ClInclude Include="tests\versor\versor_reset.h">
+      <Filter>tests\versor</Filter>
+    </ClInclude>
+    <ClInclude Include="tests\vector2\vector2_reset.h">
+      <Filter>tests\vector2</Filter>
+    </ClInclude>
+    <ClInclude Include="tests\vector2\vector2_set_values.h">
+      <Filter>tests\vector2</Filter>
+    </ClInclude>
+    <ClInclude Include="tests\vector3\vector3_reset.h">
+      <Filter>tests\vector3</Filter>
+    </ClInclude>
+    <ClInclude Include="tests\vector3\vector3_set_values.h">
+      <Filter>tests\vector3</Filter>
+    </ClInclude>
+    <ClInclude Include="tests\vector2\vector2_copy.h">
+      <Filter>tests\vector2</Filter>
+    </ClInclude>
+    <ClInclude Include="tests\vector2\vector2_swap.h">
+      <Filter>tests\vector2</Filter>
+    </ClInclude>
+    <ClInclude Include="tests\vector3\vector3_copy.h">
+      <Filter>tests\vector3</Filter>
+    </ClInclude>
+    <ClInclude Include="tests\vector3\vector3_swap.h">
+      <Filter>tests\vector3</Filter>
+    </ClInclude>
+    <ClInclude Include="tests\versor\versor_copy.h">
+      <Filter>tests\versor</Filter>
+    </ClInclude>
+    <ClInclude Include="tests\versor\versor_swap.h">
+      <Filter>tests\versor</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="geometry_test.h">
-      <Filter>Исходные файлы</Filter>
-    </ClInclude>
-    <ClInclude Include="fp32_vector2_test.h">
-      <Filter>Исходные файлы</Filter>
-    </ClInclude>
+    <Filter Include="tests">
+      <UniqueIdentifier>{10db9024-67b8-4555-80a9-48b54ae0dec9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="tests\utilities">
+      <UniqueIdentifier>{392bc542-f334-4132-a22b-b5b440c77897}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="tests\vector2">
+      <UniqueIdentifier>{d9f520e0-1b2d-4379-8887-1b5728763129}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="tests\vector3">
+      <UniqueIdentifier>{dbf2eefa-8f1f-4447-b3d4-d17dee049580}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="tests\versor">
+      <UniqueIdentifier>{d6f82407-8310-4b32-b153-aa67e766c72a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
 </Project>

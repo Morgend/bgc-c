@@ -14,7 +14,7 @@
 #include "matrix3x2.h"
 #include "matrix3x3.h"
 
-#include "tangent.h"
+#include "tangent-pair.h"
 
 #include "rotation3.h"
 

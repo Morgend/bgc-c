@@ -619,7 +619,7 @@ inline int bgc_versor_are_close_fp64(const BgcVersorFP64* versor1, const BgcVers
     const double dx2 = versor1->x2 - versor2->x2;
     const double dx3 = versor1->x3 - versor2->x3;
 
-    return (ds0 * ds0 + dx1 * dx1) + (dx2 * dx2 + dx3 * dx3) <= BGC_SQUARE_EPSYLON_FP32;
+    return (ds0 * ds0 + dx1 * dx1) + (dx2 * dx2 + dx3 * dx3) <= BGC_SQUARE_EPSYLON_FP64;
 }
 
 #endif

@@ -1,17 +1,33 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#include "geometry_test.h"
-#include "fp32_vector2_test.h"
+#include "helpers.h"
 
-#define PROGRAM_RESULT_SUCCESS 0
-#define PROGRAM_RESULT_FAILED 1
+#include "tests/utilities.h"
+#include "tests/vector2.h"
+#include "tests/vector3.h"
+#include "tests/versor.h"
+
+#define PROGRAM_SUCCESS 0
+#define PROGRAM_FAILED 1
 
 int main()
 {
-    if (test_fp32_vector2() == TEST_RESULT_FAILED) {
-        return PROGRAM_RESULT_FAILED;
+    if (test_utilities() == TEST_FAILED) {
+        return PROGRAM_FAILED;
     }
 
-    return PROGRAM_RESULT_SUCCESS;
+    if (test_vector2() == TEST_FAILED) {
+        return PROGRAM_FAILED;
+    }
+
+    if (test_vector3() == TEST_FAILED) {
+        return PROGRAM_FAILED;
+    }
+
+    if (test_versor() == TEST_FAILED) {
+        return PROGRAM_FAILED;
+    }
+
+    return PROGRAM_SUCCESS;
 }

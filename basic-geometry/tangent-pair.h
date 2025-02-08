@@ -1,5 +1,5 @@
-#ifndef _BGC_TANGENT_H_
-#define _BGC_TANGENT_H_
+#ifndef _bgc_tangent_pair_H_
+#define _bgc_tangent_pair_H_
 
 #include <math.h>
 
@@ -13,41 +13,41 @@
 typedef struct
 {
     const float cos, sin;
-} BgcTangentFP32;
+} BgcTangentPairFP32;
 
 typedef struct
 {
     const double cos, sin;
-} BgcTangentFP64;
+} BgcTangentPairFP64;
 
 // ================= Dark Twins ================= //
 
 typedef struct {
     float cos, sin;
-} _BgcDarkTwinTangentFP32;
+} _BgcTwinTangentPairFP32;
 
 typedef struct {
     double cos, sin;
-} _BgcDarkTwinTangentFP64;
+} _BgcTwinTangentPairFP64;
 
 // ================= Constants ================== //
 
-extern const BgcTangentFP32 BGC_IDLE_TANGENT_FP32;
-extern const BgcTangentFP64 BGC_IDLE_TANGENT_FP64;
+extern const BgcTangentPairFP32 BGC_IDLE_TANGENT_PAIR_FP32;
+extern const BgcTangentPairFP64 BGC_IDLE_TANGENT_PAIR_FP64;
 
 // =================== Reset ==================== //
 
-inline void bgc_tangent_reset_fp32(BgcTangentFP32* tangent)
+inline void bgc_tangent_pair_reset_fp32(BgcTangentPairFP32* tangent)
 {
-    _BgcDarkTwinTangentFP32* twin = (_BgcDarkTwinTangentFP32*)tangent;
+    _BgcTwinTangentPairFP32* twin = (_BgcTwinTangentPairFP32*)tangent;
 
     twin->cos = 1.0f;
     twin->sin = 0.0f;
 }
 
-inline void bgc_tangent_reset_fp64(BgcTangentFP64* tangent)
+inline void bgc_tangent_pair_reset_fp64(BgcTangentPairFP64* tangent)
 {
-    _BgcDarkTwinTangentFP64* twin = (_BgcDarkTwinTangentFP64*)tangent;
+    _BgcTwinTangentPairFP64* twin = (_BgcTwinTangentPairFP64*)tangent;
 
     twin->cos = 1.0;
     twin->sin = 0.0;
@@ -55,51 +55,51 @@ inline void bgc_tangent_reset_fp64(BgcTangentFP64* tangent)
 
 // ==================== Set ===================== //
 
-void _bgc_tangent_normalize_fp32(const float square_modulus, _BgcDarkTwinTangentFP32* twin);
+void _bgc_tangent_pair_normalize_fp32(const float square_modulus, _BgcTwinTangentPairFP32* twin);
 
-void _bgc_tangent_normalize_fp64(const double square_modulus, _BgcDarkTwinTangentFP64* twin);
+void _bgc_tangent_pair_normalize_fp64(const double square_modulus, _BgcTwinTangentPairFP64* twin);
 
-inline void bgc_tangent_set_values_fp32(const float x1, const float x2, BgcTangentFP32* tangent)
+inline void bgc_tangent_pair_set_values_fp32(const float x1, const float x2, BgcTangentPairFP32* tangent)
 {
     const float square_modulus = x1 * x1 + x2 * x2;
 
-    _BgcDarkTwinTangentFP32* twin = (_BgcDarkTwinTangentFP32*)tangent;
+    _BgcTwinTangentPairFP32* twin = (_BgcTwinTangentPairFP32*)tangent;
 
     twin->cos = x1;
     twin->sin = x2;
 
     if (!bgc_is_sqare_value_unit_fp32(square_modulus)) {
-        _bgc_tangent_normalize_fp32(square_modulus, twin);
+        _bgc_tangent_pair_normalize_fp32(square_modulus, twin);
     }
 }
 
-inline void bgc_tangent_set_values_fp64(const double x1, const double x2, BgcTangentFP64* tangent)
+inline void bgc_tangent_pair_set_values_fp64(const double x1, const double x2, BgcTangentPairFP64* tangent)
 {
     const double square_modulus = x1 * x1 + x2 * x2;
 
-    _BgcDarkTwinTangentFP64* twin = (_BgcDarkTwinTangentFP64*)tangent;
+    _BgcTwinTangentPairFP64* twin = (_BgcTwinTangentPairFP64*)tangent;
 
     twin->cos = x1;
     twin->sin = x2;
 
     if (!bgc_is_sqare_value_unit_fp64(square_modulus)) {
-        _bgc_tangent_normalize_fp64(square_modulus, twin);
+        _bgc_tangent_pair_normalize_fp64(square_modulus, twin);
     }
 }
 
 // ==================== Copy ==================== //
 
-inline void bgc_tangent_copy_fp32(const BgcTangentFP32* from, BgcTangentFP32* to)
+inline void bgc_tangent_pair_copy_fp32(const BgcTangentPairFP32* from, BgcTangentPairFP32* to)
 {
-    _BgcDarkTwinTangentFP32* twin = (_BgcDarkTwinTangentFP32*)to;
+    _BgcTwinTangentPairFP32* twin = (_BgcTwinTangentPairFP32*)to;
 
     twin->cos = from->cos;
     twin->sin = from->sin;
 }
 
-inline void bgc_tangent_copy_fp64(const BgcTangentFP64* from, BgcTangentFP64* to)
+inline void bgc_tangent_pair_copy_fp64(const BgcTangentPairFP64* from, BgcTangentPairFP64* to)
 {
-    _BgcDarkTwinTangentFP64* twin = (_BgcDarkTwinTangentFP64*)to;
+    _BgcTwinTangentPairFP64* twin = (_BgcTwinTangentPairFP64*)to;
 
     twin->cos = from->cos;
     twin->sin = from->sin;
@@ -107,33 +107,33 @@ inline void bgc_tangent_copy_fp64(const BgcTangentFP64* from, BgcTangentFP64* to
 
 // ==================== Swap ==================== //
 
-inline void bgc_tangent_swap_fp32(BgcTangentFP32* tangent1, BgcTangentFP32* tangent2)
+inline void bgc_tangent_pair_swap_fp32(BgcTangentPairFP32* tangent1, BgcTangentPairFP32* tangent2)
 {
     const float cos = tangent1->cos;
     const float sin = tangent1->sin;
 
-    _BgcDarkTwinTangentFP32* twin1 = (_BgcDarkTwinTangentFP32*)tangent1;
+    _BgcTwinTangentPairFP32* twin1 = (_BgcTwinTangentPairFP32*)tangent1;
 
     twin1->cos = tangent2->cos;
     twin1->sin = tangent2->sin;
 
-    _BgcDarkTwinTangentFP32* twin2 = (_BgcDarkTwinTangentFP32*)tangent2;
+    _BgcTwinTangentPairFP32* twin2 = (_BgcTwinTangentPairFP32*)tangent2;
 
     twin2->cos = cos;
     twin2->sin = sin;
 }
 
-inline void bgc_tangent_swap_fp64(BgcTangentFP64* tangent1, BgcTangentFP64* tangent2)
+inline void bgc_tangent_pair_swap_fp64(BgcTangentPairFP64* tangent1, BgcTangentPairFP64* tangent2)
 {
     const double cos = tangent1->cos;
     const double sin = tangent1->sin;
 
-    _BgcDarkTwinTangentFP64* twin1 = (_BgcDarkTwinTangentFP64*)tangent1;
+    _BgcTwinTangentPairFP64* twin1 = (_BgcTwinTangentPairFP64*)tangent1;
 
     twin1->cos = tangent2->cos;
     twin1->sin = tangent2->sin;
 
-    _BgcDarkTwinTangentFP64* twin2 = (_BgcDarkTwinTangentFP64*)tangent2;
+    _BgcTwinTangentPairFP64* twin2 = (_BgcTwinTangentPairFP64*)tangent2;
 
     twin2->cos = cos;
     twin2->sin = sin;
@@ -141,21 +141,21 @@ inline void bgc_tangent_swap_fp64(BgcTangentFP64* tangent1, BgcTangentFP64* tang
 
 // ================== Set Turn ================== //
 
-inline void bgc_tangent_set_turn_fp32(const float angle, const BgcAngleUnitEnum unit, BgcTangentFP32* tangent)
+inline void bgc_tangent_pair_set_turn_fp32(const float angle, const BgcAngleUnitEnum unit, BgcTangentPairFP32* tangent)
 {
     const float radians = bgc_angle_to_radians_fp32(angle, unit);
 
-    _BgcDarkTwinTangentFP32* twin = (_BgcDarkTwinTangentFP32*)tangent;
+    _BgcTwinTangentPairFP32* twin = (_BgcTwinTangentPairFP32*)tangent;
 
     twin->cos = cosf(radians);
     twin->sin = sinf(radians);
 }
 
-inline void bgc_tangent_set_turn_fp64(const double angle, const BgcAngleUnitEnum unit, BgcTangentFP64* tangent)
+inline void bgc_tangent_pair_set_turn_fp64(const double angle, const BgcAngleUnitEnum unit, BgcTangentPairFP64* tangent)
 {
     const double radians = bgc_angle_to_radians_fp64(angle, unit);
 
-    _BgcDarkTwinTangentFP64* twin = (_BgcDarkTwinTangentFP64*)tangent;
+    _BgcTwinTangentPairFP64* twin = (_BgcTwinTangentPairFP64*)tangent;
 
     twin->cos = cos(radians);
     twin->sin = sin(radians);
@@ -163,41 +163,41 @@ inline void bgc_tangent_set_turn_fp64(const double angle, const BgcAngleUnitEnum
 
 // ============= Copy to twin type ============== //
 
-inline void bgc_tangent_convert_fp64_to_fp32(const BgcTangentFP64* from, BgcTangentFP32* to)
+inline void bgc_tangent_pair_convert_fp64_to_fp32(const BgcTangentPairFP64* from, BgcTangentPairFP32* to)
 {
-    bgc_tangent_set_values_fp32((float)from->cos, (float)from->sin, to);
+    bgc_tangent_pair_set_values_fp32((float)from->cos, (float)from->sin, to);
 }
 
-inline void bgc_tangent_convert_fp32_to_fp64(const BgcTangentFP32* from, BgcTangentFP64* to)
+inline void bgc_tangent_pair_convert_fp32_to_fp64(const BgcTangentPairFP32* from, BgcTangentPairFP64* to)
 {
-    bgc_tangent_set_values_fp64((double)from->cos, (double)from->sin, to);
+    bgc_tangent_pair_set_values_fp64((double)from->cos, (double)from->sin, to);
 }
 
 // ================= Inversion ================== //
 
-inline void bgc_tangent_invert_fp32(BgcTangentFP32* tangent)
+inline void bgc_tangent_pair_invert_fp32(BgcTangentPairFP32* tangent)
 {
-    ((_BgcDarkTwinTangentFP32*)tangent)->sin = -tangent->sin;
+    ((_BgcTwinTangentPairFP32*)tangent)->sin = -tangent->sin;
 }
 
-inline void bgc_tangent_invert_fp64(BgcTangentFP64* tangent)
+inline void bgc_tangent_pair_invert_fp64(BgcTangentPairFP64* tangent)
 {
-    ((_BgcDarkTwinTangentFP64*)tangent)->sin = -tangent->sin;
+    ((_BgcTwinTangentPairFP64*)tangent)->sin = -tangent->sin;
 }
 
 // ================ Set Inverted ================ //
 
-inline void bgc_tangent_set_inverted_fp32(const BgcTangentFP32* tangent, BgcTangentFP32* result)
+inline void bgc_tangent_pair_set_inverted_fp32(const BgcTangentPairFP32* tangent, BgcTangentPairFP32* result)
 {
-    _BgcDarkTwinTangentFP32* twin = (_BgcDarkTwinTangentFP32*)result;
+    _BgcTwinTangentPairFP32* twin = (_BgcTwinTangentPairFP32*)result;
 
     twin->cos = tangent->cos;
     twin->sin = -tangent->sin;
 }
 
-inline void bgc_tangent_set_inverted_fp64(const BgcTangentFP64* tangent, BgcTangentFP64* result)
+inline void bgc_tangent_pair_set_inverted_fp64(const BgcTangentPairFP64* tangent, BgcTangentPairFP64* result)
 {
-    _BgcDarkTwinTangentFP64* twin = (_BgcDarkTwinTangentFP64*)result;
+    _BgcTwinTangentPairFP64* twin = (_BgcTwinTangentPairFP64*)result;
 
     twin->cos = tangent->cos;
     twin->sin = -tangent->sin;
@@ -205,7 +205,7 @@ inline void bgc_tangent_set_inverted_fp64(const BgcTangentFP64* tangent, BgcTang
 
 // ============== Rotation Matrix =============== //
 
-inline void bgc_tangent_make_rotation_matrix_fp32(const BgcTangentFP32* tangent, BgcMatrix2x2FP32* matrix)
+inline void bgc_tangent_pair_make_rotation_matrix_fp32(const BgcTangentPairFP32* tangent, BgcMatrix2x2FP32* matrix)
 {
     matrix->r1c1 = tangent->cos;
     matrix->r1c2 = -tangent->sin;
@@ -213,7 +213,7 @@ inline void bgc_tangent_make_rotation_matrix_fp32(const BgcTangentFP32* tangent,
     matrix->r2c2 = tangent->cos;
 }
 
-inline void bgc_tangent_make_rotation_matrix_fp64(const BgcTangentFP64* tangent, BgcMatrix2x2FP64* matrix)
+inline void bgc_tangent_pair_make_rotation_matrix_fp64(const BgcTangentPairFP64* tangent, BgcMatrix2x2FP64* matrix)
 {
     matrix->r1c1 = tangent->cos;
     matrix->r1c2 = -tangent->sin;
@@ -223,7 +223,7 @@ inline void bgc_tangent_make_rotation_matrix_fp64(const BgcTangentFP64* tangent,
 
 // ============== Reverse Matrix ================ //
 
-inline void bgc_tangent_make_reverse_matrix_fp32(const BgcTangentFP32* tangent, BgcMatrix2x2FP32* matrix)
+inline void bgc_tangent_pair_make_reverse_matrix_fp32(const BgcTangentPairFP32* tangent, BgcMatrix2x2FP32* matrix)
 {
     matrix->r1c1 = tangent->cos;
     matrix->r1c2 = tangent->sin;
@@ -231,7 +231,7 @@ inline void bgc_tangent_make_reverse_matrix_fp32(const BgcTangentFP32* tangent, 
     matrix->r2c2 = tangent->cos;
 }
 
-inline void bgc_tangent_make_reverse_matrix_fp64(const BgcTangentFP64* tangent, BgcMatrix2x2FP64* matrix)
+inline void bgc_tangent_pair_make_reverse_matrix_fp64(const BgcTangentPairFP64* tangent, BgcMatrix2x2FP64* matrix)
 {
     matrix->r1c1 = tangent->cos;
     matrix->r1c2 = tangent->sin;
@@ -241,7 +241,7 @@ inline void bgc_tangent_make_reverse_matrix_fp64(const BgcTangentFP64* tangent, 
 
 // =================== Angle =================== //
 
-inline float bgc_tangent_get_angle_fp32(const BgcTangentFP32* tangent, const BgcAngleUnitEnum unit)
+inline float bgc_tangent_pair_get_angle_fp32(const BgcTangentPairFP32* tangent, const BgcAngleUnitEnum unit)
 {
     if (tangent->cos >= 1.0f - BGC_EPSYLON_FP32) {
         return 0.0f;
@@ -262,7 +262,7 @@ inline float bgc_tangent_get_angle_fp32(const BgcTangentFP32* tangent, const Bgc
     return bgc_radians_to_units_fp32(atan2f(tangent->cos, tangent->sin), unit);
 }
 
-inline double bgc_tangent_get_angle_fp64(const BgcTangentFP64* tangent, const BgcAngleUnitEnum unit)
+inline double bgc_tangent_pair_get_angle_fp64(const BgcTangentPairFP64* tangent, const BgcAngleUnitEnum unit)
 {
     if (tangent->cos >= 1.0 - BGC_EPSYLON_FP64) {
         return 0.0;
@@ -285,18 +285,18 @@ inline double bgc_tangent_get_angle_fp64(const BgcTangentFP64* tangent, const Bg
 
 // ================ Combination ================= //
 
-inline void bgc_tangent_combine_fp32(const BgcTangentFP32* tangent1, const BgcTangentFP32* tangent2, BgcTangentFP32* result)
+inline void bgc_tangent_pair_combine_fp32(const BgcTangentPairFP32* tangent1, const BgcTangentPairFP32* tangent2, BgcTangentPairFP32* result)
 {
-    bgc_tangent_set_values_fp32(
+    bgc_tangent_pair_set_values_fp32(
         tangent1->cos * tangent2->cos - tangent1->sin * tangent2->sin,
         tangent1->cos * tangent2->sin + tangent1->sin * tangent2->cos,
         result
     );
 }
 
-inline void bgc_tangent_combine_fp64(const BgcTangentFP64* tangent1, const BgcTangentFP64* tangent2, BgcTangentFP64* result)
+inline void bgc_tangent_pair_combine_fp64(const BgcTangentPairFP64* tangent1, const BgcTangentPairFP64* tangent2, BgcTangentPairFP64* result)
 {
-    bgc_tangent_set_values_fp64(
+    bgc_tangent_pair_set_values_fp64(
         tangent1->cos * tangent2->cos - tangent1->sin * tangent2->sin,
         tangent1->cos * tangent2->sin + tangent1->sin * tangent2->cos,
         result
@@ -305,7 +305,7 @@ inline void bgc_tangent_combine_fp64(const BgcTangentFP64* tangent1, const BgcTa
 
 // ================ Turn Vector ================= //
 
-inline void bgc_tangent_turn_vector_fp32(const BgcTangentFP32* tangent, const BgcVector2FP32* vector, BgcVector2FP32* result)
+inline void bgc_tangent_pair_turn_vector_fp32(const BgcTangentPairFP32* tangent, const BgcVector2FP32* vector, BgcVector2FP32* result)
 {
     const float x1 = tangent->cos * vector->x1 - tangent->sin * vector->x2;
     const float x2 = tangent->sin * vector->x1 + tangent->cos * vector->x2;
@@ -314,7 +314,7 @@ inline void bgc_tangent_turn_vector_fp32(const BgcTangentFP32* tangent, const Bg
     result->x2 = x2;
 }
 
-inline void bgc_tangent_turn_vector_fp64(const BgcTangentFP64* tangent, const BgcVector2FP64* vector, BgcVector2FP64* result)
+inline void bgc_tangent_pair_turn_vector_fp64(const BgcTangentPairFP64* tangent, const BgcVector2FP64* vector, BgcVector2FP64* result)
 {
     const double x1 = tangent->cos * vector->x1 - tangent->sin * vector->x2;
     const double x2 = tangent->sin * vector->x1 + tangent->cos * vector->x2;
@@ -325,7 +325,7 @@ inline void bgc_tangent_turn_vector_fp64(const BgcTangentFP64* tangent, const Bg
 
 // ============ Turn Vector Backward ============ //
 
-inline void bgc_tangent_turn_vector_back_fp32(const BgcTangentFP32* tangent, const BgcVector2FP32* vector, BgcVector2FP32* result)
+inline void bgc_tangent_pair_turn_vector_back_fp32(const BgcTangentPairFP32* tangent, const BgcVector2FP32* vector, BgcVector2FP32* result)
 {
     const float x1 = tangent->sin * vector->x2 + tangent->cos * vector->x1;
     const float x2 = tangent->cos * vector->x2 - tangent->sin * vector->x1;
@@ -334,7 +334,7 @@ inline void bgc_tangent_turn_vector_back_fp32(const BgcTangentFP32* tangent, con
     result->x2 = x2;
 }
 
-inline void bgc_tangent_turn_vector_back_fp64(const BgcTangentFP64* tangent, const BgcVector2FP64* vector, BgcVector2FP64* result)
+inline void bgc_tangent_pair_turn_vector_back_fp64(const BgcTangentPairFP64* tangent, const BgcVector2FP64* vector, BgcVector2FP64* result)
 {
     const double x1 = tangent->sin * vector->x2 + tangent->cos * vector->x1;
     const double x2 = tangent->cos * vector->x2 - tangent->sin * vector->x1;
@@ -345,7 +345,7 @@ inline void bgc_tangent_turn_vector_back_fp64(const BgcTangentFP64* tangent, con
 
 // ================== Are Close ================= //
 
-inline int bgc_tangent_are_close_fp32(const BgcTangentFP32* tangent1, const BgcTangentFP32* tangent2)
+inline int bgc_tangent_pair_are_close_fp32(const BgcTangentPairFP32* tangent1, const BgcTangentPairFP32* tangent2)
 {
     const float d_cos = tangent1->cos - tangent2->cos;
     const float d_sin = tangent1->sin - tangent2->sin;
@@ -353,7 +353,7 @@ inline int bgc_tangent_are_close_fp32(const BgcTangentFP32* tangent1, const BgcT
     return d_cos * d_cos + d_sin * d_sin <= BGC_SQUARE_EPSYLON_FP32;
 }
 
-inline int bgc_tangent_are_close_fp64(const BgcTangentFP64* tangent1, const BgcTangentFP64* tangent2)
+inline int bgc_tangent_pair_are_close_fp64(const BgcTangentPairFP64* tangent1, const BgcTangentPairFP64* tangent2)
 {
     const double d_cos = tangent1->cos - tangent2->cos;
     const double d_sin = tangent1->sin - tangent2->sin;
