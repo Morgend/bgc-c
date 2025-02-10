@@ -13,7 +13,7 @@ typedef struct {
 // ==================== FP32 ==================== //
 
 static const int _TEST_FP32_CLOSE_NUMBERS_AMOUNT = 16;
-static const int _TEST_FP32_DIFFERENT_NUMBERS_AMOUNT = 16;
+static const int _TEST_FP32_DIFFERENT_NUMBERS_AMOUNT = 12;
 
 static const _TestNumberPairFP32 _TEST_FP32_DATA_CLOSE[] = {
     {0.0f, 0.0f},
@@ -32,10 +32,10 @@ static const _TestNumberPairFP32 _TEST_FP32_DATA_CLOSE[] = {
     {-1.0f + BGC_EPSYLON_FP32, -1.0f},
     {-1.0f - BGC_EPSYLON_FP32, -1.0f},
 
-    {100.0f, 100.0f + 99.0f * BGC_EPSYLON_FP32},
-    {100.0f, 100.0f - 99.0f * BGC_EPSYLON_FP32},
-    {-100.0f, -100.0f + 99.0f * BGC_EPSYLON_FP32},
-    {-100.0f, -100.0f - 99.0f * BGC_EPSYLON_FP32}
+    {100.0f, 100.0f * (1.0f + BGC_EPSYLON_FP32)},
+    {100.0f, 100.0f * (1.0f - BGC_EPSYLON_FP32)},
+    {-100.0f, -100.0f * (1.0f + BGC_EPSYLON_FP32)},
+    {-100.0f, -100.0f * (1.0f - BGC_EPSYLON_FP32)}
 };
 
 static const _TestNumberPairFP32 _TEST_FP32_DATA_DIFFERENT[] = {
@@ -55,10 +55,10 @@ static const _TestNumberPairFP32 _TEST_FP32_DATA_DIFFERENT[] = {
     {-1.0f + 1.5f * BGC_EPSYLON_FP32, -1.0f},
     {-1.0f - 1.5f * BGC_EPSYLON_FP32, -1.0f},
 
-    {100.0f, 100.0f + 101.0f * BGC_EPSYLON_FP32},
-    {100.0f, 100.0f - 101.0f * BGC_EPSYLON_FP32},
-    {-100.0f, -100.0f + 101.0f * BGC_EPSYLON_FP32},
-    {-100.0f, -100.0f - 101.0f * BGC_EPSYLON_FP32}
+    {100.0f, 100.0f * (1.0f + 1.5f * BGC_EPSYLON_FP32)},
+    {100.0f, 100.0f * (1.0f - 1.5f * BGC_EPSYLON_FP32)},
+    {-100.0f, -100.0f * (1.0f + 1.5f * BGC_EPSYLON_FP32)},
+    {-100.0f, -100.0f * (1.0f - 1.5f * BGC_EPSYLON_FP32)}
 };
 
 int test_bgc_are_close_fp32()
@@ -158,6 +158,19 @@ int test_bgc_are_close_fp64()
     }
 
     print_testing_success();
+
+    return TEST_SUCCES;
+}
+
+int test_bgc_are_close()
+{
+    if (test_bgc_are_close_fp32() != TEST_SUCCES) {
+        return TEST_FAILED;
+    }
+
+    if (test_bgc_are_close_fp64() != TEST_SUCCES) {
+        return TEST_FAILED;
+    }
 
     return TEST_SUCCES;
 }

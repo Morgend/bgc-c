@@ -70,10 +70,10 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="rotation3.h" />
-		<Unit filename="tangent.c">
+		<Unit filename="tangent-pair.c">
 			<Option compilerVar="CC" />
 		</Unit>
-		<Unit filename="tangent.h" />
+		<Unit filename="tangent-pair.h" />
 		<Unit filename="utilities.c">
 			<Option compilerVar="CC" />
 		</Unit>

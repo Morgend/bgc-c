@@ -49,4 +49,4 @@ Vector #1: x1 = 10.000000, x2 = -1.000000, x3 = -3.000000
 Vector #2: x1 = -2.000000, x2 = 7.000000, x3 = 5.000000
 ```
 
-[Documentation](../intro-eng.md) / [2D vectors](../vector3-eng.md)
+[Documentation](../intro-eng.md) / [3D vectors](../vector3-eng.md)

@@ -177,3 +177,24 @@ int test_bgc_is_sqare_value_unit_fp64()
 
     return TEST_SUCCES;
 }
+
+int test_bgc_is_unit()
+{
+    if (test_bgc_is_unit_fp32() != TEST_SUCCES) {
+        return TEST_FAILED;
+    }
+
+    if (test_bgc_is_unit_fp64() != TEST_SUCCES) {
+        return TEST_FAILED;
+    }
+
+    if (test_bgc_is_sqare_value_unit_fp32() != TEST_SUCCES) {
+        return TEST_FAILED;
+    }
+
+    if (test_bgc_is_sqare_value_unit_fp64() != TEST_SUCCES) {
+        return TEST_FAILED;
+    }
+
+    return TEST_SUCCES;
+}

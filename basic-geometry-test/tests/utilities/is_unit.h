@@ -9,4 +9,6 @@ int test_bgc_is_sqare_value_unit_fp32();
 
 int test_bgc_is_sqare_value_unit_fp64();
 
+int test_bgc_is_unit();
+
 #endif

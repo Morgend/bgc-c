@@ -6,6 +6,7 @@
 #include "tests/utilities.h"
 #include "tests/vector2.h"
 #include "tests/vector3.h"
+#include "tests/quaternion.h"
 #include "tests/versor.h"
 
 #define PROGRAM_SUCCESS 0
@@ -22,6 +23,10 @@ int main()
     }
 
     if (test_vector3() == TEST_FAILED) {
+        return PROGRAM_FAILED;
+    }
+
+    if (test_quaternion() == TEST_FAILED) {
         return PROGRAM_FAILED;
     }
 

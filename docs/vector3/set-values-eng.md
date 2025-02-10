@@ -42,4 +42,4 @@ int main()
 }
 ```
 
-[Documentation](../intro-eng.md) / [2D vectors](../vector3-eng.md)
+[Documentation](../intro-eng.md) / [3D vectors](../vector3-eng.md)

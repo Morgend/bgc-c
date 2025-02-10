@@ -5,4 +5,6 @@ int test_bgc_are_close_fp32();
 
 int test_bgc_are_close_fp64();
 
+int test_bgc_are_close();
+
 #endif

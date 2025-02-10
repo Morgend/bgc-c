@@ -6,18 +6,7 @@
 #include "./versor/versor_copy.h"
 #include "./versor/versor_swap.h"
 #include "./versor/versor_are_close.h"
-
-int test_bgc_versor_reset();
-
-int test_bgc_versor_set_values();
-
-int test_bgc_versor_copy();
-
-int test_bgc_versor_swap();
-
-int test_bgc_versor_are_close();
-
-int test_bgc_versor_combine();
+#include "./versor/versor_combine.h"
 
 int test_versor();
 

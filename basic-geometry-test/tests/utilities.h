@@ -5,12 +5,6 @@
 #include "./utilities/is_unit.h"
 #include "./utilities/are_close.h"
 
-int test_bgc_is_zero();
-
-int test_bgc_is_unit();
-
-int test_bgc_are_close();
-
 int test_utilities();
 
 #endif

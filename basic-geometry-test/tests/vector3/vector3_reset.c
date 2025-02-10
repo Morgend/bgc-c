@@ -37,3 +37,16 @@ int test_bgc_vector3_reset_fp64()
 
     return TEST_SUCCES;
 }
+
+int test_bgc_vector3_reset()
+{
+    if (test_bgc_vector3_reset_fp32() != TEST_SUCCES) {
+        return TEST_FAILED;
+    }
+
+    if (test_bgc_vector3_reset_fp64() != TEST_SUCCES) {
+        return TEST_FAILED;
+    }
+
+    return TEST_SUCCES;
+}

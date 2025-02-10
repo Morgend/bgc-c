@@ -4,8 +4,6 @@
 
 #include "./../../helpers.h"
 
-
-
 // ==================== FP32 ==================== //
 
 static const int _TEST_FP32_VECTOR3_AMOUNT = 4;
@@ -94,6 +92,19 @@ int test_bgc_vector3_swap_fp64()
     }
 
     print_testing_success();
+
+    return TEST_SUCCES;
+}
+
+int test_bgc_vector3_swap()
+{
+    if (test_bgc_vector3_swap_fp32() != TEST_SUCCES) {
+        return TEST_FAILED;
+    }
+
+    if (test_bgc_vector3_swap_fp64() != TEST_SUCCES) {
+        return TEST_FAILED;
+    }
 
     return TEST_SUCCES;
 }

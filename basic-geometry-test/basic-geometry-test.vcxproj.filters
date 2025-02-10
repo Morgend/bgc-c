@@ -66,6 +66,30 @@
     <ClCompile Include="tests\versor\versor_swap.c">
       <Filter>tests\versor</Filter>
     </ClCompile>
+    <ClCompile Include="tests\quaternion\quaternion_copy.c">
+      <Filter>tests\quaternion</Filter>
+    </ClCompile>
+    <ClCompile Include="tests\quaternion\quaternion_reset.c">
+      <Filter>tests\quaternion</Filter>
+    </ClCompile>
+    <ClCompile Include="tests\quaternion\quaternion_set_values.c">
+      <Filter>tests\quaternion</Filter>
+    </ClCompile>
+    <ClCompile Include="tests\quaternion\quaternion_swap.c">
+      <Filter>tests\quaternion</Filter>
+    </ClCompile>
+    <ClCompile Include="tests\quaternion.c">
+      <Filter>tests</Filter>
+    </ClCompile>
+    <ClCompile Include="tests\quaternion\quaternion_set_to_identity.c">
+      <Filter>tests\quaternion</Filter>
+    </ClCompile>
+    <ClCompile Include="tests\vector3\vector3_is_zero.c">
+      <Filter>tests\vector3</Filter>
+    </ClCompile>
+    <ClCompile Include="tests\vector2\vector2_is_zero.c">
+      <Filter>tests\vector2</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="helpers.h" />
@@ -132,6 +156,30 @@
     <ClInclude Include="tests\versor\versor_swap.h">
       <Filter>tests\versor</Filter>
     </ClInclude>
+    <ClInclude Include="tests\quaternion\quaternion_copy.h">
+      <Filter>tests\quaternion</Filter>
+    </ClInclude>
+    <ClInclude Include="tests\quaternion\quaternion_reset.h">
+      <Filter>tests\quaternion</Filter>
+    </ClInclude>
+    <ClInclude Include="tests\quaternion\quaternion_set_values.h">
+      <Filter>tests\quaternion</Filter>
+    </ClInclude>
+    <ClInclude Include="tests\quaternion\quaternion_swap.h">
+      <Filter>tests\quaternion</Filter>
+    </ClInclude>
+    <ClInclude Include="tests\quaternion.h">
+      <Filter>tests</Filter>
+    </ClInclude>
+    <ClInclude Include="tests\quaternion\quaternion_set_to_identity.h">
+      <Filter>tests\quaternion</Filter>
+    </ClInclude>
+    <ClInclude Include="tests\vector3\vector3_is_zero.h">
+      <Filter>tests\vector3</Filter>
+    </ClInclude>
+    <ClInclude Include="tests\vector2\vector2_is_zero.h">
+      <Filter>tests\vector2</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="tests">
@@ -148,6 +196,9 @@
     </Filter>
     <Filter Include="tests\versor">
       <UniqueIdentifier>{d6f82407-8310-4b32-b153-aa67e766c72a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="tests\quaternion">
+      <UniqueIdentifier>{e8bafdb8-66e5-4393-bc89-8bff83bcccd6}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

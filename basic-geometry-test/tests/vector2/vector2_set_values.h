@@ -5,4 +5,6 @@ int test_bgc_vector2_set_values_fp32();
 
 int test_bgc_vector2_set_values_fp64();
 
+int test_bgc_vector2_set_values();
+
 #endif

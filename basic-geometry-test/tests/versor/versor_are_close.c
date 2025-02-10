@@ -244,3 +244,16 @@ int test_bgc_versor_are_close_fp64()
 
     return TEST_SUCCES;
 }
+
+int test_bgc_versor_are_close()
+{
+    if (test_bgc_versor_are_close_fp32() != TEST_SUCCES) {
+        return TEST_FAILED;
+    }
+
+    if (test_bgc_versor_are_close_fp64() != TEST_SUCCES) {
+        return TEST_FAILED;
+    }
+
+    return TEST_SUCCES;
+}

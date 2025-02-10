@@ -42,4 +42,4 @@ int main()
 }
 ```
 
-[Документация](../intro-rus.md) / [2D векторы](../vector3-rus.md)
+[Документация](../intro-rus.md) / [3D векторы](../vector3-rus.md)

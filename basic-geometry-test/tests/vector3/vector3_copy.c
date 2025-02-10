@@ -8,8 +8,8 @@
 
 static const int _TEST_FP32_VECTOR3_AMOUNT = 4;
 static const BgcVector3FP32 _TEST_FP32_VECTOR3_LIST[] = {
-    { 1.0f, 2.0f, 3.0 },
-    { -3.0, -2.0f, -1.0f },
+    { 1.0f, 2.0f, 3.0f },
+    { -3.0f, -2.0f, -1.0f },
     { 100.0f, -100.0f, 0.001f },
     { -100.0f, 100.0f, -0.001f }
 };
@@ -43,8 +43,8 @@ static const int _TEST_FP64_VECTOR3_AMOUNT = 4;
 static const BgcVector3FP64 _TEST_FP64_VECTOR3_LIST[] = {
     { 1.0, 2.0, 3.0 },
     { -3.0, -2.0, -1.0 },
-    { 100.0, -100.0, 0.001f },
-    { -100.0, 100.0, -0.001f }
+    { 100.0, -100.0, 0.001 },
+    { -100.0, 100.0, -0.001 }
 };
 
 int test_bgc_vector3_copy_fp64()
@@ -66,6 +66,19 @@ int test_bgc_vector3_copy_fp64()
     }
 
     print_testing_success();
+
+    return TEST_SUCCES;
+}
+
+int test_bgc_vector3_copy()
+{
+    if (test_bgc_vector3_copy_fp32() != TEST_SUCCES) {
+        return TEST_FAILED;
+    }
+
+    if (test_bgc_vector3_copy_fp64() != TEST_SUCCES) {
+        return TEST_FAILED;
+    }
 
     return TEST_SUCCES;
 }

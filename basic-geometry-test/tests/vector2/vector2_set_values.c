@@ -72,3 +72,16 @@ int test_bgc_vector2_set_values_fp64()
 
     return TEST_SUCCES;
 }
+
+int test_bgc_vector2_set_values()
+{
+    if (test_bgc_vector2_set_values_fp32() != TEST_SUCCES) {
+        return TEST_FAILED;
+    }
+
+    if (test_bgc_vector2_set_values_fp64() != TEST_SUCCES) {
+        return TEST_FAILED;
+    }
+
+    return TEST_SUCCES;
+}

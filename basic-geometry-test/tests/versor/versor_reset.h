@@ -5,4 +5,6 @@ int test_bgc_versor_reset_fp32();
 
 int test_bgc_versor_reset_fp64();
 
+int test_bgc_versor_reset();
+
 #endif

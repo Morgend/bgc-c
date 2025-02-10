@@ -42,17 +42,97 @@
 		<Compiler>
 			<Add option="-Wall" />
 		</Compiler>
-		<Unit filename="fp32_vector2_test.c">
+		<Unit filename="helpers.c">
 			<Option compilerVar="CC" />
 		</Unit>
-		<Unit filename="fp32_vector2_test.h" />
-		<Unit filename="geometry_test.c">
-			<Option compilerVar="CC" />
-		</Unit>
-		<Unit filename="geometry_test.h" />
+		<Unit filename="helpers.h" />
 		<Unit filename="main.c">
 			<Option compilerVar="CC" />
 		</Unit>
+		<Unit filename="tests/utilities.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="tests/utilities.h" />
+		<Unit filename="tests/utilities/are_close.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="tests/utilities/are_close.h" />
+		<Unit filename="tests/utilities/is_unit.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="tests/utilities/is_unit.h" />
+		<Unit filename="tests/utilities/is_zero.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="tests/utilities/is_zero.h" />
+		<Unit filename="tests/vector2.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="tests/vector2.h" />
+		<Unit filename="tests/vector2/vector2_copy.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="tests/vector2/vector2_copy.h" />
+		<Unit filename="tests/vector2/vector2_reset.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="tests/vector2/vector2_reset.h" />
+		<Unit filename="tests/vector2/vector2_set_values.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="tests/vector2/vector2_set_values.h" />
+		<Unit filename="tests/vector2/vector2_swap.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="tests/vector2/vector2_swap.h" />
+		<Unit filename="tests/vector3.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="tests/vector3.h" />
+		<Unit filename="tests/vector3/vector3_copy.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="tests/vector3/vector3_copy.h" />
+		<Unit filename="tests/vector3/vector3_reset.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="tests/vector3/vector3_reset.h" />
+		<Unit filename="tests/vector3/vector3_set_values.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="tests/vector3/vector3_set_values.h" />
+		<Unit filename="tests/vector3/vector3_swap.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="tests/vector3/vector3_swap.h" />
+		<Unit filename="tests/versor.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="tests/versor.h" />
+		<Unit filename="tests/versor/versor_are_close.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="tests/versor/versor_are_close.h" />
+		<Unit filename="tests/versor/versor_combine.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="tests/versor/versor_combine.h" />
+		<Unit filename="tests/versor/versor_copy.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="tests/versor/versor_copy.h" />
+		<Unit filename="tests/versor/versor_reset.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="tests/versor/versor_reset.h" />
+		<Unit filename="tests/versor/versor_set_values.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="tests/versor/versor_set_values.h" />
+		<Unit filename="tests/versor/versor_swap.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="tests/versor/versor_swap.h" />
 		<Extensions />
 	</Project>
 </CodeBlocks_project_file>

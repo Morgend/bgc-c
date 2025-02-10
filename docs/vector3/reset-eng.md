@@ -1,6 +1,6 @@
-# Resetting the state of a 2D vector
+# Resetting the state of a 3D vector
 
-These functions set all coordinates of 2D vectors to 0.
+These functions set all coordinates of 3D vectors to 0.
 
 Function for **BgcVector3FP32**:
 
@@ -42,4 +42,4 @@ int main()
 }
 ```
 
-[Documentation](../intro-eng.md) / [2D vectors](../vector3-eng.md)
+[Documentation](../intro-eng.md) / [3D vectors](../vector3-eng.md)
