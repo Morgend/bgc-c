@@ -194,12 +194,12 @@ inline void bgc_versor_set_rotation_fp64(const BgcRotation3FP64* rotation, BgcVe
 
 // ================= Comparison ================= //
 
-inline int bgc_versor_is_idle_fp32(const BgcVersorFP32* versor)
+inline int bgc_versor_is_identity_fp32(const BgcVersorFP32* versor)
 {
     return 1.0f - BGC_EPSYLON_FP32 <= versor->s0 || versor->s0 <= -(1.0 - BGC_EPSYLON_FP32);
 }
 
-inline int bgc_versor_is_idle_fp64(const BgcVersorFP64* versor)
+inline int bgc_versor_is_identity_fp64(const BgcVersorFP64* versor)
 {
     return 1.0 - BGC_EPSYLON_FP64 <= versor->s0 || versor->s0 <= -(1.0 - BGC_EPSYLON_FP64);
 }

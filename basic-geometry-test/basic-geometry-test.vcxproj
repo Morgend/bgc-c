@@ -152,6 +152,8 @@
     <ClCompile Include="main.c" />
     <ClCompile Include="tests\quaternion.c" />
     <ClCompile Include="tests\quaternion\quaternion_copy.c" />
+    <ClCompile Include="tests\quaternion\quaternion_is_unit.c" />
+    <ClCompile Include="tests\quaternion\quaternion_is_zero.c" />
     <ClCompile Include="tests\quaternion\quaternion_reset.c" />
     <ClCompile Include="tests\quaternion\quaternion_set_to_identity.c" />
     <ClCompile Include="tests\quaternion\quaternion_set_values.c" />
@@ -161,12 +163,14 @@
     <ClCompile Include="tests\utilities\is_unit.c" />
     <ClCompile Include="tests\utilities\is_zero.c" />
     <ClCompile Include="tests\vector2.c" />
+    <ClCompile Include="tests\vector2\vector2_is_unit.c" />
     <ClCompile Include="tests\vector2\vector2_is_zero.c" />
     <ClCompile Include="tests\vector2\vector2_copy.c" />
     <ClCompile Include="tests\vector2\vector2_reset.c" />
     <ClCompile Include="tests\vector2\vector2_set_values.c" />
     <ClCompile Include="tests\vector2\vector2_swap.c" />
     <ClCompile Include="tests\vector3.c" />
+    <ClCompile Include="tests\vector3\vector3_is_unit.c" />
     <ClCompile Include="tests\vector3\vector3_is_zero.c" />
     <ClCompile Include="tests\vector3\vector3_copy.c" />
     <ClCompile Include="tests\vector3\vector3_swap.c" />
@@ -174,6 +178,7 @@
     <ClCompile Include="tests\vector3\vector3_set_values.c" />
     <ClCompile Include="tests\versor.c" />
     <ClCompile Include="tests\versor\versor_copy.c" />
+    <ClCompile Include="tests\versor\versor_is_identity.c" />
     <ClCompile Include="tests\versor\versor_swap.c" />
     <ClCompile Include="tests\versor\versor_combine.c" />
     <ClCompile Include="tests\versor\versor_reset.c" />
@@ -184,6 +189,8 @@
     <ClInclude Include="helpers.h" />
     <ClInclude Include="tests\quaternion.h" />
     <ClInclude Include="tests\quaternion\quaternion_copy.h" />
+    <ClInclude Include="tests\quaternion\quaternion_is_unit.h" />
+    <ClInclude Include="tests\quaternion\quaternion_is_zero.h" />
     <ClInclude Include="tests\quaternion\quaternion_reset.h" />
     <ClInclude Include="tests\quaternion\quaternion_set_to_identity.h" />
     <ClInclude Include="tests\quaternion\quaternion_set_values.h" />
@@ -193,12 +200,14 @@
     <ClInclude Include="tests\utilities\is_unit.h" />
     <ClInclude Include="tests\utilities\is_zero.h" />
     <ClInclude Include="tests\vector2.h" />
+    <ClInclude Include="tests\vector2\vector2_is_unit.h" />
     <ClInclude Include="tests\vector2\vector2_is_zero.h" />
     <ClInclude Include="tests\vector2\vector2_copy.h" />
     <ClInclude Include="tests\vector2\vector2_reset.h" />
     <ClInclude Include="tests\vector2\vector2_set_values.h" />
     <ClInclude Include="tests\vector2\vector2_swap.h" />
     <ClInclude Include="tests\vector3.h" />
+    <ClInclude Include="tests\vector3\vector3_is_unit.h" />
     <ClInclude Include="tests\vector3\vector3_is_zero.h" />
     <ClInclude Include="tests\vector3\vector3_copy.h" />
     <ClInclude Include="tests\vector3\vector3_swap.h" />
@@ -206,6 +215,7 @@
     <ClInclude Include="tests\vector3\vector3_set_values.h" />
     <ClInclude Include="tests\versor.h" />
     <ClInclude Include="tests\versor\versor_copy.h" />
+    <ClInclude Include="tests\versor\versor_is_identity.h" />
     <ClInclude Include="tests\versor\versor_swap.h" />
     <ClInclude Include="tests\versor\versor_combine.h" />
     <ClInclude Include="tests\versor\versor_reset.h" />

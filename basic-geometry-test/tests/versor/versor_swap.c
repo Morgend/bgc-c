@@ -28,7 +28,7 @@ static const _TestVersorDataFP32 _TEST_FP32_VERSOR_LIST2[] = {
     { 4.0f, 3.0f, 2.0f, 1.0f }
 };
 
-int test_bgc_versor_swap_fp32()
+int test_versor_swap_fp32()
 {
     BgcVersorFP32 versor1a, versor2a, versor1b, versor2b;
 
@@ -70,7 +70,7 @@ int test_bgc_versor_swap_fp32()
 
 // ==================== FP64 ==================== //
 
-int test_bgc_versor_swap_fp64()
+int test_versor_swap_fp64()
 {
     BgcVersorFP64 versor1a, versor2a, versor1b, versor2b;
 
@@ -110,13 +110,13 @@ int test_bgc_versor_swap_fp64()
     return TEST_SUCCES;
 }
 
-int test_bgc_versor_swap()
+int test_versor_swap()
 {
-    if (test_bgc_versor_swap_fp32() != TEST_SUCCES) {
+    if (test_versor_swap_fp32() != TEST_SUCCES) {
         return TEST_FAILED;
     }
 
-    if (test_bgc_versor_swap_fp64() != TEST_SUCCES) {
+    if (test_versor_swap_fp64() != TEST_SUCCES) {
         return TEST_FAILED;
     }
 

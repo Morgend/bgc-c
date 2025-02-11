@@ -2,7 +2,7 @@
 
 #include "./../../helpers.h"
 
-int test_bgc_quaternion_reset_fp32()
+int test_quaternion_reset_fp32()
 {
     BgcQuaternionFP32 vector;
 
@@ -20,7 +20,7 @@ int test_bgc_quaternion_reset_fp32()
     return TEST_SUCCES;
 }
 
-int test_bgc_quaternion_reset_fp64()
+int test_quaternion_reset_fp64()
 {
     BgcQuaternionFP64 vector;
 
@@ -38,13 +38,13 @@ int test_bgc_quaternion_reset_fp64()
     return TEST_SUCCES;
 }
 
-int test_bgc_quaternion_reset()
+int test_quaternion_reset()
 {
-    if (test_bgc_quaternion_reset_fp32() != TEST_SUCCES) {
+    if (test_quaternion_reset_fp32() != TEST_SUCCES) {
         return TEST_FAILED;
     }
 
-    if (test_bgc_quaternion_reset_fp64() != TEST_SUCCES) {
+    if (test_quaternion_reset_fp64() != TEST_SUCCES) {
         return TEST_FAILED;
     }
 

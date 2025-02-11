@@ -25,8 +25,8 @@ extern inline void bgc_versor_set_turn_fp64(const BgcVector3FP32* axis, const do
 extern inline void bgc_versor_set_rotation_fp32(const BgcRotation3FP32* rotation, BgcVersorFP32* result);
 extern inline void bgc_versor_set_rotation_fp64(const BgcRotation3FP64* rotation, BgcVersorFP64* result);
 
-extern inline int bgc_versor_is_idle_fp32(const BgcVersorFP32* versor);
-extern inline int bgc_versor_is_idle_fp64(const BgcVersorFP64* versor);
+extern inline int bgc_versor_is_identity_fp32(const BgcVersorFP32* versor);
+extern inline int bgc_versor_is_identity_fp64(const BgcVersorFP64* versor);
 
 extern inline void bgc_versor_convert_fp64_to_fp32(const BgcVersorFP64* versor, BgcVersorFP32* result);
 extern inline void bgc_versor_convert_fp32_to_fp64(const BgcVersorFP32* versor, BgcVersorFP64* result);

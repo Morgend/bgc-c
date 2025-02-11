@@ -219,6 +219,30 @@ inline double bgc_quaternion_get_modulus_fp64(const BgcQuaternionFP64* quaternio
     return sqrt(bgc_quaternion_get_square_modulus_fp64(quaternion));
 }
 
+// ================== Is Zero =================== //
+
+inline int bgc_quaternion_is_zero_fp32(const BgcQuaternionFP32* quaternion)
+{
+    return bgc_quaternion_get_square_modulus_fp32(quaternion) <= BGC_SQUARE_EPSYLON_FP32;
+}
+
+inline int bgc_quaternion_is_zero_fp64(const BgcQuaternionFP64* quaternion)
+{
+    return bgc_quaternion_get_square_modulus_fp64(quaternion) <= BGC_SQUARE_EPSYLON_FP64;
+}
+
+// ================== Is Unit =================== //
+
+inline int bgc_quaternion_is_unit_fp32(const BgcQuaternionFP32* quaternion)
+{
+    return bgc_is_sqare_value_unit_fp32(bgc_quaternion_get_square_modulus_fp32(quaternion));
+}
+
+inline int bgc_quaternion_is_unit_fp64(const BgcQuaternionFP64* quaternion)
+{
+    return bgc_is_sqare_value_unit_fp64(bgc_quaternion_get_square_modulus_fp64(quaternion));
+}
+
 // =============== Normalization ================ //
 
 inline int bgc_quaternion_normalize_fp32(BgcQuaternionFP32* quaternion)

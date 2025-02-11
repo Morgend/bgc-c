@@ -6,6 +6,7 @@
 #include "./versor/versor_copy.h"
 #include "./versor/versor_swap.h"
 #include "./versor/versor_are_close.h"
+#include "./versor/versor_is_identity.h"
 #include "./versor/versor_combine.h"
 
 int test_versor();

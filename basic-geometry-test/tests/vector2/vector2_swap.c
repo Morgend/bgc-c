@@ -22,7 +22,7 @@ static const BgcVector2FP32 _TEST_FP32_VECTOR2_LIST2[] = {
     { 1000.0f, -0.00025f }
 };
 
-int test_bgc_vector2_swap_fp32()
+int test_vector2_swap_fp32()
 {
     BgcVector2FP32 vector1, vector2;
 
@@ -66,7 +66,7 @@ static const BgcVector2FP64 _TEST_FP64_VECTOR2_LIST2[] = {
     { 1000.0, -0.00025 }
 };
 
-int test_bgc_vector2_swap_fp64()
+int test_vector2_swap_fp64()
 {
     BgcVector2FP64 vector1, vector2;
 
@@ -92,13 +92,13 @@ int test_bgc_vector2_swap_fp64()
     return TEST_SUCCES;
 }
 
-int test_bgc_vector2_swap()
+int test_vector2_swap()
 {
-    if (test_bgc_vector2_swap_fp32() != TEST_SUCCES) {
+    if (test_vector2_swap_fp32() != TEST_SUCCES) {
         return TEST_FAILED;
     }
 
-    if (test_bgc_vector2_swap_fp64() != TEST_SUCCES) {
+    if (test_vector2_swap_fp64() != TEST_SUCCES) {
         return TEST_FAILED;
     }
 

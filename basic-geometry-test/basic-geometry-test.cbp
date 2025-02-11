@@ -57,6 +57,14 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="tests/quaternion/quaternion_copy.h" />
+		<Unit filename="tests/quaternion/quaternion_is_unit.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="tests/quaternion/quaternion_is_unit.h" />
+		<Unit filename="tests/quaternion/quaternion_is_zero.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="tests/quaternion/quaternion_is_zero.h" />
 		<Unit filename="tests/quaternion/quaternion_reset.c">
 			<Option compilerVar="CC" />
 		</Unit>
@@ -97,6 +105,10 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="tests/vector2/vector2_copy.h" />
+		<Unit filename="tests/vector2/vector2_is_unit.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="tests/vector2/vector2_is_unit.h" />
 		<Unit filename="tests/vector2/vector2_is_zero.c">
 			<Option compilerVar="CC" />
 		</Unit>
@@ -121,6 +133,10 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="tests/vector3/vector3_copy.h" />
+		<Unit filename="tests/vector3/vector3_is_unit.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="tests/vector3/vector3_is_unit.h" />
 		<Unit filename="tests/vector3/vector3_is_zero.c">
 			<Option compilerVar="CC" />
 		</Unit>
@@ -153,6 +169,10 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="tests/versor/versor_copy.h" />
+		<Unit filename="tests/versor/versor_is_identity.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="tests/versor/versor_is_identity.h" />
 		<Unit filename="tests/versor/versor_reset.c">
 			<Option compilerVar="CC" />
 		</Unit>

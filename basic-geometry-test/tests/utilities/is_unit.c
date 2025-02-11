@@ -20,7 +20,7 @@ static const float _TEST_FP32_NONUNIT_NUMBERS[] = {
     1.0f - 2.0f * BGC_EPSYLON_FP32
 };
 
-int test_bgc_is_unit_fp32()
+int test_is_unit_fp32()
 {
     print_testing_name("bgc_is_unit_fp32");
 
@@ -63,7 +63,7 @@ static const double _TEST_FP64_NONUNIT_NUMBERS[] = {
     1.0 - 2.0 * BGC_EPSYLON_FP64
 };
 
-int test_bgc_is_unit_fp64()
+int test_is_unit_fp64()
 {
     print_testing_name("bgc_is_unit_fp64");
 
@@ -108,7 +108,7 @@ static const float _TEST_FP32_DATA_SQUARE_NONUNIT[] = {
     1.0f - 2.5f * BGC_EPSYLON_FP32
 };
 
-int test_bgc_is_sqare_value_unit_fp32()
+int test_is_sqare_value_unit_fp32()
 {
     print_testing_name("bgc_is_sqare_value_unit_fp32");
 
@@ -153,7 +153,7 @@ static const double _TEST_FP64_DATA_SQUARE_NONUNIT[] = {
     1.0 - 2.5 * BGC_EPSYLON_FP64
 };
 
-int test_bgc_is_sqare_value_unit_fp64()
+int test_is_sqare_value_unit_fp64()
 {
     print_testing_name("bgc_is_sqare_value_unit_fp64");
 
@@ -178,21 +178,21 @@ int test_bgc_is_sqare_value_unit_fp64()
     return TEST_SUCCES;
 }
 
-int test_bgc_is_unit()
+int test_is_unit()
 {
-    if (test_bgc_is_unit_fp32() != TEST_SUCCES) {
+    if (test_is_unit_fp32() != TEST_SUCCES) {
         return TEST_FAILED;
     }
 
-    if (test_bgc_is_unit_fp64() != TEST_SUCCES) {
+    if (test_is_unit_fp64() != TEST_SUCCES) {
         return TEST_FAILED;
     }
 
-    if (test_bgc_is_sqare_value_unit_fp32() != TEST_SUCCES) {
+    if (test_is_sqare_value_unit_fp32() != TEST_SUCCES) {
         return TEST_FAILED;
     }
 
-    if (test_bgc_is_sqare_value_unit_fp64() != TEST_SUCCES) {
+    if (test_is_sqare_value_unit_fp64() != TEST_SUCCES) {
         return TEST_FAILED;
     }
 

@@ -17,35 +17,35 @@ static const int _TEST_FP32_CLOSE_VERSOR_PAIR_AMOUNT = 10;
 static const _TestVersorPairFP32 _TEST_FP32_CLOSE_VERSOR_PAIR_LIST[] = {
     {
         { 1.0f, 0.0f, 0.0f, 0.0f },
-        { 1.0f + BGC_EPSYLON_FP32, 0.0f, 0.0f, 0.0f }
+        { 1.0f + 0.75f * BGC_EPSYLON_FP32, 0.0f, 0.0f, 0.0f }
     },
     {
         { 1.0f, 0.0f, 0.0f, 0.0f },
-        { 1.0f - BGC_EPSYLON_FP32, 0.0f, 0.0f, 0.0f }
+        { 1.0f - 0.75f * BGC_EPSYLON_FP32, 0.0f, 0.0f, 0.0f }
     },
     {
         { 0.0f, 1.0f, 0.0f, 0.0f },
-        { 0.0f, 1.0f + BGC_EPSYLON_FP32, 0.0f, 0.0f }
+        { 0.0f, 1.0f + 0.75f * BGC_EPSYLON_FP32, 0.0f, 0.0f }
     },
     {
         { 0.0f, 1.0f, 0.0f, 0.0f },
-        { 0.0f, 1.0f - BGC_EPSYLON_FP32, 0.0f, 0.0f }
+        { 0.0f, 1.0f - 0.75f * BGC_EPSYLON_FP32, 0.0f, 0.0f }
     },
     {
         { 0.0f, 0.0f, 1.0f, 0.0f },
-        { 0.0f, 0.0f, 1.0f + BGC_EPSYLON_FP32, 0.0f }
+        { 0.0f, 0.0f, 1.0f + 0.75f * BGC_EPSYLON_FP32, 0.0f }
     },
     {
         { 0.0f, 0.0f, 1.0f, 0.0f },
-        { 0.0f, 0.0f, 1.0f - BGC_EPSYLON_FP32, 0.0f }
+        { 0.0f, 0.0f, 1.0f - 0.75f * BGC_EPSYLON_FP32, 0.0f }
     },
     {
         { 0.0f, 0.0f, 0.0f, 1.0f },
-        { 0.0f, 0.0f, 0.0f, 1.0f + BGC_EPSYLON_FP32 }
+        { 0.0f, 0.0f, 0.0f, 1.0f + 0.75f * BGC_EPSYLON_FP32 }
     },
     {
         { 0.0f, 0.0f, 0.0f, 1.0f },
-        { 0.0f, 0.0f, 0.0f, 1.0f - BGC_EPSYLON_FP32 }
+        { 0.0f, 0.0f, 0.0f, 1.0f - 0.75f * BGC_EPSYLON_FP32 }
     },
     {
         { 0.70710678f, 0.0f, 0.70710675f, 0.0f },
@@ -62,35 +62,35 @@ static const int _TEST_FP32_DIFFERENT_VERSOR_PAIR_AMOUNT = 10;
 static const _TestVersorPairFP32 _TEST_FP32_DIFFERENT_VERSOR_PAIR_LIST[] = {
     {
         { 1.0f, 0.0f, 0.0f, 0.0f },
-        { 1.0f + 1.5f * BGC_EPSYLON_FP32, 0.0f, 0.0f, 0.0f }
+        { 1.0f + 1.25f * BGC_EPSYLON_FP32, 0.0f, 0.0f, 0.0f }
     },
     {
         { 1.0f, 0.0f, 0.0f, 0.0f },
-        { 1.0f - 1.5f * BGC_EPSYLON_FP32, 0.0f, 0.0f, 0.0f }
+        { 1.0f - 1.25f * BGC_EPSYLON_FP32, 0.0f, 0.0f, 0.0f }
     },
     {
         { 0.0f, 1.0f, 0.0f, 0.0f },
-        { 0.0f, 1.0f + 1.5f * BGC_EPSYLON_FP32, 0.0f, 0.0f }
+        { 0.0f, 1.0f + 1.25f * BGC_EPSYLON_FP32, 0.0f, 0.0f }
     },
     {
         { 0.0f, 1.0f, 0.0f, 0.0f },
-        { 0.0f, 1.0f - 1.5f * BGC_EPSYLON_FP32, 0.0f, 0.0f }
+        { 0.0f, 1.0f - 1.25f * BGC_EPSYLON_FP32, 0.0f, 0.0f }
     },
     {
         { 0.0f, 0.0f, 1.0f, 0.0f },
-        { 0.0f, 0.0f, 1.0f + 1.5f * BGC_EPSYLON_FP32, 0.0f }
+        { 0.0f, 0.0f, 1.0f + 1.25f * BGC_EPSYLON_FP32, 0.0f }
     },
     {
         { 0.0f, 0.0f, 1.0f, 0.0f },
-        { 0.0f, 0.0f, 1.0f - 1.5f * BGC_EPSYLON_FP32, 0.0f }
+        { 0.0f, 0.0f, 1.0f - 1.25f * BGC_EPSYLON_FP32, 0.0f }
     },
     {
         { 0.0f, 0.0f, 0.0f, 1.0f },
-        { 0.0f, 0.0f, 0.0f, 1.0f + 1.5f * BGC_EPSYLON_FP32 }
+        { 0.0f, 0.0f, 0.0f, 1.0f + 1.25f * BGC_EPSYLON_FP32 }
     },
     {
         { 0.0f, 0.0f, 0.0f, 1.0f },
-        { 0.0f, 0.0f, 0.0f, 1.0f - 1.5f * BGC_EPSYLON_FP32 }
+        { 0.0f, 0.0f, 0.0f, 1.0f - 1.25f * BGC_EPSYLON_FP32 }
     },
     {
         { 0.707106f, 0.0f, 0.707107f, 0.0f },
@@ -102,7 +102,7 @@ static const _TestVersorPairFP32 _TEST_FP32_DIFFERENT_VERSOR_PAIR_LIST[] = {
     }
 };
 
-int test_bgc_versor_are_close_fp32()
+int test_versor_are_close_fp32()
 {
     print_testing_name("bgc_versor_are_close_fp32");
 
@@ -135,35 +135,35 @@ static const int _TEST_FP64_CLOSE_VERSOR_PAIR_AMOUNT = 10;
 static const _TestVersorPairFP64 _TEST_FP64_CLOSE_VERSOR_PAIR_LIST[] = {
     {
         { 1.0, 0.0, 0.0, 0.0 },
-        { 1.0 + BGC_EPSYLON_FP64, 0.0, 0.0, 0.0 }
+        { 1.0 + 0.75 * BGC_EPSYLON_FP64, 0.0, 0.0, 0.0 }
     },
     {
         { 1.0, 0.0, 0.0, 0.0 },
-        { 1.0 - BGC_EPSYLON_FP64, 0.0, 0.0, 0.0 }
+        { 1.0 - 0.75 * BGC_EPSYLON_FP64, 0.0, 0.0, 0.0 }
     },
     {
         { 0.0, 1.0, 0.0, 0.0 },
-        { 0.0, 1.0 + BGC_EPSYLON_FP64, 0.0, 0.0 }
+        { 0.0, 1.0 + 0.75 * BGC_EPSYLON_FP64, 0.0, 0.0 }
     },
     {
         { 0.0, 1.0, 0.0, 0.0 },
-        { 0.0, 1.0 - BGC_EPSYLON_FP64, 0.0, 0.0 }
+        { 0.0, 1.0 - 0.75 * BGC_EPSYLON_FP64, 0.0, 0.0 }
     },
     {
         { 0.0, 0.0, 1.0, 0.0 },
-        { 0.0, 0.0, 1.0 + BGC_EPSYLON_FP64, 0.0 }
+        { 0.0, 0.0, 1.0 + 0.75 * BGC_EPSYLON_FP64, 0.0 }
     },
     {
         { 0.0, 0.0, 1.0, 0.0 },
-        { 0.0, 0.0, 1.0 - BGC_EPSYLON_FP64, 0.0 }
+        { 0.0, 0.0, 1.0 - 0.75 * BGC_EPSYLON_FP64, 0.0 }
     },
     {
         { 0.0, 0.0, 0.0, 1.0 },
-        { 0.0, 0.0, 0.0, 1.0 + BGC_EPSYLON_FP64 }
+        { 0.0, 0.0, 0.0, 1.0 + 0.75 * BGC_EPSYLON_FP64 }
     },
     {
         { 0.0, 0.0, 0.0, 1.0 },
-        { 0.0, 0.0, 0.0, 1.0 - BGC_EPSYLON_FP64 }
+        { 0.0, 0.0, 0.0, 1.0 - 0.75 * BGC_EPSYLON_FP64 }
     },
     {
         { 0.7071067811865475244, 0.0, 0.7071067811865465244, 0.0 },
@@ -180,35 +180,35 @@ static const int _TEST_FP64_DIFFERENT_VERSOR_PAIR_AMOUNT = 10;
 static const _TestVersorPairFP64 _TEST_FP64_DIFFERENT_VERSOR_PAIR_LIST[] = {
     {
         { 1.0, 0.0, 0.0, 0.0 },
-        { 1.0 + 1.5 * BGC_EPSYLON_FP64, 0.0, 0.0, 0.0 }
+        { 1.0 + 1.25 * BGC_EPSYLON_FP64, 0.0, 0.0, 0.0 }
     },
     {
         { 1.0, 0.0, 0.0, 0.0 },
-        { 1.0 - 1.5 * BGC_EPSYLON_FP64, 0.0, 0.0, 0.0 }
+        { 1.0 - 1.25 * BGC_EPSYLON_FP64, 0.0, 0.0, 0.0 }
     },
     {
         { 0.0, 1.0, 0.0, 0.0 },
-        { 0.0, 1.0 + 1.5 * BGC_EPSYLON_FP64, 0.0, 0.0 }
+        { 0.0, 1.0 + 1.25 * BGC_EPSYLON_FP64, 0.0, 0.0 }
     },
     {
         { 0.0, 1.0, 0.0, 0.0 },
-        { 0.0, 1.0 - 1.5 * BGC_EPSYLON_FP64, 0.0, 0.0 }
+        { 0.0, 1.0 - 1.25 * BGC_EPSYLON_FP64, 0.0, 0.0 }
     },
     {
         { 0.0, 0.0, 1.0, 0.0 },
-        { 0.0, 0.0, 1.0 + 1.5 * BGC_EPSYLON_FP64, 0.0 }
+        { 0.0, 0.0, 1.0 + 1.25 * BGC_EPSYLON_FP64, 0.0 }
     },
     {
         { 0.0, 0.0, 1.0, 0.0 },
-        { 0.0, 0.0, 1.0 - 1.5 * BGC_EPSYLON_FP64, 0.0 }
+        { 0.0, 0.0, 1.0 - 1.25 * BGC_EPSYLON_FP64, 0.0 }
     },
     {
         { 0.0, 0.0, 0.0, 1.0 },
-        { 0.0, 0.0, 0.0, 1.0 + 1.5 * BGC_EPSYLON_FP64 }
+        { 0.0, 0.0, 0.0, 1.0 + 1.25 * BGC_EPSYLON_FP64 }
     },
     {
         { 0.0, 0.0, 0.0, 1.0 },
-        { 0.0, 0.0, 0.0, 1.0 - 1.5 * BGC_EPSYLON_FP64 }
+        { 0.0, 0.0, 0.0, 1.0 - 1.25 * BGC_EPSYLON_FP64 }
     },
     {
         { 0.7071067811866, 0.0, 0.7071067811865, 0.0 },
@@ -220,7 +220,7 @@ static const _TestVersorPairFP64 _TEST_FP64_DIFFERENT_VERSOR_PAIR_LIST[] = {
     }
 };
 
-int test_bgc_versor_are_close_fp64()
+int test_versor_are_close_fp64()
 {
     print_testing_name("bgc_versor_are_close_fp64");
 
@@ -245,13 +245,13 @@ int test_bgc_versor_are_close_fp64()
     return TEST_SUCCES;
 }
 
-int test_bgc_versor_are_close()
+int test_versor_are_close()
 {
-    if (test_bgc_versor_are_close_fp32() != TEST_SUCCES) {
+    if (test_versor_are_close_fp32() != TEST_SUCCES) {
         return TEST_FAILED;
     }
 
-    if (test_bgc_versor_are_close_fp64() != TEST_SUCCES) {
+    if (test_versor_are_close_fp64() != TEST_SUCCES) {
         return TEST_FAILED;
     }
 

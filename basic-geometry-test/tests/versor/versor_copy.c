@@ -18,7 +18,7 @@ static const BgcVersorFP32 _TEST_FP32_VERSOR_LIST[] = {
     { 0.7071067812f, 0.0f, 0.0f, -0.7071067812f }
 };
 
-int test_bgc_versor_copy_fp32()
+int test_versor_copy_fp32()
 {
     BgcVersorFP32 versor;
 
@@ -56,7 +56,7 @@ static const BgcVersorFP64 _TEST_FP64_VERSOR_LIST[] = {
     { 0.7071067811865475, 0.0, 0.0, -0.7071067811865475 }
 };
 
-int test_bgc_versor_copy_fp64()
+int test_versor_copy_fp64()
 {
     BgcVersorFP64 versor;
 
@@ -80,13 +80,13 @@ int test_bgc_versor_copy_fp64()
     return TEST_SUCCES;
 }
 
-int test_bgc_versor_copy()
+int test_versor_copy()
 {
-    if (test_bgc_versor_copy_fp32() != TEST_SUCCES) {
+    if (test_versor_copy_fp32() != TEST_SUCCES) {
         return TEST_FAILED;
     }
 
-    if (test_bgc_versor_copy_fp64() != TEST_SUCCES) {
+    if (test_versor_copy_fp64() != TEST_SUCCES) {
         return TEST_FAILED;
     }
 

@@ -61,7 +61,7 @@ static const _TestNumberPairFP32 _TEST_FP32_DATA_DIFFERENT[] = {
     {-100.0f, -100.0f * (1.0f - 1.25f * BGC_EPSYLON_FP32)}
 };
 
-int test_bgc_are_close_fp32()
+int test_are_close_fp32()
 {
     print_testing_name("bgc_are_close_fp32");
 
@@ -137,7 +137,7 @@ static const _TestNumberPairFP64 _TEST_FP64_DATA_DIFFERENT[] = {
     {-100.0, -100.0 * (1.0 - 1.25 * BGC_EPSYLON_FP64)}
 };
 
-int test_bgc_are_close_fp64()
+int test_are_close_fp64()
 {
     print_testing_name("bgc_are_close_fp64");
 
@@ -162,13 +162,13 @@ int test_bgc_are_close_fp64()
     return TEST_SUCCES;
 }
 
-int test_bgc_are_close()
+int test_are_close()
 {
-    if (test_bgc_are_close_fp32() != TEST_SUCCES) {
+    if (test_are_close_fp32() != TEST_SUCCES) {
         return TEST_FAILED;
     }
 
-    if (test_bgc_are_close_fp64() != TEST_SUCCES) {
+    if (test_are_close_fp64() != TEST_SUCCES) {
         return TEST_FAILED;
     }
 

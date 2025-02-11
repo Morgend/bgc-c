@@ -22,7 +22,7 @@ static const BgcQuaternionFP32 _TEST_FP32_QUATERNION_LIST2[] = {
     { 1000.0f, -0.00025f, -0.419f, 0.844f }
 };
 
-int test_bgc_quaternion_swap_fp32()
+int test_quaternion_swap_fp32()
 {
     BgcQuaternionFP32 quaternion1, quaternion2;
 
@@ -70,7 +70,7 @@ static const BgcQuaternionFP64 _TEST_FP64_QUATERNION_LIST2[] = {
     { 1000.0, -0.00025, -0.419, 0.844 }
 };
 
-int test_bgc_quaternion_swap_fp64()
+int test_quaternion_swap_fp64()
 {
     BgcQuaternionFP64 quaternion1, quaternion2;
 
@@ -100,13 +100,13 @@ int test_bgc_quaternion_swap_fp64()
     return TEST_SUCCES;
 }
 
-int test_bgc_quaternion_swap()
+int test_quaternion_swap()
 {
-    if (test_bgc_quaternion_swap_fp32() != TEST_SUCCES) {
+    if (test_quaternion_swap_fp32() != TEST_SUCCES) {
         return TEST_FAILED;
     }
 
-    if (test_bgc_quaternion_swap_fp64() != TEST_SUCCES) {
+    if (test_quaternion_swap_fp64() != TEST_SUCCES) {
         return TEST_FAILED;
     }
 

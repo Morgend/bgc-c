@@ -33,6 +33,12 @@ extern inline double bgc_quaternion_get_square_modulus_fp64(const BgcQuaternionF
 extern inline float bgc_quaternion_get_modulus_fp32(const BgcQuaternionFP32* quaternion);
 extern inline double bgc_quaternion_get_modulus_fp64(const BgcQuaternionFP64* quaternion);
 
+extern inline int bgc_quaternion_is_zero_fp32(const BgcQuaternionFP32* quaternion);
+extern inline int bgc_quaternion_is_zero_fp64(const BgcQuaternionFP64* quaternion);
+
+extern inline int bgc_quaternion_is_unit_fp32(const BgcQuaternionFP32* quaternion);
+extern inline int bgc_quaternion_is_unit_fp64(const BgcQuaternionFP64* quaternion);
+
 extern inline int bgc_quaternion_normalize_fp32(BgcQuaternionFP32* quaternion);
 extern inline int bgc_quaternion_normalize_fp64(BgcQuaternionFP64* quaternion);
 

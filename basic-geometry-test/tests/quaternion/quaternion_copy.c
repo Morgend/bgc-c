@@ -14,7 +14,7 @@ static const BgcQuaternionFP32 _TEST_FP32_QUATERNION_LIST[] = {
     { 0.001f, -100.0f, 100.0f, -0.001f }
 };
 
-int test_bgc_quaternion_copy_fp32()
+int test_quaternion_copy_fp32()
 {
     BgcQuaternionFP32 vector;
 
@@ -48,7 +48,7 @@ static const BgcQuaternionFP64 _TEST_FP64_QUATERNION_LIST[] = {
     { 0.001, -100.0, 100.0, -0.001 }
 };
 
-int test_bgc_quaternion_copy_fp64()
+int test_quaternion_copy_fp64()
 {
     BgcQuaternionFP64 vector;
 
@@ -72,13 +72,13 @@ int test_bgc_quaternion_copy_fp64()
     return TEST_SUCCES;
 }
 
-int test_bgc_quaternion_copy()
+int test_quaternion_copy()
 {
-    if (test_bgc_quaternion_copy_fp32() != TEST_SUCCES) {
+    if (test_quaternion_copy_fp32() != TEST_SUCCES) {
         return TEST_FAILED;
     }
 
-    if (test_bgc_quaternion_copy_fp64() != TEST_SUCCES) {
+    if (test_quaternion_copy_fp64() != TEST_SUCCES) {
         return TEST_FAILED;
     }
 

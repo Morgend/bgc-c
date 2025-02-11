@@ -14,7 +14,7 @@ static const BgcVector2FP32 _TEST_FP32_VECTOR2_LIST[] = {
     { -100.0f, 100.0f }
 };
 
-int test_bgc_vector2_copy_fp32()
+int test_vector2_copy_fp32()
 {
     BgcVector2FP32 vector;
 
@@ -45,7 +45,7 @@ static const BgcVector2FP64 _TEST_FP64_VECTOR2_LIST[] = {
     { -100.0, 100.0 }
 };
 
-int test_bgc_vector2_copy_fp64()
+int test_vector2_copy_fp64()
 {
     BgcVector2FP64 vector;
 
@@ -66,13 +66,13 @@ int test_bgc_vector2_copy_fp64()
     return TEST_SUCCES;
 }
 
-int test_bgc_vector2_copy()
+int test_vector2_copy()
 {
-    if (test_bgc_vector2_copy_fp32() != TEST_SUCCES) {
+    if (test_vector2_copy_fp32() != TEST_SUCCES) {
         return TEST_FAILED;
     }
 
-    if (test_bgc_vector2_copy_fp64() != TEST_SUCCES) {
+    if (test_vector2_copy_fp64() != TEST_SUCCES) {
         return TEST_FAILED;
     }
 

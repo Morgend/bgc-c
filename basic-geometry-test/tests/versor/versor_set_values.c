@@ -22,7 +22,7 @@ static const _TestVersorComponentsFP32 _TEST_FP32_VERSOR_DATA_LIST[] = {
     { 1.0f, 0.0f, 1.0f, 0.0f }
 };
 
-int test_bgc_versor_set_values_fp32()
+int test_versor_set_values_fp32()
 {
     float versor_module, ratio;
     BgcVersorFP32 versor;
@@ -86,7 +86,7 @@ static const _TestVersorComponentsFP64 _TEST_FP64_VERSOR_DATA_LIST[] = {
     { 1.0, 0.0, 1.0, 0.0 }
 };
 
-int test_bgc_versor_set_values_fp64()
+int test_versor_set_values_fp64()
 {
     double versor_module, ratio;
     BgcVersorFP64 versor;
@@ -140,13 +140,13 @@ int test_bgc_versor_set_values_fp64()
     return TEST_SUCCES;
 }
 
-int test_bgc_versor_set_values()
+int test_versor_set_values()
 {
-    if (test_bgc_versor_set_values_fp32() != TEST_SUCCES) {
+    if (test_versor_set_values_fp32() != TEST_SUCCES) {
         return TEST_FAILED;
     }
 
-    if (test_bgc_versor_set_values_fp64() != TEST_SUCCES) {
+    if (test_versor_set_values_fp64() != TEST_SUCCES) {
         return TEST_FAILED;
     }
 

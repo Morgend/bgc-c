@@ -44,7 +44,7 @@ static const _TestVersorTripletFP32 _TEST_FP32_VERSOR_TRIPLET_LIST[] = {
     }
 };
 
-int test_bgc_versor_combine_fp32()
+int test_versor_combine_fp32()
 {
     BgcVersorFP32 versor;
 
@@ -96,7 +96,7 @@ static const _TestVersorTripletFP64 _TEST_FP64_VERSOR_TRIPLET_LIST[] = {
     }
 };
 
-int test_bgc_versor_combine_fp64()
+int test_versor_combine_fp64()
 {
     BgcVersorFP64 versor;
 
@@ -116,13 +116,13 @@ int test_bgc_versor_combine_fp64()
     return TEST_SUCCES;
 }
 
-int test_bgc_versor_combine()
+int test_versor_combine()
 {
-    if (test_bgc_versor_combine_fp32() != TEST_SUCCES) {
+    if (test_versor_combine_fp32() != TEST_SUCCES) {
         return TEST_FAILED;
     }
 
-    if (test_bgc_versor_combine_fp64() != TEST_SUCCES) {
+    if (test_versor_combine_fp64() != TEST_SUCCES) {
         return TEST_FAILED;
     }
 

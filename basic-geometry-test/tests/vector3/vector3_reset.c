@@ -2,7 +2,7 @@
 
 #include "./../../helpers.h"
 
-int test_bgc_vector3_reset_fp32()
+int test_vector3_reset_fp32()
 {
     BgcVector3FP32 vector;
 
@@ -20,7 +20,7 @@ int test_bgc_vector3_reset_fp32()
     return TEST_SUCCES;
 }
 
-int test_bgc_vector3_reset_fp64()
+int test_vector3_reset_fp64()
 {
     BgcVector3FP64 vector;
 
@@ -38,13 +38,13 @@ int test_bgc_vector3_reset_fp64()
     return TEST_SUCCES;
 }
 
-int test_bgc_vector3_reset()
+int test_vector3_reset()
 {
-    if (test_bgc_vector3_reset_fp32() != TEST_SUCCES) {
+    if (test_vector3_reset_fp32() != TEST_SUCCES) {
         return TEST_FAILED;
     }
 
-    if (test_bgc_vector3_reset_fp64() != TEST_SUCCES) {
+    if (test_vector3_reset_fp64() != TEST_SUCCES) {
         return TEST_FAILED;
     }
 

@@ -7,6 +7,7 @@
 #include "./vector3/vector3_copy.h"
 #include "./vector3/vector3_swap.h"
 #include "./vector3/vector3_is_zero.h"
+#include "./vector3/vector3_is_unit.h"
 
 int test_vector3();
 

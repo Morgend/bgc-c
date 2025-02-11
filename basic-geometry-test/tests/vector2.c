@@ -4,23 +4,27 @@ int test_vector2()
 {
     print_testing_section("BGC Vector2");
 
-    if (test_bgc_vector2_reset() != TEST_SUCCES) {
+    if (test_vector2_reset() != TEST_SUCCES) {
         return TEST_FAILED;
     }
 
-    if (test_bgc_vector2_set_values() != TEST_SUCCES) {
+    if (test_vector2_set_values() != TEST_SUCCES) {
         return TEST_FAILED;
     }
 
-    if (test_bgc_vector2_copy() != TEST_SUCCES) {
+    if (test_vector2_copy() != TEST_SUCCES) {
         return TEST_FAILED;
     }
 
-    if (test_bgc_vector2_swap() != TEST_SUCCES) {
+    if (test_vector2_swap() != TEST_SUCCES) {
         return TEST_FAILED;
     }
 
-    if (test_bgc_vector2_is_zero() != TEST_SUCCES) {
+    if (test_vector2_is_zero() != TEST_SUCCES) {
+        return TEST_FAILED;
+    }
+
+    if (test_vector2_is_unit() != TEST_SUCCES) {
         return TEST_FAILED;
     }
 

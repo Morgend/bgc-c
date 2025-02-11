@@ -22,7 +22,7 @@ static const float _TEST_FP32_NONZERO_NUMBERS[] = {
     -(1.5f * BGC_EPSYLON_FP32)
 };
 
-int test_bgc_is_zero_fp32()
+int test_is_zero_fp32()
 {
     print_testing_name("bgc_is_zero_fp32");
 
@@ -67,7 +67,7 @@ static const double _TEST_FP64_NONZERO_NUMBERS[] = {
     -(1.5 * BGC_EPSYLON_FP64)
 };
 
-int test_bgc_is_zero_fp64()
+int test_is_zero_fp64()
 {
     print_testing_name("bgc_is_zero_fp64");
 
@@ -92,13 +92,13 @@ int test_bgc_is_zero_fp64()
     return TEST_SUCCES;
 }
 
-int test_bgc_is_zero()
+int test_is_zero()
 {
-    if (test_bgc_is_zero_fp32() != TEST_SUCCES) {
+    if (test_is_zero_fp32() != TEST_SUCCES) {
         return TEST_FAILED;
     }
 
-    if (test_bgc_is_zero_fp64() != TEST_SUCCES) {
+    if (test_is_zero_fp64() != TEST_SUCCES) {
         return TEST_FAILED;
     }
 

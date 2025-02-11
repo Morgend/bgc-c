@@ -90,6 +90,21 @@
     <ClCompile Include="tests\vector2\vector2_is_zero.c">
       <Filter>tests\vector2</Filter>
     </ClCompile>
+    <ClCompile Include="tests\quaternion\quaternion_is_zero.c">
+      <Filter>tests\quaternion</Filter>
+    </ClCompile>
+    <ClCompile Include="tests\quaternion\quaternion_is_unit.c">
+      <Filter>tests\quaternion</Filter>
+    </ClCompile>
+    <ClCompile Include="tests\vector3\vector3_is_unit.c">
+      <Filter>tests\vector3</Filter>
+    </ClCompile>
+    <ClCompile Include="tests\vector2\vector2_is_unit.c">
+      <Filter>tests\vector2</Filter>
+    </ClCompile>
+    <ClCompile Include="tests\versor\versor_is_identity.c">
+      <Filter>tests\versor</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="helpers.h" />
@@ -179,6 +194,21 @@
     </ClInclude>
     <ClInclude Include="tests\vector2\vector2_is_zero.h">
       <Filter>tests\vector2</Filter>
+    </ClInclude>
+    <ClInclude Include="tests\quaternion\quaternion_is_zero.h">
+      <Filter>tests\quaternion</Filter>
+    </ClInclude>
+    <ClInclude Include="tests\quaternion\quaternion_is_unit.h">
+      <Filter>tests\quaternion</Filter>
+    </ClInclude>
+    <ClInclude Include="tests\vector3\vector3_is_unit.h">
+      <Filter>tests\vector3</Filter>
+    </ClInclude>
+    <ClInclude Include="tests\vector2\vector2_is_unit.h">
+      <Filter>tests\vector2</Filter>
+    </ClInclude>
+    <ClInclude Include="tests\versor\versor_is_identity.h">
+      <Filter>tests\versor</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

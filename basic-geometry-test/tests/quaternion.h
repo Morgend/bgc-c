@@ -7,6 +7,8 @@
 #include "./quaternion/quaternion_set_values.h"
 #include "./quaternion/quaternion_copy.h"
 #include "./quaternion/quaternion_swap.h"
+#include "./quaternion/quaternion_is_zero.h"
+#include "./quaternion/quaternion_is_unit.h"
 
 int test_quaternion();
 
