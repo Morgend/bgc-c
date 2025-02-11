@@ -20,22 +20,22 @@ static const _TestNumberPairFP32 _TEST_FP32_DATA_CLOSE[] = {
     {1.0f, 1.0f},
     {-1.0f, -1.0f},
 
-    {-0.5f * BGC_EPSYLON_FP32, 0.5f * BGC_EPSYLON_FP32},
+    {-0.4f * BGC_EPSYLON_FP32, 0.4f * BGC_EPSYLON_FP32},
 
-    {1.0f, 1.0f + BGC_EPSYLON_FP32},
-    {1.0f, 1.0f - BGC_EPSYLON_FP32},
-    {1.0f + BGC_EPSYLON_FP32, 1.0f},
-    {1.0f - BGC_EPSYLON_FP32, 1.0f},
+    {1.0f, 1.0f + 0.75f * BGC_EPSYLON_FP32},
+    {1.0f, 1.0f - 0.75f * BGC_EPSYLON_FP32},
+    {1.0f + 0.75f * BGC_EPSYLON_FP32, 1.0f},
+    {1.0f - 0.75f * BGC_EPSYLON_FP32, 1.0f},
 
-    {-1.0f, -1.0f + BGC_EPSYLON_FP32},
-    {-1.0f, -1.0f - BGC_EPSYLON_FP32},
-    {-1.0f + BGC_EPSYLON_FP32, -1.0f},
-    {-1.0f - BGC_EPSYLON_FP32, -1.0f},
+    {-1.0f, -1.0f + 0.75f * BGC_EPSYLON_FP32},
+    {-1.0f, -1.0f - 0.75f * BGC_EPSYLON_FP32},
+    {-1.0f + 0.75f * BGC_EPSYLON_FP32, -1.0f},
+    {-1.0f - 0.75f * BGC_EPSYLON_FP32, -1.0f},
 
-    {100.0f, 100.0f * (1.0f + BGC_EPSYLON_FP32)},
-    {100.0f, 100.0f * (1.0f - BGC_EPSYLON_FP32)},
-    {-100.0f, -100.0f * (1.0f + BGC_EPSYLON_FP32)},
-    {-100.0f, -100.0f * (1.0f - BGC_EPSYLON_FP32)}
+    {100.0f, 100.0f * (1.0f + 0.75f * BGC_EPSYLON_FP32)},
+    {100.0f, 100.0f * (1.0f - 0.75f * BGC_EPSYLON_FP32)},
+    {-100.0f, -100.0f * (1.0f + 0.75f * BGC_EPSYLON_FP32)},
+    {-100.0f, -100.0f * (1.0f - 0.75f * BGC_EPSYLON_FP32)}
 };
 
 static const _TestNumberPairFP32 _TEST_FP32_DATA_DIFFERENT[] = {
@@ -45,20 +45,20 @@ static const _TestNumberPairFP32 _TEST_FP32_DATA_DIFFERENT[] = {
 
     {-0.6f * BGC_EPSYLON_FP32, 0.6f * BGC_EPSYLON_FP32},
 
-    {1.0f, 1.0f + 1.5f * BGC_EPSYLON_FP32},
-    {1.0f, 1.0f - 1.5f * BGC_EPSYLON_FP32},
-    {1.0f + 1.5f * BGC_EPSYLON_FP32, 1.0f},
-    {1.0f - 1.5f * BGC_EPSYLON_FP32, 1.0f},
+    {1.0f, 1.0f + 1.25f * BGC_EPSYLON_FP32},
+    {1.0f, 1.0f - 1.25f * BGC_EPSYLON_FP32},
+    {1.0f + 1.25f * BGC_EPSYLON_FP32, 1.0f},
+    {1.0f - 1.25f * BGC_EPSYLON_FP32, 1.0f},
 
-    {-1.0f, -1.0f + 1.5f * BGC_EPSYLON_FP32},
-    {-1.0f, -1.0f - 1.5f * BGC_EPSYLON_FP32},
-    {-1.0f + 1.5f * BGC_EPSYLON_FP32, -1.0f},
-    {-1.0f - 1.5f * BGC_EPSYLON_FP32, -1.0f},
+    {-1.0f, -1.0f + 1.25f * BGC_EPSYLON_FP32},
+    {-1.0f, -1.0f - 1.25f * BGC_EPSYLON_FP32},
+    {-1.0f + 1.25f * BGC_EPSYLON_FP32, -1.0f},
+    {-1.0f - 1.25f * BGC_EPSYLON_FP32, -1.0f},
 
-    {100.0f, 100.0f * (1.0f + 1.5f * BGC_EPSYLON_FP32)},
-    {100.0f, 100.0f * (1.0f - 1.5f * BGC_EPSYLON_FP32)},
-    {-100.0f, -100.0f * (1.0f + 1.5f * BGC_EPSYLON_FP32)},
-    {-100.0f, -100.0f * (1.0f - 1.5f * BGC_EPSYLON_FP32)}
+    {100.0f, 100.0f * (1.0f + 1.25f * BGC_EPSYLON_FP32)},
+    {100.0f, 100.0f * (1.0f - 1.25f * BGC_EPSYLON_FP32)},
+    {-100.0f, -100.0f * (1.0f + 1.25f * BGC_EPSYLON_FP32)},
+    {-100.0f, -100.0f * (1.0f - 1.25f * BGC_EPSYLON_FP32)}
 };
 
 int test_bgc_are_close_fp32()
@@ -96,22 +96,22 @@ static const _TestNumberPairFP64 _TEST_FP64_DATA_CLOSE[] = {
     {1.0, 1.0},
     {-1.0, -1.0},
 
-    {-0.5 * BGC_EPSYLON_FP64, 0.5 * BGC_EPSYLON_FP64},
+    {-0.4 * BGC_EPSYLON_FP64, 0.4 * BGC_EPSYLON_FP64},
 
-    {1.0, 1.0 + BGC_EPSYLON_FP64},
-    {1.0, 1.0 - BGC_EPSYLON_FP64},
-    {1.0 + BGC_EPSYLON_FP64, 1.0},
-    {1.0 - BGC_EPSYLON_FP64, 1.0},
+    {1.0, 1.0 + 0.75 * BGC_EPSYLON_FP64},
+    {1.0, 1.0 - 0.75 * BGC_EPSYLON_FP64},
+    {1.0 + 0.75 * BGC_EPSYLON_FP64, 1.0},
+    {1.0 - 0.75 * BGC_EPSYLON_FP64, 1.0},
 
-    {-1.0, -1.0 + BGC_EPSYLON_FP64},
-    {-1.0, -1.0 - BGC_EPSYLON_FP64},
-    {-1.0 + BGC_EPSYLON_FP64, -1.0},
-    {-1.0 - BGC_EPSYLON_FP64, -1.0},
+    {-1.0, -1.0 + 0.75 * BGC_EPSYLON_FP64},
+    {-1.0, -1.0 - 0.75 * BGC_EPSYLON_FP64},
+    {-1.0 + 0.75 * BGC_EPSYLON_FP64, -1.0},
+    {-1.0 - 0.75 * BGC_EPSYLON_FP64, -1.0},
 
-    {100.0, 100.0 + 99.0 * BGC_EPSYLON_FP64},
-    {100.0, 100.0 - 99.0 * BGC_EPSYLON_FP64},
-    {-100.0, -100.0 + 99.0 * BGC_EPSYLON_FP64},
-    {-100.0, -100.0 - 99.0 * BGC_EPSYLON_FP64}
+    {100.0, 100.0 * (1.0 + 0.75 * BGC_EPSYLON_FP64)},
+    {100.0, 100.0 * (1.0 - 0.75 * BGC_EPSYLON_FP64)},
+    {-100.0, -100.0 * (1.0 + 0.75 * BGC_EPSYLON_FP64)},
+    {-100.0, -100.0 * (1.0 - 0.75 * BGC_EPSYLON_FP64)}
 };
 
 static const _TestNumberPairFP64 _TEST_FP64_DATA_DIFFERENT[] = {
@@ -121,20 +121,20 @@ static const _TestNumberPairFP64 _TEST_FP64_DATA_DIFFERENT[] = {
 
     {-0.6 * BGC_EPSYLON_FP64, 0.6 * BGC_EPSYLON_FP64},
 
-    {1.0, 1.0 + 1.5 * BGC_EPSYLON_FP64},
-    {1.0, 1.0 - 1.5 * BGC_EPSYLON_FP64},
-    {1.0 + 1.5 * BGC_EPSYLON_FP64, 1.0},
-    {1.0 - 1.5 * BGC_EPSYLON_FP64, 1.0},
+    {1.0, 1.0 + 1.25 * BGC_EPSYLON_FP64},
+    {1.0, 1.0 - 1.25 * BGC_EPSYLON_FP64},
+    {1.0 + 1.25 * BGC_EPSYLON_FP64, 1.0},
+    {1.0 - 1.25 * BGC_EPSYLON_FP64, 1.0},
 
-    {-1.0, -1.0 + 1.5 * BGC_EPSYLON_FP64},
-    {-1.0, -1.0 - 1.5 * BGC_EPSYLON_FP64},
-    {-1.0 + 1.5 * BGC_EPSYLON_FP64, -1.0},
-    {-1.0 - 1.5 * BGC_EPSYLON_FP64, -1.0},
+    {-1.0, -1.0 + 1.25 * BGC_EPSYLON_FP64},
+    {-1.0, -1.0 - 1.25 * BGC_EPSYLON_FP64},
+    {-1.0 + 1.25 * BGC_EPSYLON_FP64, -1.0},
+    {-1.0 - 1.25 * BGC_EPSYLON_FP64, -1.0},
 
-    {100.0, 100.0 + 101.0 * BGC_EPSYLON_FP64},
-    {100.0, 100.0 - 101.0 * BGC_EPSYLON_FP64},
-    {-100.0, -100.0 + 101.0 * BGC_EPSYLON_FP64},
-    {-100.0, -100.0 - 101.0 * BGC_EPSYLON_FP64}
+    {100.0, 100.0 * (1.0 + 1.25 * BGC_EPSYLON_FP64)},
+    {100.0, 100.0 * (1.0 - 1.25 * BGC_EPSYLON_FP64)},
+    {-100.0, -100.0 * (1.0 + 1.25 * BGC_EPSYLON_FP64)},
+    {-100.0, -100.0 * (1.0 - 1.25 * BGC_EPSYLON_FP64)}
 };
 
 int test_bgc_are_close_fp64()

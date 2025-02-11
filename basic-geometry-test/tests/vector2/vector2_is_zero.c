@@ -38,7 +38,7 @@ int test_bgc_vector2_is_zero_fp32()
     }
 
     // Testing non-zero values:
-    for (int i = 0; i < _TEST_FP32_ZERO_QUATERNION_AMOUNT; i++) {
+    for (int i = 0; i < _TEST_FP32_NONZERO_QUATERNION_AMOUNT; i++) {
         if (bgc_vector2_is_zero_fp32(&_TEST_FP32_NONZERO_NUMBERS[i])) {
             print_testing_failed();
             return TEST_FAILED;
@@ -86,7 +86,7 @@ int test_bgc_vector2_is_zero_fp64()
     }
 
     // Testing non-zero values:
-    for (int i = 0; i < _TEST_FP64_ZERO_QUATERNION_AMOUNT; i++) {
+    for (int i = 0; i < _TEST_FP64_NONZERO_QUATERNION_AMOUNT; i++) {
         if (bgc_vector2_is_zero_fp64(&_TEST_FP64_NONZERO_NUMBERS[i])) {
             print_testing_failed();
             return TEST_FAILED;
