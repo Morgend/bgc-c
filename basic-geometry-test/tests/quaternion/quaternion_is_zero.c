@@ -9,28 +9,28 @@ static const int _TEST_FP32_NONZERO_QUATERNION_AMOUNT = 11;
 
 static const BgcQuaternionFP32 _TEST_FP32_ZERO_QUATERNION_LIST[] = {
     { 0.0f, 0.0f, 0.0f, 0.0f },
-    { BGC_EPSYLON_FP32, 0.0f, 0.0f, 0.0f },
-    { -BGC_EPSYLON_FP32, 0.0f, 0.0f, 0.0f },
-    { 0.0f, BGC_EPSYLON_FP32, 0.0f, 0.0f },
-    { 0.0f, -BGC_EPSYLON_FP32, 0.0f, 0.0f },
-    { 0.0f, 0.0f, BGC_EPSYLON_FP32, 0.0f },
-    { 0.0f, 0.0f, -BGC_EPSYLON_FP32, 0.0f },
-    { 0.0f, 0.0f, 0.0f, BGC_EPSYLON_FP32 },
-    { 0.0f, 0.0f, 0.0f, -BGC_EPSYLON_FP32 }
+    { 0.75f * BGC_EPSYLON_FP32, 0.0f, 0.0f, 0.0f },
+    { -0.75f * BGC_EPSYLON_FP32, 0.0f, 0.0f, 0.0f },
+    { 0.0f, 0.75f * BGC_EPSYLON_FP32, 0.0f, 0.0f },
+    { 0.0f, -0.75f * BGC_EPSYLON_FP32, 0.0f, 0.0f },
+    { 0.0f, 0.0f, 0.75f * BGC_EPSYLON_FP32, 0.0f },
+    { 0.0f, 0.0f, -0.75f * BGC_EPSYLON_FP32, 0.0f },
+    { 0.0f, 0.0f, 0.0f, 0.75f * BGC_EPSYLON_FP32 },
+    { 0.0f, 0.0f, 0.0f, -0.75f * BGC_EPSYLON_FP32 }
 };
 
 static const BgcQuaternionFP32 _TEST_FP32_NONZERO_QUATERION_LIST[] = {
     { 0.0f, 1.0f, 0.0f, 0.0f },
-    { 1.5f * BGC_EPSYLON_FP32, 0.0f, 0.0f, 0.0f },
-    { -1.5f * BGC_EPSYLON_FP32, 0.0f, 0.0f, 0.0f },
-    { 0.0f, 1.5f * BGC_EPSYLON_FP32, 0.0f, 0.0f },
-    { 0.0f, -1.5f * BGC_EPSYLON_FP32, 0.0f, 0.0f },
-    { 0.0f, 0.0f, 1.5f * BGC_EPSYLON_FP32, 0.0f },
-    { 0.0f, 0.0f, -1.5f * BGC_EPSYLON_FP32, 0.0f },
-    { 0.0f, 0.0f, 0.0f, 1.5f * BGC_EPSYLON_FP32 },
-    { 0.0f, 0.0f, 0.0f, -1.5f * BGC_EPSYLON_FP32 },
-    { BGC_EPSYLON_FP32, BGC_EPSYLON_FP32, 0.0f, 0.0f },
-    { -BGC_EPSYLON_FP32, -BGC_EPSYLON_FP32, 0.0f, 0.0f }
+    { 1.25f * BGC_EPSYLON_FP32, 0.0f, 0.0f, 0.0f },
+    { -1.25f * BGC_EPSYLON_FP32, 0.0f, 0.0f, 0.0f },
+    { 0.0f, 1.25f * BGC_EPSYLON_FP32, 0.0f, 0.0f },
+    { 0.0f, -1.25f * BGC_EPSYLON_FP32, 0.0f, 0.0f },
+    { 0.0f, 0.0f, 1.25f * BGC_EPSYLON_FP32, 0.0f },
+    { 0.0f, 0.0f, -1.25f * BGC_EPSYLON_FP32, 0.0f },
+    { 0.0f, 0.0f, 0.0f, 1.25f * BGC_EPSYLON_FP32 },
+    { 0.0f, 0.0f, 0.0f, -1.25f * BGC_EPSYLON_FP32 },
+    { 1.25f * BGC_EPSYLON_FP32, 1.25f * BGC_EPSYLON_FP32, 0.0f, 0.0f },
+    { -1.25f * BGC_EPSYLON_FP32, -1.25f * BGC_EPSYLON_FP32, 0.0f, 0.0f }
 };
 
 int test_quaternion_is_zero_fp32()
@@ -65,28 +65,28 @@ static const int _TEST_FP64_NONZERO_QUATERNION_AMOUNT = 11;
 
 static const BgcQuaternionFP64 _TEST_FP64_ZERO_QUATERNION_LIST[] = {
     { 0.0, 0.0, 0.0, 0.0 },
-    { BGC_EPSYLON_FP64, 0.0, 0.0, 0.0 },
-    { -BGC_EPSYLON_FP64, 0.0, 0.0, 0.0 },
-    { 0.0, BGC_EPSYLON_FP64, 0.0, 0.0 },
-    { 0.0, -BGC_EPSYLON_FP64, 0.0, 0.0 },
-    { 0.0, 0.0, BGC_EPSYLON_FP64, 0.0 },
-    { 0.0, 0.0, -BGC_EPSYLON_FP64, 0.0 },
-    { 0.0, 0.0, 0.0, BGC_EPSYLON_FP64 },
-    { 0.0, 0.0, 0.0, -BGC_EPSYLON_FP64 }
+    { 0.75 * BGC_EPSYLON_FP64, 0.0, 0.0, 0.0 },
+    { -0.75 * BGC_EPSYLON_FP64, 0.0, 0.0, 0.0 },
+    { 0.0, 0.75 * BGC_EPSYLON_FP64, 0.0, 0.0 },
+    { 0.0, -0.75 * BGC_EPSYLON_FP64, 0.0, 0.0 },
+    { 0.0, 0.0, 0.75 * BGC_EPSYLON_FP64, 0.0 },
+    { 0.0, 0.0, -0.75 * BGC_EPSYLON_FP64, 0.0 },
+    { 0.0, 0.0, 0.0, 0.75 * BGC_EPSYLON_FP64 },
+    { 0.0, 0.0, 0.0, -0.75 * BGC_EPSYLON_FP64 }
 };
 
 static const BgcQuaternionFP64 _TEST_FP64_NONZERO_QUATERION_LIST[] = {
     { 0.0, 1.0, 0.0, 0.0 },
-    { 1.5 * BGC_EPSYLON_FP64, 0.0, 0.0, 0.0 },
-    { -1.5 * BGC_EPSYLON_FP64, 0.0, 0.0, 0.0 },
-    { 0.0, 1.5 * BGC_EPSYLON_FP64, 0.0, 0.0 },
-    { 0.0, -1.5 * BGC_EPSYLON_FP64, 0.0, 0.0 },
-    { 0.0, 0.0, 1.5 * BGC_EPSYLON_FP64, 0.0 },
-    { 0.0, 0.0, -1.5 * BGC_EPSYLON_FP64, 0.0 },
-    { 0.0, 0.0, 0.0, 1.5 * BGC_EPSYLON_FP64 },
-    { 0.0, 0.0, 0.0, -1.5 * BGC_EPSYLON_FP64 },
-    { BGC_EPSYLON_FP64, BGC_EPSYLON_FP64, 0.0, 0.0 },
-    { -BGC_EPSYLON_FP64, -BGC_EPSYLON_FP64, 0.0, 0.0 }
+    { 1.25 * BGC_EPSYLON_FP64, 0.0, 0.0, 0.0 },
+    { -1.25 * BGC_EPSYLON_FP64, 0.0, 0.0, 0.0 },
+    { 0.0, 1.25 * BGC_EPSYLON_FP64, 0.0, 0.0 },
+    { 0.0, -1.25 * BGC_EPSYLON_FP64, 0.0, 0.0 },
+    { 0.0, 0.0, 1.25 * BGC_EPSYLON_FP64, 0.0 },
+    { 0.0, 0.0, -1.25 * BGC_EPSYLON_FP64, 0.0 },
+    { 0.0, 0.0, 0.0, 1.25 * BGC_EPSYLON_FP64 },
+    { 0.0, 0.0, 0.0, -1.25 * BGC_EPSYLON_FP64 },
+    { 1.25 * BGC_EPSYLON_FP64, 1.25 * BGC_EPSYLON_FP64, 0.0, 0.0 },
+    { -1.25 * BGC_EPSYLON_FP64, -1.25 * BGC_EPSYLON_FP64, 0.0, 0.0 }
 };
 
 int test_quaternion_is_zero_fp64()

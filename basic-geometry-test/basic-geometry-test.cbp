@@ -77,6 +77,10 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="tests/quaternion/quaternion_set_values.h" />
+		<Unit filename="tests/quaternion/quaternion_square_modulus.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="tests/quaternion/quaternion_square_modulus.h" />
 		<Unit filename="tests/quaternion/quaternion_swap.c">
 			<Option compilerVar="CC" />
 		</Unit>

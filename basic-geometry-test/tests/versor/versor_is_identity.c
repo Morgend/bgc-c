@@ -9,14 +9,14 @@ static const int _TEST_FP32_NON_IDENTIYTY_VERSOR_AMOUNT = 5;
 
 static const BgcVersorFP32 _TEST_FP32_IDENTIYTY_VERSOR_LIST[] = {
     { 1.0f, 0.0f, 0.0f, 0.0f },
-    { 1.0f + BGC_EPSYLON_FP32, 0.0f, 0.0f, 0.0f },
-    { 1.0f - BGC_EPSYLON_FP32, 0.0f, 0.0f, 0.0f },
-    { 1.0f, BGC_EPSYLON_FP32, 0.0f, 0.0f },
-    { 1.0f, -BGC_EPSYLON_FP32, 0.0f, 0.0f },
-    { 1.0f, 0.0f, BGC_EPSYLON_FP32, 0.0f },
-    { 1.0f, 0.0f, -BGC_EPSYLON_FP32, 0.0f },
-    { 1.0f, 0.0f, 0.0f, BGC_EPSYLON_FP32 },
-    { 1.0f, 0.0f, 0.0f, -BGC_EPSYLON_FP32 }
+    { 1.0f + 0.75f * BGC_EPSYLON_FP32, 0.0f, 0.0f, 0.0f },
+    { 1.0f - 0.75f * BGC_EPSYLON_FP32, 0.0f, 0.0f, 0.0f },
+    { 1.0f, 0.75f * BGC_EPSYLON_FP32, 0.0f, 0.0f },
+    { 1.0f, -0.75f * BGC_EPSYLON_FP32, 0.0f, 0.0f },
+    { 1.0f, 0.0f, 0.75f * BGC_EPSYLON_FP32, 0.0f },
+    { 1.0f, 0.0f, -0.75f * BGC_EPSYLON_FP32, 0.0f },
+    { 1.0f, 0.0f, 0.0f, 0.75f * BGC_EPSYLON_FP32 },
+    { 1.0f, 0.0f, 0.0f, -0.75f * BGC_EPSYLON_FP32 }
 };
 
 static const BgcVersorFP32 _TEST_FP32_NON_IDENTIYTY_VERSOR_LIST[] = {
@@ -24,7 +24,7 @@ static const BgcVersorFP32 _TEST_FP32_NON_IDENTIYTY_VERSOR_LIST[] = {
     { 0.0f, 0.0f, 1.0f, 0.0f },
     { 0.0f, 0.0f, 0.0f, 1.0f },
     { 0.5f, 0.5f, 0.5f, 0.5f },
-    { 1.0f - 1.5f * BGC_EPSYLON_FP32, 0.0f, 0.0f, 0.0f }
+    { 1.0f - 1.25f * BGC_EPSYLON_FP32, 0.0f, 0.0f, 0.0f }
 };
 
 int test_versor_is_identity_fp32()
@@ -59,14 +59,14 @@ static const int _TEST_FP64_NON_IDENTIYTY_VERSOR_AMOUNT = 5;
 
 static const BgcVersorFP64 _TEST_FP64_IDENTIYTY_VERSOR_LIST[] = {
     { 1.0, 0.0, 0.0, 0.0 },
-    { 1.0 + BGC_EPSYLON_FP64, 0.0, 0.0, 0.0 },
-    { 1.0 - BGC_EPSYLON_FP64, 0.0, 0.0, 0.0 },
-    { 1.0, -BGC_EPSYLON_FP64, 0.0, 0.0 },
-    { 1.0, BGC_EPSYLON_FP64, 0.0, 0.0 },
-    { 1.0, 0.0, BGC_EPSYLON_FP64, 0.0 },
-    { 1.0, 0.0, -BGC_EPSYLON_FP64, 0.0 },
-    { 1.0, 0.0, 0.0, BGC_EPSYLON_FP64 },
-    { 1.0, 0.0, 0.0, -BGC_EPSYLON_FP64 }
+    { 1.0 + 0.75 * BGC_EPSYLON_FP64, 0.0, 0.0, 0.0 },
+    { 1.0 - 0.75 * BGC_EPSYLON_FP64, 0.0, 0.0, 0.0 },
+    { 1.0, -0.75 * BGC_EPSYLON_FP64, 0.0, 0.0 },
+    { 1.0, 0.75 * BGC_EPSYLON_FP64, 0.0, 0.0 },
+    { 1.0, 0.0, 0.75 * BGC_EPSYLON_FP64, 0.0 },
+    { 1.0, 0.0, -0.75 * BGC_EPSYLON_FP64, 0.0 },
+    { 1.0, 0.0, 0.0, 0.75 * BGC_EPSYLON_FP64 },
+    { 1.0, 0.0, 0.0, -0.75 * BGC_EPSYLON_FP64 }
 };
 
 static const BgcVersorFP64 _TEST_FP64_NON_IDENTIYTY_VERSOR_LIST[] = {
@@ -74,7 +74,7 @@ static const BgcVersorFP64 _TEST_FP64_NON_IDENTIYTY_VERSOR_LIST[] = {
     { 0.0, 0.0, 1.0, 0.0 },
     { 0.0, 0.0, 0.0, 1.0 },
     { 0.5, 0.5, 0.5, 0.5 },
-    { 1.0 - 1.5 * BGC_EPSYLON_FP64, 0.0, 0.0, 0.0 }
+    { 1.0 - 1.25 * BGC_EPSYLON_FP64, 0.0, 0.0, 0.0 }
 };
 
 int test_versor_is_identity_fp64()

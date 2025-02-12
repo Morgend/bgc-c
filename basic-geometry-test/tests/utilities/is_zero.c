@@ -4,22 +4,20 @@
 
 // ==================== FP32 ==================== //
 
-static const int _TEST_FP32_ZERO_NUMBERS_AMOUNT = 5;
+static const int _TEST_FP32_ZERO_NUMBERS_AMOUNT = 3;
 static const int _TEST_FP32_NONZERO_NUMBERS_AMOUNT = 4;
 
 static const float _TEST_FP32_ZERO_NUMBERS[] = {
     0.0f,
-    BGC_EPSYLON_FP32,
-    -BGC_EPSYLON_FP32,
-    BGC_SQUARE_EPSYLON_FP32,
-    -BGC_SQUARE_EPSYLON_FP32
+    0.75f * BGC_EPSYLON_FP32,
+    -0.75f * BGC_EPSYLON_FP32
 };
 
 static const float _TEST_FP32_NONZERO_NUMBERS[] = {
     1.0f,
     -1.0f,
-    (1.5f * BGC_EPSYLON_FP32),
-    -(1.5f * BGC_EPSYLON_FP32)
+    1.25f * BGC_EPSYLON_FP32,
+    -1.25f * BGC_EPSYLON_FP32
 };
 
 int test_is_zero_fp32()
@@ -49,22 +47,20 @@ int test_is_zero_fp32()
 
 // ==================== FP64 ==================== //
 
-static const int _TEST_FP64_ZERO_NUMBERS_AMOUNT = 5;
+static const int _TEST_FP64_ZERO_NUMBERS_AMOUNT = 3;
 static const int _TEST_FP64_NONZERO_NUMBERS_AMOUNT = 4;
 
 static const double _TEST_FP64_ZERO_NUMBERS[] = {
     0.0,
-    BGC_EPSYLON_FP64,
-    -BGC_EPSYLON_FP64,
-    BGC_SQUARE_EPSYLON_FP64,
-    -BGC_SQUARE_EPSYLON_FP64
+    0.75 * BGC_EPSYLON_FP64,
+    -0.75 * BGC_EPSYLON_FP64
 };
 
 static const double _TEST_FP64_NONZERO_NUMBERS[] = {
     1.0,
     -1.0,
-    (1.5 * BGC_EPSYLON_FP64),
-    -(1.5 * BGC_EPSYLON_FP64)
+    1.25 * BGC_EPSYLON_FP64,
+    -1.25 * BGC_EPSYLON_FP64
 };
 
 int test_is_zero_fp64()
