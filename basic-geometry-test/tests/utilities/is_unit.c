@@ -106,13 +106,13 @@ static const float _TEST_FP32_DATA_SQUARE_NONUNIT[] = {
     1.0f - 2.25f * BGC_EPSYLON_FP32
 };
 
-int test_is_sqare_value_unit_fp32()
+int test_is_sqare_unit_fp32()
 {
-    print_testing_name("bgc_is_sqare_value_unit_fp32");
+    print_testing_name("bgc_is_sqare_unit_fp32");
 
     // Testing unit values:
     for (int i = 0; i < _TEST_FP32_DATA_SQUARE_UNIT_AMOUNT; i++) {
-        if (!bgc_is_sqare_value_unit_fp32(_TEST_FP32_DATA_SQUARE_UNIT[i])) {
+        if (!bgc_is_sqare_unit_fp32(_TEST_FP32_DATA_SQUARE_UNIT[i])) {
             print_testing_failed();
             return TEST_FAILED;
         }
@@ -120,7 +120,7 @@ int test_is_sqare_value_unit_fp32()
 
     // Testing non-unit values:
     for (int i = 0; i < _TEST_FP32_DATA_SQUARE_NONUNIT_AMOUNT; i++) {
-        if (bgc_is_sqare_value_unit_fp32(_TEST_FP32_DATA_SQUARE_NONUNIT[i])) {
+        if (bgc_is_sqare_unit_fp32(_TEST_FP32_DATA_SQUARE_NONUNIT[i])) {
             print_testing_failed();
             return TEST_FAILED;
         }
@@ -149,13 +149,13 @@ static const double _TEST_FP64_DATA_SQUARE_NONUNIT[] = {
     1.0 - 2.25 * BGC_EPSYLON_FP64
 };
 
-int test_is_sqare_value_unit_fp64()
+int test_is_sqare_unit_fp64()
 {
-    print_testing_name("bgc_is_sqare_value_unit_fp64");
+    print_testing_name("bgc_is_sqare_unit_fp64");
 
     // Testing unit values:
     for (int i = 0; i < _TEST_FP64_DATA_SQUARE_UNIT_AMOUNT; i++) {
-        if (!bgc_is_sqare_value_unit_fp64(_TEST_FP64_DATA_SQUARE_UNIT[i])) {
+        if (!bgc_is_sqare_unit_fp64(_TEST_FP64_DATA_SQUARE_UNIT[i])) {
             print_testing_failed();
             return TEST_FAILED;
         }
@@ -163,7 +163,7 @@ int test_is_sqare_value_unit_fp64()
 
     // Testing non-unit values:
     for (int i = 0; i < _TEST_FP64_DATA_SQUARE_NONUNIT_AMOUNT; i++) {
-        if (bgc_is_sqare_value_unit_fp64(_TEST_FP64_DATA_SQUARE_NONUNIT[i])) {
+        if (bgc_is_sqare_unit_fp64(_TEST_FP64_DATA_SQUARE_NONUNIT[i])) {
             print_testing_failed();
             return TEST_FAILED;
         }
@@ -184,11 +184,11 @@ int test_is_unit()
         return TEST_FAILED;
     }
 
-    if (test_is_sqare_value_unit_fp32() != TEST_SUCCES) {
+    if (test_is_sqare_unit_fp32() != TEST_SUCCES) {
         return TEST_FAILED;
     }
 
-    if (test_is_sqare_value_unit_fp64() != TEST_SUCCES) {
+    if (test_is_sqare_unit_fp64() != TEST_SUCCES) {
         return TEST_FAILED;
     }
 

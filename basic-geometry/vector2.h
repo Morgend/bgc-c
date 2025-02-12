@@ -44,6 +44,50 @@ inline void bgc_vector2_set_values_fp64(const double x1, const double x2, BgcVec
     to->x2 = x2;
 }
 
+// ================== Modulus =================== //
+
+inline float bgc_vector2_get_square_modulus_fp32(const BgcVector2FP32* vector)
+{
+    return vector->x1 * vector->x1 + vector->x2 * vector->x2;
+}
+
+inline double bgc_vector2_get_square_modulus_fp64(const BgcVector2FP64* vector)
+{
+    return vector->x1 * vector->x1 + vector->x2 * vector->x2;
+}
+
+inline float bgc_vector2_get_modulus_fp32(const BgcVector2FP32* vector)
+{
+    return sqrtf(bgc_vector2_get_square_modulus_fp32(vector));
+}
+
+inline double bgc_vector2_get_modulus_fp64(const BgcVector2FP64* vector)
+{
+    return sqrt(bgc_vector2_get_square_modulus_fp64(vector));
+}
+
+// ================= Comparison ================= //
+
+inline int bgc_vector2_is_zero_fp32(const BgcVector2FP32* vector)
+{
+    return bgc_vector2_get_square_modulus_fp32(vector) <= BGC_SQUARE_EPSYLON_FP32;
+}
+
+inline int bgc_vector2_is_zero_fp64(const BgcVector2FP64* vector)
+{
+    return bgc_vector2_get_square_modulus_fp64(vector) <= BGC_SQUARE_EPSYLON_FP64;
+}
+
+inline int bgc_vector2_is_unit_fp32(const BgcVector2FP32* vector)
+{
+    return bgc_is_sqare_unit_fp32(bgc_vector2_get_square_modulus_fp32(vector));
+}
+
+inline int bgc_vector2_is_unit_fp64(const BgcVector2FP64* vector)
+{
+    return bgc_is_sqare_unit_fp64(bgc_vector2_get_square_modulus_fp64(vector));
+}
+
 // ==================== Copy ==================== //
 
 inline void bgc_vector2_copy_fp32(const BgcVector2FP32* from, BgcVector2FP32* to)
@@ -84,7 +128,7 @@ inline void bgc_vector2_swap_fp64(BgcVector2FP64* vector1, BgcVector2FP64* vecto
     vector1->x2 = x2;
 }
 
-// ============= Copy to twin type ============== //
+// ================== Convert =================== //
 
 inline void bgc_vector2_convert_fp64_to_fp32(const BgcVector2FP64* from, BgcVector2FP32* to)
 {
@@ -98,76 +142,118 @@ inline void bgc_vector2_convert_fp32_to_fp64(const BgcVector2FP32* from, BgcVect
     to->x2 = from->x2;
 }
 
-// =================== Reverse ================== //
+// ================== Reverse =================== //
 
-inline void bgc_vector2_set_reverse_fp32(const BgcVector2FP32* from, BgcVector2FP32* to)
+inline void bgc_vector2_reverse_fp32(BgcVector2FP32* vector)
 {
-    to->x1 = -from->x1;
-    to->x2 = -from->x2;
+    vector->x1 = -vector->x1;
+    vector->x2 = -vector->x2;
 }
 
-inline void bgc_vector2_set_reverse_fp64(const BgcVector2FP64* from, BgcVector2FP64* to)
+inline void bgc_vector2_reverse_fp64(BgcVector2FP64* vector)
 {
-    to->x1 = -from->x1;
-    to->x2 = -from->x2;
+    vector->x1 = -vector->x1;
+    vector->x2 = -vector->x2;
 }
 
-// ============= Reverse twin type ============== //
+// ================= Normalize ================== //
 
-inline void bgc_vector2_set_reverse_fp64_to_fp32(const BgcVector2FP64* from, BgcVector2FP32* to)
+inline int bgc_vector2_normalize_fp32(BgcVector2FP32* vector)
 {
-    to->x1 = (float) -from->x1;
-    to->x2 = (float) -from->x2;
+    const float square_modulus = bgc_vector2_get_square_modulus_fp32(vector);
+
+    if (bgc_is_sqare_unit_fp32(square_modulus)) {
+        return 1;
+    }
+
+    if (square_modulus <= BGC_SQUARE_EPSYLON_FP32 || square_modulus != square_modulus) {
+        vector->x1 = 0.0f;
+        vector->x2 = 0.0f;
+        return 0;
+    }
+
+    const float multiplicand = sqrtf(1.0f / square_modulus);
+
+    vector->x1 *= multiplicand;
+    vector->x2 *= multiplicand;
+
+    return 1;
 }
 
-inline void bgc_vector2_set_reverse_fp32_to_fp64(const BgcVector2FP32* from, BgcVector2FP64* to)
+inline int bgc_vector2_normalize_fp64(BgcVector2FP64* vector)
 {
-    to->x1 = -from->x1;
-    to->x2 = -from->x2;
+    const double square_modulus = bgc_vector2_get_square_modulus_fp64(vector);
+
+    if (bgc_is_sqare_unit_fp64(square_modulus)) {
+        return 1;
+    }
+
+    if (square_modulus <= BGC_SQUARE_EPSYLON_FP64 || square_modulus != square_modulus) {
+        vector->x1 = 0.0;
+        vector->x2 = 0.0;
+        return 0;
+    }
+
+    const double multiplicand = sqrt(1.0 / square_modulus);
+
+    vector->x1 *= multiplicand;
+    vector->x2 *= multiplicand;
+
+    return 1;
 }
 
-// =================== Module =================== //
+// ============= Complex Conjugate ============== //
 
-inline float bgc_vector2_get_square_modulus_fp32(const BgcVector2FP32* vector)
+inline void bgc_vector2_complex_conjugate_fp32(BgcVector2FP32* vector)
 {
-    return vector->x1 * vector->x1 + vector->x2 * vector->x2;
+    vector->x2 = -vector->x2;
 }
 
-inline double bgc_vector2_get_square_modulus_fp64(const BgcVector2FP64* vector)
+inline void bgc_vector2_complex_conjugate_fp64(BgcVector2FP64* vector)
 {
-    return vector->x1 * vector->x1 + vector->x2 * vector->x2;
+    vector->x2 = -vector->x2;
 }
 
-inline float bgc_vector2_get_modulus_fp32(const BgcVector2FP32* vector)
+// ================ Make Reverse ================ //
+
+inline void bgc_vector2_make_reverse_fp32(const BgcVector2FP32* vector, BgcVector2FP32* reverse)
 {
-    return sqrtf(bgc_vector2_get_square_modulus_fp32(vector));
+    reverse->x1 = -vector->x1;
+    reverse->x2 = -vector->x2;
 }
 
-inline double bgc_vector2_get_modulus_fp64(const BgcVector2FP64* vector)
+inline void bgc_vector2_make_reverse_fp64(const BgcVector2FP64* vector, BgcVector2FP64* reverse)
 {
-    return sqrt(bgc_vector2_get_square_modulus_fp64(vector));
+    reverse->x1 = -vector->x1;
+    reverse->x2 = -vector->x2;
 }
 
-// ================= Comparison ================= //
+// ============== Make Normalized =============== //
 
-inline int bgc_vector2_is_zero_fp32(const BgcVector2FP32* vector)
+inline int bgc_vector2_make_normalized_fp32(const BgcVector2FP32* vector, BgcVector2FP32* normalized)
 {
-    return bgc_vector2_get_square_modulus_fp32(vector) <= BGC_SQUARE_EPSYLON_FP32;
+    bgc_vector2_copy_fp32(vector, normalized);
+    return bgc_vector2_normalize_fp32(normalized);
 }
 
-inline int bgc_vector2_is_zero_fp64(const BgcVector2FP64* vector)
+inline int bgc_vector2_make_normalized_fp64(const BgcVector2FP64* vector, BgcVector2FP64* normalized)
 {
-    return bgc_vector2_get_square_modulus_fp64(vector) <= BGC_SQUARE_EPSYLON_FP64;
+    bgc_vector2_copy_fp64(vector, normalized);
+    return bgc_vector2_normalize_fp64(normalized);
 }
 
-inline int bgc_vector2_is_unit_fp32(const BgcVector2FP32* vector)
+// =========== Make Complex Conjugate =========== //
+
+inline void bgc_vector2_make_complex_conjugate_fp32(const BgcVector2FP32* vector, BgcVector2FP32* conjugate)
 {
-    return bgc_is_sqare_value_unit_fp32(bgc_vector2_get_square_modulus_fp32(vector));
+    conjugate->x1 = vector->x1;
+    conjugate->x2 = -vector->x2;
 }
 
-inline int bgc_vector2_is_unit_fp64(const BgcVector2FP64* vector)
+inline void bgc_vector2_make_complex_conjugate_fp64(const BgcVector2FP64* vector, BgcVector2FP64* conjugate)
 {
-    return bgc_is_sqare_value_unit_fp64(bgc_vector2_get_square_modulus_fp64(vector));
+    conjugate->x1 = vector->x1;
+    conjugate->x2 = -vector->x2;
 }
 
 // ==================== Add ===================== //
@@ -184,7 +270,7 @@ inline void bgc_vector2_add_fp64(const BgcVector2FP64* vector1, const BgcVector2
     sum->x2 = vector1->x2 + vector2->x2;
 }
 
-// ================ Append scaled =============== //
+// ================= Add scaled ================= //
 
 inline void bgc_vector2_add_scaled_fp32(const BgcVector2FP32* basic_vector, const BgcVector2FP32* scalable_vector, const float scale, BgcVector2FP32* sum)
 {
@@ -198,7 +284,7 @@ inline void bgc_vector2_add_scaled_fp64(const BgcVector2FP64* basic_vector, cons
     sum->x2 = basic_vector->x2 + scalable_vector->x2 * scale;
 }
 
-// ================ Subtraction ================= //
+// ================== Subtract ================== //
 
 inline void bgc_vector2_subtract_fp32(const BgcVector2FP32* minuend, const BgcVector2FP32* subtrahend, BgcVector2FP32* difference)
 {
@@ -212,7 +298,21 @@ inline void bgc_vector2_subtract_fp64(const BgcVector2FP64* minuend, const BgcVe
     difference->x2 = minuend->x2 - subtrahend->x2;
 }
 
-// =============== Multiplication =============== //
+// ============== Subtract scaled =============== //
+
+inline void bgc_vector2_subtract_scaled_fp32(const BgcVector2FP32* basic_vector, const BgcVector2FP32* scalable_vector, const float scale, BgcVector2FP32* difference)
+{
+    difference->x1 = basic_vector->x1 - scalable_vector->x1 * scale;
+    difference->x2 = basic_vector->x2 - scalable_vector->x2 * scale;
+}
+
+inline void bgc_vector2_subtract_scaled_fp64(const BgcVector2FP64* basic_vector, const BgcVector2FP64* scalable_vector, const double scale, BgcVector2FP64* difference)
+{
+    difference->x1 = basic_vector->x1 - scalable_vector->x1 * scale;
+    difference->x2 = basic_vector->x2 - scalable_vector->x2 * scale;
+}
+
+// ================== Multiply ================== //
 
 inline void bgc_vector2_multiply_fp32(const BgcVector2FP32* multiplicand, const float multiplier, BgcVector2FP32* product)
 {
@@ -226,7 +326,7 @@ inline void bgc_vector2_multiply_fp64(const BgcVector2FP64* multiplicand, const 
     product->x2 = multiplicand->x2 * multiplier;
 }
 
-// ================== Division ================== //
+// =================== Divide =================== //
 
 inline void bgc_vector2_divide_fp32(const BgcVector2FP32* dividend, const float divisor, BgcVector2FP32* quotient)
 {
@@ -240,30 +340,30 @@ inline void bgc_vector2_divide_fp64(const BgcVector2FP64* dividend, const double
 
 // ================== Average2 ================== //
 
-inline void bgc_vector2_mean_of_two_fp32(const BgcVector2FP32* vector1, const BgcVector2FP32* vector2, BgcVector2FP32* result)
+inline void bgc_vector2_mean_of_two_fp32(const BgcVector2FP32* vector1, const BgcVector2FP32* vector2, BgcVector2FP32* mean)
 {
-    result->x1 = (vector1->x1 + vector2->x1) * 0.5f;
-    result->x2 = (vector1->x2 + vector2->x2) * 0.5f;
+    mean->x1 = (vector1->x1 + vector2->x1) * 0.5f;
+    mean->x2 = (vector1->x2 + vector2->x2) * 0.5f;
 }
 
-inline void bgc_vector2_mean_of_two_fp64(const BgcVector2FP64* vector1, const BgcVector2FP64* vector2, BgcVector2FP64* result)
+inline void bgc_vector2_mean_of_two_fp64(const BgcVector2FP64* vector1, const BgcVector2FP64* vector2, BgcVector2FP64* mean)
 {
-    result->x1 = (vector1->x1 + vector2->x1) * 0.5;
-    result->x2 = (vector1->x2 + vector2->x2) * 0.5;
+    mean->x1 = (vector1->x1 + vector2->x1) * 0.5;
+    mean->x2 = (vector1->x2 + vector2->x2) * 0.5;
 }
 
 // ================== Average3 ================== //
 
-inline void bgc_vector2_mean_of_three_fp32(const BgcVector2FP32* vector1, const BgcVector2FP32* vector2, const BgcVector2FP32* vector3, BgcVector2FP32* result)
+inline void bgc_vector2_mean_of_three_fp32(const BgcVector2FP32* vector1, const BgcVector2FP32* vector2, const BgcVector2FP32* vector3, BgcVector2FP32* mean)
 {
-    result->x1 = (vector1->x1 + vector2->x1 + vector3->x1) * BGC_ONE_THIRD_FP32;
-    result->x2 = (vector1->x2 + vector2->x2 + vector3->x2) * BGC_ONE_THIRD_FP32;
+    mean->x1 = (vector1->x1 + vector2->x1 + vector3->x1) * BGC_ONE_THIRD_FP32;
+    mean->x2 = (vector1->x2 + vector2->x2 + vector3->x2) * BGC_ONE_THIRD_FP32;
 }
 
-inline void bgc_vector2_mean_of_three_fp64(const BgcVector2FP64* vector1, const BgcVector2FP64* vector2, const BgcVector2FP64* vector3, BgcVector2FP64* result)
+inline void bgc_vector2_mean_of_three_fp64(const BgcVector2FP64* vector1, const BgcVector2FP64* vector2, const BgcVector2FP64* vector3, BgcVector2FP64* mean)
 {
-    result->x1 = (vector1->x1 + vector2->x1 + vector3->x1) * BGC_ONE_THIRD_FP64;
-    result->x2 = (vector1->x2 + vector2->x2 + vector3->x2) * BGC_ONE_THIRD_FP64;
+    mean->x1 = (vector1->x1 + vector2->x1 + vector3->x1) * BGC_ONE_THIRD_FP64;
+    mean->x2 = (vector1->x2 + vector2->x2 + vector3->x2) * BGC_ONE_THIRD_FP64;
 }
 
 // =============== Scalar Product =============== //
@@ -308,56 +408,6 @@ inline void bgc_vector2_complex_product_fp64(const BgcVector2FP64* vector1, cons
 
     result->x1 = x1;
     result->x2 = x2;
-}
-
-// =============== Normalization ================ //
-
-inline int bgc_vector2_normalize_fp32(BgcVector2FP32* vector)
-{
-    const float square_modulus = bgc_vector2_get_square_modulus_fp32(vector);
-
-    if (bgc_is_sqare_value_unit_fp32(square_modulus)) {
-        return 1;
-    }
-
-    if (square_modulus <= BGC_SQUARE_EPSYLON_FP32) {
-        bgc_vector2_reset_fp32(vector);
-        return 0;
-    }
-
-    bgc_vector2_multiply_fp32(vector, sqrtf(1.0f / square_modulus), vector);
-    return 1;
-}
-
-inline int bgc_vector2_normalize_fp64(BgcVector2FP64* vector)
-{
-    const double square_modulus = bgc_vector2_get_square_modulus_fp64(vector);
-
-    if (bgc_is_sqare_value_unit_fp64(square_modulus)) {
-        return 1;
-    }
-
-    if (square_modulus <= BGC_SQUARE_EPSYLON_FP64) {
-        bgc_vector2_reset_fp64(vector);
-        return 0;
-    }
-
-    bgc_vector2_multiply_fp64(vector, sqrt(1.0 / square_modulus), vector);
-    return 1;
-}
-
-// =============== Get Normalized =============== //
-
-inline int bgc_vector2_set_normalized_fp32(const BgcVector2FP32* vector, BgcVector2FP32* result)
-{
-    bgc_vector2_copy_fp32(vector, result);
-    return bgc_vector2_normalize_fp32(result);
-}
-
-inline int bgc_vector2_set_normalized_fp64(const BgcVector2FP64* vector, BgcVector2FP64* result)
-{
-    bgc_vector2_copy_fp64(vector, result);
-    return bgc_vector2_normalize_fp64(result);
 }
 
 // =================== Angle ==================== //

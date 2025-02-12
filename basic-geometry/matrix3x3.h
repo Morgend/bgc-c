@@ -212,7 +212,7 @@ inline void bgc_matrix3x3_swap_fp64(BgcMatrix3x3FP64* matrix1, BgcMatrix3x3FP64*
     matrix1->r3c3 = r3c3;
 }
 
-// ============= Set from twin type ============= //
+// ================== Convert =================== //
 
 inline void bgc_matrix3x3_convert_fp64_to_fp32(const BgcMatrix3x3FP64* from, BgcMatrix3x3FP32* to)
 {
@@ -272,13 +272,13 @@ inline int bgc_matrix3x3_is_singular_fp64(const BgcMatrix3x3FP64* matrix)
     return bgc_is_zero_fp64(bgc_matrix3x3_get_determinant_fp64(matrix));
 }
 
-// ================= Inversion ================== //
+// =================== Invert =================== //
 
 int bgc_matrix3x3_invert_fp32(BgcMatrix3x3FP32* matrix);
 
 int bgc_matrix3x3_invert_fp64(BgcMatrix3x3FP64* matrix);
 
-// =============== Transposition ================ //
+// ================= Transpose ================== //
 
 inline void bgc_matrix3x3_transpose_fp32(BgcMatrix3x3FP32* matrix)
 {
@@ -308,54 +308,6 @@ inline void bgc_matrix3x3_transpose_fp64(BgcMatrix3x3FP64* matrix)
     tmp = matrix->r2c3;
     matrix->r2c3 = matrix->r3c2;
     matrix->r3c2 = tmp;
-}
-
-// ================ Make Inverted =============== //
-
-int bgc_matrix3x3_set_inverted_fp32(const BgcMatrix3x3FP32* matrix, BgcMatrix3x3FP32* result);
-
-int bgc_matrix3x3_set_inverted_fp64(const BgcMatrix3x3FP64* matrix, BgcMatrix3x3FP64* result);
-
-// =============== Make Transposed ============== //
-
-inline void bgc_matrix3x3_set_transposed_fp32(const BgcMatrix3x3FP32* matrix, BgcMatrix3x3FP32* result)
-{
-    if (matrix == result) {
-        bgc_matrix3x3_transpose_fp32(result);
-        return;
-    }
-
-    result->r1c1 = matrix->r1c1;
-    result->r1c2 = matrix->r2c1;
-    result->r1c3 = matrix->r3c1;
-
-    result->r2c1 = matrix->r1c2;
-    result->r2c2 = matrix->r2c2;
-    result->r2c3 = matrix->r3c2;
-
-    result->r3c1 = matrix->r1c3;
-    result->r3c2 = matrix->r2c3;
-    result->r3c3 = matrix->r3c3;
-}
-
-inline void bgc_matrix3x3_set_transposed_fp64(const BgcMatrix3x3FP64* matrix, BgcMatrix3x3FP64* result)
-{
-    if (matrix == result) {
-        bgc_matrix3x3_transpose_fp64(result);
-        return;
-    }
-
-    result->r1c1 = matrix->r1c1;
-    result->r1c2 = matrix->r2c1;
-    result->r1c3 = matrix->r3c1;
-
-    result->r2c1 = matrix->r1c2;
-    result->r2c2 = matrix->r2c2;
-    result->r2c3 = matrix->r3c2;
-
-    result->r3c1 = matrix->r1c3;
-    result->r3c2 = matrix->r2c3;
-    result->r3c3 = matrix->r3c3;
 }
 
 // ================= Set Row 1 ================== //
@@ -454,7 +406,55 @@ inline void bgc_matrix3x3_set_column3_fp64(const double r1, const double r2, con
     matrix->r3c3 = r3;
 }
 
-// ================== Addition ================== //
+// ================ Make Inverted =============== //
+
+int bgc_matrix3x3_make_inverted_fp32(const BgcMatrix3x3FP32* matrix, BgcMatrix3x3FP32* result);
+
+int bgc_matrix3x3_make_inverted_fp64(const BgcMatrix3x3FP64* matrix, BgcMatrix3x3FP64* result);
+
+// =============== Make Transposed ============== //
+
+inline void bgc_matrix3x3_make_transposed_fp32(const BgcMatrix3x3FP32* matrix, BgcMatrix3x3FP32* result)
+{
+    if (matrix == result) {
+        bgc_matrix3x3_transpose_fp32(result);
+        return;
+    }
+
+    result->r1c1 = matrix->r1c1;
+    result->r1c2 = matrix->r2c1;
+    result->r1c3 = matrix->r3c1;
+
+    result->r2c1 = matrix->r1c2;
+    result->r2c2 = matrix->r2c2;
+    result->r2c3 = matrix->r3c2;
+
+    result->r3c1 = matrix->r1c3;
+    result->r3c2 = matrix->r2c3;
+    result->r3c3 = matrix->r3c3;
+}
+
+inline void bgc_matrix3x3_make_transposed_fp64(const BgcMatrix3x3FP64* matrix, BgcMatrix3x3FP64* result)
+{
+    if (matrix == result) {
+        bgc_matrix3x3_transpose_fp64(result);
+        return;
+    }
+
+    result->r1c1 = matrix->r1c1;
+    result->r1c2 = matrix->r2c1;
+    result->r1c3 = matrix->r3c1;
+
+    result->r2c1 = matrix->r1c2;
+    result->r2c2 = matrix->r2c2;
+    result->r2c3 = matrix->r3c2;
+
+    result->r3c1 = matrix->r1c3;
+    result->r3c2 = matrix->r2c3;
+    result->r3c3 = matrix->r3c3;
+}
+
+// ==================== Add ===================== //
 
 inline void bgc_matrix3x3_add_fp32(const BgcMatrix3x3FP32* matrix1, const BgcMatrix3x3FP32* matrix2, BgcMatrix3x3FP32* sum)
 {
@@ -518,7 +518,7 @@ inline void bgc_matrix3x3_add_scaled_fp64(const BgcMatrix3x3FP64* basic_matrix, 
     sum->r3c3 = basic_matrix->r3c3 + scalable_matrix->r3c3 * scale;
 }
 
-// ================ Subtraction ================= //
+// ================== Subtract ================== //
 
 inline void bgc_matrix3x3_subtract_fp32(const BgcMatrix3x3FP32* minuend, const BgcMatrix3x3FP32* subtrahend, BgcMatrix3x3FP32* difference)
 {
@@ -550,7 +550,39 @@ inline void bgc_matrix3x3_subtract_fp64(const BgcMatrix3x3FP64* minuend, const B
     difference->r3c3 = minuend->r3c3 - subtrahend->r3c3;
 }
 
-// =============== Multiplication =============== //
+// ================= Add scaled ================= //
+
+inline void bgc_matrix3x3_subtract_scaled_fp32(const BgcMatrix3x3FP32* basic_matrix, const BgcMatrix3x3FP32* scalable_matrix, const float scale, BgcMatrix3x3FP32* difference)
+{
+    difference->r1c1 = basic_matrix->r1c1 - scalable_matrix->r1c1 * scale;
+    difference->r1c2 = basic_matrix->r1c2 - scalable_matrix->r1c2 * scale;
+    difference->r1c3 = basic_matrix->r1c3 - scalable_matrix->r1c3 * scale;
+
+    difference->r2c1 = basic_matrix->r2c1 - scalable_matrix->r2c1 * scale;
+    difference->r2c2 = basic_matrix->r2c2 - scalable_matrix->r2c2 * scale;
+    difference->r2c3 = basic_matrix->r2c3 - scalable_matrix->r2c3 * scale;
+
+    difference->r3c1 = basic_matrix->r3c1 - scalable_matrix->r3c1 * scale;
+    difference->r3c2 = basic_matrix->r3c2 - scalable_matrix->r3c2 * scale;
+    difference->r3c3 = basic_matrix->r3c3 - scalable_matrix->r3c3 * scale;
+}
+
+inline void bgc_matrix3x3_subtract_scaled_fp64(const BgcMatrix3x3FP64* basic_matrix, const BgcMatrix3x3FP64* scalable_matrix, const double scale, BgcMatrix3x3FP64* difference)
+{
+    difference->r1c1 = basic_matrix->r1c1 - scalable_matrix->r1c1 * scale;
+    difference->r1c2 = basic_matrix->r1c2 - scalable_matrix->r1c2 * scale;
+    difference->r1c3 = basic_matrix->r1c3 - scalable_matrix->r1c3 * scale;
+
+    difference->r2c1 = basic_matrix->r2c1 - scalable_matrix->r2c1 * scale;
+    difference->r2c2 = basic_matrix->r2c2 - scalable_matrix->r2c2 * scale;
+    difference->r2c3 = basic_matrix->r2c3 - scalable_matrix->r2c3 * scale;
+
+    difference->r3c1 = basic_matrix->r3c1 - scalable_matrix->r3c1 * scale;
+    difference->r3c2 = basic_matrix->r3c2 - scalable_matrix->r3c2 * scale;
+    difference->r3c3 = basic_matrix->r3c3 - scalable_matrix->r3c3 * scale;
+}
+
+// ================== Multiply ================== //
 
 inline void bgc_matrix3x3_multiply_fp32(const BgcMatrix3x3FP32* multiplicand, const float multiplier, BgcMatrix3x3FP32* product)
 {
@@ -582,7 +614,7 @@ inline void bgc_matrix3x3_multiply_fp64(const BgcMatrix3x3FP64* multiplicand, co
     product->r3c3 = multiplicand->r3c3 * multiplier;
 }
 
-// ================== Division ================== //
+// =================== Divide =================== //
 
 inline void bgc_matrix3x3_divide_fp32(const BgcMatrix3x3FP32* dividend, const float divisor, BgcMatrix3x3FP32* quotient)
 {

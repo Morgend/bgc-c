@@ -68,7 +68,7 @@ inline void bgc_tangent_pair_set_values_fp32(const float x1, const float x2, Bgc
     twin->cos = x1;
     twin->sin = x2;
 
-    if (!bgc_is_sqare_value_unit_fp32(square_modulus)) {
+    if (!bgc_is_sqare_unit_fp32(square_modulus)) {
         _bgc_tangent_pair_normalize_fp32(square_modulus, twin);
     }
 }
@@ -82,9 +82,75 @@ inline void bgc_tangent_pair_set_values_fp64(const double x1, const double x2, B
     twin->cos = x1;
     twin->sin = x2;
 
-    if (!bgc_is_sqare_value_unit_fp64(square_modulus)) {
+    if (!bgc_is_sqare_unit_fp64(square_modulus)) {
         _bgc_tangent_pair_normalize_fp64(square_modulus, twin);
     }
+}
+
+// ================== Set Turn ================== //
+
+inline void bgc_tangent_pair_set_turn_fp32(const float angle, const BgcAngleUnitEnum unit, BgcTangentPairFP32* tangent)
+{
+    const float radians = bgc_angle_to_radians_fp32(angle, unit);
+
+    _BgcTwinTangentPairFP32* twin = (_BgcTwinTangentPairFP32*)tangent;
+
+    twin->cos = cosf(radians);
+    twin->sin = sinf(radians);
+}
+
+inline void bgc_tangent_pair_set_turn_fp64(const double angle, const BgcAngleUnitEnum unit, BgcTangentPairFP64* tangent)
+{
+    const double radians = bgc_angle_to_radians_fp64(angle, unit);
+
+    _BgcTwinTangentPairFP64* twin = (_BgcTwinTangentPairFP64*)tangent;
+
+    twin->cos = cos(radians);
+    twin->sin = sin(radians);
+}
+
+// =================== Angle =================== //
+
+inline float bgc_tangent_pair_get_angle_fp32(const BgcTangentPairFP32* tangent, const BgcAngleUnitEnum unit)
+{
+    if (tangent->cos >= 1.0f - BGC_EPSYLON_FP32) {
+        return 0.0f;
+    }
+
+    if (tangent->cos <= -1.0f + BGC_EPSYLON_FP32) {
+        return bgc_angle_get_half_circle_fp32(unit);
+    }
+
+    if (tangent->sin >= 1.0f - BGC_EPSYLON_FP32) {
+        return bgc_angle_get_quater_circle_fp32(unit);
+    }
+
+    if (tangent->sin <= -1.0f + BGC_EPSYLON_FP32) {
+        return 0.75f * bgc_angle_get_full_circle_fp32(unit);
+    }
+
+    return bgc_radians_to_units_fp32(atan2f(tangent->cos, tangent->sin), unit);
+}
+
+inline double bgc_tangent_pair_get_angle_fp64(const BgcTangentPairFP64* tangent, const BgcAngleUnitEnum unit)
+{
+    if (tangent->cos >= 1.0 - BGC_EPSYLON_FP64) {
+        return 0.0;
+    }
+
+    if (tangent->cos <= -1.0 + BGC_EPSYLON_FP64) {
+        return bgc_angle_get_half_circle_fp64(unit);
+    }
+
+    if (tangent->sin >= 1.0 - BGC_EPSYLON_FP64) {
+        return bgc_angle_get_quater_circle_fp64(unit);
+    }
+
+    if (tangent->sin <= -1.0 + BGC_EPSYLON_FP64) {
+        return 0.75 * bgc_angle_get_full_circle_fp64(unit);
+    }
+
+    return bgc_radians_to_units_fp64(atan2(tangent->cos, tangent->sin), unit);
 }
 
 // ==================== Copy ==================== //
@@ -139,29 +205,7 @@ inline void bgc_tangent_pair_swap_fp64(BgcTangentPairFP64* tangent1, BgcTangentP
     twin2->sin = sin;
 }
 
-// ================== Set Turn ================== //
-
-inline void bgc_tangent_pair_set_turn_fp32(const float angle, const BgcAngleUnitEnum unit, BgcTangentPairFP32* tangent)
-{
-    const float radians = bgc_angle_to_radians_fp32(angle, unit);
-
-    _BgcTwinTangentPairFP32* twin = (_BgcTwinTangentPairFP32*)tangent;
-
-    twin->cos = cosf(radians);
-    twin->sin = sinf(radians);
-}
-
-inline void bgc_tangent_pair_set_turn_fp64(const double angle, const BgcAngleUnitEnum unit, BgcTangentPairFP64* tangent)
-{
-    const double radians = bgc_angle_to_radians_fp64(angle, unit);
-
-    _BgcTwinTangentPairFP64* twin = (_BgcTwinTangentPairFP64*)tangent;
-
-    twin->cos = cos(radians);
-    twin->sin = sin(radians);
-}
-
-// ============= Copy to twin type ============== //
+// ================== Convert =================== //
 
 inline void bgc_tangent_pair_convert_fp64_to_fp32(const BgcTangentPairFP64* from, BgcTangentPairFP32* to)
 {
@@ -173,7 +217,7 @@ inline void bgc_tangent_pair_convert_fp32_to_fp64(const BgcTangentPairFP32* from
     bgc_tangent_pair_set_values_fp64((double)from->cos, (double)from->sin, to);
 }
 
-// ================= Inversion ================== //
+// =================== Invert =================== //
 
 inline void bgc_tangent_pair_invert_fp32(BgcTangentPairFP32* tangent)
 {
@@ -185,9 +229,29 @@ inline void bgc_tangent_pair_invert_fp64(BgcTangentPairFP64* tangent)
     ((_BgcTwinTangentPairFP64*)tangent)->sin = -tangent->sin;
 }
 
+// ================ Combination ================= //
+
+inline void bgc_tangent_pair_combine_fp32(const BgcTangentPairFP32* tangent1, const BgcTangentPairFP32* tangent2, BgcTangentPairFP32* result)
+{
+    bgc_tangent_pair_set_values_fp32(
+        tangent1->cos * tangent2->cos - tangent1->sin * tangent2->sin,
+        tangent1->cos * tangent2->sin + tangent1->sin * tangent2->cos,
+        result
+    );
+}
+
+inline void bgc_tangent_pair_combine_fp64(const BgcTangentPairFP64* tangent1, const BgcTangentPairFP64* tangent2, BgcTangentPairFP64* result)
+{
+    bgc_tangent_pair_set_values_fp64(
+        tangent1->cos * tangent2->cos - tangent1->sin * tangent2->sin,
+        tangent1->cos * tangent2->sin + tangent1->sin * tangent2->cos,
+        result
+    );
+}
+
 // ================ Set Inverted ================ //
 
-inline void bgc_tangent_pair_set_inverted_fp32(const BgcTangentPairFP32* tangent, BgcTangentPairFP32* result)
+inline void bgc_tangent_pair_make_inverted_fp32(const BgcTangentPairFP32* tangent, BgcTangentPairFP32* result)
 {
     _BgcTwinTangentPairFP32* twin = (_BgcTwinTangentPairFP32*)result;
 
@@ -195,7 +259,7 @@ inline void bgc_tangent_pair_set_inverted_fp32(const BgcTangentPairFP32* tangent
     twin->sin = -tangent->sin;
 }
 
-inline void bgc_tangent_pair_set_inverted_fp64(const BgcTangentPairFP64* tangent, BgcTangentPairFP64* result)
+inline void bgc_tangent_pair_make_inverted_fp64(const BgcTangentPairFP64* tangent, BgcTangentPairFP64* result)
 {
     _BgcTwinTangentPairFP64* twin = (_BgcTwinTangentPairFP64*)result;
 
@@ -237,70 +301,6 @@ inline void bgc_tangent_pair_make_reverse_matrix_fp64(const BgcTangentPairFP64* 
     matrix->r1c2 = tangent->sin;
     matrix->r2c1 = -tangent->sin;
     matrix->r2c2 = tangent->cos;
-}
-
-// =================== Angle =================== //
-
-inline float bgc_tangent_pair_get_angle_fp32(const BgcTangentPairFP32* tangent, const BgcAngleUnitEnum unit)
-{
-    if (tangent->cos >= 1.0f - BGC_EPSYLON_FP32) {
-        return 0.0f;
-    }
-
-    if (tangent->cos <= -1.0f + BGC_EPSYLON_FP32) {
-        return bgc_angle_get_half_circle_fp32(unit);
-    }
-
-    if (tangent->sin >= 1.0f - BGC_EPSYLON_FP32) {
-        return bgc_angle_get_quater_circle_fp32(unit);
-    }
-
-    if (tangent->sin <= -1.0f + BGC_EPSYLON_FP32) {
-        return 0.75f * bgc_angle_get_full_circle_fp32(unit);
-    }
-
-    return bgc_radians_to_units_fp32(atan2f(tangent->cos, tangent->sin), unit);
-}
-
-inline double bgc_tangent_pair_get_angle_fp64(const BgcTangentPairFP64* tangent, const BgcAngleUnitEnum unit)
-{
-    if (tangent->cos >= 1.0 - BGC_EPSYLON_FP64) {
-        return 0.0;
-    }
-
-    if (tangent->cos <= -1.0 + BGC_EPSYLON_FP64) {
-        return bgc_angle_get_half_circle_fp64(unit);
-    }
-
-    if (tangent->sin >= 1.0 - BGC_EPSYLON_FP64) {
-        return bgc_angle_get_quater_circle_fp64(unit);
-    }
-
-    if (tangent->sin <= -1.0 + BGC_EPSYLON_FP64) {
-        return 0.75 * bgc_angle_get_full_circle_fp64(unit);
-    }
-
-    return bgc_radians_to_units_fp64(atan2(tangent->cos, tangent->sin), unit);
-}
-
-// ================ Combination ================= //
-
-inline void bgc_tangent_pair_combine_fp32(const BgcTangentPairFP32* tangent1, const BgcTangentPairFP32* tangent2, BgcTangentPairFP32* result)
-{
-    bgc_tangent_pair_set_values_fp32(
-        tangent1->cos * tangent2->cos - tangent1->sin * tangent2->sin,
-        tangent1->cos * tangent2->sin + tangent1->sin * tangent2->cos,
-        result
-    );
-}
-
-inline void bgc_tangent_pair_combine_fp64(const BgcTangentPairFP64* tangent1, const BgcTangentPairFP64* tangent2, BgcTangentPairFP64* result)
-{
-    bgc_tangent_pair_set_values_fp64(
-        tangent1->cos * tangent2->cos - tangent1->sin * tangent2->sin,
-        tangent1->cos * tangent2->sin + tangent1->sin * tangent2->cos,
-        result
-    );
 }
 
 // ================ Turn Vector ================= //

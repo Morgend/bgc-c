@@ -50,6 +50,50 @@ inline void bgc_vector3_set_values_fp64(const double x1, const double x2, const 
     to->x3 = x3;
 }
 
+// ================== Modulus =================== //
+
+inline float bgc_vector3_get_square_modulus_fp32(const BgcVector3FP32* vector)
+{
+    return vector->x1 * vector->x1 + vector->x2 * vector->x2 + vector->x3 * vector->x3;
+}
+
+inline double bgc_vector3_get_square_modulus_fp64(const BgcVector3FP64* vector)
+{
+    return vector->x1 * vector->x1 + vector->x2 * vector->x2 + vector->x3 * vector->x3;
+}
+
+inline float bgc_vector3_get_modulus_fp32(const BgcVector3FP32* vector)
+{
+    return sqrtf(bgc_vector3_get_square_modulus_fp32(vector));
+}
+
+inline double bgc_vector3_get_modulus_fp64(const BgcVector3FP64* vector)
+{
+    return sqrt(bgc_vector3_get_square_modulus_fp64(vector));
+}
+
+// ================= Comparison ================= //
+
+inline int bgc_vector3_is_zero_fp32(const BgcVector3FP32* vector)
+{
+    return bgc_vector3_get_square_modulus_fp32(vector) <= BGC_SQUARE_EPSYLON_FP32;
+}
+
+inline int bgc_vector3_is_zero_fp64(const BgcVector3FP64* vector)
+{
+    return bgc_vector3_get_square_modulus_fp64(vector) <= BGC_SQUARE_EPSYLON_FP64;
+}
+
+inline int bgc_vector3_is_unit_fp32(const BgcVector3FP32* vector)
+{
+    return bgc_is_sqare_unit_fp32(bgc_vector3_get_square_modulus_fp32(vector));
+}
+
+inline int bgc_vector3_is_unit_fp64(const BgcVector3FP64* vector)
+{
+    return bgc_is_sqare_unit_fp64(bgc_vector3_get_square_modulus_fp64(vector));
+}
+
 // ==================== Copy ==================== //
 
 inline void bgc_vector3_copy_fp32(const BgcVector3FP32* from, BgcVector3FP32* to)
@@ -60,22 +104,6 @@ inline void bgc_vector3_copy_fp32(const BgcVector3FP32* from, BgcVector3FP32* to
 }
 
 inline void bgc_vector3_copy_fp64(const BgcVector3FP64* from, BgcVector3FP64* to)
-{
-    to->x1 = from->x1;
-    to->x2 = from->x2;
-    to->x3 = from->x3;
-}
-
-// ================== Convert =================== //
-
-inline void bgc_vector3_convert_fp64_to_fp32(const BgcVector3FP64* from, BgcVector3FP32* to)
-{
-    to->x1 = (float) from->x1;
-    to->x2 = (float) from->x2;
-    to->x3 = (float) from->x3;
-}
-
-inline void bgc_vector3_convert_fp32_to_fp64(const BgcVector3FP32* from, BgcVector3FP64* to)
 {
     to->x1 = from->x1;
     to->x2 = from->x2;
@@ -114,96 +142,116 @@ inline void bgc_vector3_swap_fp64(BgcVector3FP64* vector1, BgcVector3FP64* vecto
     vector1->x3 = x3;
 }
 
-// ==================== Invert ================== //
+// ================== Convert =================== //
 
-inline void bgc_vector3_invert_fp32(BgcVector3FP32* vector)
+inline void bgc_vector3_convert_fp64_to_fp32(const BgcVector3FP64* from, BgcVector3FP32* to)
+{
+    to->x1 = (float) from->x1;
+    to->x2 = (float) from->x2;
+    to->x3 = (float) from->x3;
+}
+
+inline void bgc_vector3_convert_fp32_to_fp64(const BgcVector3FP32* from, BgcVector3FP64* to)
+{
+    to->x1 = from->x1;
+    to->x2 = from->x2;
+    to->x3 = from->x3;
+}
+
+// ================== Reverse =================== //
+
+inline void bgc_vector3_reverse_fp32(BgcVector3FP32* vector)
 {
     vector->x1 = -vector->x1;
     vector->x2 = -vector->x2;
     vector->x3 = -vector->x3;
 }
 
-inline void bgc_vector3_invert_fp64(BgcVector3FP64* vector)
+inline void bgc_vector3_reverse_fp64(BgcVector3FP64* vector)
 {
     vector->x1 = -vector->x1;
     vector->x2 = -vector->x2;
     vector->x3 = -vector->x3;
 }
 
-// ================ Make Inverted =============== //
+// ================= Normalize ================== //
 
-inline void bgc_vector3_set_inverted_fp32(const BgcVector3FP32* vector, BgcVector3FP32* result)
+inline int bgc_vector3_normalize_fp32(BgcVector3FP32* vector)
 {
-    result->x1 = -vector->x1;
-    result->x2 = -vector->x2;
-    result->x3 = -vector->x3;
+    const float square_modulus = bgc_vector3_get_square_modulus_fp32(vector);
+
+    if (bgc_is_sqare_unit_fp32(square_modulus)) {
+        return 1;
+    }
+
+    if (square_modulus <= BGC_SQUARE_EPSYLON_FP32 || square_modulus != square_modulus) {
+        vector->x1 = 0.0f;
+        vector->x2 = 0.0f;
+        vector->x3 = 0.0f;
+        return 0;
+    }
+
+    const float multiplicand = sqrtf(1.0f / square_modulus);
+
+    vector->x1 *= multiplicand;
+    vector->x2 *= multiplicand;
+    vector->x3 *= multiplicand;
+
+    return 1;
 }
 
-inline void bgc_vector3_set_inverted_fp64(const BgcVector3FP64* vector, BgcVector3FP64* result)
+inline int bgc_vector3_normalize_fp64(BgcVector3FP64* vector)
 {
-    result->x1 = -vector->x1;
-    result->x2 = -vector->x2;
-    result->x3 = -vector->x3;
+    const double square_modulus = bgc_vector3_get_square_modulus_fp64(vector);
+
+    if (bgc_is_sqare_unit_fp64(square_modulus)) {
+        return 1;
+    }
+
+    if (square_modulus <= BGC_SQUARE_EPSYLON_FP64 || square_modulus != square_modulus) {
+        vector->x1 = 0.0;
+        vector->x2 = 0.0;
+        vector->x3 = 0.0;
+        return 0;
+    }
+
+    const double multiplicand = sqrt(1.0 / square_modulus);
+
+    vector->x1 *= multiplicand;
+    vector->x2 *= multiplicand;
+    vector->x3 *= multiplicand;
+
+    return 1;
 }
 
-// ============== Make Inverted Twin ============ //
+// ================ Make Reverse ================ //
 
-inline void bgc_vector3_set_inverted_fp32_to_fp64(const BgcVector3FP32* vector, BgcVector3FP64* result)
+inline void bgc_vector3_make_reverse_fp32(const BgcVector3FP32* vector, BgcVector3FP32* reverse)
 {
-    result->x1 = -vector->x1;
-    result->x2 = -vector->x2;
-    result->x3 = -vector->x3;
+    reverse->x1 = -vector->x1;
+    reverse->x2 = -vector->x2;
+    reverse->x3 = -vector->x3;
 }
 
-inline void bgc_vector3_set_inverted_fp64_to_fp32(const BgcVector3FP64* vector, BgcVector3FP32* result)
+inline void bgc_vector3_make_reverse_fp64(const BgcVector3FP64* vector, BgcVector3FP64* reverse)
 {
-    result->x1 = (float) -vector->x1;
-    result->x2 = (float) -vector->x2;
-    result->x3 = (float) -vector->x3;
+    reverse->x1 = -vector->x1;
+    reverse->x2 = -vector->x2;
+    reverse->x3 = -vector->x3;
 }
 
-// =================== Module =================== //
+// ============== Make Normalized =============== //
 
-inline float bgc_vector3_get_square_modulus_fp32(const BgcVector3FP32* vector)
+inline int bgc_vector3_make_normalized_fp32(const BgcVector3FP32* vector, BgcVector3FP32* normalized)
 {
-    return vector->x1 * vector->x1 + vector->x2 * vector->x2 + vector->x3 * vector->x3;
+    bgc_vector3_copy_fp32(vector, normalized);
+    return bgc_vector3_normalize_fp32(normalized);
 }
 
-inline double bgc_vector3_get_square_modulus_fp64(const BgcVector3FP64* vector)
+inline int bgc_vector3_make_normalized_fp64(const BgcVector3FP64* vector, BgcVector3FP64* normalized)
 {
-    return vector->x1 * vector->x1 + vector->x2 * vector->x2 + vector->x3 * vector->x3;
-}
-
-inline float bgc_vector3_get_modulus_fp32(const BgcVector3FP32* vector)
-{
-    return sqrtf(bgc_vector3_get_square_modulus_fp32(vector));
-}
-
-inline double bgc_vector3_get_modulus_fp64(const BgcVector3FP64* vector)
-{
-    return sqrt(bgc_vector3_get_square_modulus_fp64(vector));
-}
-
-// ================= Comparison ================= //
-
-inline int bgc_vector3_is_zero_fp32(const BgcVector3FP32* vector)
-{
-    return bgc_vector3_get_square_modulus_fp32(vector) <= BGC_SQUARE_EPSYLON_FP32;
-}
-
-inline int bgc_vector3_is_zero_fp64(const BgcVector3FP64* vector)
-{
-    return bgc_vector3_get_square_modulus_fp64(vector) <= BGC_SQUARE_EPSYLON_FP64;
-}
-
-inline int bgc_vector3_is_unit_fp32(const BgcVector3FP32* vector)
-{
-    return bgc_is_sqare_value_unit_fp32(bgc_vector3_get_square_modulus_fp32(vector));
-}
-
-inline int bgc_vector3_is_unit_fp64(const BgcVector3FP64* vector)
-{
-    return bgc_is_sqare_value_unit_fp64(bgc_vector3_get_square_modulus_fp64(vector));
+    bgc_vector3_copy_fp64(vector, normalized);
+    return bgc_vector3_normalize_fp64(normalized);
 }
 
 // ==================== Add ===================== //
@@ -238,7 +286,7 @@ inline void bgc_vector3_add_scaled_fp64(const BgcVector3FP64* basic_vector, cons
     result->x3 = basic_vector->x3 + scalable_vector->x3 * scale;
 }
 
-// ================ Subtraction ================= //
+// ================== Subtract ================== //
 
 inline void bgc_vector3_subtract_fp32(const BgcVector3FP32* minuend, const BgcVector3FP32* subtrahend, BgcVector3FP32* difference)
 {
@@ -254,7 +302,23 @@ inline void bgc_vector3_subtract_fp64(const BgcVector3FP64* minuend, const BgcVe
     difference->x3 = minuend->x3 - subtrahend->x3;
 }
 
-// =============== Multiplication =============== //
+// ============== Subtract scaled =============== //
+
+inline void bgc_vector3_subtract_scaled_fp32(const BgcVector3FP32* basic_vector, const BgcVector3FP32* scalable_vector, const float scale, BgcVector3FP32* result)
+{
+    result->x1 = basic_vector->x1 - scalable_vector->x1 * scale;
+    result->x2 = basic_vector->x2 - scalable_vector->x2 * scale;
+    result->x3 = basic_vector->x3 - scalable_vector->x3 * scale;
+}
+
+inline void bgc_vector3_subtract_scaled_fp64(const BgcVector3FP64* basic_vector, const BgcVector3FP64* scalable_vector, const double scale, BgcVector3FP64* result)
+{
+    result->x1 = basic_vector->x1 - scalable_vector->x1 * scale;
+    result->x2 = basic_vector->x2 - scalable_vector->x2 * scale;
+    result->x3 = basic_vector->x3 - scalable_vector->x3 * scale;
+}
+
+// ================== Multiply ================== //
 
 inline void bgc_vector3_multiply_fp32(const BgcVector3FP32* multiplicand, const float multiplier, BgcVector3FP32* product)
 {
@@ -270,7 +334,7 @@ inline void bgc_vector3_multiply_fp64(const BgcVector3FP64* multiplicand, const 
     product->x3 = multiplicand->x3 * multiplier;
 }
 
-// ================== Division ================== //
+// =================== Divide =================== //
 
 inline void bgc_vector3_divide_fp32(const BgcVector3FP32* dividend, const float divisor, BgcVector3FP32* quotient)
 {
@@ -386,56 +450,6 @@ inline void bgc_vector3_double_cross_fp64(const BgcVector3FP64* vector1, const B
     result->x1 = vector2->x1 * ac - vector3->x1 * ab;
     result->x2 = vector2->x2 * ac - vector3->x2 * ab;
     result->x3 = vector2->x3 * ac - vector3->x3 * ab;
-}
-
-// =============== Normalization ================ //
-
-inline int bgc_vector3_normalize_fp32(BgcVector3FP32* vector)
-{
-    const float square_modulus = bgc_vector3_get_square_modulus_fp32(vector);
-
-    if (bgc_is_sqare_value_unit_fp32(square_modulus)) {
-        return 1;
-    }
-
-    if (square_modulus <= BGC_SQUARE_EPSYLON_FP32) {
-        bgc_vector3_reset_fp32(vector);
-        return 0;
-    }
-
-    bgc_vector3_multiply_fp32(vector, sqrtf(1.0f / square_modulus), vector);
-    return 1;
-}
-
-inline int bgc_vector3_normalize_fp64(BgcVector3FP64* vector)
-{
-    const double square_modulus = bgc_vector3_get_square_modulus_fp64(vector);
-
-    if (bgc_is_sqare_value_unit_fp64(square_modulus)) {
-        return 1;
-    }
-
-    if (square_modulus <= BGC_SQUARE_EPSYLON_FP64) {
-        bgc_vector3_reset_fp64(vector);
-        return 0;
-    }
-
-    bgc_vector3_multiply_fp64(vector, sqrt(1.0 / square_modulus), vector);
-    return 1;
-}
-
-// =============== Set Normalized =============== //
-
-inline int bgc_vector3_set_normalized_fp32(const BgcVector3FP32* vector, BgcVector3FP32* result)
-{
-    bgc_vector3_copy_fp32(vector, result);
-    return bgc_vector3_normalize_fp32(result);
-}
-
-inline int bgc_vector3_set_normalized_fp64(const BgcVector3FP64* vector, BgcVector3FP64* result)
-{
-    bgc_vector3_copy_fp64(vector, result);
-    return bgc_vector3_normalize_fp64(result);
 }
 
 // =================== Angle ==================== //

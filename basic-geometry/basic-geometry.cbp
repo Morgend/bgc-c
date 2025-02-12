@@ -52,7 +52,13 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="matrix2x2.h" />
+		<Unit filename="matrix2x3.c">
+			<Option compilerVar="CC" />
+		</Unit>
 		<Unit filename="matrix2x3.h" />
+		<Unit filename="matrix3x2.c">
+			<Option compilerVar="CC" />
+		</Unit>
 		<Unit filename="matrix3x2.h" />
 		<Unit filename="matrix3x3.c">
 			<Option compilerVar="CC" />

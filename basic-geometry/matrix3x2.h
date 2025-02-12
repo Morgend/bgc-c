@@ -109,7 +109,7 @@ inline void bgc_matrix3x2_swap_fp64(BgcMatrix3x2FP64* matrix1, BgcMatrix3x2FP64*
     matrix1->r2c3 = r2c3;
 }
 
-// ============= Set from twin type ============= //
+// ================== Convert =================== //
 
 inline void bgc_matrix3x2_convert_fp64_to_fp32(const BgcMatrix3x2FP64* from, BgcMatrix3x2FP32* to)
 {
@@ -131,54 +131,6 @@ inline void bgc_matrix3x2_convert_fp32_to_fp64(const BgcMatrix3x2FP32* from, Bgc
     to->r2c1 = from->r2c1;
     to->r2c2 = from->r2c2;
     to->r2c3 = from->r2c3;
-}
-
-// =============== Set transposed =============== //
-
-inline void bgc_matrix3x2_set_transposed_fp32(const BgcMatrix2x3FP32* from, BgcMatrix3x2FP32* to)
-{
-    to->r1c1 = from->r1c1;
-    to->r1c2 = from->r2c1;
-    to->r1c3 = from->r3c1;
-
-    to->r2c1 = from->r1c2;
-    to->r2c2 = from->r2c2;
-    to->r2c3 = from->r3c2;
-}
-
-inline void bgc_matrix3x2_set_transposed_fp64(const BgcMatrix2x3FP64* from, BgcMatrix3x2FP64* to)
-{
-    to->r1c1 = from->r1c1;
-    to->r1c2 = from->r2c1;
-    to->r1c3 = from->r3c1;
-
-    to->r2c1 = from->r1c2;
-    to->r2c2 = from->r2c2;
-    to->r2c3 = from->r3c2;
-}
-
-// =============== Set transposed =============== //
-
-inline void bgc_matrix3x2_set_transposed_fp32_fp64(const BgcMatrix2x3FP64* from, BgcMatrix3x2FP32* to)
-{
-    to->r1c1 = (float) from->r1c1;
-    to->r1c2 = (float) from->r2c1;
-    to->r1c3 = (float) from->r3c1;
-
-    to->r2c1 = (float) from->r1c2;
-    to->r2c2 = (float) from->r2c2;
-    to->r2c3 = (float) from->r3c2;
-}
-
-inline void bgc_matrix3x2_set_transposed_fp64_fp32(const BgcMatrix2x3FP32* from, BgcMatrix3x2FP64* to)
-{
-    to->r1c1 = from->r1c1;
-    to->r1c2 = from->r2c1;
-    to->r1c3 = from->r3c1;
-
-    to->r2c1 = from->r1c2;
-    to->r2c2 = from->r2c2;
-    to->r2c3 = from->r3c2;
 }
 
 // ================= Set Row 1 ================== //
@@ -255,7 +207,31 @@ inline void bgc_matrix3x2_set_column3_fp64(const double r1, const double r2, Bgc
     matrix->r2c3 = r2;
 }
 
-// ================== Addition ================== //
+// ============== Make transposed =============== //
+
+inline void bgc_matrix3x2_make_transposed_fp32(const BgcMatrix2x3FP32* from, BgcMatrix3x2FP32* to)
+{
+    to->r1c1 = from->r1c1;
+    to->r1c2 = from->r2c1;
+    to->r1c3 = from->r3c1;
+
+    to->r2c1 = from->r1c2;
+    to->r2c2 = from->r2c2;
+    to->r2c3 = from->r3c2;
+}
+
+inline void bgc_matrix3x2_make_transposed_fp64(const BgcMatrix2x3FP64* from, BgcMatrix3x2FP64* to)
+{
+    to->r1c1 = from->r1c1;
+    to->r1c2 = from->r2c1;
+    to->r1c3 = from->r3c1;
+
+    to->r2c1 = from->r1c2;
+    to->r2c2 = from->r2c2;
+    to->r2c3 = from->r3c2;
+}
+
+// ==================== Add ===================== //
 
 inline void bgc_matrix3x2_add_fp32(const BgcMatrix3x2FP32* matrix1, const BgcMatrix3x2FP32* matrix2, BgcMatrix3x2FP32* sum)
 {
@@ -303,7 +279,7 @@ inline void bgc_matrix3x2_add_scaled_fp64(const BgcMatrix3x2FP64* basic_matrix, 
     sum->r2c3 = basic_matrix->r2c3 + scalable_matrix->r2c3 * scale;
 }
 
-// ================ Subtraction ================= //
+// ================== Subtract ================== //
 
 inline void bgc_matrix3x2_subtract_fp32(const BgcMatrix3x2FP32* minuend, const BgcMatrix3x2FP32* subtrahend, BgcMatrix3x2FP32* difference)
 {
@@ -327,7 +303,31 @@ inline void bgc_matrix3x2_subtract_fp64(const BgcMatrix3x2FP64* minuend, const B
     difference->r2c3 = minuend->r2c3 - subtrahend->r2c3;
 }
 
-// =============== Multiplication =============== //
+// ============== Subtract scaled =============== //
+
+inline void bgc_matrix3x2_subtract_scaled_fp32(const BgcMatrix3x2FP32* basic_matrix, const BgcMatrix3x2FP32* scalable_matrix, const float scale, BgcMatrix3x2FP32* difference)
+{
+    difference->r1c1 = basic_matrix->r1c1 - scalable_matrix->r1c1 * scale;
+    difference->r1c2 = basic_matrix->r1c2 - scalable_matrix->r1c2 * scale;
+    difference->r1c3 = basic_matrix->r1c3 - scalable_matrix->r1c3 * scale;
+
+    difference->r2c1 = basic_matrix->r2c1 - scalable_matrix->r2c1 * scale;
+    difference->r2c2 = basic_matrix->r2c2 - scalable_matrix->r2c2 * scale;
+    difference->r2c3 = basic_matrix->r2c3 - scalable_matrix->r2c3 * scale;
+}
+
+inline void bgc_matrix3x2_subtract_scaled_fp64(const BgcMatrix3x2FP64* basic_matrix, const BgcMatrix3x2FP64* scalable_matrix, const double scale, BgcMatrix3x2FP64* difference)
+{
+    difference->r1c1 = basic_matrix->r1c1 - scalable_matrix->r1c1 * scale;
+    difference->r1c2 = basic_matrix->r1c2 - scalable_matrix->r1c2 * scale;
+    difference->r1c3 = basic_matrix->r1c3 - scalable_matrix->r1c3 * scale;
+
+    difference->r2c1 = basic_matrix->r2c1 - scalable_matrix->r2c1 * scale;
+    difference->r2c2 = basic_matrix->r2c2 - scalable_matrix->r2c2 * scale;
+    difference->r2c3 = basic_matrix->r2c3 - scalable_matrix->r2c3 * scale;
+}
+
+// ================== Multiply ================== //
 
 inline void bgc_matrix3x2_multiply_fp32(const BgcMatrix3x2FP32* multiplicand, const float multiplier, BgcMatrix3x2FP32* product)
 {
@@ -351,7 +351,7 @@ inline void bgc_matrix3x2_multiply_fp64(const BgcMatrix3x2FP64* multiplicand, co
     product->r2c3 = multiplicand->r2c3 * multiplier;
 }
 
-// ================== Division ================== //
+// =================== Divide =================== //
 
 inline void bgc_matrix3x2_divide_fp32(const BgcMatrix3x2FP32* dividend, const float divisor, BgcMatrix3x2FP32* quotient)
 {

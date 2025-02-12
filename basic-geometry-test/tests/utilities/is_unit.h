@@ -5,9 +5,9 @@ int test_is_unit_fp32();
 
 int test_is_unit_fp64();
 
-int test_is_sqare_value_unit_fp32();
+int test_is_sqare_unit_fp32();
 
-int test_is_sqare_value_unit_fp64();
+int test_is_sqare_unit_fp64();
 
 int test_is_unit();
 

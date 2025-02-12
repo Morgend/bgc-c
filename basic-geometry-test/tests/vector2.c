@@ -73,7 +73,7 @@ int test_vector2_fp32_square_modulus()
     return TEST_SUCCES;
 }
 
-// =================== Module =================== //
+// ================== Modulus =================== //
 
 const float FP32_VECTOR2_MODULUS_1[] = { 5.0f, 5.0f, 22360.68f, 10.0005f, 123.55626338f };
 

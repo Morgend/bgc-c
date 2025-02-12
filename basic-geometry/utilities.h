@@ -47,12 +47,12 @@ inline int bgc_is_unit_fp64(const double square_value)
 }
 
 
-inline int bgc_is_sqare_value_unit_fp32(const float square_value)
+inline int bgc_is_sqare_unit_fp32(const float square_value)
 {
     return (1.0f - 2.0f * BGC_EPSYLON_FP32 <= square_value) && (square_value <= 1.0f + 2.0f * BGC_EPSYLON_FP32);
 }
 
-inline int bgc_is_sqare_value_unit_fp64(const double square_value)
+inline int bgc_is_sqare_unit_fp64(const double square_value)
 {
     return (1.0 - 2.0 * BGC_EPSYLON_FP64 <= square_value) && (square_value <= 1.0 + 2.0 * BGC_EPSYLON_FP64);
 }
