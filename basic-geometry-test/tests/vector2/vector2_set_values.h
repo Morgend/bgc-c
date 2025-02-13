@@ -1,10 +1,10 @@
 #ifndef _TEST_VECTOR2_SET_VALUES_H_
 #define _TEST_VECTOR2_SET_VALUES_H_
 
-int test_vector2_set_values_fp32();
+void test_vector2_set_values_fp32();
 
-int test_vector2_set_values_fp64();
+void test_vector2_set_values_fp64();
 
-int test_vector2_set_values();
+void test_vector2_set_values();
 
 #endif

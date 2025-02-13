@@ -29,29 +29,27 @@ static const BgcVector3FP32 _TEST_FP32_NONZERO_VECTOR3_LIST[] = {
     { -1.25f * BGC_EPSYLON_FP32, -1.25f * BGC_EPSYLON_FP32, 0.0f }
 };
 
-int test_vector3_is_zero_fp32()
+void test_vector3_is_zero_fp32()
 {
     print_testing_name("bgc_vector3_is_zero_fp32");
 
     // Testing zero values:
     for (int i = 0; i < _TEST_FP32_ZERO_VECTOR3_AMOUNT; i++) {
         if (!bgc_vector3_is_zero_fp32(&_TEST_FP32_ZERO_VECTOR3_LIST[i])) {
-            print_testing_failed();
-            return TEST_FAILED;
+            print_testing_error("A zero vector was not recongized");
+            return;
         }
     }
 
     // Testing non-zero values:
     for (int i = 0; i < _TEST_FP32_NONZERO_VECTOR3_AMOUNT; i++) {
         if (bgc_vector3_is_zero_fp32(&_TEST_FP32_NONZERO_VECTOR3_LIST[i])) {
-            print_testing_failed();
-            return TEST_FAILED;
+            print_testing_error("A non-zero vector was recongized as a zero vector");
+            return;
         }
     }
 
     print_testing_success();
-
-    return TEST_SUCCES;
 }
 
 // ==================== FP64 ==================== //
@@ -81,40 +79,31 @@ static const BgcVector3FP64 _TEST_FP64_NONZERO_VECTOR3_LIST[] = {
     { -BGC_EPSYLON_FP64, -BGC_EPSYLON_FP64, 0.0 }
 };
 
-int test_vector3_is_zero_fp64()
+void test_vector3_is_zero_fp64()
 {
     print_testing_name("bgc_vector3_is_zero_fp64");
 
     // Testing zero values:
     for (int i = 0; i < _TEST_FP64_ZERO_VECTOR3_AMOUNT; i++) {
         if (!bgc_vector3_is_zero_fp64(&_TEST_FP64_ZERO_VECTOR3_LIST[i])) {
-            print_testing_failed();
-            return TEST_FAILED;
+            print_testing_error("A zero vector was not recongized");
+            return;
         }
     }
 
     // Testing non-zero values:
     for (int i = 0; i < _TEST_FP64_NONZERO_VECTOR3_AMOUNT; i++) {
         if (bgc_vector3_is_zero_fp64(&_TEST_FP64_NONZERO_VECTOR3_LIST[i])) {
-            print_testing_failed();
-            return TEST_FAILED;
+            print_testing_error("A non-zero vector was recongized as a zero vector");
+            return;
         }
     }
 
     print_testing_success();
-
-    return TEST_SUCCES;
 }
 
-int test_vector3_is_zero()
+void test_vector3_is_zero()
 {
-    if (test_vector3_is_zero_fp32() != TEST_SUCCES) {
-        return TEST_FAILED;
-    }
-
-    if (test_vector3_is_zero_fp64() != TEST_SUCCES) {
-        return TEST_FAILED;
-    }
-
-    return TEST_SUCCES;
+    test_vector3_is_zero_fp32();
+    test_vector3_is_zero_fp64();
 }

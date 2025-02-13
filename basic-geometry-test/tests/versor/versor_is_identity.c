@@ -27,29 +27,27 @@ static const BgcVersorFP32 _TEST_FP32_NON_IDENTIYTY_VERSOR_LIST[] = {
     { 1.0f - 1.25f * BGC_EPSYLON_FP32, 0.0f, 0.0f, 0.0f }
 };
 
-int test_versor_is_identity_fp32()
+void test_versor_is_identity_fp32()
 {
     print_testing_name("bgc_versor_is_identity_fp32");
 
     // Testing zero values:
     for (int i = 0; i < _TEST_FP32_IDENTIYTY_VERSOR_AMOUNT; i++) {
         if (!bgc_versor_is_identity_fp32(&_TEST_FP32_IDENTIYTY_VERSOR_LIST[i])) {
-            print_testing_failed();
-            return TEST_FAILED;
+            print_testing_error("An identity versor was not recognized");
+            return;
         }
     }
 
     // Testing non-zero values:
     for (int i = 0; i < _TEST_FP32_NON_IDENTIYTY_VERSOR_AMOUNT; i++) {
         if (bgc_versor_is_identity_fp32(&_TEST_FP32_NON_IDENTIYTY_VERSOR_LIST[i])) {
-            print_testing_failed();
-            return TEST_FAILED;
+            print_testing_error("A non-identity versor was recognized as an identity versor");
+            return;
         }
     }
 
     print_testing_success();
-
-    return TEST_SUCCES;
 }
 
 // ==================== FP64 ==================== //
@@ -77,40 +75,31 @@ static const BgcVersorFP64 _TEST_FP64_NON_IDENTIYTY_VERSOR_LIST[] = {
     { 1.0 - 1.25 * BGC_EPSYLON_FP64, 0.0, 0.0, 0.0 }
 };
 
-int test_versor_is_identity_fp64()
+void test_versor_is_identity_fp64()
 {
     print_testing_name("bgc_versor_is_identity_fp64");
 
     // Testing zero values:
     for (int i = 0; i < _TEST_FP64_IDENTIYTY_VERSOR_AMOUNT; i++) {
         if (!bgc_versor_is_identity_fp64(&_TEST_FP64_IDENTIYTY_VERSOR_LIST[i])) {
-            print_testing_failed();
-            return TEST_FAILED;
+            print_testing_error("An identity versor was not recognized");
+            return;
         }
     }
 
     // Testing non-zero values:
     for (int i = 0; i < _TEST_FP64_NON_IDENTIYTY_VERSOR_AMOUNT; i++) {
         if (bgc_versor_is_identity_fp64(&_TEST_FP64_NON_IDENTIYTY_VERSOR_LIST[i])) {
-            print_testing_failed();
-            return TEST_FAILED;
+            print_testing_error("A non-identity versor was recognized as an identity versor");
+            return;
         }
     }
 
     print_testing_success();
-
-    return TEST_SUCCES;
 }
 
-int test_versor_is_identity()
+void test_versor_is_identity()
 {
-    if (test_versor_is_identity_fp32() != TEST_SUCCES) {
-        return TEST_FAILED;
-    }
-
-    if (test_versor_is_identity_fp64() != TEST_SUCCES) {
-        return TEST_FAILED;
-    }
-
-    return TEST_SUCCES;
+    test_versor_is_identity_fp32();
+    test_versor_is_identity_fp64();
 }

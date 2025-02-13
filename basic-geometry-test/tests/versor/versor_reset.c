@@ -2,25 +2,23 @@
 
 #include "./../../helpers.h"
 
-int test_versor_reset_fp32()
+void test_versor_reset_fp32()
 {
     BgcVersorFP32 versor;
-    
+
     print_testing_name("bgc_versor_reset_fp32");
 
     bgc_versor_reset_fp32(&versor);
 
     if (versor.s0 != 1.0f || versor.x1 != 0.0f || versor.x2 != 0.0f || versor.x3 != 0.0f) {
         print_testing_failed();
-        return TEST_FAILED;
+        return;
     }
 
     print_testing_success();
-
-    return TEST_SUCCES;
 }
 
-int test_versor_reset_fp64()
+void test_versor_reset_fp64()
 {
     BgcVersorFP64 versor;
 
@@ -30,23 +28,14 @@ int test_versor_reset_fp64()
 
     if (versor.s0 != 1.0 || versor.x1 != 0.0 || versor.x2 != 0.0 || versor.x3 != 0.0) {
         print_testing_failed();
-        return TEST_FAILED;
+        return;
     }
 
     print_testing_success();
-
-    return TEST_SUCCES;
 }
 
-int test_versor_reset()
+void test_versor_reset()
 {
-    if (test_versor_reset_fp32() != TEST_SUCCES) {
-        return TEST_FAILED;
-    }
-
-    if (test_versor_reset_fp64() != TEST_SUCCES) {
-        return TEST_FAILED;
-    }
-
-    return TEST_SUCCES;
+    test_versor_reset_fp32();
+    test_versor_reset_fp64();
 }

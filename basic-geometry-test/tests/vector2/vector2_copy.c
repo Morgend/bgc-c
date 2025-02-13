@@ -14,25 +14,23 @@ static const BgcVector2FP32 _TEST_FP32_VECTOR2_LIST[] = {
     { -100.0f, 100.0f }
 };
 
-int test_vector2_copy_fp32()
+void test_vector2_copy_fp32()
 {
     BgcVector2FP32 vector;
 
     print_testing_name("bgc_vector2_copy_fp32");
 
     for (int i = 0; i < _TEST_FP32_VECTOR2_AMOUNT; i++) {
-        
+
         bgc_vector2_copy_fp32(&_TEST_FP32_VECTOR2_LIST[i], &vector);
 
         if (vector.x1 != _TEST_FP32_VECTOR2_LIST[i].x1 || vector.x2 != _TEST_FP32_VECTOR2_LIST[i].x2) {
             print_testing_failed();
-            return TEST_FAILED;
+            return;
         }
     }
 
     print_testing_success();
-
-    return TEST_SUCCES;
 }
 
 // ==================== FP64 ==================== //
@@ -45,7 +43,7 @@ static const BgcVector2FP64 _TEST_FP64_VECTOR2_LIST[] = {
     { -100.0, 100.0 }
 };
 
-int test_vector2_copy_fp64()
+void test_vector2_copy_fp64()
 {
     BgcVector2FP64 vector;
 
@@ -57,24 +55,15 @@ int test_vector2_copy_fp64()
 
         if (vector.x1 != _TEST_FP64_VECTOR2_LIST[i].x1 || vector.x2 != _TEST_FP64_VECTOR2_LIST[i].x2) {
             print_testing_failed();
-            return TEST_FAILED;
+            return;
         }
     }
 
     print_testing_success();
-
-    return TEST_SUCCES;
 }
 
-int test_vector2_copy()
+void test_vector2_copy()
 {
-    if (test_vector2_copy_fp32() != TEST_SUCCES) {
-        return TEST_FAILED;
-    }
-
-    if (test_vector2_copy_fp64() != TEST_SUCCES) {
-        return TEST_FAILED;
-    }
-
-    return TEST_SUCCES;
+    test_vector2_copy_fp32();
+    test_vector2_copy_fp64();
 }

@@ -9,6 +9,6 @@
 #include "./versor/versor_is_identity.h"
 #include "./versor/versor_combine.h"
 
-int test_versor();
+void test_versor();
 
 #endif

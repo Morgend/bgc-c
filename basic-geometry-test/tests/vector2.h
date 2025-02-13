@@ -9,18 +9,6 @@
 #include "./vector2/vector2_is_zero.h"
 #include "./vector2/vector2_is_unit.h"
 
-/*
-int test_fp32_vector2();
-
-int test_vector2_fp32_square_modulus();
-
-int test_vector2_fp32_modulus();
-
-int test_vector2_add_fp32();
-
-int test_vector2_subtract_fp32();
-*/
-
-int test_vector2();
+void test_vector2();
 
 #endif

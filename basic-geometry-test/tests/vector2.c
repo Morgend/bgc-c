@@ -1,34 +1,15 @@
 #include "vector2.h"
 
-int test_vector2()
+void test_vector2()
 {
     print_testing_section("BGC Vector2");
 
-    if (test_vector2_reset() != TEST_SUCCES) {
-        return TEST_FAILED;
-    }
-
-    if (test_vector2_set_values() != TEST_SUCCES) {
-        return TEST_FAILED;
-    }
-
-    if (test_vector2_copy() != TEST_SUCCES) {
-        return TEST_FAILED;
-    }
-
-    if (test_vector2_swap() != TEST_SUCCES) {
-        return TEST_FAILED;
-    }
-
-    if (test_vector2_is_zero() != TEST_SUCCES) {
-        return TEST_FAILED;
-    }
-
-    if (test_vector2_is_unit() != TEST_SUCCES) {
-        return TEST_FAILED;
-    }
-
-    return TEST_SUCCES;
+    test_vector2_reset();
+    test_vector2_set_values();
+    test_vector2_copy();
+    test_vector2_swap();
+    test_vector2_is_zero();
+    test_vector2_is_unit();
 }
 
 

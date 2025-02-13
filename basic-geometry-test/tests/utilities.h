@@ -5,6 +5,6 @@
 #include "./utilities/is_unit.h"
 #include "./utilities/are_close.h"
 
-int test_utilities();
+void test_utilities();
 
 #endif

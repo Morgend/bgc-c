@@ -4,19 +4,11 @@
 
 #include "./../../helpers.h"
 
-typedef struct {
-    BgcVersorFP32 first, second, result;
-} _TestVersorTripletFP32;
-
-typedef struct {
-    BgcVersorFP64 first, second, result;
-} _TestVersorTripletFP64;
-
 // ==================== FP32 ==================== //
 
 static const int _TEST_FP32_VERSOR_TRIPLET_AMOUNT = 5;
 
-static const _TestVersorTripletFP32 _TEST_FP32_VERSOR_TRIPLET_LIST[] = {
+static const TestVersorTripletFP32 _TEST_FP32_VERSOR_TRIPLET_LIST[] = {
     {
         { 1.0f, 0.0f, 0.0f, 0.0f },
         { 1.0f, 0.0f, 0.0f, 0.0f },
@@ -44,7 +36,7 @@ static const _TestVersorTripletFP32 _TEST_FP32_VERSOR_TRIPLET_LIST[] = {
     }
 };
 
-int test_versor_combine_fp32()
+void test_versor_combine_fp32()
 {
     BgcVersorFP32 versor;
 
@@ -55,20 +47,18 @@ int test_versor_combine_fp32()
 
         if (!bgc_versor_are_close_fp32(&versor, &_TEST_FP32_VERSOR_TRIPLET_LIST[i].result)) {
             print_testing_failed();
-            return TEST_FAILED;
+            return;
         }
     }
 
     print_testing_success();
-
-    return TEST_SUCCES;
 }
 
 // ==================== FP64 ==================== //
 
 static const int _TEST_FP64_VERSOR_TRIPLET_AMOUNT = 5;
 
-static const _TestVersorTripletFP64 _TEST_FP64_VERSOR_TRIPLET_LIST[] = {
+static const TestVersorTripletFP64 _TEST_FP64_VERSOR_TRIPLET_LIST[] = {
     {
         { 1.0, 0.0, 0.0, 0.0 },
         { 1.0, 0.0, 0.0, 0.0 },
@@ -96,7 +86,7 @@ static const _TestVersorTripletFP64 _TEST_FP64_VERSOR_TRIPLET_LIST[] = {
     }
 };
 
-int test_versor_combine_fp64()
+void test_versor_combine_fp64()
 {
     BgcVersorFP64 versor;
 
@@ -107,24 +97,15 @@ int test_versor_combine_fp64()
 
         if (!bgc_versor_are_close_fp64(&versor, &_TEST_FP64_VERSOR_TRIPLET_LIST[i].result)) {
             print_testing_failed();
-            return TEST_FAILED;
+            return;
         }
     }
 
     print_testing_success();
-
-    return TEST_SUCCES;
 }
 
-int test_versor_combine()
+void test_versor_combine()
 {
-    if (test_versor_combine_fp32() != TEST_SUCCES) {
-        return TEST_FAILED;
-    }
-
-    if (test_versor_combine_fp64() != TEST_SUCCES) {
-        return TEST_FAILED;
-    }
-
-    return TEST_SUCCES;
+    test_versor_combine_fp32();
+    test_versor_combine_fp64();
 }

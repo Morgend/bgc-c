@@ -10,6 +10,6 @@
 #include "./quaternion/quaternion_is_zero.h"
 #include "./quaternion/quaternion_is_unit.h"
 
-int test_quaternion();
+void test_quaternion();
 
 #endif

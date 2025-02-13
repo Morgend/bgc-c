@@ -4,31 +4,23 @@
 
 #include "./../../helpers.h"
 
-typedef struct {
-    float s0, x1, x2, x3;
-} _TestVersorDataFP32;
-
-typedef struct {
-    double s0, x1, x2, x3;
-} _TestVersorDataFP64;
-
 // ==================== FP32 ==================== //
 
 static const int _TEST_FP32_VERSOR_AMOUNT = 3;
 
-static const _TestVersorDataFP32 _TEST_FP32_VERSOR_LIST1[] = {
+static const BgcQuaternionFP32 _TEST_FP32_VERSOR_LIST1[] = {
     { 1.0f, 2.0f, 3.0f, 4.0f },
     { -4.0f, -3.0f, -2.0f, -1.0f },
     { 0.5f, -0.5f, -0.5f, -0.5f }
 };
 
-static const _TestVersorDataFP32 _TEST_FP32_VERSOR_LIST2[] = {
+static const BgcQuaternionFP32 _TEST_FP32_VERSOR_LIST2[] = {
     { -0.5f, 0.5f, 0.5f, 0.5f },
     { -1.0f, -2.0f, -3.0f, -4.0f },
     { 4.0f, 3.0f, 2.0f, 1.0f }
 };
 
-int test_versor_swap_fp32()
+void test_versor_swap_fp32()
 {
     BgcVersorFP32 versor1a, versor2a, versor1b, versor2b;
 
@@ -59,18 +51,16 @@ int test_versor_swap_fp32()
         if (versor1a.s0 != versor2b.s0 || versor1a.x1 != versor2b.x1 || versor1a.x2 != versor2b.x2 || versor1a.x3 != versor2b.x3 ||
             versor2a.s0 != versor1b.s0 || versor2a.x1 != versor1b.x1 || versor2a.x2 != versor1b.x2 || versor2a.x3 != versor1b.x3) {
             print_testing_failed();
-            return TEST_FAILED;
+            return;
         }
     }
 
     print_testing_success();
-
-    return TEST_SUCCES;
 }
 
 // ==================== FP64 ==================== //
 
-int test_versor_swap_fp64()
+void test_versor_swap_fp64()
 {
     BgcVersorFP64 versor1a, versor2a, versor1b, versor2b;
 
@@ -101,24 +91,15 @@ int test_versor_swap_fp64()
         if (versor1a.s0 != versor2b.s0 || versor1a.x1 != versor2b.x1 || versor1a.x2 != versor2b.x2 || versor1a.x3 != versor2b.x3 ||
             versor2a.s0 != versor1b.s0 || versor2a.x1 != versor1b.x1 || versor2a.x2 != versor1b.x2 || versor2a.x3 != versor1b.x3) {
             print_testing_failed();
-            return TEST_FAILED;
+            return;
         }
     }
 
     print_testing_success();
-
-    return TEST_SUCCES;
 }
 
-int test_versor_swap()
+void test_versor_swap()
 {
-    if (test_versor_swap_fp32() != TEST_SUCCES) {
-        return TEST_FAILED;
-    }
-
-    if (test_versor_swap_fp64() != TEST_SUCCES) {
-        return TEST_FAILED;
-    }
-
-    return TEST_SUCCES;
+    test_versor_swap_fp32();
+    test_versor_swap_fp64();
 }

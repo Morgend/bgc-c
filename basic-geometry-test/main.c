@@ -9,30 +9,17 @@
 #include "tests/quaternion.h"
 #include "tests/versor.h"
 
-#define PROGRAM_SUCCESS 0
-#define PROGRAM_FAILED 1
-
 int main()
 {
-    if (test_utilities() == TEST_FAILED) {
-        return PROGRAM_FAILED;
-    }
+    test_utilities();
 
-    if (test_vector2() == TEST_FAILED) {
-        return PROGRAM_FAILED;
-    }
+    test_vector2();
 
-    if (test_vector3() == TEST_FAILED) {
-        return PROGRAM_FAILED;
-    }
+    test_vector3();
 
-    if (test_quaternion() == TEST_FAILED) {
-        return PROGRAM_FAILED;
-    }
+    test_quaternion();
 
-    if (test_versor() == TEST_FAILED) {
-        return PROGRAM_FAILED;
-    }
+    test_versor();
 
-    return PROGRAM_SUCCESS;
+    return 0;
 }

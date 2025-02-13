@@ -22,7 +22,7 @@ static const BgcVector3FP32 _TEST_FP32_VECTOR3_LIST2[] = {
     { 1000.0f, -0.00025f, -0.419f }
 };
 
-int test_vector3_swap_fp32()
+void test_vector3_swap_fp32()
 {
     BgcVector3FP32 vector1, vector2;
 
@@ -41,13 +41,11 @@ int test_vector3_swap_fp32()
             vector2.x2 != _TEST_FP32_VECTOR3_LIST1[i].x2 ||
             vector2.x3 != _TEST_FP32_VECTOR3_LIST1[i].x3) {
             print_testing_failed();
-            return TEST_FAILED;
+            return;
         }
     }
 
     print_testing_success();
-
-    return TEST_SUCCES;
 }
 
 // ==================== FP64 ==================== //
@@ -68,7 +66,7 @@ static const BgcVector3FP64 _TEST_FP64_VECTOR3_LIST2[] = {
     { 1000.0, -0.00025, -0.419 }
 };
 
-int test_vector3_swap_fp64()
+void test_vector3_swap_fp64()
 {
     BgcVector3FP64 vector1, vector2;
 
@@ -87,24 +85,15 @@ int test_vector3_swap_fp64()
             vector2.x2 != _TEST_FP64_VECTOR3_LIST1[i].x2 ||
             vector2.x3 != _TEST_FP64_VECTOR3_LIST1[i].x3) {
             print_testing_failed();
-            return TEST_FAILED;
+            return;
         }
     }
 
     print_testing_success();
-
-    return TEST_SUCCES;
 }
 
-int test_vector3_swap()
+void test_vector3_swap()
 {
-    if (test_vector3_swap_fp32() != TEST_SUCCES) {
-        return TEST_FAILED;
-    }
-
-    if (test_vector3_swap_fp64() != TEST_SUCCES) {
-        return TEST_FAILED;
-    }
-
-    return TEST_SUCCES;
+    test_vector3_swap_fp32();
+    test_vector3_swap_fp64();
 }

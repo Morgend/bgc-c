@@ -9,6 +9,6 @@
 #include "./vector3/vector3_is_zero.h"
 #include "./vector3/vector3_is_unit.h"
 
-int test_vector3();
+void test_vector3();
 
 #endif

@@ -1,10 +1,10 @@
 #ifndef _TEST_VECTOR2_IS_UNIT_H_
 #define _TEST_VECTOR2_IS_UNIT_H_
 
-int test_vector2_is_unit_fp32();
+void test_vector2_is_unit_fp32();
 
-int test_vector2_is_unit_fp64();
+void test_vector2_is_unit_fp64();
 
-int test_vector2_is_unit();
+void test_vector2_is_unit();
 
 #endif
