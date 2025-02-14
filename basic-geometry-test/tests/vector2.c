@@ -10,6 +10,7 @@ void test_vector2()
     test_vector2_swap();
     test_vector2_is_zero();
     test_vector2_is_unit();
+    test_vector2_modulus();
 }
 
 

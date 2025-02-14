@@ -10,4 +10,5 @@ void test_vector3()
     test_vector3_swap();
     test_vector3_is_zero();
     test_vector3_is_unit();
+    test_vector3_modulus();
 }

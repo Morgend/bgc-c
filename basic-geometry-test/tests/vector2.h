@@ -8,6 +8,7 @@
 #include "./vector2/vector2_swap.h"
 #include "./vector2/vector2_is_zero.h"
 #include "./vector2/vector2_is_unit.h"
+#include "./vector2/vector2_modulus.h"
 
 void test_vector2();
 

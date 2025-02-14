@@ -8,6 +8,7 @@
 #include "./vector3/vector3_swap.h"
 #include "./vector3/vector3_is_zero.h"
 #include "./vector3/vector3_is_unit.h"
+#include "./vector3/vector3_modulus.h"
 
 void test_vector3();
 

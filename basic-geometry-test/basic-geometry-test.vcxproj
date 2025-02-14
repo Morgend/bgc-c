@@ -154,6 +154,7 @@
     <ClCompile Include="tests\quaternion\quaternion_copy.c" />
     <ClCompile Include="tests\quaternion\quaternion_is_unit.c" />
     <ClCompile Include="tests\quaternion\quaternion_is_zero.c" />
+    <ClCompile Include="tests\quaternion\quaternion_modulus.c" />
     <ClCompile Include="tests\quaternion\quaternion_reset.c" />
     <ClCompile Include="tests\quaternion\quaternion_set_to_identity.c" />
     <ClCompile Include="tests\quaternion\quaternion_set_values.c" />
@@ -166,6 +167,7 @@
     <ClCompile Include="tests\vector2\vector2_is_unit.c" />
     <ClCompile Include="tests\vector2\vector2_is_zero.c" />
     <ClCompile Include="tests\vector2\vector2_copy.c" />
+    <ClCompile Include="tests\vector2\vector2_modulus.c" />
     <ClCompile Include="tests\vector2\vector2_reset.c" />
     <ClCompile Include="tests\vector2\vector2_set_values.c" />
     <ClCompile Include="tests\vector2\vector2_swap.c" />
@@ -173,6 +175,7 @@
     <ClCompile Include="tests\vector3\vector3_is_unit.c" />
     <ClCompile Include="tests\vector3\vector3_is_zero.c" />
     <ClCompile Include="tests\vector3\vector3_copy.c" />
+    <ClCompile Include="tests\vector3\vector3_modulus.c" />
     <ClCompile Include="tests\vector3\vector3_swap.c" />
     <ClCompile Include="tests\vector3\vector3_reset.c" />
     <ClCompile Include="tests\vector3\vector3_set_values.c" />
@@ -191,6 +194,7 @@
     <ClInclude Include="tests\quaternion\quaternion_copy.h" />
     <ClInclude Include="tests\quaternion\quaternion_is_unit.h" />
     <ClInclude Include="tests\quaternion\quaternion_is_zero.h" />
+    <ClInclude Include="tests\quaternion\quaternion_modulus.h" />
     <ClInclude Include="tests\quaternion\quaternion_reset.h" />
     <ClInclude Include="tests\quaternion\quaternion_set_to_identity.h" />
     <ClInclude Include="tests\quaternion\quaternion_set_values.h" />
@@ -203,6 +207,7 @@
     <ClInclude Include="tests\vector2\vector2_is_unit.h" />
     <ClInclude Include="tests\vector2\vector2_is_zero.h" />
     <ClInclude Include="tests\vector2\vector2_copy.h" />
+    <ClInclude Include="tests\vector2\vector2_modulus.h" />
     <ClInclude Include="tests\vector2\vector2_reset.h" />
     <ClInclude Include="tests\vector2\vector2_set_values.h" />
     <ClInclude Include="tests\vector2\vector2_swap.h" />
@@ -210,6 +215,7 @@
     <ClInclude Include="tests\vector3\vector3_is_unit.h" />
     <ClInclude Include="tests\vector3\vector3_is_zero.h" />
     <ClInclude Include="tests\vector3\vector3_copy.h" />
+    <ClInclude Include="tests\vector3\vector3_modulus.h" />
     <ClInclude Include="tests\vector3\vector3_swap.h" />
     <ClInclude Include="tests\vector3\vector3_reset.h" />
     <ClInclude Include="tests\vector3\vector3_set_values.h" />

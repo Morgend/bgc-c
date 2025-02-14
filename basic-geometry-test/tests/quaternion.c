@@ -11,4 +11,5 @@ void test_quaternion()
     test_quaternion_swap();
     test_quaternion_is_zero();
     test_quaternion_is_unit();
+    test_quaternion_modulus();
 }

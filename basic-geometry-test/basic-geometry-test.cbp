@@ -65,6 +65,10 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="tests/quaternion/quaternion_is_zero.h" />
+		<Unit filename="tests/quaternion/quaternion_modulus.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="tests/quaternion/quaternion_modulus.h" />
 		<Unit filename="tests/quaternion/quaternion_reset.c">
 			<Option compilerVar="CC" />
 		</Unit>
@@ -117,6 +121,10 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="tests/vector2/vector2_is_zero.h" />
+		<Unit filename="tests/vector2/vector2_modulus.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="tests/vector2/vector2_modulus.h" />
 		<Unit filename="tests/vector2/vector2_reset.c">
 			<Option compilerVar="CC" />
 		</Unit>
@@ -145,6 +153,10 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="tests/vector3/vector3_is_zero.h" />
+		<Unit filename="tests/vector3/vector3_modulus.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="tests/vector3/vector3_modulus.h" />
 		<Unit filename="tests/vector3/vector3_reset.c">
 			<Option compilerVar="CC" />
 		</Unit>

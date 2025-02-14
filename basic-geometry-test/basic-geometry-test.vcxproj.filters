@@ -105,6 +105,15 @@
     <ClCompile Include="tests\versor\versor_is_identity.c">
       <Filter>tests\versor</Filter>
     </ClCompile>
+    <ClCompile Include="tests\vector2\vector2_modulus.c">
+      <Filter>tests\vector2</Filter>
+    </ClCompile>
+    <ClCompile Include="tests\vector3\vector3_modulus.c">
+      <Filter>tests\vector3</Filter>
+    </ClCompile>
+    <ClCompile Include="tests\quaternion\quaternion_modulus.c">
+      <Filter>tests\quaternion</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="helpers.h" />
@@ -209,6 +218,15 @@
     </ClInclude>
     <ClInclude Include="tests\versor\versor_is_identity.h">
       <Filter>tests\versor</Filter>
+    </ClInclude>
+    <ClInclude Include="tests\vector2\vector2_modulus.h">
+      <Filter>tests\vector2</Filter>
+    </ClInclude>
+    <ClInclude Include="tests\vector3\vector3_modulus.h">
+      <Filter>tests\vector3</Filter>
+    </ClInclude>
+    <ClInclude Include="tests\quaternion\quaternion_modulus.h">
+      <Filter>tests\quaternion</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

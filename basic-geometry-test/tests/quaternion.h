@@ -9,6 +9,7 @@
 #include "./quaternion/quaternion_swap.h"
 #include "./quaternion/quaternion_is_zero.h"
 #include "./quaternion/quaternion_is_unit.h"
+#include "./quaternion/quaternion_modulus.h"
 
 void test_quaternion();
 
