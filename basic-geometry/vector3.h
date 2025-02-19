@@ -378,6 +378,70 @@ inline void bgc_vector3_mean_of_three_fp64(const BgcVector3FP64* vector1, const 
     result->x3 = (vector1->x3 + vector2->x3 + vector3->x3) * BGC_ONE_THIRD_FP64;
 }
 
+// ================== Minimal =================== //
+
+inline void bgc_vector3_minimize_fp32(const BgcVector3FP32* vector, BgcVector3FP32* minimal)
+{
+    if (vector->x1 < minimal->x1) {
+        minimal->x1 = vector->x1;
+    }
+
+    if (vector->x2 < minimal->x2) {
+        minimal->x2 = vector->x2;
+    }
+
+    if (vector->x3 < minimal->x3) {
+        minimal->x3 = vector->x3;
+    }
+}
+
+inline void bgc_vector3_minimize_fp64(const BgcVector3FP64* vector, BgcVector3FP64* minimal)
+{
+    if (vector->x1 < minimal->x1) {
+        minimal->x1 = vector->x1;
+    }
+
+    if (vector->x2 < minimal->x2) {
+        minimal->x2 = vector->x2;
+    }
+
+    if (vector->x3 < minimal->x3) {
+        minimal->x3 = vector->x3;
+    }
+}
+
+// ================== Maximal =================== //
+
+inline void bgc_vector3_maximize_fp32(const BgcVector3FP32* vector, BgcVector3FP32* maximal)
+{
+    if (vector->x1 > maximal->x1) {
+        maximal->x1 = vector->x1;
+    }
+
+    if (vector->x2 > maximal->x2) {
+        maximal->x2 = vector->x2;
+    }
+
+    if (vector->x3 > minimal->x3) {
+        minimal->x3 = vector->x3;
+    }
+}
+
+inline void bgc_vector3_maximize_fp64(const BgcVector3FP64* vector, BgcVector3FP64* maximal)
+{
+    if (vector->x1 > maximal->x1) {
+        maximal->x1 = vector->x1;
+    }
+
+    if (vector->x2 > maximal->x2) {
+        maximal->x2 = vector->x2;
+    }
+
+    if (vector->x3 > minimal->x3) {
+        minimal->x3 = vector->x3;
+    }
+}
+
 // =============== Scalar Product =============== //
 
 inline float bgc_vector3_scalar_product_fp32(const BgcVector3FP32* vector1, const BgcVector3FP32* vector2)

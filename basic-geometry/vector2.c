@@ -63,6 +63,12 @@ extern inline void bgc_vector2_mean_of_two_fp64(const BgcVector2FP64* vector1, c
 extern inline void bgc_vector2_mean_of_three_fp32(const BgcVector2FP32* vector1, const BgcVector2FP32* vector2, const BgcVector2FP32* vector3, BgcVector2FP32* mean);
 extern inline void bgc_vector2_mean_of_three_fp64(const BgcVector2FP64* vector1, const BgcVector2FP64* vector2, const BgcVector2FP64* vector3, BgcVector2FP64* mean);
 
+extern inline void bgc_vector2_minimize_fp32(const BgcVector2FP32* vector, BgcVector2FP32* minimal);
+extern inline void bgc_vector2_minimize_fp64(const BgcVector2FP64* vector, BgcVector2FP64* minimal);
+
+extern inline void bgc_vector2_maximize_fp32(const BgcVector2FP32* vector, BgcVector2FP32* maximal);
+extern inline void bgc_vector2_maximize_fp64(const BgcVector2FP64* vector, BgcVector2FP64* maximal);
+
 extern inline float bgc_vector2_scalar_product_fp32(const BgcVector2FP32* vector1, const BgcVector2FP32* vector2);
 extern inline double bgc_vector2_scalar_product_fp64(const BgcVector2FP64* vector1, const BgcVector2FP64* vector2);
 
