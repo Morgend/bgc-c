@@ -422,8 +422,8 @@ inline void bgc_vector3_maximize_fp32(const BgcVector3FP32* vector, BgcVector3FP
         maximal->x2 = vector->x2;
     }
 
-    if (vector->x3 > minimal->x3) {
-        minimal->x3 = vector->x3;
+    if (vector->x3 > maximal->x3) {
+        maximal->x3 = vector->x3;
     }
 }
 
@@ -437,8 +437,8 @@ inline void bgc_vector3_maximize_fp64(const BgcVector3FP64* vector, BgcVector3FP
         maximal->x2 = vector->x2;
     }
 
-    if (vector->x3 > minimal->x3) {
-        minimal->x3 = vector->x3;
+    if (vector->x3 > maximal->x3) {
+        maximal->x3 = vector->x3;
     }
 }
 
