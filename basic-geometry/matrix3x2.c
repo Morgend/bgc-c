@@ -3,14 +3,17 @@
 extern inline void bgc_matrix3x2_reset_fp32(BgcMatrix3x2FP32* matrix);
 extern inline void bgc_matrix3x2_reset_fp64(BgcMatrix3x2FP64* matrix);
 
-extern inline void bgc_matrix3x2_copy_fp32(const BgcMatrix3x2FP32* from, BgcMatrix3x2FP32* to);
-extern inline void bgc_matrix3x2_copy_fp64(const BgcMatrix3x2FP64* from, BgcMatrix3x2FP64* to);
+extern inline void bgc_matrix3x2_copy_fp32(const BgcMatrix3x2FP32* source, BgcMatrix3x2FP32* destination);
+extern inline void bgc_matrix3x2_copy_fp64(const BgcMatrix3x2FP64* source, BgcMatrix3x2FP64* destination);
 
 extern inline void bgc_matrix3x2_swap_fp32(BgcMatrix3x2FP32* matrix1, BgcMatrix3x2FP32* matrix2);
 extern inline void bgc_matrix3x2_swap_fp64(BgcMatrix3x2FP64* matrix1, BgcMatrix3x2FP64* matrix2);
 
-extern inline void bgc_matrix3x2_convert_fp64_to_fp32(const BgcMatrix3x2FP64* from, BgcMatrix3x2FP32* to);
-extern inline void bgc_matrix3x2_convert_fp32_to_fp64(const BgcMatrix3x2FP32* from, BgcMatrix3x2FP64* to);
+extern inline void bgc_matrix3x2_convert_fp64_to_fp32(const BgcMatrix3x2FP64* source, BgcMatrix3x2FP32* destination);
+extern inline void bgc_matrix3x2_convert_fp32_to_fp64(const BgcMatrix3x2FP32* source, BgcMatrix3x2FP64* destination);
+
+extern inline void bgc_matrix3x2_transpose_fp32(const BgcMatrix2x3FP32* matrix, BgcMatrix3x2FP32* transposed);
+extern inline void bgc_matrix3x2_transpose_fp64(const BgcMatrix2x3FP64* matrix, BgcMatrix3x2FP64* transposed);
 
 extern inline void bgc_matrix3x2_set_row1_fp32(const float c1, const float c2, const float c3, BgcMatrix3x2FP32* matrix);
 extern inline void bgc_matrix3x2_set_row1_fp64(const double c1, const double c2, const double c3, BgcMatrix3x2FP64* matrix);
@@ -26,9 +29,6 @@ extern inline void bgc_matrix3x2_set_column2_fp64(const double r1, const double 
 
 extern inline void bgc_matrix3x2_set_column3_fp32(const float r1, const float r2, BgcMatrix3x2FP32* matrix);
 extern inline void bgc_matrix3x2_set_column3_fp64(const double r1, const double r2, BgcMatrix3x2FP64* matrix);
-
-extern inline void bgc_matrix3x2_get_transposed_fp32(const BgcMatrix2x3FP32* from, BgcMatrix3x2FP32* to);
-extern inline void bgc_matrix3x2_get_transposed_fp64(const BgcMatrix2x3FP64* from, BgcMatrix3x2FP64* to);
 
 extern inline void bgc_matrix3x2_add_fp32(const BgcMatrix3x2FP32* matrix1, const BgcMatrix3x2FP32* matrix2, BgcMatrix3x2FP32* sum);
 extern inline void bgc_matrix3x2_add_fp64(const BgcMatrix3x2FP64* matrix1, const BgcMatrix3x2FP64* matrix2, BgcMatrix3x2FP64* sum);

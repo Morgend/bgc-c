@@ -111,22 +111,22 @@ inline int bgc_matrix2x2_is_singular_fp64(const BgcMatrix2x2FP64* matrix)
 
 // ==================== Copy ==================== //
 
-inline void bgc_matrix2x2_copy_fp32(const BgcMatrix2x2FP32* from, BgcMatrix2x2FP32* to)
+inline void bgc_matrix2x2_copy_fp32(const BgcMatrix2x2FP32* source, BgcMatrix2x2FP32* destination)
 {
-    to->r1c1 = from->r1c1;
-    to->r1c2 = from->r1c2;
+    destination->r1c1 = source->r1c1;
+    destination->r1c2 = source->r1c2;
 
-    to->r2c1 = from->r2c1;
-    to->r2c2 = from->r2c2;
+    destination->r2c1 = source->r2c1;
+    destination->r2c2 = source->r2c2;
 }
 
-inline void bgc_matrix2x2_copy_fp64(const BgcMatrix2x2FP64* from, BgcMatrix2x2FP64* to)
+inline void bgc_matrix2x2_copy_fp64(const BgcMatrix2x2FP64* source, BgcMatrix2x2FP64* destination)
 {
-    to->r1c1 = from->r1c1;
-    to->r1c2 = from->r1c2;
+    destination->r1c1 = source->r1c1;
+    destination->r1c2 = source->r1c2;
 
-    to->r2c1 = from->r2c1;
-    to->r2c2 = from->r2c2;
+    destination->r2c1 = source->r2c1;
+    destination->r2c2 = source->r2c2;
 }
 
 // ==================== Swap ==================== //
@@ -175,27 +175,27 @@ inline void bgc_matrix2x2_swap_fp64(BgcMatrix2x2FP64* matrix1, BgcMatrix2x2FP64*
 
 // ================== Convert =================== //
 
-inline void bgc_matrix2x2_convert_fp64_to_fp32(const BgcMatrix2x2FP64* from, BgcMatrix2x2FP32* to)
+inline void bgc_matrix2x2_convert_fp64_to_fp32(const BgcMatrix2x2FP64* source, BgcMatrix2x2FP32* destination)
 {
-    to->r1c1 = (float)from->r1c1;
-    to->r1c2 = (float)from->r1c2;
+    destination->r1c1 = (float)source->r1c1;
+    destination->r1c2 = (float)source->r1c2;
 
-    to->r2c1 = (float)from->r2c1;
-    to->r2c2 = (float)from->r2c2;
+    destination->r2c1 = (float)source->r2c1;
+    destination->r2c2 = (float)source->r2c2;
 }
 
-inline void bgc_matrix2x2_convert_fp32_to_fp64(const BgcMatrix2x2FP32* from, BgcMatrix2x2FP64* to)
+inline void bgc_matrix2x2_convert_fp32_to_fp64(const BgcMatrix2x2FP32* source, BgcMatrix2x2FP64* destination)
 {
-    to->r1c1 = from->r1c1;
-    to->r1c2 = from->r1c2;
+    destination->r1c1 = source->r1c1;
+    destination->r1c2 = source->r1c2;
 
-    to->r2c1 = from->r2c1;
-    to->r2c2 = from->r2c2;
+    destination->r2c1 = source->r2c1;
+    destination->r2c2 = source->r2c2;
 }
 
 // =================== Invert =================== //
 
-inline int bgc_matrix2x2_invert_fp32(BgcMatrix2x2FP32* matrix)
+inline int bgc_matrix2x2_invert_fp32(const BgcMatrix2x2FP32* matrix, BgcMatrix2x2FP32* inverted)
 {
     const float determinant = bgc_matrix2x2_get_determinant_fp32(matrix);
 
@@ -211,16 +211,16 @@ inline int bgc_matrix2x2_invert_fp32(BgcMatrix2x2FP32* matrix)
 
     const float multiplier = 1.0f / determinant;
 
-    matrix->r1c1 = r1c1 * multiplier;
-    matrix->r1c2 = r1c2 * multiplier;
+    inverted->r1c1 = r1c1 * multiplier;
+    inverted->r1c2 = r1c2 * multiplier;
 
-    matrix->r2c1 = r2c1 * multiplier;
-    matrix->r2c2 = r2c2 * multiplier;
+    inverted->r2c1 = r2c1 * multiplier;
+    inverted->r2c2 = r2c2 * multiplier;
 
     return 1;
 }
 
-inline int bgc_matrix2x2_invert_fp64(BgcMatrix2x2FP64* matrix)
+inline int bgc_matrix2x2_invert_fp64(const BgcMatrix2x2FP64* matrix, BgcMatrix2x2FP64* inverted)
 {
     const double determinant = bgc_matrix2x2_get_determinant_fp64(matrix);
 
@@ -236,29 +236,37 @@ inline int bgc_matrix2x2_invert_fp64(BgcMatrix2x2FP64* matrix)
 
     const double multiplier = 1.0 / determinant;
 
-    matrix->r1c1 = r1c1 * multiplier;
-    matrix->r1c2 = r1c2 * multiplier;
+    inverted->r1c1 = r1c1 * multiplier;
+    inverted->r1c2 = r1c2 * multiplier;
 
-    matrix->r2c1 = r2c1 * multiplier;
-    matrix->r2c2 = r2c2 * multiplier;
+    inverted->r2c1 = r2c1 * multiplier;
+    inverted->r2c2 = r2c2 * multiplier;
 
     return 1;
 }
 
 // ================= Transpose ================== //
 
-inline void bgc_matrix2x2_transpose_fp32(BgcMatrix2x2FP32* matrix)
+inline void bgc_matrix2x2_transpose_fp32(const BgcMatrix2x2FP32* matrix, BgcMatrix2x2FP32* transposed)
 {
-    const float tmp = matrix->r1c2;
-    matrix->r1c2 = matrix->r2c1;
-    matrix->r2c1 = tmp;
+    const float r1c2 = matrix->r1c2;
+
+    transposed->r1c1 = matrix->r1c1;
+    transposed->r1c2 = matrix->r2c1;
+
+    transposed->r2c1 = r1c2;
+    transposed->r2c2 = matrix->r2c2;
 }
 
-inline void bgc_matrix2x2_transpose_fp64(BgcMatrix2x2FP64* matrix)
+inline void bgc_matrix2x2_transpose_fp64(const BgcMatrix2x2FP64* matrix, BgcMatrix2x2FP64* transposed)
 {
-    const double tmp = matrix->r1c2;
-    matrix->r1c2 = matrix->r2c1;
-    matrix->r2c1 = tmp;
+    const double r1c2 = matrix->r1c2;
+
+    transposed->r1c1 = matrix->r1c1;
+    transposed->r1c2 = matrix->r2c1;
+
+    transposed->r2c1 = r1c2;
+    transposed->r2c2 = matrix->r2c2;
 }
 
 // ================= Set Row 1 ================== //
@@ -315,82 +323,6 @@ inline void bgc_matrix2x2_set_column2_fp64(const double r1, const double r2, Bgc
 {
     matrix->r1c2 = r1;
     matrix->r2c2 = r2;
-}
-
-// ================ Get Inverted ================ //
-
-inline int bgc_matrix2x2_get_inverted_fp32(const BgcMatrix2x2FP32* matrix, BgcMatrix2x2FP32* inverted)
-{
-    const float determinant = bgc_matrix2x2_get_determinant_fp32(matrix);
-
-    if (bgc_is_zero_fp32(determinant)) {
-        return 0;
-    }
-
-    const float r1c1 = matrix->r2c2;
-    const float r1c2 = -matrix->r1c2;
-
-    const float r2c1 = -matrix->r2c1;
-    const float r2c2 = matrix->r1c1;
-
-    const float multiplier = 1.0f / determinant;
-
-    inverted->r1c1 = r1c1 * multiplier;
-    inverted->r1c2 = r1c2 * multiplier;
-
-    inverted->r2c1 = r2c1 * multiplier;
-    inverted->r2c2 = r2c2 * multiplier;
-
-    return 1;
-}
-
-inline int bgc_matrix2x2_get_inverted_fp64(const BgcMatrix2x2FP64* matrix, BgcMatrix2x2FP64* inverted)
-{
-    const double determinant = bgc_matrix2x2_get_determinant_fp64(matrix);
-
-    if (bgc_is_zero_fp64(determinant)) {
-        return 0;
-    }
-
-    const double r1c1 = matrix->r2c2;
-    const double r1c2 = -matrix->r1c2;
-
-    const double r2c1 = -matrix->r2c1;
-    const double r2c2 = matrix->r1c1;
-
-    const double multiplier = 1.0 / determinant;
-
-    inverted->r1c1 = r1c1 * multiplier;
-    inverted->r1c2 = r1c2 * multiplier;
-
-    inverted->r2c1 = r2c1 * multiplier;
-    inverted->r2c2 = r2c2 * multiplier;
-
-    return 1;
-}
-
-// =============== Get Transposed =============== //
-
-inline void bgc_matrix2x2_get_transposed_fp32(const BgcMatrix2x2FP32* matrix, BgcMatrix2x2FP32* transposed)
-{
-    float tmp = matrix->r1c2;
-
-    transposed->r1c1 = matrix->r1c1;
-    transposed->r1c2 = matrix->r2c1;
-
-    transposed->r2c1 = tmp;
-    transposed->r2c2 = matrix->r2c2;
-}
-
-inline void bgc_matrix2x2_get_transposed_fp64(const BgcMatrix2x2FP64* matrix, BgcMatrix2x2FP64* transposed)
-{
-    double tmp = matrix->r1c2;
-
-    transposed->r1c1 = matrix->r1c1;
-    transposed->r1c2 = matrix->r2c1;
-
-    transposed->r2c1 = tmp;
-    transposed->r2c2 = matrix->r2c2;
 }
 
 // ==================== Add ===================== //

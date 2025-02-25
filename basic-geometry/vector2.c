@@ -3,8 +3,8 @@
 extern inline void bgc_vector2_reset_fp32(BgcVector2FP32* vector);
 extern inline void bgc_vector2_reset_fp64(BgcVector2FP64* vector);
 
-extern inline void bgc_vector2_set_values_fp32(const float x1, const float x2, BgcVector2FP32* to);
-extern inline void bgc_vector2_set_values_fp64(const double x1, const double x2, BgcVector2FP64* to);
+extern inline void bgc_vector2_set_values_fp32(const float x1, const float x2, BgcVector2FP32* destination);
+extern inline void bgc_vector2_set_values_fp64(const double x1, const double x2, BgcVector2FP64* destination);
 
 extern inline float bgc_vector2_get_square_modulus_fp32(const BgcVector2FP32* vector);
 extern inline double bgc_vector2_get_square_modulus_fp64(const BgcVector2FP64* vector);
@@ -18,29 +18,26 @@ extern inline int bgc_vector2_is_zero_fp64(const BgcVector2FP64* vector);
 extern inline int bgc_vector2_is_unit_fp32(const BgcVector2FP32* vector);
 extern inline int bgc_vector2_is_unit_fp64(const BgcVector2FP64* vector);
 
-extern inline void bgc_vector2_copy_fp32(const BgcVector2FP32* from, BgcVector2FP32* to);
-extern inline void bgc_vector2_copy_fp64(const BgcVector2FP64* from, BgcVector2FP64* to);
+extern inline void bgc_vector2_copy_fp32(const BgcVector2FP32* source, BgcVector2FP32* destination);
+extern inline void bgc_vector2_copy_fp64(const BgcVector2FP64* source, BgcVector2FP64* destination);
 
 extern inline void bgc_vector2_swap_fp32(BgcVector2FP32* vector1, BgcVector2FP32* vector2);
 extern inline void bgc_vector2_swap_fp64(BgcVector2FP64* vector1, BgcVector2FP64* vector2);
 
-extern inline void bgc_vector2_convert_fp64_to_fp32(const BgcVector2FP64* from, BgcVector2FP32* to);
-extern inline void bgc_vector2_convert_fp32_to_fp64(const BgcVector2FP32* from, BgcVector2FP64* to);
+extern inline void bgc_vector2_convert_fp64_to_fp32(const BgcVector2FP64* source, BgcVector2FP32* destination);
+extern inline void bgc_vector2_convert_fp32_to_fp64(const BgcVector2FP32* source, BgcVector2FP64* destination);
 
-extern inline void bgc_vector2_reverse_fp32(BgcVector2FP32* vector);
-extern inline void bgc_vector2_reverse_fp64(BgcVector2FP64* vector);
+extern inline void bgc_vector2_reverse_fp32(const BgcVector2FP32* vector, BgcVector2FP32* reverse);
+extern inline void bgc_vector2_reverse_fp64(const BgcVector2FP64* vector, BgcVector2FP64* reverse);
 
-extern inline int bgc_vector2_normalize_fp32(BgcVector2FP32* vector);
-extern inline int bgc_vector2_normalize_fp64(BgcVector2FP64* vector);
+extern inline int bgc_vector2_normalize_fp32(const BgcVector2FP32* vector, BgcVector2FP32* normalized);
+extern inline int bgc_vector2_normalize_fp64(const BgcVector2FP64* vector, BgcVector2FP64* normalized);
 
-extern inline void bgc_vector2_get_reverse_fp32(const BgcVector2FP32* vector, BgcVector2FP32* reverse);
-extern inline void bgc_vector2_get_reverse_fp64(const BgcVector2FP64* vector, BgcVector2FP64* reverse);
+extern inline void bgc_vector2_complex_conjugate_fp32(const BgcVector2FP32* vector, BgcVector2FP32* conjugate);
+extern inline void bgc_vector2_complex_conjugate_fp64(const BgcVector2FP64* vector, BgcVector2FP64* conjugate);
 
-extern inline int bgc_vector2_get_normalized_fp32(const BgcVector2FP32* vector, BgcVector2FP32* result);
-extern inline int bgc_vector2_get_normalized_fp64(const BgcVector2FP64* vector, BgcVector2FP64* result);
-
-extern inline void bgc_vector2_get_complex_conjugate_fp32(const BgcVector2FP32* vector, BgcVector2FP32* conjugate);
-extern inline void bgc_vector2_get_complex_conjugate_fp64(const BgcVector2FP64* vector, BgcVector2FP64* conjugate);
+extern inline int bgc_vector2_complex_invert_fp32(const BgcVector2FP32* vector, BgcVector2FP32* inverted);
+extern inline int bgc_vector2_complex_invert_fp64(const BgcVector2FP64* vector, BgcVector2FP64* inverted);
 
 extern inline void bgc_vector2_add_fp32(const BgcVector2FP32* vector1, const BgcVector2FP32* vector2, BgcVector2FP32* sum);
 extern inline void bgc_vector2_add_fp64(const BgcVector2FP64* vector1, const BgcVector2FP64* vector2, BgcVector2FP64* sum);
@@ -83,6 +80,9 @@ extern inline double bgc_vector2_get_cross_product_fp64(const BgcVector2FP64* ve
 
 extern inline void bgc_vector2_get_complex_product_fp32(const BgcVector2FP32* vector1, const BgcVector2FP32* vector2, BgcVector2FP32* product);
 extern inline void bgc_vector2_get_complex_product_fp64(const BgcVector2FP64* vector1, const BgcVector2FP64* vector2, BgcVector2FP64* product);
+
+extern inline int bgc_vector2_get_complex_ratio_fp32(const BgcVector2FP32* divident, const BgcVector2FP32* divisor, BgcVector2FP32* quotient);
+extern inline int bgc_vector2_get_complex_ratio_fp64(const BgcVector2FP64* divident, const BgcVector2FP64* divisor, BgcVector2FP64* quotient);
 
 extern inline float bgc_vector2_get_square_distance_fp32(const BgcVector2FP32* vector1, const BgcVector2FP32* vector2);
 extern inline double bgc_vector2_get_square_distance_fp64(const BgcVector2FP64* vector1, const BgcVector2FP64* vector2);

@@ -21,7 +21,7 @@ static const BgcVector2FP32 _TEST_FP32_NONZERO_VECTOR2_LIST[] = {
     { -1.25f * BGC_EPSYLON_FP32, 0.0f },
     { 0.0f, 1.25f * BGC_EPSYLON_FP32 },
     { 0.0f, -1.25f * BGC_EPSYLON_FP32 },
-    { 1.25f * BGC_EPSYLON_FP32, 1.25 * BGC_EPSYLON_FP32 },
+    { 1.25f * BGC_EPSYLON_FP32, 1.25f * BGC_EPSYLON_FP32 },
     { -1.25f * BGC_EPSYLON_FP32, -1.25f * BGC_EPSYLON_FP32 }
 };
 

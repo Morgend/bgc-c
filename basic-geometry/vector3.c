@@ -3,8 +3,8 @@
 extern inline void bgc_vector3_reset_fp32(BgcVector3FP32* vector);
 extern inline void bgc_vector3_reset_fp64(BgcVector3FP64* vector);
 
-extern inline void bgc_vector3_set_values_fp32(const float x1, const float x2, const float x3, BgcVector3FP32* to);
-extern inline void bgc_vector3_set_values_fp64(const double x1, const double x2, const double x3, BgcVector3FP64* to);
+extern inline void bgc_vector3_set_values_fp32(const float x1, const float x2, const float x3, BgcVector3FP32* destination);
+extern inline void bgc_vector3_set_values_fp64(const double x1, const double x2, const double x3, BgcVector3FP64* destination);
 
 extern inline float bgc_vector3_get_square_modulus_fp32(const BgcVector3FP32* vector);
 extern inline double bgc_vector3_get_square_modulus_fp64(const BgcVector3FP64* vector);
@@ -18,26 +18,20 @@ extern inline int bgc_vector3_is_zero_fp64(const BgcVector3FP64* vector);
 extern inline int bgc_vector3_is_unit_fp32(const BgcVector3FP32* vector);
 extern inline int bgc_vector3_is_unit_fp64(const BgcVector3FP64* vector);
 
-extern inline void bgc_vector3_copy_fp32(const BgcVector3FP32* from, BgcVector3FP32* to);
-extern inline void bgc_vector3_copy_fp64(const BgcVector3FP64* from, BgcVector3FP64* to);
+extern inline void bgc_vector3_copy_fp32(const BgcVector3FP32* source, BgcVector3FP32* destination);
+extern inline void bgc_vector3_copy_fp64(const BgcVector3FP64* source, BgcVector3FP64* destination);
 
-extern inline void bgc_vector3_convert_fp64_to_fp32(const BgcVector3FP64* from, BgcVector3FP32* to);
-extern inline void bgc_vector3_convert_fp32_to_fp64(const BgcVector3FP32* from, BgcVector3FP64* to);
+extern inline void bgc_vector3_convert_fp64_to_fp32(const BgcVector3FP64* source, BgcVector3FP32* destination);
+extern inline void bgc_vector3_convert_fp32_to_fp64(const BgcVector3FP32* source, BgcVector3FP64* destination);
 
 extern inline void bgc_vector3_swap_fp32(BgcVector3FP32* vector1, BgcVector3FP32* vector2);
 extern inline void bgc_vector3_swap_fp64(BgcVector3FP64* vector1, BgcVector3FP64* vector2);
 
-extern inline void bgc_vector3_reverse_fp32(BgcVector3FP32* vector);
-extern inline void bgc_vector3_reverse_fp64(BgcVector3FP64* vector);
+extern inline void bgc_vector3_reverse_fp32(const BgcVector3FP32* vector, BgcVector3FP32* reverse);
+extern inline void bgc_vector3_reverse_fp64(const BgcVector3FP64* vector, BgcVector3FP64* reverse);
 
-extern inline int bgc_vector3_normalize_fp32(BgcVector3FP32* vector);
-extern inline int bgc_vector3_normalize_fp64(BgcVector3FP64* vector);
-
-extern inline void bgc_vector3_get_reverse_fp32(const BgcVector3FP32* vector, BgcVector3FP32* reverse);
-extern inline void bgc_vector3_get_reverse_fp64(const BgcVector3FP64* vector, BgcVector3FP64* reverse);
-
-extern inline int bgc_vector3_get_normalized_fp32(const BgcVector3FP32* vector, BgcVector3FP32* normalized);
-extern inline int bgc_vector3_get_normalized_fp64(const BgcVector3FP64* vector, BgcVector3FP64* normalized);
+extern inline int bgc_vector3_normalize_fp32(const BgcVector3FP32* vector, BgcVector3FP32* normalized);
+extern inline int bgc_vector3_normalize_fp64(const BgcVector3FP64* vector, BgcVector3FP64* normalized);
 
 extern inline void bgc_vector3_add_fp32(const BgcVector3FP32* vector1, const BgcVector3FP32* vector2, BgcVector3FP32* sum);
 extern inline void bgc_vector3_add_fp64(const BgcVector3FP64* vector1, const BgcVector3FP64* vector2, BgcVector3FP64* sum);

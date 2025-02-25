@@ -102,34 +102,34 @@ inline void bgc_matrix3x3_set_to_diagonal_fp64(const double d1, const double d2,
 
 // ==================== Copy ==================== //
 
-inline void bgc_matrix3x3_copy_fp32(const BgcMatrix3x3FP32* from, BgcMatrix3x3FP32* to)
+inline void bgc_matrix3x3_copy_fp32(const BgcMatrix3x3FP32* source, BgcMatrix3x3FP32* destination)
 {
-    to->r1c1 = from->r1c1;
-    to->r1c2 = from->r1c2;
-    to->r1c3 = from->r1c3;
+    destination->r1c1 = source->r1c1;
+    destination->r1c2 = source->r1c2;
+    destination->r1c3 = source->r1c3;
 
-    to->r2c1 = from->r2c1;
-    to->r2c2 = from->r2c2;
-    to->r2c3 = from->r2c3;
+    destination->r2c1 = source->r2c1;
+    destination->r2c2 = source->r2c2;
+    destination->r2c3 = source->r2c3;
 
-    to->r3c1 = from->r3c1;
-    to->r3c2 = from->r3c2;
-    to->r3c3 = from->r3c3;
+    destination->r3c1 = source->r3c1;
+    destination->r3c2 = source->r3c2;
+    destination->r3c3 = source->r3c3;
 }
 
-inline void bgc_matrix3x3_copy_fp64(const BgcMatrix3x3FP64* from, BgcMatrix3x3FP64* to)
+inline void bgc_matrix3x3_copy_fp64(const BgcMatrix3x3FP64* source, BgcMatrix3x3FP64* destination)
 {
-    to->r1c1 = from->r1c1;
-    to->r1c2 = from->r1c2;
-    to->r1c3 = from->r1c3;
+    destination->r1c1 = source->r1c1;
+    destination->r1c2 = source->r1c2;
+    destination->r1c3 = source->r1c3;
 
-    to->r2c1 = from->r2c1;
-    to->r2c2 = from->r2c2;
-    to->r2c3 = from->r2c3;
+    destination->r2c1 = source->r2c1;
+    destination->r2c2 = source->r2c2;
+    destination->r2c3 = source->r2c3;
 
-    to->r3c1 = from->r3c1;
-    to->r3c2 = from->r3c2;
-    to->r3c3 = from->r3c3;
+    destination->r3c1 = source->r3c1;
+    destination->r3c2 = source->r3c2;
+    destination->r3c3 = source->r3c3;
 }
 
 // ==================== Swap ==================== //
@@ -214,34 +214,34 @@ inline void bgc_matrix3x3_swap_fp64(BgcMatrix3x3FP64* matrix1, BgcMatrix3x3FP64*
 
 // ================== Convert =================== //
 
-inline void bgc_matrix3x3_convert_fp64_to_fp32(const BgcMatrix3x3FP64* from, BgcMatrix3x3FP32* to)
+inline void bgc_matrix3x3_convert_fp64_to_fp32(const BgcMatrix3x3FP64* source, BgcMatrix3x3FP32* destination)
 {
-    to->r1c1 = (float) from->r1c1;
-    to->r1c2 = (float) from->r1c2;
-    to->r1c3 = (float) from->r1c3;
+    destination->r1c1 = (float)source->r1c1;
+    destination->r1c2 = (float)source->r1c2;
+    destination->r1c3 = (float)source->r1c3;
 
-    to->r2c1 = (float) from->r2c1;
-    to->r2c2 = (float) from->r2c2;
-    to->r2c3 = (float) from->r2c3;
+    destination->r2c1 = (float)source->r2c1;
+    destination->r2c2 = (float)source->r2c2;
+    destination->r2c3 = (float)source->r2c3;
 
-    to->r3c1 = (float) from->r3c1;
-    to->r3c2 = (float) from->r3c2;
-    to->r3c3 = (float) from->r3c3;
+    destination->r3c1 = (float)source->r3c1;
+    destination->r3c2 = (float)source->r3c2;
+    destination->r3c3 = (float)source->r3c3;
 }
 
-inline void bgc_matrix3x3_convert_fp32_to_fp64(const BgcMatrix3x3FP32* from, BgcMatrix3x3FP64* to)
+inline void bgc_matrix3x3_convert_fp32_to_fp64(const BgcMatrix3x3FP32* source, BgcMatrix3x3FP64* destination)
 {
-    to->r1c1 = from->r1c1;
-    to->r1c2 = from->r1c2;
-    to->r1c3 = from->r1c3;
+    destination->r1c1 = source->r1c1;
+    destination->r1c2 = source->r1c2;
+    destination->r1c3 = source->r1c3;
 
-    to->r2c1 = from->r2c1;
-    to->r2c2 = from->r2c2;
-    to->r2c3 = from->r2c3;
+    destination->r2c1 = source->r2c1;
+    destination->r2c2 = source->r2c2;
+    destination->r2c3 = source->r2c3;
 
-    to->r3c1 = from->r3c1;
-    to->r3c2 = from->r3c2;
-    to->r3c3 = from->r3c3;
+    destination->r3c1 = source->r3c1;
+    destination->r3c2 = source->r3c2;
+    destination->r3c3 = source->r3c3;
 }
 
 // ================ Determinant ================= //
@@ -274,40 +274,48 @@ inline int bgc_matrix3x3_is_singular_fp64(const BgcMatrix3x3FP64* matrix)
 
 // =================== Invert =================== //
 
-int bgc_matrix3x3_invert_fp32(BgcMatrix3x3FP32* matrix);
+int bgc_matrix3x3_invert_fp32(const BgcMatrix3x3FP32* matrix, BgcMatrix3x3FP32* inverted);
 
-int bgc_matrix3x3_invert_fp64(BgcMatrix3x3FP64* matrix);
+int bgc_matrix3x3_invert_fp64(const BgcMatrix3x3FP64* matrix, BgcMatrix3x3FP64* inverted);
 
 // ================= Transpose ================== //
 
-inline void bgc_matrix3x3_transpose_fp32(BgcMatrix3x3FP32* matrix)
+inline void bgc_matrix3x3_transpose_fp32(const BgcMatrix3x3FP32* matrix, BgcMatrix3x3FP32* transposed)
 {
-    float tmp = matrix->r1c2;
-    matrix->r1c2 = matrix->r2c1;
-    matrix->r2c1 = tmp;
+    transposed->r1c1 = matrix->r1c1;
+    transposed->r2c2 = matrix->r2c2;
+    transposed->r3c3 = matrix->r3c3;
 
-    tmp = matrix->r1c3;
-    matrix->r1c3 = matrix->r3c1;
-    matrix->r3c1 = tmp;
+    const float r1c2 = matrix->r1c2;
+    const float r1c3 = matrix->r1c3;
+    const float r2c3 = matrix->r2c3;
 
-    tmp = matrix->r2c3;
-    matrix->r2c3 = matrix->r3c2;
-    matrix->r3c2 = tmp;
+    transposed->r1c2 = matrix->r2c1;
+    transposed->r1c3 = matrix->r3c1;
+    transposed->r2c3 = matrix->r3c2;
+
+    transposed->r2c1 = r1c2;
+    transposed->r3c1 = r1c3;
+    transposed->r3c2 = r2c3;
 }
 
-inline void bgc_matrix3x3_transpose_fp64(BgcMatrix3x3FP64* matrix)
+inline void bgc_matrix3x3_transpose_fp64(const BgcMatrix3x3FP64* matrix, BgcMatrix3x3FP64* transposed)
 {
-    double tmp = matrix->r1c2;
-    matrix->r1c2 = matrix->r2c1;
-    matrix->r2c1 = tmp;
+    transposed->r1c1 = matrix->r1c1;
+    transposed->r2c2 = matrix->r2c2;
+    transposed->r3c3 = matrix->r3c3;
 
-    tmp = matrix->r1c3;
-    matrix->r1c3 = matrix->r3c1;
-    matrix->r3c1 = tmp;
+    const double r1c2 = matrix->r1c2;
+    const double r1c3 = matrix->r1c3;
+    const double r2c3 = matrix->r2c3;
 
-    tmp = matrix->r2c3;
-    matrix->r2c3 = matrix->r3c2;
-    matrix->r3c2 = tmp;
+    transposed->r1c2 = matrix->r2c1;
+    transposed->r1c3 = matrix->r3c1;
+    transposed->r2c3 = matrix->r3c2;
+
+    transposed->r2c1 = r1c2;
+    transposed->r3c1 = r1c3;
+    transposed->r3c2 = r2c3;
 }
 
 // ================= Set Row 1 ================== //
@@ -404,54 +412,6 @@ inline void bgc_matrix3x3_set_column3_fp64(const double r1, const double r2, con
     matrix->r1c3 = r1;
     matrix->r2c3 = r2;
     matrix->r3c3 = r3;
-}
-
-// ================ Get Inverted ================ //
-
-int bgc_matrix3x3_get_inverted_fp32(const BgcMatrix3x3FP32* matrix, BgcMatrix3x3FP32* result);
-
-int bgc_matrix3x3_get_inverted_fp64(const BgcMatrix3x3FP64* matrix, BgcMatrix3x3FP64* result);
-
-// =============== Get Transposed =============== //
-
-inline void bgc_matrix3x3_get_transposed_fp32(const BgcMatrix3x3FP32* matrix, BgcMatrix3x3FP32* result)
-{
-    if (matrix == result) {
-        bgc_matrix3x3_transpose_fp32(result);
-        return;
-    }
-
-    result->r1c1 = matrix->r1c1;
-    result->r1c2 = matrix->r2c1;
-    result->r1c3 = matrix->r3c1;
-
-    result->r2c1 = matrix->r1c2;
-    result->r2c2 = matrix->r2c2;
-    result->r2c3 = matrix->r3c2;
-
-    result->r3c1 = matrix->r1c3;
-    result->r3c2 = matrix->r2c3;
-    result->r3c3 = matrix->r3c3;
-}
-
-inline void bgc_matrix3x3_get_transposed_fp64(const BgcMatrix3x3FP64* matrix, BgcMatrix3x3FP64* result)
-{
-    if (matrix == result) {
-        bgc_matrix3x3_transpose_fp64(result);
-        return;
-    }
-
-    result->r1c1 = matrix->r1c1;
-    result->r1c2 = matrix->r2c1;
-    result->r1c3 = matrix->r3c1;
-
-    result->r2c1 = matrix->r1c2;
-    result->r2c2 = matrix->r2c2;
-    result->r2c3 = matrix->r3c2;
-
-    result->r3c1 = matrix->r1c3;
-    result->r3c2 = matrix->r2c3;
-    result->r3c3 = matrix->r3c3;
 }
 
 // ==================== Add ===================== //

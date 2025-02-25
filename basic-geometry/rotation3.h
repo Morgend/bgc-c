@@ -47,7 +47,7 @@ inline void bgc_rotation3_set_values_fp32(const float x1, const float x2, const 
     rotation->axis.x2 = x2;
     rotation->axis.x3 = x3;
 
-    if (bgc_vector3_normalize_fp32(&rotation->axis)) {
+    if (bgc_vector3_normalize_fp32(&rotation->axis, &rotation->axis)) {
         rotation->radians = bgc_angle_to_radians_fp32(angle, unit);
     }
     else {
@@ -62,7 +62,7 @@ inline void bgc_rotation3_set_values_fp64(const double x1, const double x2, cons
     rotation->axis.x2 = x2;
     rotation->axis.x3 = x3;
 
-    if (bgc_vector3_normalize_fp64(&rotation->axis)) {
+    if (bgc_vector3_normalize_fp64(&rotation->axis, &rotation->axis)) {
         rotation->radians = bgc_angle_to_radians_fp64(angle, unit);
     }
     else {
@@ -76,7 +76,7 @@ inline void bgc_rotation3_set_with_axis_fp32(const BgcVector3FP32* axis, const f
     rotation->axis.x2 = axis->x2;
     rotation->axis.x3 = axis->x3;
 
-    if (bgc_vector3_normalize_fp32(&rotation->axis)) {
+    if (bgc_vector3_normalize_fp32(&rotation->axis, &rotation->axis)) {
         rotation->radians = bgc_angle_to_radians_fp32(angle, unit);
     }
     else {
@@ -90,7 +90,7 @@ inline void bgc_rotation3_set_with_axis_fp64(const BgcVector3FP64* axis, const d
     rotation->axis.x2 = axis->x2;
     rotation->axis.x3 = axis->x3;
 
-    if (bgc_vector3_normalize_fp64(&rotation->axis)) {
+    if (bgc_vector3_normalize_fp64(&rotation->axis, &rotation->axis)) {
         rotation->radians = bgc_angle_to_radians_fp64(angle, unit);
     }
     else {

@@ -155,20 +155,20 @@ inline double bgc_tangent_pair_get_angle_fp64(const BgcTangentPairFP64* tangent,
 
 // ==================== Copy ==================== //
 
-inline void bgc_tangent_pair_copy_fp32(const BgcTangentPairFP32* from, BgcTangentPairFP32* to)
+inline void bgc_tangent_pair_copy_fp32(const BgcTangentPairFP32* source, BgcTangentPairFP32* destination)
 {
-    _BgcTwinTangentPairFP32* twin = (_BgcTwinTangentPairFP32*)to;
+    _BgcTwinTangentPairFP32* twin = (_BgcTwinTangentPairFP32*)destination;
 
-    twin->cos = from->cos;
-    twin->sin = from->sin;
+    twin->cos = source->cos;
+    twin->sin = source->sin;
 }
 
-inline void bgc_tangent_pair_copy_fp64(const BgcTangentPairFP64* from, BgcTangentPairFP64* to)
+inline void bgc_tangent_pair_copy_fp64(const BgcTangentPairFP64* source, BgcTangentPairFP64* destination)
 {
-    _BgcTwinTangentPairFP64* twin = (_BgcTwinTangentPairFP64*)to;
+    _BgcTwinTangentPairFP64* twin = (_BgcTwinTangentPairFP64*)destination;
 
-    twin->cos = from->cos;
-    twin->sin = from->sin;
+    twin->cos = source->cos;
+    twin->sin = source->sin;
 }
 
 // ==================== Swap ==================== //
@@ -207,26 +207,32 @@ inline void bgc_tangent_pair_swap_fp64(BgcTangentPairFP64* tangent1, BgcTangentP
 
 // ================== Convert =================== //
 
-inline void bgc_tangent_pair_convert_fp64_to_fp32(const BgcTangentPairFP64* from, BgcTangentPairFP32* to)
+inline void bgc_tangent_pair_convert_fp64_to_fp32(const BgcTangentPairFP64* source, BgcTangentPairFP32* destination)
 {
-    bgc_tangent_pair_set_values_fp32((float)from->cos, (float)from->sin, to);
+    bgc_tangent_pair_set_values_fp32((float)source->cos, (float)source->sin, destination);
 }
 
-inline void bgc_tangent_pair_convert_fp32_to_fp64(const BgcTangentPairFP32* from, BgcTangentPairFP64* to)
+inline void bgc_tangent_pair_convert_fp32_to_fp64(const BgcTangentPairFP32* source, BgcTangentPairFP64* destination)
 {
-    bgc_tangent_pair_set_values_fp64((double)from->cos, (double)from->sin, to);
+    bgc_tangent_pair_set_values_fp64((double)source->cos, (double)source->sin, destination);
 }
 
 // =================== Invert =================== //
 
-inline void bgc_tangent_pair_invert_fp32(BgcTangentPairFP32* tangent)
+inline void bgc_tangent_pair_invert_fp32(const BgcTangentPairFP32* tangent, BgcTangentPairFP32* inverted)
 {
-    ((_BgcTwinTangentPairFP32*)tangent)->sin = -tangent->sin;
+    _BgcTwinTangentPairFP32* twin = (_BgcTwinTangentPairFP32*)inverted;
+
+    twin->cos = tangent->cos;
+    twin->sin = -tangent->sin;
 }
 
-inline void bgc_tangent_pair_invert_fp64(BgcTangentPairFP64* tangent)
+inline void bgc_tangent_pair_invert_fp64(const BgcTangentPairFP64* tangent, BgcTangentPairFP64* inverted)
 {
-    ((_BgcTwinTangentPairFP64*)tangent)->sin = -tangent->sin;
+    _BgcTwinTangentPairFP64* twin = (_BgcTwinTangentPairFP64*)inverted;
+
+    twin->cos = tangent->cos;
+    twin->sin = -tangent->sin;
 }
 
 // ================ Combination ================= //
@@ -247,24 +253,6 @@ inline void bgc_tangent_pair_combine_fp64(const BgcTangentPairFP64* tangent1, co
         tangent1->cos * tangent2->sin + tangent1->sin * tangent2->cos,
         result
     );
-}
-
-// ================ Set Inverted ================ //
-
-inline void bgc_tangent_pair_get_inverted_fp32(const BgcTangentPairFP32* tangent, BgcTangentPairFP32* result)
-{
-    _BgcTwinTangentPairFP32* twin = (_BgcTwinTangentPairFP32*)result;
-
-    twin->cos = tangent->cos;
-    twin->sin = -tangent->sin;
-}
-
-inline void bgc_tangent_pair_get_inverted_fp64(const BgcTangentPairFP64* tangent, BgcTangentPairFP64* result)
-{
-    _BgcTwinTangentPairFP64* twin = (_BgcTwinTangentPairFP64*)result;
-
-    twin->cos = tangent->cos;
-    twin->sin = -tangent->sin;
 }
 
 // ============== Rotation Matrix =============== //

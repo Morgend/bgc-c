@@ -16,8 +16,8 @@ extern inline void bgc_versor_set_values_fp64(const double s0, const double x1, 
 extern inline void bgc_versor_set_rotation_fp32(const BgcRotation3FP32* rotation, BgcVersorFP32* result);
 extern inline void bgc_versor_set_rotation_fp64(const BgcRotation3FP64* rotation, BgcVersorFP64* result);
 
-extern inline void bgc_versor_copy_fp32(const BgcVersorFP32* from, BgcVersorFP32* to);
-extern inline void bgc_versor_copy_fp64(const BgcVersorFP64* from, BgcVersorFP64* to);
+extern inline void bgc_versor_copy_fp32(const BgcVersorFP32* source, BgcVersorFP32* destination);
+extern inline void bgc_versor_copy_fp64(const BgcVersorFP64* source, BgcVersorFP64* destination);
 
 extern inline void bgc_versor_swap_fp32(BgcVersorFP32* versor1, BgcVersorFP32* versor2);
 extern inline void bgc_versor_swap_fp64(BgcVersorFP64* versor1, BgcVersorFP64* versor2);
@@ -25,26 +25,20 @@ extern inline void bgc_versor_swap_fp64(BgcVersorFP64* versor1, BgcVersorFP64* v
 extern inline int bgc_versor_is_identity_fp32(const BgcVersorFP32* versor);
 extern inline int bgc_versor_is_identity_fp64(const BgcVersorFP64* versor);
 
-extern inline void bgc_versor_convert_fp64_to_fp32(const BgcVersorFP64* versor, BgcVersorFP32* result);
-extern inline void bgc_versor_convert_fp32_to_fp64(const BgcVersorFP32* versor, BgcVersorFP64* result);
+extern inline void bgc_versor_convert_fp64_to_fp32(const BgcVersorFP64* source, BgcVersorFP32* destination);
+extern inline void bgc_versor_convert_fp32_to_fp64(const BgcVersorFP32* source, BgcVersorFP64* destination);
 
-extern inline void bgc_versor_shorten_fp32(BgcVersorFP32* versor);
-extern inline void bgc_versor_shorten_fp64(BgcVersorFP64* versor);
+extern inline void bgc_versor_shorten_fp32(const BgcVersorFP32* versor, BgcVersorFP32* shortened);
+extern inline void bgc_versor_shorten_fp64(const BgcVersorFP64* versor, BgcVersorFP64* shortened);
 
-extern inline void bgc_versor_invert_fp32(BgcVersorFP32* versor);
-extern inline void bgc_versor_invert_fp64(BgcVersorFP64* versor);
+extern inline void bgc_versor_invert_fp32(const BgcVersorFP32* versor, BgcVersorFP32* inverted);
+extern inline void bgc_versor_invert_fp64(const BgcVersorFP64* versor, BgcVersorFP64* inverted);
 
 extern inline void bgc_versor_combine_fp32(const BgcVersorFP32* second, const BgcVersorFP32* first, BgcVersorFP32* result);
 extern inline void bgc_versor_combine_fp64(const BgcVersorFP64* second, const BgcVersorFP64* first, BgcVersorFP64* result);
 
 extern inline void bgc_versor_combine3_fp32(const BgcVersorFP32* third, const BgcVersorFP32* second, const BgcVersorFP32* first, BgcVersorFP32* result);
 extern inline void bgc_versor_combine3_fp64(const BgcVersorFP64* third, const BgcVersorFP64* second, const BgcVersorFP64* first, BgcVersorFP64* result);
-
-extern inline void bgc_versor_get_shortened_fp32(const BgcVersorFP32* versor, BgcVersorFP32* shortened);
-extern inline void bgc_versor_get_shortened_fp64(const BgcVersorFP64* versor, BgcVersorFP64* shortened);
-
-extern inline void bgc_versor_get_inverted_fp32(const BgcVersorFP32* versor, BgcVersorFP32* to);
-extern inline void bgc_versor_get_inverted_fp64(const BgcVersorFP64* versor, BgcVersorFP64* to);
 
 extern inline void bgc_versor_get_rotation_matrix_fp32(const BgcVersorFP32* versor, BgcMatrix3x3FP32* matrix);
 extern inline void bgc_versor_get_rotation_matrix_fp64(const BgcVersorFP64* versor, BgcMatrix3x3FP64* matrix);

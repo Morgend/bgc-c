@@ -119,20 +119,20 @@ inline int bgc_quaternion_is_unit_fp64(const BgcQuaternionFP64* quaternion)
 
 // ==================== Copy ==================== //
 
-inline void bgc_quaternion_copy_fp32(const BgcQuaternionFP32* from, BgcQuaternionFP32* to)
+inline void bgc_quaternion_copy_fp32(const BgcQuaternionFP32* source, BgcQuaternionFP32* destination)
 {
-    to->s0 = from->s0;
-    to->x1 = from->x1;
-    to->x2 = from->x2;
-    to->x3 = from->x3;
+    destination->s0 = source->s0;
+    destination->x1 = source->x1;
+    destination->x2 = source->x2;
+    destination->x3 = source->x3;
 }
 
-inline void bgc_quaternion_copy_fp64(const BgcQuaternionFP64* from, BgcQuaternionFP64* to)
+inline void bgc_quaternion_copy_fp64(const BgcQuaternionFP64* source, BgcQuaternionFP64* destination)
 {
-    to->s0 = from->s0;
-    to->x1 = from->x1;
-    to->x2 = from->x2;
-    to->x3 = from->x3;
+    destination->s0 = source->s0;
+    destination->x1 = source->x1;
+    destination->x2 = source->x2;
+    destination->x3 = source->x3;
 }
 
 // ==================== Swap ==================== //
@@ -175,119 +175,127 @@ inline void bgc_quaternion_swap_fp64(BgcQuaternionFP64* quarternion1, BgcQuatern
 
 // ================== Convert =================== //
 
-inline void bgc_quaternion_convert_fp64_to_fp32(const BgcQuaternionFP64* quaternion, BgcQuaternionFP32* result)
+inline void bgc_quaternion_convert_fp64_to_fp32(const BgcQuaternionFP64* source, BgcQuaternionFP32* destination)
 {
-    result->s0 = (float) quaternion->s0;
-    result->x1 = (float) quaternion->x1;
-    result->x2 = (float) quaternion->x2;
-    result->x3 = (float) quaternion->x3;
+    destination->s0 = (float)source->s0;
+    destination->x1 = (float)source->x1;
+    destination->x2 = (float)source->x2;
+    destination->x3 = (float)source->x3;
 }
 
-inline void bgc_quaternion_convert_fp32_to_fp64(const BgcQuaternionFP32* quaternion, BgcQuaternionFP64* result)
+inline void bgc_quaternion_convert_fp32_to_fp64(const BgcQuaternionFP32* source, BgcQuaternionFP64* destination)
 {
-    result->s0 = quaternion->s0;
-    result->x1 = quaternion->x1;
-    result->x2 = quaternion->x2;
-    result->x3 = quaternion->x3;
+    destination->s0 = source->s0;
+    destination->x1 = source->x1;
+    destination->x2 = source->x2;
+    destination->x3 = source->x3;
 }
 
 // ================= Conjugate ================== //
 
-inline void bgc_quaternion_conjugate_fp32(BgcQuaternionFP32* quaternion)
+inline void bgc_quaternion_conjugate_fp32(const BgcQuaternionFP32* quaternion, BgcQuaternionFP32* conjugate)
 {
-    quaternion->x1 = -quaternion->x1;
-    quaternion->x2 = -quaternion->x2;
-    quaternion->x3 = -quaternion->x3;
+    conjugate->s0 = quaternion->s0;
+    conjugate->x1 = -quaternion->x1;
+    conjugate->x2 = -quaternion->x2;
+    conjugate->x3 = -quaternion->x3;
 }
 
-inline void bgc_quaternion_conjugate_fp64(BgcQuaternionFP64* quaternion)
+inline void bgc_quaternion_conjugate_fp64(const BgcQuaternionFP64* quaternion, BgcQuaternionFP64* conjugate)
 {
-    quaternion->x1 = -quaternion->x1;
-    quaternion->x2 = -quaternion->x2;
-    quaternion->x3 = -quaternion->x3;
+    conjugate->s0 = quaternion->s0;
+    conjugate->x1 = -quaternion->x1;
+    conjugate->x2 = -quaternion->x2;
+    conjugate->x3 = -quaternion->x3;
+}
+
+// =================== Invert =================== //
+
+inline int bgc_quaternion_invert_fp32(const BgcQuaternionFP32* quaternion, BgcQuaternionFP32* inverted)
+{
+    const float square_modulus = bgc_quaternion_get_square_modulus_fp32(quaternion);
+
+    if (square_modulus <= BGC_SQUARE_EPSYLON_FP32 || square_modulus != square_modulus) {
+        return 0;
+    }
+
+    const float multiplicand = 1.0f / square_modulus;
+
+    inverted->s0 = quaternion->s0 * multiplicand;
+    inverted->x1 = -quaternion->x1 * multiplicand;
+    inverted->x2 = -quaternion->x2 * multiplicand;
+    inverted->x3 = -quaternion->x3 * multiplicand;
+
+    return 1;
+}
+
+inline int bgc_quaternion_invert_fp64(const BgcQuaternionFP64* quaternion, BgcQuaternionFP64* inverted)
+{
+    const double square_modulus = bgc_quaternion_get_square_modulus_fp64(quaternion);
+
+    if (square_modulus <= BGC_SQUARE_EPSYLON_FP64 || square_modulus != square_modulus) {
+        return 0;
+    }
+
+    const double multiplicand = 1.0 / square_modulus;
+
+    inverted->s0 = quaternion->s0 * multiplicand;
+    inverted->x1 = -quaternion->x1 * multiplicand;
+    inverted->x2 = -quaternion->x2 * multiplicand;
+    inverted->x3 = -quaternion->x3 * multiplicand;
+
+    return 1;
 }
 
 // ================= Normalize ================== //
 
-inline int bgc_quaternion_normalize_fp32(BgcQuaternionFP32* quaternion)
+inline int bgc_quaternion_normalize_fp32(const BgcQuaternionFP32* quaternion, BgcQuaternionFP32* normalized)
 {
     const float square_modulus = bgc_quaternion_get_square_modulus_fp32(quaternion);
 
     if (bgc_is_sqare_unit_fp32(square_modulus)) {
+        bgc_quaternion_copy_fp32(quaternion, normalized);
         return 1;
     }
 
     if (square_modulus <= BGC_SQUARE_EPSYLON_FP32 || square_modulus != square_modulus) {
-        bgc_quaternion_reset_fp32(quaternion);
         return 0;
     }
 
     const float multiplier = sqrtf(1.0f / square_modulus);
 
-    quaternion->s0 *= multiplier;
-    quaternion->x1 *= multiplier;
-    quaternion->x2 *= multiplier;
-    quaternion->x3 *= multiplier;
+    normalized->s0 = quaternion->s0 * multiplier;
+    normalized->x1 = quaternion->x1 * multiplier;
+    normalized->x2 = quaternion->x2 * multiplier;
+    normalized->x3 = quaternion->x3 * multiplier;
 
     return 1;
 }
 
-inline int bgc_quaternion_normalize_fp64(BgcQuaternionFP64* quaternion)
+inline int bgc_quaternion_normalize_fp64(const BgcQuaternionFP64* quaternion, BgcQuaternionFP64* normalized)
 {
     const double square_modulus = bgc_quaternion_get_square_modulus_fp64(quaternion);
 
     if (bgc_is_sqare_unit_fp64(square_modulus)) {
+        bgc_quaternion_copy_fp64(quaternion, normalized);
         return 1;
     }
 
     if (square_modulus <= BGC_SQUARE_EPSYLON_FP64 || square_modulus != square_modulus) {
-        bgc_quaternion_reset_fp64(quaternion);
         return 0;
     }
 
     const double multiplier = sqrt(1.0 / square_modulus);
 
-    quaternion->s0 *= multiplier;
-    quaternion->x1 *= multiplier;
-    quaternion->x2 *= multiplier;
-    quaternion->x3 *= multiplier;
+    normalized->s0 *= multiplier;
+    normalized->x1 *= multiplier;
+    normalized->x2 *= multiplier;
+    normalized->x3 *= multiplier;
 
     return 1;
 }
 
-// =============== Get Conjugate ================ //
-
-inline void bgc_quaternion_get_conjugate_fp32(const BgcQuaternionFP32* quaternion, BgcQuaternionFP32* conjugate)
-{
-    conjugate->s0 = quaternion->s0;
-    conjugate->x1 = -quaternion->x1;
-    conjugate->x2 = -quaternion->x2;
-    conjugate->x3 = -quaternion->x3;
-}
-
-inline void bgc_quaternion_get_conjugate_fp64(const BgcQuaternionFP64* quaternion, BgcQuaternionFP64* conjugate)
-{
-    conjugate->s0 = quaternion->s0;
-    conjugate->x1 = -quaternion->x1;
-    conjugate->x2 = -quaternion->x2;
-    conjugate->x3 = -quaternion->x3;
-}
-
-// =============== Get Normalized =============== //
-
-inline int bgc_quaternion_get_normalized_fp32(const BgcQuaternionFP32* quaternion, BgcQuaternionFP32* normalized)
-{
-    bgc_quaternion_copy_fp32(quaternion, normalized);
-    return bgc_quaternion_normalize_fp32(normalized);
-}
-
-inline int bgc_quaternion_get_normalized_fp64(const BgcQuaternionFP64* quaternion, BgcQuaternionFP64* normalized)
-{
-    bgc_quaternion_copy_fp64(quaternion, normalized);
-    return bgc_quaternion_normalize_fp64(normalized);
-}
-
-// ================== Product =================== //
+// ================ Get Product ================= //
 
 inline void bgc_quaternion_get_product_fp32(const BgcQuaternionFP32* left, const BgcQuaternionFP32* right, BgcQuaternionFP32* product)
 {
@@ -315,164 +323,52 @@ inline void bgc_quaternion_get_product_fp64(const BgcQuaternionFP64* left, const
     product->x3 = x3;
 }
 
-// ============ Get Rotation Matrix ============= //
+// ================= Get Ratio ================== //
 
-inline void bgc_quaternion_get_rotation_matrix_fp32(const BgcQuaternionFP32* quaternion, BgcMatrix3x3FP32* rotation)
+inline int bgc_quaternion_get_ratio_fp32(const BgcQuaternionFP32* divident, const BgcQuaternionFP32* divisor, BgcQuaternionFP32* quotient)
 {
-    const float s0s0 = quaternion->s0 * quaternion->s0;
-    const float x1x1 = quaternion->x1 * quaternion->x1;
-    const float x2x2 = quaternion->x2 * quaternion->x2;
-    const float x3x3 = quaternion->x3 * quaternion->x3;
+    const float square_modulus = bgc_quaternion_get_square_modulus_fp32(divisor);
 
-    const float square_modulus = (s0s0 + x1x1) + (x2x2 + x3x3);
-
-    if (square_modulus <= BGC_SQUARE_EPSYLON_FP32 || square_modulus != square_modulus)
-    {
-        bgc_matrix3x3_set_to_identity_fp32(rotation);
-        return;
+    if (square_modulus <= BGC_SQUARE_EPSYLON_FP32 || square_modulus != square_modulus) {
+        return 0;
     }
 
-    const float corrector1 = 1.0f / square_modulus;
+    const float s0 = (divident->s0 * divisor->s0 + divident->x1 * divisor->x1) + (divident->x2 * divisor->x2 + divident->x3 * divisor->x3);
+    const float x1 = (divident->x1 * divisor->s0 + divident->x3 * divisor->x2) - (divident->s0 * divisor->x1 + divident->x2 * divisor->x3);
+    const float x2 = (divident->x2 * divisor->s0 + divident->x1 * divisor->x3) - (divident->s0 * divisor->x2 + divident->x3 * divisor->x1);
+    const float x3 = (divident->x3 * divisor->s0 + divident->x2 * divisor->x1) - (divident->s0 * divisor->x3 + divident->x1 * divisor->x2);
 
-    const float s0x1 = quaternion->s0 * quaternion->x1;
-    const float s0x2 = quaternion->s0 * quaternion->x2;
-    const float s0x3 = quaternion->s0 * quaternion->x3;
-    const float x1x2 = quaternion->x1 * quaternion->x2;
-    const float x1x3 = quaternion->x1 * quaternion->x3;
-    const float x2x3 = quaternion->x2 * quaternion->x3;
+    const float multiplicand = 1.0f / square_modulus;
 
-    const float corrector2 = 2.0f * corrector1;
+    quotient->s0 = s0 * multiplicand;
+    quotient->x1 = x1 * multiplicand;
+    quotient->x2 = x2 * multiplicand;
+    quotient->x3 = x3 * multiplicand;
 
-    rotation->r1c1 = corrector1 * ((s0s0 + x1x1) - (x2x2 + x3x3));
-    rotation->r2c2 = corrector1 * ((s0s0 + x2x2) - (x1x1 + x3x3));
-    rotation->r3c3 = corrector1 * ((s0s0 + x3x3) - (x1x1 + x2x2));
-
-    rotation->r1c2 = corrector2 * (x1x2 - s0x3);
-    rotation->r2c3 = corrector2 * (x2x3 - s0x1);
-    rotation->r3c1 = corrector2 * (x1x3 - s0x2);
-
-    rotation->r2c1 = corrector2 * (x1x2 + s0x3);
-    rotation->r3c2 = corrector2 * (x2x3 + s0x1);
-    rotation->r1c3 = corrector2 * (x1x3 + s0x2);
+    return 1;
 }
 
-inline void bgc_quaternion_get_rotation_matrix_fp64(const BgcQuaternionFP64* quaternion, BgcMatrix3x3FP64* rotation)
+inline int bgc_quaternion_get_ratio_fp64(const BgcQuaternionFP64* divident, const BgcQuaternionFP64* divisor, BgcQuaternionFP64* quotient)
 {
-    const double s0s0 = quaternion->s0 * quaternion->s0;
-    const double x1x1 = quaternion->x1 * quaternion->x1;
-    const double x2x2 = quaternion->x2 * quaternion->x2;
-    const double x3x3 = quaternion->x3 * quaternion->x3;
+    const double square_modulus = bgc_quaternion_get_square_modulus_fp64(divisor);
 
-    const double square_modulus = (s0s0 + x1x1) + (x2x2 + x3x3);
-
-    if (square_modulus <= BGC_SQUARE_EPSYLON_FP64 || square_modulus != square_modulus)
-    {
-        bgc_matrix3x3_set_to_identity_fp64(rotation);
-        return;
+    if (square_modulus <= BGC_SQUARE_EPSYLON_FP64 || square_modulus != square_modulus) {
+        return 0;
     }
 
-    const double corrector1 = 1.0f / square_modulus;
+    const double s0 = (divident->s0 * divisor->s0 + divident->x1 * divisor->x1) + (divident->x2 * divisor->x2 + divident->x3 * divisor->x3);
+    const double x1 = (divident->x1 * divisor->s0 + divident->x3 * divisor->x2) - (divident->s0 * divisor->x1 + divident->x2 * divisor->x3);
+    const double x2 = (divident->x2 * divisor->s0 + divident->x1 * divisor->x3) - (divident->s0 * divisor->x2 + divident->x3 * divisor->x1);
+    const double x3 = (divident->x3 * divisor->s0 + divident->x2 * divisor->x1) - (divident->s0 * divisor->x3 + divident->x1 * divisor->x2);
 
-    const double s0x1 = quaternion->s0 * quaternion->x1;
-    const double s0x2 = quaternion->s0 * quaternion->x2;
-    const double s0x3 = quaternion->s0 * quaternion->x3;
-    const double x1x2 = quaternion->x1 * quaternion->x2;
-    const double x1x3 = quaternion->x1 * quaternion->x3;
-    const double x2x3 = quaternion->x2 * quaternion->x3;
+    const double multiplicand = 1.0 / square_modulus;
 
-    const double corrector2 = 2.0f * corrector1;
+    quotient->s0 = s0 * multiplicand;
+    quotient->x1 = x1 * multiplicand;
+    quotient->x2 = x2 * multiplicand;
+    quotient->x3 = x3 * multiplicand;
 
-    rotation->r1c1 = corrector1 * ((s0s0 + x1x1) - (x2x2 + x3x3));
-    rotation->r2c2 = corrector1 * ((s0s0 + x2x2) - (x1x1 + x3x3));
-    rotation->r3c3 = corrector1 * ((s0s0 + x3x3) - (x1x1 + x2x2));
-
-    rotation->r1c2 = corrector2 * (x1x2 - s0x3);
-    rotation->r2c3 = corrector2 * (x2x3 - s0x1);
-    rotation->r3c1 = corrector2 * (x1x3 - s0x2);
-
-    rotation->r2c1 = corrector2 * (x1x2 + s0x3);
-    rotation->r3c2 = corrector2 * (x2x3 + s0x1);
-    rotation->r1c3 = corrector2 * (x1x3 + s0x2);
-}
-
-// ============= Get Reverse Matrix ============= //
-
-inline void bgc_quaternion_get_reverse_matrix_fp32(const BgcQuaternionFP32* quaternion, BgcMatrix3x3FP32* reverse)
-{
-    const float s0s0 = quaternion->s0 * quaternion->s0;
-    const float x1x1 = quaternion->x1 * quaternion->x1;
-    const float x2x2 = quaternion->x2 * quaternion->x2;
-    const float x3x3 = quaternion->x3 * quaternion->x3;
-
-    const float square_modulus = (s0s0 + x1x1) + (x2x2 + x3x3);
-
-    if (square_modulus <= BGC_SQUARE_EPSYLON_FP32 || square_modulus != square_modulus)
-    {
-        bgc_matrix3x3_set_to_identity_fp32(reverse);
-        return;
-    }
-
-    const float corrector1 = 1.0f / square_modulus;
-
-    const float s0x1 = quaternion->s0 * quaternion->x1;
-    const float s0x2 = quaternion->s0 * quaternion->x2;
-    const float s0x3 = quaternion->s0 * quaternion->x3;
-    const float x1x2 = quaternion->x1 * quaternion->x2;
-    const float x1x3 = quaternion->x1 * quaternion->x3;
-    const float x2x3 = quaternion->x2 * quaternion->x3;
-
-    const float corrector2 = 2.0f * corrector1;
-
-    reverse->r1c1 = corrector1 * ((s0s0 + x1x1) - (x2x2 + x3x3));
-    reverse->r2c2 = corrector1 * ((s0s0 + x2x2) - (x1x1 + x3x3));
-    reverse->r3c3 = corrector1 * ((s0s0 + x3x3) - (x1x1 + x2x2));
-
-    reverse->r1c2 = corrector2 * (x1x2 + s0x3);
-    reverse->r2c3 = corrector2 * (x2x3 + s0x1);
-    reverse->r3c1 = corrector2 * (x1x3 + s0x2);
-
-    reverse->r2c1 = corrector2 * (x1x2 - s0x3);
-    reverse->r3c2 = corrector2 * (x2x3 - s0x1);
-    reverse->r1c3 = corrector2 * (x1x3 - s0x2);
-}
-
-inline void bgc_quaternion_get_reverse_matrix_fp64(const BgcQuaternionFP64* quaternion, BgcMatrix3x3FP64* reverse)
-{
-    const double s0s0 = quaternion->s0 * quaternion->s0;
-    const double x1x1 = quaternion->x1 * quaternion->x1;
-    const double x2x2 = quaternion->x2 * quaternion->x2;
-    const double x3x3 = quaternion->x3 * quaternion->x3;
-
-    const double square_modulus = (s0s0 + x1x1) + (x2x2 + x3x3);
-
-    if (square_modulus <= BGC_SQUARE_EPSYLON_FP64 || square_modulus != square_modulus)
-    {
-        bgc_matrix3x3_set_to_identity_fp64(reverse);
-        return;
-    }
-
-    const double corrector1 = 1.0f / square_modulus;
-
-    const double s0x1 = quaternion->s0 * quaternion->x1;
-    const double s0x2 = quaternion->s0 * quaternion->x2;
-    const double s0x3 = quaternion->s0 * quaternion->x3;
-    const double x1x2 = quaternion->x1 * quaternion->x2;
-    const double x1x3 = quaternion->x1 * quaternion->x3;
-    const double x2x3 = quaternion->x2 * quaternion->x3;
-
-    const double corrector2 = 2.0f * corrector1;
-
-    reverse->r1c1 = corrector1 * ((s0s0 + x1x1) - (x2x2 + x3x3));
-    reverse->r2c2 = corrector1 * ((s0s0 + x2x2) - (x1x1 + x3x3));
-    reverse->r3c3 = corrector1 * ((s0s0 + x3x3) - (x1x1 + x2x2));
-
-    reverse->r1c2 = corrector2 * (x1x2 + s0x3);
-    reverse->r2c3 = corrector2 * (x2x3 + s0x1);
-    reverse->r3c1 = corrector2 * (x1x3 + s0x2);
-
-    reverse->r2c1 = corrector2 * (x1x2 - s0x3);
-    reverse->r3c2 = corrector2 * (x2x3 - s0x1);
-    reverse->r1c3 = corrector2 * (x1x3 - s0x2);
+    return 1;
 }
 
 // ==================== Add ===================== //
@@ -597,6 +493,190 @@ inline void bgc_quaternion_get_linear_interpolation_fp64(const BgcQuaternionFP64
     interpolation->x1 = quaternion1->x1 * counterphase + quaternion2->x1 * phase;
     interpolation->x2 = quaternion1->x2 * counterphase + quaternion2->x2 * phase;
     interpolation->x3 = quaternion1->x3 * counterphase + quaternion2->x3 * phase;
+}
+
+// ============ Get Rotation Matrix ============= //
+
+inline int bgc_quaternion_get_rotation_matrix_fp32(const BgcQuaternionFP32* quaternion, BgcMatrix3x3FP32* rotation)
+{
+    const float s0s0 = quaternion->s0 * quaternion->s0;
+    const float x1x1 = quaternion->x1 * quaternion->x1;
+    const float x2x2 = quaternion->x2 * quaternion->x2;
+    const float x3x3 = quaternion->x3 * quaternion->x3;
+
+    const float square_modulus = (s0s0 + x1x1) + (x2x2 + x3x3);
+
+    if (square_modulus <= BGC_SQUARE_EPSYLON_FP32 || square_modulus != square_modulus)
+    {
+        return 0;
+    }
+
+    const float corrector1 = 1.0f / square_modulus;
+
+    const float s0x1 = quaternion->s0 * quaternion->x1;
+    const float s0x2 = quaternion->s0 * quaternion->x2;
+    const float s0x3 = quaternion->s0 * quaternion->x3;
+    const float x1x2 = quaternion->x1 * quaternion->x2;
+    const float x1x3 = quaternion->x1 * quaternion->x3;
+    const float x2x3 = quaternion->x2 * quaternion->x3;
+
+    const float corrector2 = 2.0f * corrector1;
+
+    rotation->r1c1 = corrector1 * ((s0s0 + x1x1) - (x2x2 + x3x3));
+    rotation->r2c2 = corrector1 * ((s0s0 + x2x2) - (x1x1 + x3x3));
+    rotation->r3c3 = corrector1 * ((s0s0 + x3x3) - (x1x1 + x2x2));
+
+    rotation->r1c2 = corrector2 * (x1x2 - s0x3);
+    rotation->r2c3 = corrector2 * (x2x3 - s0x1);
+    rotation->r3c1 = corrector2 * (x1x3 - s0x2);
+
+    rotation->r2c1 = corrector2 * (x1x2 + s0x3);
+    rotation->r3c2 = corrector2 * (x2x3 + s0x1);
+    rotation->r1c3 = corrector2 * (x1x3 + s0x2);
+
+    return 1;
+}
+
+inline int bgc_quaternion_get_rotation_matrix_fp64(const BgcQuaternionFP64* quaternion, BgcMatrix3x3FP64* rotation)
+{
+    const double s0s0 = quaternion->s0 * quaternion->s0;
+    const double x1x1 = quaternion->x1 * quaternion->x1;
+    const double x2x2 = quaternion->x2 * quaternion->x2;
+    const double x3x3 = quaternion->x3 * quaternion->x3;
+
+    const double square_modulus = (s0s0 + x1x1) + (x2x2 + x3x3);
+
+    if (square_modulus <= BGC_SQUARE_EPSYLON_FP64 || square_modulus != square_modulus)
+    {
+        return 0;
+    }
+
+    const double corrector1 = 1.0f / square_modulus;
+
+    const double s0x1 = quaternion->s0 * quaternion->x1;
+    const double s0x2 = quaternion->s0 * quaternion->x2;
+    const double s0x3 = quaternion->s0 * quaternion->x3;
+    const double x1x2 = quaternion->x1 * quaternion->x2;
+    const double x1x3 = quaternion->x1 * quaternion->x3;
+    const double x2x3 = quaternion->x2 * quaternion->x3;
+
+    const double corrector2 = 2.0f * corrector1;
+
+    rotation->r1c1 = corrector1 * ((s0s0 + x1x1) - (x2x2 + x3x3));
+    rotation->r2c2 = corrector1 * ((s0s0 + x2x2) - (x1x1 + x3x3));
+    rotation->r3c3 = corrector1 * ((s0s0 + x3x3) - (x1x1 + x2x2));
+
+    rotation->r1c2 = corrector2 * (x1x2 - s0x3);
+    rotation->r2c3 = corrector2 * (x2x3 - s0x1);
+    rotation->r3c1 = corrector2 * (x1x3 - s0x2);
+
+    rotation->r2c1 = corrector2 * (x1x2 + s0x3);
+    rotation->r3c2 = corrector2 * (x2x3 + s0x1);
+    rotation->r1c3 = corrector2 * (x1x3 + s0x2);
+
+    return 1;
+}
+
+// ============= Get Reverse Matrix ============= //
+
+inline int bgc_quaternion_get_reverse_matrix_fp32(const BgcQuaternionFP32* quaternion, BgcMatrix3x3FP32* reverse)
+{
+    const float s0s0 = quaternion->s0 * quaternion->s0;
+    const float x1x1 = quaternion->x1 * quaternion->x1;
+    const float x2x2 = quaternion->x2 * quaternion->x2;
+    const float x3x3 = quaternion->x3 * quaternion->x3;
+
+    const float square_modulus = (s0s0 + x1x1) + (x2x2 + x3x3);
+
+    if (square_modulus <= BGC_SQUARE_EPSYLON_FP32 || square_modulus != square_modulus)
+    {
+        return 0;
+    }
+
+    const float corrector1 = 1.0f / square_modulus;
+
+    const float s0x1 = quaternion->s0 * quaternion->x1;
+    const float s0x2 = quaternion->s0 * quaternion->x2;
+    const float s0x3 = quaternion->s0 * quaternion->x3;
+    const float x1x2 = quaternion->x1 * quaternion->x2;
+    const float x1x3 = quaternion->x1 * quaternion->x3;
+    const float x2x3 = quaternion->x2 * quaternion->x3;
+
+    const float corrector2 = 2.0f * corrector1;
+
+    reverse->r1c1 = corrector1 * ((s0s0 + x1x1) - (x2x2 + x3x3));
+    reverse->r2c2 = corrector1 * ((s0s0 + x2x2) - (x1x1 + x3x3));
+    reverse->r3c3 = corrector1 * ((s0s0 + x3x3) - (x1x1 + x2x2));
+
+    reverse->r1c2 = corrector2 * (x1x2 + s0x3);
+    reverse->r2c3 = corrector2 * (x2x3 + s0x1);
+    reverse->r3c1 = corrector2 * (x1x3 + s0x2);
+
+    reverse->r2c1 = corrector2 * (x1x2 - s0x3);
+    reverse->r3c2 = corrector2 * (x2x3 - s0x1);
+    reverse->r1c3 = corrector2 * (x1x3 - s0x2);
+
+    return 1;
+}
+
+inline int bgc_quaternion_get_reverse_matrix_fp64(const BgcQuaternionFP64* quaternion, BgcMatrix3x3FP64* reverse)
+{
+    const double s0s0 = quaternion->s0 * quaternion->s0;
+    const double x1x1 = quaternion->x1 * quaternion->x1;
+    const double x2x2 = quaternion->x2 * quaternion->x2;
+    const double x3x3 = quaternion->x3 * quaternion->x3;
+
+    const double square_modulus = (s0s0 + x1x1) + (x2x2 + x3x3);
+
+    if (square_modulus <= BGC_SQUARE_EPSYLON_FP64 || square_modulus != square_modulus)
+    {
+        return 0;
+    }
+
+    const double corrector1 = 1.0f / square_modulus;
+
+    const double s0x1 = quaternion->s0 * quaternion->x1;
+    const double s0x2 = quaternion->s0 * quaternion->x2;
+    const double s0x3 = quaternion->s0 * quaternion->x3;
+    const double x1x2 = quaternion->x1 * quaternion->x2;
+    const double x1x3 = quaternion->x1 * quaternion->x3;
+    const double x2x3 = quaternion->x2 * quaternion->x3;
+
+    const double corrector2 = 2.0f * corrector1;
+
+    reverse->r1c1 = corrector1 * ((s0s0 + x1x1) - (x2x2 + x3x3));
+    reverse->r2c2 = corrector1 * ((s0s0 + x2x2) - (x1x1 + x3x3));
+    reverse->r3c3 = corrector1 * ((s0s0 + x3x3) - (x1x1 + x2x2));
+
+    reverse->r1c2 = corrector2 * (x1x2 + s0x3);
+    reverse->r2c3 = corrector2 * (x2x3 + s0x1);
+    reverse->r3c1 = corrector2 * (x1x3 + s0x2);
+
+    reverse->r2c1 = corrector2 * (x1x2 - s0x3);
+    reverse->r3c2 = corrector2 * (x2x3 - s0x1);
+    reverse->r1c3 = corrector2 * (x1x3 - s0x2);
+
+    return 1;
+}
+
+inline int bgc_quaternion_get_both_matrixes_fp32(const BgcQuaternionFP32* quaternion, BgcMatrix3x3FP32* rotation, BgcMatrix3x3FP32* reverse)
+{
+    if (bgc_quaternion_get_reverse_matrix_fp32(quaternion, reverse)) {
+        bgc_matrix3x3_transpose_fp32(reverse, rotation);
+        return 1;
+    }
+
+    return 0;
+}
+
+inline int bgc_quaternion_get_both_matrixes_fp64(const BgcQuaternionFP64* quaternion, BgcMatrix3x3FP64* rotation, BgcMatrix3x3FP64* reverse)
+{
+    if (bgc_quaternion_get_reverse_matrix_fp64(quaternion, reverse)) {
+        bgc_matrix3x3_transpose_fp64(reverse, rotation);
+        return 1;
+    }
+
+    return 0;
 }
 
 // ================== Are Close ================= //

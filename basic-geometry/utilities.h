@@ -6,9 +6,10 @@
 #define BGC_EPSYLON_FP32 4.76837E-7f
 #define BGC_SQUARE_EPSYLON_FP32 2.27373906E-13f
 
-#define BGC_ONE_THIRD_FP32 0.333333333f
-#define BGC_ONE_SIXTH_FP32 0.166666667f
-#define BGC_ONE_NINETH_FP32 0.111111111f
+#define BGC_ONE_THIRD_FP32 0.3333333333f
+#define BGC_ONE_SIXTH_FP32 0.1666666667f
+#define BGC_ONE_SEVENTH_FP32 0.142857142857f
+#define BGC_ONE_NINETH_FP32 0.1111111111f
 
 #define BGC_GOLDEN_RATIO_HIGH_FP32 1.618034f
 #define BGC_GOLDEN_RATIO_LOW_FP32 0.618034f
@@ -18,32 +19,33 @@
 #define BGC_EPSYLON_FP64 4.996003611E-14
 #define BGC_SQUARE_EPSYLON_FP64 2.496005208112504E-27
 
-#define BGC_ONE_THIRD_FP64 0.333333333333333333
-#define BGC_ONE_SIXTH_FP64 0.166666666666666667
-#define BGC_ONE_NINETH_FP64 0.111111111111111111
+#define BGC_ONE_THIRD_FP64 0.3333333333333333333
+#define BGC_ONE_SIXTH_FP64 0.1666666666666666667
+#define BGC_ONE_SEVENTH_FP64 0.142857142857142857
+#define BGC_ONE_NINETH_FP64 0.1111111111111111111
 
 #define BGC_GOLDEN_RATIO_HIGH_FP64 1.61803398874989485
 #define BGC_GOLDEN_RATIO_LOW_FP64 0.61803398874989485
 
-inline int bgc_is_zero_fp32(const float square_value)
+inline int bgc_is_zero_fp32(const float value)
 {
-    return (-BGC_EPSYLON_FP32 <= square_value) && (square_value <= BGC_EPSYLON_FP32);
+    return (-BGC_EPSYLON_FP32 <= value) && (value <= BGC_EPSYLON_FP32);
 }
 
-inline int bgc_is_zero_fp64(const double square_value)
+inline int bgc_is_zero_fp64(const double value)
 {
-    return (-BGC_EPSYLON_FP64 <= square_value) && (square_value <= BGC_EPSYLON_FP64);
+    return (-BGC_EPSYLON_FP64 <= value) && (value <= BGC_EPSYLON_FP64);
 }
 
 
-inline int bgc_is_unit_fp32(const float square_value)
+inline int bgc_is_unit_fp32(const float value)
 {
-    return (1.0f - BGC_EPSYLON_FP32 <= square_value) && (square_value <= 1.0f + BGC_EPSYLON_FP32);
+    return (1.0f - BGC_EPSYLON_FP32 <= value) && (value <= 1.0f + BGC_EPSYLON_FP32);
 }
 
-inline int bgc_is_unit_fp64(const double square_value)
+inline int bgc_is_unit_fp64(const double value)
 {
-    return (1.0 - BGC_EPSYLON_FP64 <= square_value) && (square_value <= 1.0 + BGC_EPSYLON_FP64);
+    return (1.0 - BGC_EPSYLON_FP64 <= value) && (value <= 1.0 + BGC_EPSYLON_FP64);
 }
 
 
