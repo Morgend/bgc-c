@@ -63,6 +63,9 @@ extern inline void bgc_vector3_get_mean_of_two_fp64(const BgcVector3FP64* vector
 extern inline void bgc_vector3_get_mean_of_three_fp32(const BgcVector3FP32* vector1, const BgcVector3FP32* vector2, const BgcVector3FP32* vector3, BgcVector3FP32* result);
 extern inline void bgc_vector3_get_mean_of_three_fp64(const BgcVector3FP64* vector1, const BgcVector3FP64* vector2, const BgcVector3FP64* vector3, BgcVector3FP64* result);
 
+extern inline void bgc_vector3_get_linear_interpolation_fp32(const BgcVector3FP32* vector1, const BgcVector3FP32* vector2, const float phase, BgcVector3FP32* interpolation);
+extern inline void bgc_vector3_get_linear_interpolation_fp64(const BgcVector3FP64* vector1, const BgcVector3FP64* vector2, const double phase, BgcVector3FP64* interpolation);
+
 extern inline void bgc_vector3_minimize_fp32(const BgcVector3FP32* vector, BgcVector3FP32* minimal);
 extern inline void bgc_vector3_minimize_fp64(const BgcVector3FP64* vector, BgcVector3FP64* minimal);
 

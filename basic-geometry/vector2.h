@@ -366,6 +366,24 @@ inline void bgc_vector2_get_mean_of_three_fp64(const BgcVector2FP64* vector1, co
     mean->x2 = (vector1->x2 + vector2->x2 + vector3->x2) * BGC_ONE_THIRD_FP64;
 }
 
+// =================== Linear =================== //
+
+inline void bgc_vector2_get_linear_interpolation_fp32(const BgcVector2FP32* vector1, const BgcVector2FP32* vector2, const float phase, BgcVector2FP32* interpolation)
+{
+    const float counterphase = 1.0f - phase;
+
+    interpolation->x1 = vector1->x1 * counterphase + vector2->x1 * phase;
+    interpolation->x2 = vector1->x2 * counterphase + vector2->x2 * phase;
+}
+
+inline void bgc_vector2_get_linear_interpolation_fp64(const BgcVector2FP64* vector1, const BgcVector2FP64* vector2, const double phase, BgcVector2FP64* interpolation)
+{
+    const double counterphase = 1.0 - phase;
+
+    interpolation->x1 = vector1->x1 * counterphase + vector2->x1 * phase;
+    interpolation->x2 = vector1->x2 * counterphase + vector2->x2 * phase;
+}
+
 // ================== Minimal =================== //
 
 inline void bgc_vector2_minimize_fp32(const BgcVector2FP32* vector, BgcVector2FP32* minimal)

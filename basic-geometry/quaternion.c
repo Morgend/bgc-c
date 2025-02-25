@@ -69,5 +69,8 @@ extern inline void bgc_quaternion_multiply_fp64(const BgcQuaternionFP64* multipl
 extern inline void bgc_quaternion_divide_fp32(const BgcQuaternionFP32* dividend, const float divisor, BgcQuaternionFP32* quotient);
 extern inline void bgc_quaternion_divide_fp64(const BgcQuaternionFP64* dividend, const double divisor, BgcQuaternionFP64* quotient);
 
+extern inline void bgc_quaternion_get_linear_interpolation_fp32(const BgcQuaternionFP32* vector1, const BgcQuaternionFP32* vector2, const float phase, BgcQuaternionFP32* interpolation);
+extern inline void bgc_quaternion_get_linear_interpolation_fp64(const BgcQuaternionFP64* vector1, const BgcQuaternionFP64* vector2, const double phase, BgcQuaternionFP64* interpolation);
+
 extern inline int bgc_quaternion_are_close_fp32(const BgcQuaternionFP32* quaternion1, const BgcQuaternionFP32* quaternion2);
 extern inline int bgc_quaternion_are_close_fp32(const BgcQuaternionFP32* quaternion1, const BgcQuaternionFP32* quaternion2);

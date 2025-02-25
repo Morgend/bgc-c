@@ -577,6 +577,28 @@ inline void bgc_quaternion_divide_fp64(const BgcQuaternionFP64* dividend, const 
     bgc_quaternion_multiply_fp64(dividend, 1.0 / divisor, quotient);
 }
 
+// =================== Linear =================== //
+
+inline void bgc_quaternion_get_linear_interpolation_fp32(const BgcQuaternionFP32* quaternion1, const BgcQuaternionFP32* quaternion2, const float phase, BgcQuaternionFP32* interpolation)
+{
+    const float counterphase = 1.0f - phase;
+
+    interpolation->s0 = quaternion1->s0 * counterphase + quaternion2->s0 * phase;
+    interpolation->x1 = quaternion1->x1 * counterphase + quaternion2->x1 * phase;
+    interpolation->x2 = quaternion1->x2 * counterphase + quaternion2->x2 * phase;
+    interpolation->x3 = quaternion1->x3 * counterphase + quaternion2->x3 * phase;
+}
+
+inline void bgc_quaternion_get_linear_interpolation_fp64(const BgcQuaternionFP64* quaternion1, const BgcQuaternionFP64* quaternion2, const double phase, BgcQuaternionFP64* interpolation)
+{
+    const double counterphase = 1.0 - phase;
+
+    interpolation->s0 = quaternion1->s0 * counterphase + quaternion2->s0 * phase;
+    interpolation->x1 = quaternion1->x1 * counterphase + quaternion2->x1 * phase;
+    interpolation->x2 = quaternion1->x2 * counterphase + quaternion2->x2 * phase;
+    interpolation->x3 = quaternion1->x3 * counterphase + quaternion2->x3 * phase;
+}
+
 // ================== Are Close ================= //
 
 inline int bgc_quaternion_are_close_fp32(const BgcQuaternionFP32* quaternion1, const BgcQuaternionFP32* quaternion2)
@@ -615,4 +637,4 @@ inline int bgc_quaternion_are_close_fp64(const BgcQuaternionFP64* quaternion1, c
     return square_distance <= BGC_SQUARE_EPSYLON_FP64 * square_modulus1 && square_distance <= BGC_SQUARE_EPSYLON_FP64 * square_modulus2;
 }
 
-#endif // _BGC_QUATERNION_H_
+#endif
