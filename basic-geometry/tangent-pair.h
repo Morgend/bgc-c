@@ -251,7 +251,7 @@ inline void bgc_tangent_pair_combine_fp64(const BgcTangentPairFP64* tangent1, co
 
 // ================ Set Inverted ================ //
 
-inline void bgc_tangent_pair_make_inverted_fp32(const BgcTangentPairFP32* tangent, BgcTangentPairFP32* result)
+inline void bgc_tangent_pair_get_inverted_fp32(const BgcTangentPairFP32* tangent, BgcTangentPairFP32* result)
 {
     _BgcTwinTangentPairFP32* twin = (_BgcTwinTangentPairFP32*)result;
 
@@ -259,7 +259,7 @@ inline void bgc_tangent_pair_make_inverted_fp32(const BgcTangentPairFP32* tangen
     twin->sin = -tangent->sin;
 }
 
-inline void bgc_tangent_pair_make_inverted_fp64(const BgcTangentPairFP64* tangent, BgcTangentPairFP64* result)
+inline void bgc_tangent_pair_get_inverted_fp64(const BgcTangentPairFP64* tangent, BgcTangentPairFP64* result)
 {
     _BgcTwinTangentPairFP64* twin = (_BgcTwinTangentPairFP64*)result;
 
@@ -269,7 +269,7 @@ inline void bgc_tangent_pair_make_inverted_fp64(const BgcTangentPairFP64* tangen
 
 // ============== Rotation Matrix =============== //
 
-inline void bgc_tangent_pair_make_rotation_matrix_fp32(const BgcTangentPairFP32* tangent, BgcMatrix2x2FP32* matrix)
+inline void bgc_tangent_pair_get_rotation_matrix_fp32(const BgcTangentPairFP32* tangent, BgcMatrix2x2FP32* matrix)
 {
     matrix->r1c1 = tangent->cos;
     matrix->r1c2 = -tangent->sin;
@@ -277,7 +277,7 @@ inline void bgc_tangent_pair_make_rotation_matrix_fp32(const BgcTangentPairFP32*
     matrix->r2c2 = tangent->cos;
 }
 
-inline void bgc_tangent_pair_make_rotation_matrix_fp64(const BgcTangentPairFP64* tangent, BgcMatrix2x2FP64* matrix)
+inline void bgc_tangent_pair_get_rotation_matrix_fp64(const BgcTangentPairFP64* tangent, BgcMatrix2x2FP64* matrix)
 {
     matrix->r1c1 = tangent->cos;
     matrix->r1c2 = -tangent->sin;
@@ -287,7 +287,7 @@ inline void bgc_tangent_pair_make_rotation_matrix_fp64(const BgcTangentPairFP64*
 
 // ============== Reverse Matrix ================ //
 
-inline void bgc_tangent_pair_make_reverse_matrix_fp32(const BgcTangentPairFP32* tangent, BgcMatrix2x2FP32* matrix)
+inline void bgc_tangent_pair_get_reverse_matrix_fp32(const BgcTangentPairFP32* tangent, BgcMatrix2x2FP32* matrix)
 {
     matrix->r1c1 = tangent->cos;
     matrix->r1c2 = tangent->sin;
@@ -295,7 +295,7 @@ inline void bgc_tangent_pair_make_reverse_matrix_fp32(const BgcTangentPairFP32* 
     matrix->r2c2 = tangent->cos;
 }
 
-inline void bgc_tangent_pair_make_reverse_matrix_fp64(const BgcTangentPairFP64* tangent, BgcMatrix2x2FP64* matrix)
+inline void bgc_tangent_pair_get_reverse_matrix_fp64(const BgcTangentPairFP64* tangent, BgcMatrix2x2FP64* matrix)
 {
     matrix->r1c1 = tangent->cos;
     matrix->r1c2 = tangent->sin;

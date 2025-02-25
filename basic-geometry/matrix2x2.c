@@ -45,11 +45,11 @@ extern inline void bgc_matrix2x2_set_column1_fp64(const double r1, const double 
 extern inline void bgc_matrix2x2_set_column2_fp32(const float r1, const float r2, BgcMatrix2x2FP32* matrix);
 extern inline void bgc_matrix2x2_set_column2_fp64(const double r1, const double r2, BgcMatrix2x2FP64* matrix);
 
-extern inline int bgc_matrix2x2_make_inverted_fp32(const BgcMatrix2x2FP32* from, BgcMatrix2x2FP32* to);
-extern inline int bgc_matrix2x2_make_inverted_fp64(const BgcMatrix2x2FP64* from, BgcMatrix2x2FP64* to);
+extern inline int bgc_matrix2x2_get_inverted_fp32(const BgcMatrix2x2FP32* from, BgcMatrix2x2FP32* to);
+extern inline int bgc_matrix2x2_get_inverted_fp64(const BgcMatrix2x2FP64* from, BgcMatrix2x2FP64* to);
 
-extern inline void bgc_matrix2x2_make_transposed_fp32(const BgcMatrix2x2FP32* from, BgcMatrix2x2FP32* to);
-extern inline void bgc_matrix2x2_make_transposed_fp64(const BgcMatrix2x2FP64* from, BgcMatrix2x2FP64* to);
+extern inline void bgc_matrix2x2_get_transposed_fp32(const BgcMatrix2x2FP32* from, BgcMatrix2x2FP32* to);
+extern inline void bgc_matrix2x2_get_transposed_fp64(const BgcMatrix2x2FP64* from, BgcMatrix2x2FP64* to);
 
 extern inline void bgc_matrix2x2_add_fp32(const BgcMatrix2x2FP32* matrix1, const BgcMatrix2x2FP32* matrix2, BgcMatrix2x2FP32* sum);
 extern inline void bgc_matrix2x2_add_fp64(const BgcMatrix2x2FP64* matrix1, const BgcMatrix2x2FP64* matrix2, BgcMatrix2x2FP64* sum);
@@ -69,9 +69,9 @@ extern inline void bgc_matrix2x2_multiply_fp64(const BgcMatrix2x2FP64* multiplic
 extern inline void bgc_matrix2x2_divide_fp32(const BgcMatrix2x2FP32* dividend, const float divisor, BgcMatrix2x2FP32* quotient);
 extern inline void bgc_matrix2x2_divide_fp64(const BgcMatrix2x2FP64* dividend, const double divisor, BgcMatrix2x2FP64* quotient);
 
-extern inline void bgc_matrix2x2_left_product_fp32(const BgcVector2FP32* vector, const BgcMatrix2x2FP32* matrix, BgcVector2FP32* product);
-extern inline void bgc_matrix2x2_left_product_fp64(const BgcVector2FP64* vector, const BgcMatrix2x2FP64* matrix, BgcVector2FP64* product);
+extern inline void bgc_matrix2x2_get_left_product_fp32(const BgcVector2FP32* vector, const BgcMatrix2x2FP32* matrix, BgcVector2FP32* product);
+extern inline void bgc_matrix2x2_get_left_product_fp64(const BgcVector2FP64* vector, const BgcMatrix2x2FP64* matrix, BgcVector2FP64* product);
 
-extern inline void bgc_matrix2x2_right_product_fp32(const BgcMatrix2x2FP32* matrix, const BgcVector2FP32* vector, BgcVector2FP32* product);
-extern inline void bgc_matrix2x2_right_product_fp64(const BgcMatrix2x2FP64* matrix, const BgcVector2FP64* vector, BgcVector2FP64* product);
+extern inline void bgc_matrix2x2_get_right_product_fp32(const BgcMatrix2x2FP32* matrix, const BgcVector2FP32* vector, BgcVector2FP32* product);
+extern inline void bgc_matrix2x2_get_right_product_fp64(const BgcMatrix2x2FP64* matrix, const BgcVector2FP64* vector, BgcVector2FP64* product);
 

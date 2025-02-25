@@ -219,9 +219,9 @@ inline void bgc_matrix2x3_set_column2_fp64(const double r1, const double r2, con
     matrix->r3c2 = r3;
 }
 
-// ============== Make transposed =============== //
+// =============== Get transposed =============== //
 
-inline void bgc_matrix2x3_make_transposed_fp32(const BgcMatrix3x2FP32* matrix, BgcMatrix2x3FP32* transposed)
+inline void bgc_matrix2x3_get_transposed_fp32(const BgcMatrix3x2FP32* matrix, BgcMatrix2x3FP32* transposed)
 {
     transposed->r1c1 = matrix->r1c1;
     transposed->r1c2 = matrix->r2c1;
@@ -233,7 +233,7 @@ inline void bgc_matrix2x3_make_transposed_fp32(const BgcMatrix3x2FP32* matrix, B
     transposed->r3c2 = matrix->r2c3;
 }
 
-inline void bgc_matrix2x3_make_transposed_fp64(const BgcMatrix3x2FP64* matrix, BgcMatrix2x3FP64* transposed)
+inline void bgc_matrix2x3_get_transposed_fp64(const BgcMatrix3x2FP64* matrix, BgcMatrix2x3FP64* transposed)
 {
     transposed->r1c1 = matrix->r1c1;
     transposed->r1c2 = matrix->r2c1;
@@ -390,13 +390,13 @@ inline void bgc_matrix2x3_divide_fp64(const BgcMatrix2x3FP64* dividend, const do
 
 // ============ Left Vector Product ============= //
 
-inline void bgc_matrix2x3_left_product_fp32(const BgcVector3FP32* vector, const BgcMatrix2x3FP32* matrix, BgcVector2FP32* result)
+inline void bgc_matrix2x3_get_left_product_fp32(const BgcVector3FP32* vector, const BgcMatrix2x3FP32* matrix, BgcVector2FP32* result)
 {
     result->x1 = vector->x1 * matrix->r1c1 + vector->x2 * matrix->r2c1 + vector->x3 * matrix->r3c1;
     result->x2 = vector->x1 * matrix->r1c2 + vector->x2 * matrix->r2c2 + vector->x3 * matrix->r3c2;
 }
 
-inline void bgc_matrix2x3_left_product_fp64(const BgcVector3FP64* vector, const BgcMatrix2x3FP64* matrix, BgcVector2FP64* result)
+inline void bgc_matrix2x3_get_left_product_fp64(const BgcVector3FP64* vector, const BgcMatrix2x3FP64* matrix, BgcVector2FP64* result)
 {
     result->x1 = vector->x1 * matrix->r1c1 + vector->x2 * matrix->r2c1 + vector->x3 * matrix->r3c1;
     result->x2 = vector->x1 * matrix->r1c2 + vector->x2 * matrix->r2c2 + vector->x3 * matrix->r3c2;
@@ -404,14 +404,14 @@ inline void bgc_matrix2x3_left_product_fp64(const BgcVector3FP64* vector, const 
 
 // ============ Right Vector Product ============ //
 
-inline void bgc_matrix2x3_right_product_fp32(const BgcMatrix2x3FP32* matrix, const BgcVector2FP32* vector, BgcVector3FP32* result)
+inline void bgc_matrix2x3_get_right_product_fp32(const BgcMatrix2x3FP32* matrix, const BgcVector2FP32* vector, BgcVector3FP32* result)
 {
     result->x1 = matrix->r1c1 * vector->x1 + matrix->r1c2 * vector->x2;
     result->x2 = matrix->r2c1 * vector->x1 + matrix->r2c2 * vector->x2;
     result->x3 = matrix->r3c1 * vector->x1 + matrix->r3c2 * vector->x2;
 }
 
-inline void bgc_matrix2x3_right_product_fp64(const BgcMatrix2x3FP64* matrix, const BgcVector2FP64* vector, BgcVector3FP64* result)
+inline void bgc_matrix2x3_get_right_product_fp64(const BgcMatrix2x3FP64* matrix, const BgcVector2FP64* vector, BgcVector3FP64* result)
 {
     result->x1 = matrix->r1c1 * vector->x1 + matrix->r1c2 * vector->x2;
     result->x2 = matrix->r2c1 * vector->x1 + matrix->r2c2 * vector->x2;

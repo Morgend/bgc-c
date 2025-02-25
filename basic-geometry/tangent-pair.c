@@ -31,14 +31,14 @@ extern inline void bgc_tangent_pair_invert_fp64(BgcTangentPairFP64* tangent);
 extern inline void bgc_tangent_pair_combine_fp32(const BgcTangentPairFP32* tangent1, const BgcTangentPairFP32* tangent2, BgcTangentPairFP32* result);
 extern inline void bgc_tangent_pair_combine_fp64(const BgcTangentPairFP64* tangent1, const BgcTangentPairFP64* tangent2, BgcTangentPairFP64* result);
 
-extern inline void bgc_tangent_pair_make_inverted_fp32(const BgcTangentPairFP32* tangent, BgcTangentPairFP32* result);
-extern inline void bgc_tangent_pair_make_inverted_fp64(const BgcTangentPairFP64* tangent, BgcTangentPairFP64* result);
+extern inline void bgc_tangent_pair_get_inverted_fp32(const BgcTangentPairFP32* tangent, BgcTangentPairFP32* result);
+extern inline void bgc_tangent_pair_get_inverted_fp64(const BgcTangentPairFP64* tangent, BgcTangentPairFP64* result);
 
-extern inline void bgc_tangent_pair_make_rotation_matrix_fp32(const BgcTangentPairFP32* tangent, BgcMatrix2x2FP32* matrix);
-extern inline void bgc_tangent_pair_make_rotation_matrix_fp64(const BgcTangentPairFP64* tangent, BgcMatrix2x2FP64* matrix);
+extern inline void bgc_tangent_pair_get_rotation_matrix_fp32(const BgcTangentPairFP32* tangent, BgcMatrix2x2FP32* matrix);
+extern inline void bgc_tangent_pair_get_rotation_matrix_fp64(const BgcTangentPairFP64* tangent, BgcMatrix2x2FP64* matrix);
 
-extern inline void bgc_tangent_pair_make_reverse_matrix_fp32(const BgcTangentPairFP32* tangent, BgcMatrix2x2FP32* matrix);
-extern inline void bgc_tangent_pair_make_reverse_matrix_fp64(const BgcTangentPairFP64* tangent, BgcMatrix2x2FP64* matrix);
+extern inline void bgc_tangent_pair_get_reverse_matrix_fp32(const BgcTangentPairFP32* tangent, BgcMatrix2x2FP32* matrix);
+extern inline void bgc_tangent_pair_get_reverse_matrix_fp64(const BgcTangentPairFP64* tangent, BgcMatrix2x2FP64* matrix);
 
 extern inline void bgc_tangent_pair_turn_vector_fp32(const BgcTangentPairFP32* tangent, const BgcVector2FP32* vector, BgcVector2FP32* result);
 extern inline void bgc_tangent_pair_turn_vector_fp64(const BgcTangentPairFP64* tangent, const BgcVector2FP64* vector, BgcVector2FP64* result);

@@ -214,43 +214,43 @@ inline void bgc_vector2_complex_conjugate_fp64(BgcVector2FP64* vector)
     vector->x2 = -vector->x2;
 }
 
-// ================ Make Reverse ================ //
+// ================ Get Reverse ================= //
 
-inline void bgc_vector2_make_reverse_fp32(const BgcVector2FP32* vector, BgcVector2FP32* reverse)
+inline void bgc_vector2_get_reverse_fp32(const BgcVector2FP32* vector, BgcVector2FP32* reverse)
 {
     reverse->x1 = -vector->x1;
     reverse->x2 = -vector->x2;
 }
 
-inline void bgc_vector2_make_reverse_fp64(const BgcVector2FP64* vector, BgcVector2FP64* reverse)
+inline void bgc_vector2_get_reverse_fp64(const BgcVector2FP64* vector, BgcVector2FP64* reverse)
 {
     reverse->x1 = -vector->x1;
     reverse->x2 = -vector->x2;
 }
 
-// ============== Make Normalized =============== //
+// =============== Get Normalized =============== //
 
-inline int bgc_vector2_make_normalized_fp32(const BgcVector2FP32* vector, BgcVector2FP32* normalized)
+inline int bgc_vector2_get_normalized_fp32(const BgcVector2FP32* vector, BgcVector2FP32* normalized)
 {
     bgc_vector2_copy_fp32(vector, normalized);
     return bgc_vector2_normalize_fp32(normalized);
 }
 
-inline int bgc_vector2_make_normalized_fp64(const BgcVector2FP64* vector, BgcVector2FP64* normalized)
+inline int bgc_vector2_get_normalized_fp64(const BgcVector2FP64* vector, BgcVector2FP64* normalized)
 {
     bgc_vector2_copy_fp64(vector, normalized);
     return bgc_vector2_normalize_fp64(normalized);
 }
 
-// =========== Make Complex Conjugate =========== //
+// =========== Get Complex Conjugate ============ //
 
-inline void bgc_vector2_make_complex_conjugate_fp32(const BgcVector2FP32* vector, BgcVector2FP32* conjugate)
+inline void bgc_vector2_get_complex_conjugate_fp32(const BgcVector2FP32* vector, BgcVector2FP32* conjugate)
 {
     conjugate->x1 = vector->x1;
     conjugate->x2 = -vector->x2;
 }
 
-inline void bgc_vector2_make_complex_conjugate_fp64(const BgcVector2FP64* vector, BgcVector2FP64* conjugate)
+inline void bgc_vector2_get_complex_conjugate_fp64(const BgcVector2FP64* vector, BgcVector2FP64* conjugate)
 {
     conjugate->x1 = vector->x1;
     conjugate->x2 = -vector->x2;
@@ -340,13 +340,13 @@ inline void bgc_vector2_divide_fp64(const BgcVector2FP64* dividend, const double
 
 // ================== Average2 ================== //
 
-inline void bgc_vector2_mean_of_two_fp32(const BgcVector2FP32* vector1, const BgcVector2FP32* vector2, BgcVector2FP32* mean)
+inline void bgc_vector2_get_mean_of_two_fp32(const BgcVector2FP32* vector1, const BgcVector2FP32* vector2, BgcVector2FP32* mean)
 {
     mean->x1 = (vector1->x1 + vector2->x1) * 0.5f;
     mean->x2 = (vector1->x2 + vector2->x2) * 0.5f;
 }
 
-inline void bgc_vector2_mean_of_two_fp64(const BgcVector2FP64* vector1, const BgcVector2FP64* vector2, BgcVector2FP64* mean)
+inline void bgc_vector2_get_mean_of_two_fp64(const BgcVector2FP64* vector1, const BgcVector2FP64* vector2, BgcVector2FP64* mean)
 {
     mean->x1 = (vector1->x1 + vector2->x1) * 0.5;
     mean->x2 = (vector1->x2 + vector2->x2) * 0.5;
@@ -354,13 +354,13 @@ inline void bgc_vector2_mean_of_two_fp64(const BgcVector2FP64* vector1, const Bg
 
 // ================== Average3 ================== //
 
-inline void bgc_vector2_mean_of_three_fp32(const BgcVector2FP32* vector1, const BgcVector2FP32* vector2, const BgcVector2FP32* vector3, BgcVector2FP32* mean)
+inline void bgc_vector2_get_mean_of_three_fp32(const BgcVector2FP32* vector1, const BgcVector2FP32* vector2, const BgcVector2FP32* vector3, BgcVector2FP32* mean)
 {
     mean->x1 = (vector1->x1 + vector2->x1 + vector3->x1) * BGC_ONE_THIRD_FP32;
     mean->x2 = (vector1->x2 + vector2->x2 + vector3->x2) * BGC_ONE_THIRD_FP32;
 }
 
-inline void bgc_vector2_mean_of_three_fp64(const BgcVector2FP64* vector1, const BgcVector2FP64* vector2, const BgcVector2FP64* vector3, BgcVector2FP64* mean)
+inline void bgc_vector2_get_mean_of_three_fp64(const BgcVector2FP64* vector1, const BgcVector2FP64* vector2, const BgcVector2FP64* vector3, BgcVector2FP64* mean)
 {
     mean->x1 = (vector1->x1 + vector2->x1 + vector3->x1) * BGC_ONE_THIRD_FP64;
     mean->x2 = (vector1->x2 + vector2->x2 + vector3->x2) * BGC_ONE_THIRD_FP64;
@@ -416,31 +416,31 @@ inline void bgc_vector2_maximize_fp64(const BgcVector2FP64* vector, BgcVector2FP
 
 // =============== Scalar Product =============== //
 
-inline float bgc_vector2_scalar_product_fp32(const BgcVector2FP32* vector1, const BgcVector2FP32* vector2)
+inline float bgc_vector2_get_scalar_product_fp32(const BgcVector2FP32* vector1, const BgcVector2FP32* vector2)
 {
     return vector1->x1 * vector2->x1 + vector1->x2 * vector2->x2;
 }
 
-inline double bgc_vector2_scalar_product_fp64(const BgcVector2FP64* vector1, const BgcVector2FP64* vector2)
+inline double bgc_vector2_get_scalar_product_fp64(const BgcVector2FP64* vector1, const BgcVector2FP64* vector2)
 {
     return vector1->x1 * vector2->x1 + vector1->x2 * vector2->x2;
 }
 
 // =============== Cross Product ================ //
 
-inline float bgc_vector2_cross_product_fp32(const BgcVector2FP32* vector1, const BgcVector2FP32* vector2)
+inline float bgc_vector2_get_cross_product_fp32(const BgcVector2FP32* vector1, const BgcVector2FP32* vector2)
 {
     return vector1->x1 * vector2->x2 - vector1->x2 * vector2->x1;
 }
 
-inline double bgc_vector2_cross_product_fp64(const BgcVector2FP64* vector1, const BgcVector2FP64* vector2)
+inline double bgc_vector2_get_cross_product_fp64(const BgcVector2FP64* vector1, const BgcVector2FP64* vector2)
 {
     return vector1->x1 * vector2->x2 - vector1->x2 * vector2->x1;
 }
 
 // ============== Complex Product =============== //
 
-inline void bgc_vector2_complex_product_fp32(const BgcVector2FP32* vector1, const BgcVector2FP32* vector2, BgcVector2FP32* result)
+inline void bgc_vector2_get_complex_product_fp32(const BgcVector2FP32* vector1, const BgcVector2FP32* vector2, BgcVector2FP32* result)
 {
     const float x1 = vector1->x1 * vector2->x1 - vector1->x2 * vector2->x2;
     const float x2 = vector1->x1 * vector2->x2 + vector1->x2 * vector2->x1;
@@ -449,7 +449,7 @@ inline void bgc_vector2_complex_product_fp32(const BgcVector2FP32* vector1, cons
     result->x2 = x2;
 }
 
-inline void bgc_vector2_complex_product_fp64(const BgcVector2FP64* vector1, const BgcVector2FP64* vector2, BgcVector2FP64* result)
+inline void bgc_vector2_get_complex_product_fp64(const BgcVector2FP64* vector1, const BgcVector2FP64* vector2, BgcVector2FP64* result)
 {
     const double x1 = vector1->x1 * vector2->x1 - vector1->x2 * vector2->x2;
     const double x2 = vector1->x1 * vector2->x2 + vector1->x2 * vector2->x1;

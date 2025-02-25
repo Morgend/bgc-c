@@ -41,7 +41,7 @@ inline void bgc_matrix2x2_set_to_identity_fp64(BgcMatrix2x2FP64* matrix)
     matrix->r2c2 = 1.0;
 }
 
-// ================ Make Diagonal =============== //
+// ================ Set Diagonal ================ //
 
 inline void bgc_matrix2x2_set_to_diagonal_fp32(const float d1, const float d2, BgcMatrix2x2FP32* matrix)
 {
@@ -317,9 +317,9 @@ inline void bgc_matrix2x2_set_column2_fp64(const double r1, const double r2, Bgc
     matrix->r2c2 = r2;
 }
 
-// =============== Make Inverted ================ //
+// ================ Get Inverted ================ //
 
-inline int bgc_matrix2x2_make_inverted_fp32(const BgcMatrix2x2FP32* matrix, BgcMatrix2x2FP32* inverted)
+inline int bgc_matrix2x2_get_inverted_fp32(const BgcMatrix2x2FP32* matrix, BgcMatrix2x2FP32* inverted)
 {
     const float determinant = bgc_matrix2x2_get_determinant_fp32(matrix);
 
@@ -344,7 +344,7 @@ inline int bgc_matrix2x2_make_inverted_fp32(const BgcMatrix2x2FP32* matrix, BgcM
     return 1;
 }
 
-inline int bgc_matrix2x2_make_inverted_fp64(const BgcMatrix2x2FP64* matrix, BgcMatrix2x2FP64* inverted)
+inline int bgc_matrix2x2_get_inverted_fp64(const BgcMatrix2x2FP64* matrix, BgcMatrix2x2FP64* inverted)
 {
     const double determinant = bgc_matrix2x2_get_determinant_fp64(matrix);
 
@@ -369,9 +369,9 @@ inline int bgc_matrix2x2_make_inverted_fp64(const BgcMatrix2x2FP64* matrix, BgcM
     return 1;
 }
 
-// ============== Make Transposed =============== //
+// =============== Get Transposed =============== //
 
-inline void bgc_matrix2x2_make_transposed_fp32(const BgcMatrix2x2FP32* matrix, BgcMatrix2x2FP32* transposed)
+inline void bgc_matrix2x2_get_transposed_fp32(const BgcMatrix2x2FP32* matrix, BgcMatrix2x2FP32* transposed)
 {
     float tmp = matrix->r1c2;
 
@@ -382,7 +382,7 @@ inline void bgc_matrix2x2_make_transposed_fp32(const BgcMatrix2x2FP32* matrix, B
     transposed->r2c2 = matrix->r2c2;
 }
 
-inline void bgc_matrix2x2_make_transposed_fp64(const BgcMatrix2x2FP64* matrix, BgcMatrix2x2FP64* transposed)
+inline void bgc_matrix2x2_get_transposed_fp64(const BgcMatrix2x2FP64* matrix, BgcMatrix2x2FP64* transposed)
 {
     double tmp = matrix->r1c2;
 
@@ -507,7 +507,7 @@ inline void bgc_matrix2x2_divide_fp64(const BgcMatrix2x2FP64* dividend, const do
 
 // ============ Left Vector Product ============= //
 
-inline void bgc_matrix2x2_left_product_fp32(const BgcVector2FP32* vector, const BgcMatrix2x2FP32* matrix, BgcVector2FP32* product)
+inline void bgc_matrix2x2_get_left_product_fp32(const BgcVector2FP32* vector, const BgcMatrix2x2FP32* matrix, BgcVector2FP32* product)
 {
     const float x1 = vector->x1 * matrix->r1c1 + vector->x2 * matrix->r2c1;
     const float x2 = vector->x1 * matrix->r1c2 + vector->x2 * matrix->r2c2;
@@ -516,7 +516,7 @@ inline void bgc_matrix2x2_left_product_fp32(const BgcVector2FP32* vector, const 
     product->x2 = x2;
 }
 
-inline void bgc_matrix2x2_left_product_fp64(const BgcVector2FP64* vector, const BgcMatrix2x2FP64* matrix, BgcVector2FP64* product)
+inline void bgc_matrix2x2_get_left_product_fp64(const BgcVector2FP64* vector, const BgcMatrix2x2FP64* matrix, BgcVector2FP64* product)
 {
     const double x1 = vector->x1 * matrix->r1c1 + vector->x2 * matrix->r2c1;
     const double x2 = vector->x1 * matrix->r1c2 + vector->x2 * matrix->r2c2;
@@ -527,7 +527,7 @@ inline void bgc_matrix2x2_left_product_fp64(const BgcVector2FP64* vector, const 
 
 // ============ Right Vector Product ============ //
 
-inline void bgc_matrix2x2_right_product_fp32(const BgcMatrix2x2FP32* matrix, const BgcVector2FP32* vector, BgcVector2FP32* product)
+inline void bgc_matrix2x2_get_right_product_fp32(const BgcMatrix2x2FP32* matrix, const BgcVector2FP32* vector, BgcVector2FP32* product)
 {
     const float x1 = matrix->r1c1 * vector->x1 + matrix->r1c2 * vector->x2;
     const float x2 = matrix->r2c1 * vector->x1 + matrix->r2c2 * vector->x2;
@@ -536,7 +536,7 @@ inline void bgc_matrix2x2_right_product_fp32(const BgcMatrix2x2FP32* matrix, con
     product->x2 = x2;
 }
 
-inline void bgc_matrix2x2_right_product_fp64(const BgcMatrix2x2FP64* matrix, const BgcVector2FP64* vector, BgcVector2FP64* product)
+inline void bgc_matrix2x2_get_right_product_fp64(const BgcMatrix2x2FP64* matrix, const BgcVector2FP64* vector, BgcVector2FP64* product)
 {
     const double x1 = matrix->r1c1 * vector->x1 + matrix->r1c2 * vector->x2;
     const double x2 = matrix->r2c1 * vector->x1 + matrix->r2c2 * vector->x2;

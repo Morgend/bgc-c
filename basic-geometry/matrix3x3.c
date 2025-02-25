@@ -45,8 +45,8 @@ extern inline void bgc_matrix3x3_set_column2_fp64(const double r1, const double 
 extern inline void bgc_matrix3x3_set_column3_fp32(const float r1, const float r2, const float r3, BgcMatrix3x3FP32* matrix);
 extern inline void bgc_matrix3x3_set_column3_fp64(const double r1, const double r2, const double r3, BgcMatrix3x3FP64* matrix);
 
-extern inline void bgc_matrix3x3_make_transposed_fp32(const BgcMatrix3x3FP32* matrix, BgcMatrix3x3FP32* result);
-extern inline void bgc_matrix3x3_make_transposed_fp64(const BgcMatrix3x3FP64* matrix, BgcMatrix3x3FP64* result);
+extern inline void bgc_matrix3x3_get_transposed_fp32(const BgcMatrix3x3FP32* matrix, BgcMatrix3x3FP32* result);
+extern inline void bgc_matrix3x3_get_transposed_fp64(const BgcMatrix3x3FP64* matrix, BgcMatrix3x3FP64* result);
 
 extern inline void bgc_matrix3x3_add_fp32(const BgcMatrix3x3FP32* matrix1, const BgcMatrix3x3FP32* matrix2, BgcMatrix3x3FP32* sum);
 extern inline void bgc_matrix3x3_add_fp64(const BgcMatrix3x3FP64* matrix1, const BgcMatrix3x3FP64* matrix2, BgcMatrix3x3FP64* sum);
@@ -66,11 +66,11 @@ extern inline void bgc_matrix3x3_multiply_fp64(const BgcMatrix3x3FP64* multiplic
 extern inline void bgc_matrix3x3_divide_fp32(const BgcMatrix3x3FP32* dividend, const float divisor, BgcMatrix3x3FP32* quotient);
 extern inline void bgc_matrix3x3_divide_fp64(const BgcMatrix3x3FP64* dividend, const double divisor, BgcMatrix3x3FP64* quotient);
 
-extern inline void bgc_matrix3x3_left_product_fp32(const BgcVector3FP32* vector, const BgcMatrix3x3FP32* matrix, BgcVector3FP32* result);
-extern inline void bgc_matrix3x3_left_product_fp64(const BgcVector3FP64* vector, const BgcMatrix3x3FP64* matrix, BgcVector3FP64* result);
+extern inline void bgc_matrix3x3_get_left_product_fp32(const BgcVector3FP32* vector, const BgcMatrix3x3FP32* matrix, BgcVector3FP32* result);
+extern inline void bgc_matrix3x3_get_left_product_fp64(const BgcVector3FP64* vector, const BgcMatrix3x3FP64* matrix, BgcVector3FP64* result);
 
-extern inline void bgc_matrix3x3_right_product_fp32(const BgcMatrix3x3FP32* matrix, const BgcVector3FP32* vector, BgcVector3FP32* result);
-extern inline void bgc_matrix3x3_right_product_fp64(const BgcMatrix3x3FP64* matrix, const BgcVector3FP64* vector, BgcVector3FP64* result);
+extern inline void bgc_matrix3x3_get_right_product_fp32(const BgcMatrix3x3FP32* matrix, const BgcVector3FP32* vector, BgcVector3FP32* result);
+extern inline void bgc_matrix3x3_get_right_product_fp64(const BgcMatrix3x3FP64* matrix, const BgcVector3FP64* vector, BgcVector3FP64* result);
 
 // =================== Invert =================== //
 
@@ -148,9 +148,9 @@ int bgc_matrix3x3_invert_fp64(BgcMatrix3x3FP64* matrix)
     return 1;
 }
 
-// ================ Make Inverted =============== //
+// ================ Get Inverted ================ //
 
-int bgc_matrix3x3_make_inverted_fp32(const BgcMatrix3x3FP32* matrix, BgcMatrix3x3FP32* result)
+int bgc_matrix3x3_get_inverted_fp32(const BgcMatrix3x3FP32* matrix, BgcMatrix3x3FP32* result)
 {
     const float determinant = bgc_matrix3x3_get_determinant_fp32(matrix);
 
@@ -187,7 +187,7 @@ int bgc_matrix3x3_make_inverted_fp32(const BgcMatrix3x3FP32* matrix, BgcMatrix3x
     return 1;
 }
 
-int bgc_matrix3x3_make_inverted_fp64(const BgcMatrix3x3FP64* matrix, BgcMatrix3x3FP64* result)
+int bgc_matrix3x3_get_inverted_fp64(const BgcMatrix3x3FP64* matrix, BgcMatrix3x3FP64* result)
 {
     const double determinant = bgc_matrix3x3_get_determinant_fp64(matrix);
 

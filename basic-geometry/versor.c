@@ -40,20 +40,20 @@ extern inline void bgc_versor_combine_fp64(const BgcVersorFP64* second, const Bg
 extern inline void bgc_versor_combine3_fp32(const BgcVersorFP32* third, const BgcVersorFP32* second, const BgcVersorFP32* first, BgcVersorFP32* result);
 extern inline void bgc_versor_combine3_fp64(const BgcVersorFP64* third, const BgcVersorFP64* second, const BgcVersorFP64* first, BgcVersorFP64* result);
 
-extern inline void bgc_versor_make_shortened_fp32(const BgcVersorFP32* versor, BgcVersorFP32* shortened);
-extern inline void bgc_versor_make_shortened_fp64(const BgcVersorFP64* versor, BgcVersorFP64* shortened);
+extern inline void bgc_versor_get_shortened_fp32(const BgcVersorFP32* versor, BgcVersorFP32* shortened);
+extern inline void bgc_versor_get_shortened_fp64(const BgcVersorFP64* versor, BgcVersorFP64* shortened);
 
-extern inline void bgc_versor_make_inverted_fp32(const BgcVersorFP32* versor, BgcVersorFP32* to);
-extern inline void bgc_versor_make_inverted_fp64(const BgcVersorFP64* versor, BgcVersorFP64* to);
+extern inline void bgc_versor_get_inverted_fp32(const BgcVersorFP32* versor, BgcVersorFP32* to);
+extern inline void bgc_versor_get_inverted_fp64(const BgcVersorFP64* versor, BgcVersorFP64* to);
 
-extern inline void bgc_versor_make_rotation_matrix_fp32(const BgcVersorFP32* versor, BgcMatrix3x3FP32* matrix);
-extern inline void bgc_versor_make_rotation_matrix_fp64(const BgcVersorFP64* versor, BgcMatrix3x3FP64* matrix);
+extern inline void bgc_versor_get_rotation_matrix_fp32(const BgcVersorFP32* versor, BgcMatrix3x3FP32* matrix);
+extern inline void bgc_versor_get_rotation_matrix_fp64(const BgcVersorFP64* versor, BgcMatrix3x3FP64* matrix);
 
-extern inline void bgc_versor_make_reverse_matrix_fp32(const BgcVersorFP32* versor, BgcMatrix3x3FP32* matrix);
-extern inline void bgc_versor_make_reverse_matrix_fp64(const BgcVersorFP64* versor, BgcMatrix3x3FP64* matrix);
+extern inline void bgc_versor_get_reverse_matrix_fp32(const BgcVersorFP32* versor, BgcMatrix3x3FP32* matrix);
+extern inline void bgc_versor_get_reverse_matrix_fp64(const BgcVersorFP64* versor, BgcMatrix3x3FP64* matrix);
 
-extern inline void bgc_versor_make_both_matrixes_fp32(const BgcVersorFP32* versor, BgcMatrix3x3FP32* rotation, BgcMatrix3x3FP32* reverse);
-extern inline void bgc_versor_make_both_matrixes_fp64(const BgcVersorFP64* versor, BgcMatrix3x3FP64* rotation, BgcMatrix3x3FP64* reverse);
+extern inline void bgc_versor_get_both_matrixes_fp32(const BgcVersorFP32* versor, BgcMatrix3x3FP32* rotation, BgcMatrix3x3FP32* reverse);
+extern inline void bgc_versor_get_both_matrixes_fp64(const BgcVersorFP64* versor, BgcMatrix3x3FP64* rotation, BgcMatrix3x3FP64* reverse);
 
 extern inline void bgc_versor_turn_vector_fp32(const BgcVersorFP32* versor, const BgcVector3FP32* vector, BgcVector3FP32* result);
 extern inline void bgc_versor_turn_vector_fp64(const BgcVersorFP64* versor, const BgcVector3FP64* vector, BgcVector3FP64* result);
@@ -155,9 +155,9 @@ void bgc_versor_set_turn_fp64(const double x1, const double x2, const double x3,
     bgc_versor_set_values_fp64(cos(half_angle), x1 * multiplier, x2 * multiplier, x3 * multiplier, result);
 }
 
-// =============== Make Rotation3 =============== //
+// ================ Get Rotation ================ //
 
-void bgc_versor_make_rotation_fp32(const BgcVersorFP32* versor, BgcRotation3FP32* result)
+void bgc_versor_get_rotation_fp32(const BgcVersorFP32* versor, BgcRotation3FP32* result)
 {
     if (versor->s0 <= -(1.0f - BGC_EPSYLON_FP32) || 1.0f - BGC_EPSYLON_FP32 <= versor->s0) {
         bgc_rotation3_reset_fp32(result);
@@ -181,7 +181,7 @@ void bgc_versor_make_rotation_fp32(const BgcVersorFP32* versor, BgcRotation3FP32
     result->axis.x3 = versor->x3 * multiplier;
 }
 
-void bgc_versor_make_rotation_fp64(const BgcVersorFP64* versor, BgcRotation3FP64* result)
+void bgc_versor_get_rotation_fp64(const BgcVersorFP64* versor, BgcRotation3FP64* result)
 {
     if (versor->s0 <= -(1.0 - BGC_EPSYLON_FP64) || 1.0 - BGC_EPSYLON_FP64 <= versor->s0) {
         bgc_rotation3_reset_fp64(result);

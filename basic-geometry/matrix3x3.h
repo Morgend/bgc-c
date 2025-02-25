@@ -68,7 +68,7 @@ inline void bgc_matrix3x3_set_to_identity_fp64(BgcMatrix3x3FP64* matrix)
     matrix->r3c3 = 1.0;
 }
 
-// ================ Make Diagonal =============== //
+// ================ Set Diagonal ================ //
 
 inline void bgc_matrix3x3_set_to_diagonal_fp32(const float d1, const float d2, const float d3, BgcMatrix3x3FP32* matrix)
 {
@@ -406,15 +406,15 @@ inline void bgc_matrix3x3_set_column3_fp64(const double r1, const double r2, con
     matrix->r3c3 = r3;
 }
 
-// ================ Make Inverted =============== //
+// ================ Get Inverted ================ //
 
-int bgc_matrix3x3_make_inverted_fp32(const BgcMatrix3x3FP32* matrix, BgcMatrix3x3FP32* result);
+int bgc_matrix3x3_get_inverted_fp32(const BgcMatrix3x3FP32* matrix, BgcMatrix3x3FP32* result);
 
-int bgc_matrix3x3_make_inverted_fp64(const BgcMatrix3x3FP64* matrix, BgcMatrix3x3FP64* result);
+int bgc_matrix3x3_get_inverted_fp64(const BgcMatrix3x3FP64* matrix, BgcMatrix3x3FP64* result);
 
-// =============== Make Transposed ============== //
+// =============== Get Transposed =============== //
 
-inline void bgc_matrix3x3_make_transposed_fp32(const BgcMatrix3x3FP32* matrix, BgcMatrix3x3FP32* result)
+inline void bgc_matrix3x3_get_transposed_fp32(const BgcMatrix3x3FP32* matrix, BgcMatrix3x3FP32* result)
 {
     if (matrix == result) {
         bgc_matrix3x3_transpose_fp32(result);
@@ -434,7 +434,7 @@ inline void bgc_matrix3x3_make_transposed_fp32(const BgcMatrix3x3FP32* matrix, B
     result->r3c3 = matrix->r3c3;
 }
 
-inline void bgc_matrix3x3_make_transposed_fp64(const BgcMatrix3x3FP64* matrix, BgcMatrix3x3FP64* result)
+inline void bgc_matrix3x3_get_transposed_fp64(const BgcMatrix3x3FP64* matrix, BgcMatrix3x3FP64* result)
 {
     if (matrix == result) {
         bgc_matrix3x3_transpose_fp64(result);
@@ -628,7 +628,7 @@ inline void bgc_matrix3x3_divide_fp64(const BgcMatrix3x3FP64* dividend, const do
 
 // ============ Left Vector Product ============= //
 
-inline void bgc_matrix3x3_left_product_fp32(const BgcVector3FP32* vector, const BgcMatrix3x3FP32* matrix, BgcVector3FP32* result)
+inline void bgc_matrix3x3_get_left_product_fp32(const BgcVector3FP32* vector, const BgcMatrix3x3FP32* matrix, BgcVector3FP32* result)
 {
     const float x1 = vector->x1 * matrix->r1c1 + vector->x2 * matrix->r2c1 + vector->x3 * matrix->r3c1;
     const float x2 = vector->x1 * matrix->r1c2 + vector->x2 * matrix->r2c2 + vector->x3 * matrix->r3c2;
@@ -639,7 +639,7 @@ inline void bgc_matrix3x3_left_product_fp32(const BgcVector3FP32* vector, const 
     result->x3 = x3;
 }
 
-inline void bgc_matrix3x3_left_product_fp64(const BgcVector3FP64* vector, const BgcMatrix3x3FP64* matrix, BgcVector3FP64* result)
+inline void bgc_matrix3x3_get_left_product_fp64(const BgcVector3FP64* vector, const BgcMatrix3x3FP64* matrix, BgcVector3FP64* result)
 {
     const double x1 = vector->x1 * matrix->r1c1 + vector->x2 * matrix->r2c1 + vector->x3 * matrix->r3c1;
     const double x2 = vector->x1 * matrix->r1c2 + vector->x2 * matrix->r2c2 + vector->x3 * matrix->r3c2;
@@ -652,7 +652,7 @@ inline void bgc_matrix3x3_left_product_fp64(const BgcVector3FP64* vector, const 
 
 // ============ Right Vector Product ============ //
 
-inline void bgc_matrix3x3_right_product_fp32(const BgcMatrix3x3FP32* matrix, const BgcVector3FP32* vector, BgcVector3FP32* result)
+inline void bgc_matrix3x3_get_right_product_fp32(const BgcMatrix3x3FP32* matrix, const BgcVector3FP32* vector, BgcVector3FP32* result)
 {
     const float x1 = matrix->r1c1 * vector->x1 + matrix->r1c2 * vector->x2 + matrix->r1c3 * vector->x3;
     const float x2 = matrix->r2c1 * vector->x1 + matrix->r2c2 * vector->x2 + matrix->r2c3 * vector->x3;
@@ -663,7 +663,7 @@ inline void bgc_matrix3x3_right_product_fp32(const BgcMatrix3x3FP32* matrix, con
     result->x3 = x3;
 }
 
-inline void bgc_matrix3x3_right_product_fp64(const BgcMatrix3x3FP64* matrix, const BgcVector3FP64* vector, BgcVector3FP64* result)
+inline void bgc_matrix3x3_get_right_product_fp64(const BgcMatrix3x3FP64* matrix, const BgcVector3FP64* vector, BgcVector3FP64* result)
 {
     const double x1 = matrix->r1c1 * vector->x1 + matrix->r1c2 * vector->x2 + matrix->r1c3 * vector->x3;
     const double x2 = matrix->r2c1 * vector->x1 + matrix->r2c2 * vector->x2 + matrix->r2c3 * vector->x3;

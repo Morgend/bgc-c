@@ -33,11 +33,14 @@ extern inline void bgc_vector2_reverse_fp64(BgcVector2FP64* vector);
 extern inline int bgc_vector2_normalize_fp32(BgcVector2FP32* vector);
 extern inline int bgc_vector2_normalize_fp64(BgcVector2FP64* vector);
 
-extern inline void bgc_vector2_make_reverse_fp32(const BgcVector2FP32* vector, BgcVector2FP32* reverse);
-extern inline void bgc_vector2_make_reverse_fp64(const BgcVector2FP64* vector, BgcVector2FP64* reverse);
+extern inline void bgc_vector2_get_reverse_fp32(const BgcVector2FP32* vector, BgcVector2FP32* reverse);
+extern inline void bgc_vector2_get_reverse_fp64(const BgcVector2FP64* vector, BgcVector2FP64* reverse);
 
-extern inline int bgc_vector2_make_normalized_fp32(const BgcVector2FP32* vector, BgcVector2FP32* result);
-extern inline int bgc_vector2_make_normalized_fp64(const BgcVector2FP64* vector, BgcVector2FP64* result);
+extern inline int bgc_vector2_get_normalized_fp32(const BgcVector2FP32* vector, BgcVector2FP32* result);
+extern inline int bgc_vector2_get_normalized_fp64(const BgcVector2FP64* vector, BgcVector2FP64* result);
+
+extern inline void bgc_vector2_get_complex_conjugate_fp32(const BgcVector2FP32* vector, BgcVector2FP32* conjugate);
+extern inline void bgc_vector2_get_complex_conjugate_fp64(const BgcVector2FP64* vector, BgcVector2FP64* conjugate);
 
 extern inline void bgc_vector2_add_fp32(const BgcVector2FP32* vector1, const BgcVector2FP32* vector2, BgcVector2FP32* sum);
 extern inline void bgc_vector2_add_fp64(const BgcVector2FP64* vector1, const BgcVector2FP64* vector2, BgcVector2FP64* sum);
@@ -57,11 +60,11 @@ extern inline void bgc_vector2_multiply_fp64(const BgcVector2FP64* multiplicand,
 extern inline void bgc_vector2_divide_fp32(const BgcVector2FP32* dividend, const float divisor, BgcVector2FP32* quotient);
 extern inline void bgc_vector2_divide_fp64(const BgcVector2FP64* dividend, const double divisor, BgcVector2FP64* quotient);
 
-extern inline void bgc_vector2_mean_of_two_fp32(const BgcVector2FP32* vector1, const BgcVector2FP32* vector2, BgcVector2FP32* mean);
-extern inline void bgc_vector2_mean_of_two_fp64(const BgcVector2FP64* vector1, const BgcVector2FP64* vector2, BgcVector2FP64* mean);
+extern inline void bgc_vector2_get_mean_of_two_fp32(const BgcVector2FP32* vector1, const BgcVector2FP32* vector2, BgcVector2FP32* mean);
+extern inline void bgc_vector2_get_mean_of_two_fp64(const BgcVector2FP64* vector1, const BgcVector2FP64* vector2, BgcVector2FP64* mean);
 
-extern inline void bgc_vector2_mean_of_three_fp32(const BgcVector2FP32* vector1, const BgcVector2FP32* vector2, const BgcVector2FP32* vector3, BgcVector2FP32* mean);
-extern inline void bgc_vector2_mean_of_three_fp64(const BgcVector2FP64* vector1, const BgcVector2FP64* vector2, const BgcVector2FP64* vector3, BgcVector2FP64* mean);
+extern inline void bgc_vector2_get_mean_of_three_fp32(const BgcVector2FP32* vector1, const BgcVector2FP32* vector2, const BgcVector2FP32* vector3, BgcVector2FP32* mean);
+extern inline void bgc_vector2_get_mean_of_three_fp64(const BgcVector2FP64* vector1, const BgcVector2FP64* vector2, const BgcVector2FP64* vector3, BgcVector2FP64* mean);
 
 extern inline void bgc_vector2_minimize_fp32(const BgcVector2FP32* vector, BgcVector2FP32* minimal);
 extern inline void bgc_vector2_minimize_fp64(const BgcVector2FP64* vector, BgcVector2FP64* minimal);
@@ -69,14 +72,14 @@ extern inline void bgc_vector2_minimize_fp64(const BgcVector2FP64* vector, BgcVe
 extern inline void bgc_vector2_maximize_fp32(const BgcVector2FP32* vector, BgcVector2FP32* maximal);
 extern inline void bgc_vector2_maximize_fp64(const BgcVector2FP64* vector, BgcVector2FP64* maximal);
 
-extern inline float bgc_vector2_scalar_product_fp32(const BgcVector2FP32* vector1, const BgcVector2FP32* vector2);
-extern inline double bgc_vector2_scalar_product_fp64(const BgcVector2FP64* vector1, const BgcVector2FP64* vector2);
+extern inline float bgc_vector2_get_scalar_product_fp32(const BgcVector2FP32* vector1, const BgcVector2FP32* vector2);
+extern inline double bgc_vector2_get_scalar_product_fp64(const BgcVector2FP64* vector1, const BgcVector2FP64* vector2);
 
-extern inline float bgc_vector2_cross_product_fp32(const BgcVector2FP32* vector1, const BgcVector2FP32* vector2);
-extern inline double bgc_vector2_cross_product_fp64(const BgcVector2FP64* vector1, const BgcVector2FP64* vector2);
+extern inline float bgc_vector2_get_cross_product_fp32(const BgcVector2FP32* vector1, const BgcVector2FP32* vector2);
+extern inline double bgc_vector2_get_cross_product_fp64(const BgcVector2FP64* vector1, const BgcVector2FP64* vector2);
 
-extern inline void bgc_vector2_complex_product_fp32(const BgcVector2FP32* vector1, const BgcVector2FP32* vector2, BgcVector2FP32* product);
-extern inline void bgc_vector2_complex_product_fp64(const BgcVector2FP64* vector1, const BgcVector2FP64* vector2, BgcVector2FP64* product);
+extern inline void bgc_vector2_get_complex_product_fp32(const BgcVector2FP32* vector1, const BgcVector2FP32* vector2, BgcVector2FP32* product);
+extern inline void bgc_vector2_get_complex_product_fp64(const BgcVector2FP64* vector1, const BgcVector2FP64* vector2, BgcVector2FP64* product);
 
 extern inline float bgc_vector2_get_square_distance_fp32(const BgcVector2FP32* vector1, const BgcVector2FP32* vector2);
 extern inline double bgc_vector2_get_square_distance_fp64(const BgcVector2FP64* vector1, const BgcVector2FP64* vector2);
@@ -106,7 +109,7 @@ float bgc_vector2_get_angle_fp32(const BgcVector2FP32* vector1, const BgcVector2
         return 0.0f;
     }
 
-    const float cosine = bgc_vector2_scalar_product_fp32(vector1, vector2) / sqrtf(square_modulus1 * square_modulus2);
+    const float cosine = bgc_vector2_get_scalar_product_fp32(vector1, vector2) / sqrtf(square_modulus1 * square_modulus2);
 
     if (cosine >= 1.0f - BGC_EPSYLON_FP32) {
         return 0.0f;
@@ -133,7 +136,7 @@ double bgc_vector2_get_angle_fp64(const BgcVector2FP64* vector1, const BgcVector
         return 0.0;
     }
 
-    const double cosine = bgc_vector2_scalar_product_fp64(vector1, vector2) / sqrt(square_modulus1 * square_modulus2);
+    const double cosine = bgc_vector2_get_scalar_product_fp64(vector1, vector2) / sqrt(square_modulus1 * square_modulus2);
 
     if (cosine >= 1.0 - BGC_EPSYLON_FP64) {
         return 0.0;

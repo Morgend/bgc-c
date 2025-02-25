@@ -39,7 +39,7 @@ inline void bgc_rotation3_reset_fp64(BgcRotation3FP64* rotation)
     rotation->radians = 0.0;
 }
 
-// ==================== Make ==================== //
+// ================= Set Values ================= //
 
 inline void bgc_rotation3_set_values_fp32(const float x1, const float x2, const float x3, const float angle, const BgcAngleUnitEnum unit, BgcRotation3FP32* rotation)
 {
