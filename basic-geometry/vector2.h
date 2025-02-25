@@ -458,6 +458,12 @@ inline void bgc_vector2_get_complex_product_fp64(const BgcVector2FP64* vector1, 
     result->x2 = x2;
 }
 
+// =============== Complex Power ================ //
+
+void bgc_vector2_get_complex_power_fp32(const BgcVector2FP32* base, const BgcVector2FP32* power, BgcVector2FP32* result);
+
+void bgc_vector2_get_complex_power_fp64(const BgcVector2FP64* base, const BgcVector2FP64* power, BgcVector2FP64* result);
+
 // =================== Angle ==================== //
 
 float bgc_vector2_get_angle_fp32(const BgcVector2FP32* vector1, const BgcVector2FP32* vector2, const BgcAngleUnitEnum unit);

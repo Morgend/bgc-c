@@ -93,6 +93,48 @@ extern inline int bgc_vector2_are_close_enough_fp64(const BgcVector2FP64* vector
 extern inline int bgc_vector2_are_close_fp32(const BgcVector2FP32* vector1, const BgcVector2FP32* vector2);
 extern inline int bgc_vector2_are_close_fp64(const BgcVector2FP64* vector1, const BgcVector2FP64* vector2);
 
+// =============== Complex Power ================ //
+
+void bgc_vector2_get_complex_power_fp32(const BgcVector2FP32* base, const BgcVector2FP32* power, BgcVector2FP32* result)
+{
+    const float base_square_modulus = bgc_vector2_get_square_modulus_fp32(base);
+
+    if (base_square_modulus <= BGC_SQUARE_EPSYLON_FP32) {
+        result->x1 = 0.0f;
+        result->x2 = 0.0f;
+        return;
+    }
+
+    const float log_modulus = logf(base_square_modulus) * 0.5f;
+    const float angle = atan2f(base->x2, base->x1);
+
+    const float result_modulus = expf(power->x1 * log_modulus - power->x2 * angle);
+    const float result_angle = power->x1 * angle + power->x2 * log_modulus;
+
+    result->x1 = result_modulus * cosf(result_angle);
+    result->x2 = result_modulus * sinf(result_angle);
+}
+
+void bgc_vector2_get_complex_power_fp64(const BgcVector2FP64* base, const BgcVector2FP64* power, BgcVector2FP64* result)
+{
+    const double base_square_modulus = bgc_vector2_get_square_modulus_fp64(base);
+
+    if (base_square_modulus <= BGC_SQUARE_EPSYLON_FP64) {
+        result->x1 = 0.0;
+        result->x2 = 0.0;
+        return;
+    }
+
+    const double log_modulus = log(base_square_modulus) * 0.5;
+    const double angle = atan2(base->x2, base->x1);
+
+    const double result_modulus = exp(power->x1 * log_modulus - power->x2 * angle);
+    const double result_angle = power->x1 * angle + power->x2 * log_modulus;
+
+    result->x1 = result_modulus * cos(result_angle);
+    result->x2 = result_modulus * sin(result_angle);
+}
+
 // =================== Angle ==================== //
 
 float bgc_vector2_get_angle_fp32(const BgcVector2FP32* vector1, const BgcVector2FP32* vector2, const BgcAngleUnitEnum unit)

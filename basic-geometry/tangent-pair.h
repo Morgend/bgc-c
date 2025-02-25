@@ -129,7 +129,7 @@ inline float bgc_tangent_pair_get_angle_fp32(const BgcTangentPairFP32* tangent, 
         return 0.75f * bgc_angle_get_full_circle_fp32(unit);
     }
 
-    return bgc_radians_to_units_fp32(atan2f(tangent->cos, tangent->sin), unit);
+    return bgc_radians_to_units_fp32(atan2f(tangent->sin, tangent->cos), unit);
 }
 
 inline double bgc_tangent_pair_get_angle_fp64(const BgcTangentPairFP64* tangent, const BgcAngleUnitEnum unit)
@@ -150,7 +150,7 @@ inline double bgc_tangent_pair_get_angle_fp64(const BgcTangentPairFP64* tangent,
         return 0.75 * bgc_angle_get_full_circle_fp64(unit);
     }
 
-    return bgc_radians_to_units_fp64(atan2(tangent->cos, tangent->sin), unit);
+    return bgc_radians_to_units_fp64(atan2(tangent->sin, tangent->cos), unit);
 }
 
 // ==================== Copy ==================== //
