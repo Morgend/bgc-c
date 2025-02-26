@@ -274,6 +274,12 @@ inline void bgc_versor_invert_fp64(const BgcVersorFP64* versor, BgcVersorFP64* i
     twin->x3 = -versor->x3;
 }
 
+// =============== Get Exponation =============== //
+
+void bgc_versor_get_exponation_fp32(const BgcVersorFP32* base, const float exponent, BgcVersorFP32* power);
+
+void bgc_versor_get_exponation_fp64(const BgcVersorFP64* base, const double exponent, BgcVersorFP64* power);
+
 // ================ Combination ================= //
 
 inline void bgc_versor_combine_fp32(const BgcVersorFP32* second, const BgcVersorFP32* first, BgcVersorFP32* result)

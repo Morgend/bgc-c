@@ -158,17 +158,9 @@ void bgc_versor_get_rotation_fp32(const BgcVersorFP32* versor, BgcRotation3FP32*
         return;
     }
 
-    const float s0s0 = versor->s0 * versor->s0;
-    const float x1x1 = versor->x1 * versor->x1;
-    const float x2x2 = versor->x2 * versor->x2;
-    const float x3x3 = versor->x3 * versor->x3;
+    const float multiplier = sqrtf(1.0f / (versor->x1 * versor->x1 + versor->x2 * versor->x2 + versor->x3 * versor->x3));
 
-    const float square_module = (s0s0 + x1x1) + (x2x2 + x3x3);
-    const float square_vector = x1x1 + (x2x2 + x3x3);
-
-    result->radians = 2.0f * acosf(versor->s0 / sqrtf(square_module));
-
-    const float multiplier = sqrtf(1.0f / square_vector);
+    result->radians = 2.0f * acosf(versor->s0);
 
     result->axis.x1 = versor->x1 * multiplier;
     result->axis.x2 = versor->x2 * multiplier;
@@ -182,19 +174,45 @@ void bgc_versor_get_rotation_fp64(const BgcVersorFP64* versor, BgcRotation3FP64*
         return;
     }
 
-    const double s0s0 = versor->s0 * versor->s0;
-    const double x1x1 = versor->x1 * versor->x1;
-    const double x2x2 = versor->x2 * versor->x2;
-    const double x3x3 = versor->x3 * versor->x3;
+    const double multiplier = sqrt(1.0 / (versor->x1 * versor->x1 + versor->x2 * versor->x2 + versor->x3 * versor->x3));
 
-    const double square_module = (s0s0 + x1x1) + (x2x2 + x3x3);
-    const double square_vector = x1x1 + (x2x2 + x3x3);
-
-    result->radians = 2.0 * acos(versor->s0 / sqrt(square_module));
-
-    const double multiplier = sqrt(1.0 / square_vector);
+    result->radians = 2.0 * acos(versor->s0);
 
     result->axis.x1 = versor->x1 * multiplier;
     result->axis.x2 = versor->x2 * multiplier;
     result->axis.x3 = versor->x3 * multiplier;
+}
+
+// =============== Get Exponation =============== //
+
+void bgc_versor_get_exponation_fp32(const BgcVersorFP32* base, const float exponent, BgcVersorFP32* power)
+{
+    const float square_vector = base->x1 * base->x1 + base->x2 * base->x2 + base->x3 * base->x3;
+
+    if (square_vector <= BGC_SQUARE_EPSYLON_FP32) {
+        bgc_versor_reset_fp32(power);
+        return;
+    }
+
+    const float angle = acosf(base->s0) * exponent;
+
+    const float multiplier = sinf(angle) / sqrtf(square_vector);
+
+    bgc_versor_set_values_fp32(cosf(angle), base->x1 * multiplier, base->x2 * multiplier, base->x3 * multiplier, power);
+}
+
+void bgc_versor_get_exponation_fp64(const BgcVersorFP64* base, const double exponent, BgcVersorFP64* power)
+{
+    const double square_vector = base->x1 * base->x1 + base->x2 * base->x2 + base->x3 * base->x3;
+
+    if (square_vector <= BGC_SQUARE_EPSYLON_FP64) {
+        bgc_versor_reset_fp64(power);
+        return;
+    }
+
+    const double angle = acos(base->s0) * exponent;
+
+    const double multiplier = sin(angle) / sqrt(square_vector);
+
+    bgc_versor_set_values_fp64(cos(angle), base->x1 * multiplier, base->x2 * multiplier, base->x3 * multiplier, power);
 }

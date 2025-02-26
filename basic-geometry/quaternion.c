@@ -72,5 +72,9 @@ extern inline int bgc_quaternion_get_rotation_matrix_fp64(const BgcQuaternionFP6
 extern inline int bgc_quaternion_get_reverse_matrix_fp32(const BgcQuaternionFP32* quaternion, BgcMatrix3x3FP32* reverse);
 extern inline int bgc_quaternion_get_reverse_matrix_fp64(const BgcQuaternionFP64* quaternion, BgcMatrix3x3FP64* reverse);
 
+extern inline int bgc_quaternion_get_both_matrixes_fp32(const BgcQuaternionFP32* quaternion, BgcMatrix3x3FP32* rotation, BgcMatrix3x3FP32* reverse);
+extern inline int bgc_quaternion_get_both_matrixes_fp64(const BgcQuaternionFP64* quaternion, BgcMatrix3x3FP64* rotation, BgcMatrix3x3FP64* reverse);
+
+
 extern inline int bgc_quaternion_are_close_fp32(const BgcQuaternionFP32* quaternion1, const BgcQuaternionFP32* quaternion2);
 extern inline int bgc_quaternion_are_close_fp32(const BgcQuaternionFP32* quaternion1, const BgcQuaternionFP32* quaternion2);

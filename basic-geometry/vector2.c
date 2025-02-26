@@ -33,12 +33,6 @@ extern inline void bgc_vector2_reverse_fp64(const BgcVector2FP64* vector, BgcVec
 extern inline int bgc_vector2_normalize_fp32(const BgcVector2FP32* vector, BgcVector2FP32* normalized);
 extern inline int bgc_vector2_normalize_fp64(const BgcVector2FP64* vector, BgcVector2FP64* normalized);
 
-extern inline void bgc_vector2_complex_conjugate_fp32(const BgcVector2FP32* vector, BgcVector2FP32* conjugate);
-extern inline void bgc_vector2_complex_conjugate_fp64(const BgcVector2FP64* vector, BgcVector2FP64* conjugate);
-
-extern inline int bgc_vector2_complex_invert_fp32(const BgcVector2FP32* vector, BgcVector2FP32* inverted);
-extern inline int bgc_vector2_complex_invert_fp64(const BgcVector2FP64* vector, BgcVector2FP64* inverted);
-
 extern inline void bgc_vector2_add_fp32(const BgcVector2FP32* vector1, const BgcVector2FP32* vector2, BgcVector2FP32* sum);
 extern inline void bgc_vector2_add_fp64(const BgcVector2FP64* vector1, const BgcVector2FP64* vector2, BgcVector2FP64* sum);
 
@@ -78,12 +72,6 @@ extern inline double bgc_vector2_get_scalar_product_fp64(const BgcVector2FP64* v
 extern inline float bgc_vector2_get_cross_product_fp32(const BgcVector2FP32* vector1, const BgcVector2FP32* vector2);
 extern inline double bgc_vector2_get_cross_product_fp64(const BgcVector2FP64* vector1, const BgcVector2FP64* vector2);
 
-extern inline void bgc_vector2_get_complex_product_fp32(const BgcVector2FP32* vector1, const BgcVector2FP32* vector2, BgcVector2FP32* product);
-extern inline void bgc_vector2_get_complex_product_fp64(const BgcVector2FP64* vector1, const BgcVector2FP64* vector2, BgcVector2FP64* product);
-
-extern inline int bgc_vector2_get_complex_ratio_fp32(const BgcVector2FP32* divident, const BgcVector2FP32* divisor, BgcVector2FP32* quotient);
-extern inline int bgc_vector2_get_complex_ratio_fp64(const BgcVector2FP64* divident, const BgcVector2FP64* divisor, BgcVector2FP64* quotient);
-
 extern inline float bgc_vector2_get_square_distance_fp32(const BgcVector2FP32* vector1, const BgcVector2FP32* vector2);
 extern inline double bgc_vector2_get_square_distance_fp64(const BgcVector2FP64* vector1, const BgcVector2FP64* vector2);
 
@@ -95,48 +83,6 @@ extern inline int bgc_vector2_are_close_enough_fp64(const BgcVector2FP64* vector
 
 extern inline int bgc_vector2_are_close_fp32(const BgcVector2FP32* vector1, const BgcVector2FP32* vector2);
 extern inline int bgc_vector2_are_close_fp64(const BgcVector2FP64* vector1, const BgcVector2FP64* vector2);
-
-// =============== Complex Power ================ //
-
-void bgc_vector2_get_complex_power_fp32(const BgcVector2FP32* base, const BgcVector2FP32* power, BgcVector2FP32* result)
-{
-    const float base_square_modulus = bgc_vector2_get_square_modulus_fp32(base);
-
-    if (base_square_modulus <= BGC_SQUARE_EPSYLON_FP32) {
-        result->x1 = 0.0f;
-        result->x2 = 0.0f;
-        return;
-    }
-
-    const float log_modulus = logf(base_square_modulus) * 0.5f;
-    const float angle = atan2f(base->x2, base->x1);
-
-    const float result_modulus = expf(power->x1 * log_modulus - power->x2 * angle);
-    const float result_angle = power->x1 * angle + power->x2 * log_modulus;
-
-    result->x1 = result_modulus * cosf(result_angle);
-    result->x2 = result_modulus * sinf(result_angle);
-}
-
-void bgc_vector2_get_complex_power_fp64(const BgcVector2FP64* base, const BgcVector2FP64* power, BgcVector2FP64* result)
-{
-    const double base_square_modulus = bgc_vector2_get_square_modulus_fp64(base);
-
-    if (base_square_modulus <= BGC_SQUARE_EPSYLON_FP64) {
-        result->x1 = 0.0;
-        result->x2 = 0.0;
-        return;
-    }
-
-    const double log_modulus = log(base_square_modulus) * 0.5;
-    const double angle = atan2(base->x2, base->x1);
-
-    const double result_modulus = exp(power->x1 * log_modulus - power->x2 * angle);
-    const double result_angle = power->x1 * angle + power->x2 * log_modulus;
-
-    result->x1 = result_modulus * cos(result_angle);
-    result->x2 = result_modulus * sin(result_angle);
-}
 
 // =================== Angle ==================== //
 

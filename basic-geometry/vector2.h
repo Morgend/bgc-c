@@ -202,54 +202,6 @@ inline int bgc_vector2_normalize_fp64(const BgcVector2FP64* vector, BgcVector2FP
     return 1;
 }
 
-// ============= Complex Conjugate ============== //
-
-inline void bgc_vector2_complex_conjugate_fp32(const BgcVector2FP32* vector, BgcVector2FP32* conjugate)
-{
-    conjugate->x1 = vector->x1;
-    conjugate->x2 = -vector->x2;
-}
-
-inline void bgc_vector2_complex_conjugate_fp64(const BgcVector2FP64* vector, BgcVector2FP64* conjugate)
-{
-    conjugate->x1 = vector->x1;
-    conjugate->x2 = -vector->x2;
-}
-
-// =============== Complex Invert =============== //
-
-inline int bgc_vector2_complex_invert_fp32(const BgcVector2FP32* vector, BgcVector2FP32* inverted)
-{
-    const float square_modulus = bgc_vector2_get_square_modulus_fp32(vector);
-
-    if (square_modulus <= BGC_SQUARE_EPSYLON_FP32 || square_modulus != square_modulus) {
-        return 0;
-    }
-
-    const float multiplicand = 1.0f / square_modulus;
-
-    inverted->x1 = vector->x1 * multiplicand;
-    inverted->x2 = -vector->x2 * multiplicand;
-
-    return 1;
-}
-
-inline int bgc_vector2_complex_invert_fp64(const BgcVector2FP64* vector, BgcVector2FP64* inverted)
-{
-    const double square_modulus = bgc_vector2_get_square_modulus_fp64(vector);
-
-    if (square_modulus <= BGC_SQUARE_EPSYLON_FP64 || square_modulus != square_modulus) {
-        return 0;
-    }
-
-    const double multiplicand = 1.0 / square_modulus;
-
-    inverted->x1 = vector->x1 * multiplicand;
-    inverted->x2 = -vector->x2 * multiplicand;
-
-    return 1;
-}
-
 // ==================== Add ===================== //
 
 inline void bgc_vector2_add_fp32(const BgcVector2FP32* vector1, const BgcVector2FP32* vector2, BgcVector2FP32* sum)
@@ -449,72 +401,6 @@ inline double bgc_vector2_get_cross_product_fp64(const BgcVector2FP64* vector1, 
 {
     return vector1->x1 * vector2->x2 - vector1->x2 * vector2->x1;
 }
-
-// ============ Get Complex Product ============= //
-
-inline void bgc_vector2_get_complex_product_fp32(const BgcVector2FP32* vector1, const BgcVector2FP32* vector2, BgcVector2FP32* result)
-{
-    const float x1 = vector1->x1 * vector2->x1 - vector1->x2 * vector2->x2;
-    const float x2 = vector1->x1 * vector2->x2 + vector1->x2 * vector2->x1;
-
-    result->x1 = x1;
-    result->x2 = x2;
-}
-
-inline void bgc_vector2_get_complex_product_fp64(const BgcVector2FP64* vector1, const BgcVector2FP64* vector2, BgcVector2FP64* result)
-{
-    const double x1 = vector1->x1 * vector2->x1 - vector1->x2 * vector2->x2;
-    const double x2 = vector1->x1 * vector2->x2 + vector1->x2 * vector2->x1;
-
-    result->x1 = x1;
-    result->x2 = x2;
-}
-
-// ============= Get Complex Ratio ============== //
-
-inline int bgc_vector2_get_complex_ratio_fp32(const BgcVector2FP32* divident, const BgcVector2FP32* divisor, BgcVector2FP32* quotient)
-{
-    const float square_modulus = bgc_vector2_get_square_modulus_fp32(divisor);
-
-    if (square_modulus <= BGC_SQUARE_EPSYLON_FP32) {
-        return 0;
-    }
-
-    const float x1 = divident->x1 * divisor->x1 + divident->x2 * divisor->x2;
-    const float x2 = divident->x2 * divisor->x1 - divident->x1 * divisor->x2;
-
-    const float multiplier = 1.0f / square_modulus;
-
-    quotient->x1 = x1 * multiplier;
-    quotient->x2 = x2 * multiplier;
-
-    return 1;
-}
-
-inline int bgc_vector2_get_complex_ratio_fp64(const BgcVector2FP64* divident, const BgcVector2FP64* divisor, BgcVector2FP64* quotient)
-{
-    const double square_modulus = bgc_vector2_get_square_modulus_fp64(divisor);
-
-    if (square_modulus <= BGC_SQUARE_EPSYLON_FP64) {
-        return 0;
-    }
-
-    const double x1 = divident->x1 * divisor->x1 + divident->x2 * divisor->x2;
-    const double x2 = divident->x2 * divisor->x1 - divident->x1 * divisor->x2;
-
-    const double multiplier = 1.0 / square_modulus;
-
-    quotient->x1 = x1 * multiplier;
-    quotient->x2 = x2 * multiplier;
-
-    return 1;
-}
-
-// ============= Get Complex Power ============== //
-
-void bgc_vector2_get_complex_power_fp32(const BgcVector2FP32* base, const BgcVector2FP32* power, BgcVector2FP32* result);
-
-void bgc_vector2_get_complex_power_fp64(const BgcVector2FP64* base, const BgcVector2FP64* power, BgcVector2FP64* result);
 
 // ================= Get Angle ================== //
 

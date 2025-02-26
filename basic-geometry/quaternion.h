@@ -659,6 +659,8 @@ inline int bgc_quaternion_get_reverse_matrix_fp64(const BgcQuaternionFP64* quate
     return 1;
 }
 
+// ============= Get Both Matrixes ============== //
+
 inline int bgc_quaternion_get_both_matrixes_fp32(const BgcQuaternionFP32* quaternion, BgcMatrix3x3FP32* rotation, BgcMatrix3x3FP32* reverse)
 {
     if (bgc_quaternion_get_reverse_matrix_fp32(quaternion, reverse)) {

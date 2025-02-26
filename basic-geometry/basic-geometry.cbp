@@ -48,6 +48,14 @@
 		</Unit>
 		<Unit filename="angle.h" />
 		<Unit filename="basic-geometry.h" />
+		<Unit filename="complex.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="complex.h" />
+		<Unit filename="cotes-number.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="cotes-number.h" />
 		<Unit filename="matrix2x2.c">
 			<Option compilerVar="CC" />
 		</Unit>
@@ -76,10 +84,6 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="rotation3.h" />
-		<Unit filename="tangent-pair.c">
-			<Option compilerVar="CC" />
-		</Unit>
-		<Unit filename="tangent-pair.h" />
 		<Unit filename="utilities.c">
 			<Option compilerVar="CC" />
 		</Unit>

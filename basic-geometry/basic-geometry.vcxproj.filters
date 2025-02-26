@@ -18,6 +18,12 @@
     <ClInclude Include="angle.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
+    <ClInclude Include="complex.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="cotes-number.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
     <ClInclude Include="utilities.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
@@ -54,12 +60,15 @@
     <ClInclude Include="matrixes.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="tangent-pair.h">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="angle.c">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="complex.c">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="cotes-number.c">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
     <ClCompile Include="utilities.c">
@@ -93,9 +102,6 @@
       <Filter>Исходные файлы</Filter>
     </ClCompile>
     <ClCompile Include="matrix3x2.c">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
-    <ClCompile Include="tangent-pair.c">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
   </ItemGroup>
