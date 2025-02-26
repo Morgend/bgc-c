@@ -184,12 +184,12 @@ inline void bgc_versor_swap_fp64(BgcVersorFP64* versor1, BgcVersorFP64* versor2)
 
 inline int bgc_versor_is_identity_fp32(const BgcVersorFP32* versor)
 {
-    return 1.0f - BGC_EPSYLON_FP32 <= versor->s0 || versor->s0 <= -(1.0 - BGC_EPSYLON_FP32);
+    return versor->x1 * versor->x1 + versor->x2 * versor->x2 + versor->x3 * versor->x3 <= BGC_SQUARE_EPSYLON_FP32;
 }
 
 inline int bgc_versor_is_identity_fp64(const BgcVersorFP64* versor)
 {
-    return 1.0 - BGC_EPSYLON_FP64 <= versor->s0 || versor->s0 <= -(1.0 - BGC_EPSYLON_FP64);
+    return versor->x1 * versor->x1 + versor->x2 * versor->x2 + versor->x3 * versor->x3 <= BGC_SQUARE_EPSYLON_FP64;
 }
 
 // ================== Convert =================== //

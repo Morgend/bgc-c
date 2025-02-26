@@ -114,6 +114,30 @@
     <ClCompile Include="tests\quaternion\quaternion_modulus.c">
       <Filter>tests\quaternion</Filter>
     </ClCompile>
+    <ClCompile Include="tests\complex\complex_copy.c">
+      <Filter>tests\complex</Filter>
+    </ClCompile>
+    <ClCompile Include="tests\complex\complex_is_unit.c">
+      <Filter>tests\complex</Filter>
+    </ClCompile>
+    <ClCompile Include="tests\complex\complex_is_zero.c">
+      <Filter>tests\complex</Filter>
+    </ClCompile>
+    <ClCompile Include="tests\complex\complex_modulus.c">
+      <Filter>tests\complex</Filter>
+    </ClCompile>
+    <ClCompile Include="tests\complex\complex_reset.c">
+      <Filter>tests\complex</Filter>
+    </ClCompile>
+    <ClCompile Include="tests\complex\complex_set_values.c">
+      <Filter>tests\complex</Filter>
+    </ClCompile>
+    <ClCompile Include="tests\complex\complex_swap.c">
+      <Filter>tests\complex</Filter>
+    </ClCompile>
+    <ClCompile Include="tests\complex.c">
+      <Filter>tests</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="helpers.h" />
@@ -228,6 +252,30 @@
     <ClInclude Include="tests\quaternion\quaternion_modulus.h">
       <Filter>tests\quaternion</Filter>
     </ClInclude>
+    <ClInclude Include="tests\complex\complex_copy.h">
+      <Filter>tests\complex</Filter>
+    </ClInclude>
+    <ClInclude Include="tests\complex\complex_is_unit.h">
+      <Filter>tests\complex</Filter>
+    </ClInclude>
+    <ClInclude Include="tests\complex\complex_is_zero.h">
+      <Filter>tests\complex</Filter>
+    </ClInclude>
+    <ClInclude Include="tests\complex\complex_modulus.h">
+      <Filter>tests\complex</Filter>
+    </ClInclude>
+    <ClInclude Include="tests\complex\complex_reset.h">
+      <Filter>tests\complex</Filter>
+    </ClInclude>
+    <ClInclude Include="tests\complex\complex_set_values.h">
+      <Filter>tests\complex</Filter>
+    </ClInclude>
+    <ClInclude Include="tests\complex\complex_swap.h">
+      <Filter>tests\complex</Filter>
+    </ClInclude>
+    <ClInclude Include="tests\complex.h">
+      <Filter>tests</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="tests">
@@ -247,6 +295,9 @@
     </Filter>
     <Filter Include="tests\quaternion">
       <UniqueIdentifier>{e8bafdb8-66e5-4393-bc89-8bff83bcccd6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="tests\complex">
+      <UniqueIdentifier>{e025e123-45aa-44f9-aab4-f1705844b211}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

@@ -150,6 +150,14 @@
   <ItemGroup>
     <ClCompile Include="helpers.c" />
     <ClCompile Include="main.c" />
+    <ClCompile Include="tests\complex.c" />
+    <ClCompile Include="tests\complex\complex_copy.c" />
+    <ClCompile Include="tests\complex\complex_is_unit.c" />
+    <ClCompile Include="tests\complex\complex_is_zero.c" />
+    <ClCompile Include="tests\complex\complex_modulus.c" />
+    <ClCompile Include="tests\complex\complex_reset.c" />
+    <ClCompile Include="tests\complex\complex_set_values.c" />
+    <ClCompile Include="tests\complex\complex_swap.c" />
     <ClCompile Include="tests\quaternion.c" />
     <ClCompile Include="tests\quaternion\quaternion_copy.c" />
     <ClCompile Include="tests\quaternion\quaternion_is_unit.c" />
@@ -190,6 +198,14 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="helpers.h" />
+    <ClInclude Include="tests\complex.h" />
+    <ClInclude Include="tests\complex\complex_copy.h" />
+    <ClInclude Include="tests\complex\complex_is_unit.h" />
+    <ClInclude Include="tests\complex\complex_is_zero.h" />
+    <ClInclude Include="tests\complex\complex_modulus.h" />
+    <ClInclude Include="tests\complex\complex_reset.h" />
+    <ClInclude Include="tests\complex\complex_set_values.h" />
+    <ClInclude Include="tests\complex\complex_swap.h" />
     <ClInclude Include="tests\quaternion.h" />
     <ClInclude Include="tests\quaternion\quaternion_copy.h" />
     <ClInclude Include="tests\quaternion\quaternion_is_unit.h" />

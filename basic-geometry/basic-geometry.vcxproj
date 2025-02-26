@@ -47,7 +47,6 @@
     <ClCompile Include="matrixes.c" />
     <ClCompile Include="quaternion.c" />
     <ClCompile Include="rotation3.c" />
-    <ClCompile Include="cotes-number.c" />
     <ClCompile Include="versor.c" />
     <ClCompile Include="vector2.c" />
     <ClCompile Include="vector3.c" />

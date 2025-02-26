@@ -49,6 +49,38 @@
 		<Unit filename="main.c">
 			<Option compilerVar="CC" />
 		</Unit>
+		<Unit filename="tests/complex.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="tests/complex.h" />
+		<Unit filename="tests/complex/complex_copy.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="tests/complex/complex_copy.h" />
+		<Unit filename="tests/complex/complex_is_unit.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="tests/complex/complex_is_unit.h" />
+		<Unit filename="tests/complex/complex_is_zero.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="tests/complex/complex_is_zero.h" />
+		<Unit filename="tests/complex/complex_modulus.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="tests/complex/complex_modulus.h" />
+		<Unit filename="tests/complex/complex_reset.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="tests/complex/complex_reset.h" />
+		<Unit filename="tests/complex/complex_set_values.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="tests/complex/complex_set_values.h" />
+		<Unit filename="tests/complex/complex_swap.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="tests/complex/complex_swap.h" />
 		<Unit filename="tests/quaternion.c">
 			<Option compilerVar="CC" />
 		</Unit>

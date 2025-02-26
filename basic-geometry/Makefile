@@ -7,7 +7,7 @@ OBJECTS=$(SOURCES:.c=.o)
 OBJECT_DIRECTORY=obj/Release
 BINARY_DIRECTORY=bin/Release
 BACK_PATH=../..
-LIBRARY=libbasic-geometry.a
+LIBRARY=libbgc.a
 
 all: directories $(SOURCES) $(LIBRARY)
 $(LIBRARY): $(OBJECTS)
