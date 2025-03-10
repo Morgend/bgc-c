@@ -40,6 +40,9 @@ extern inline void bgc_versor_combine_fp64(const BgcVersorFP64* second, const Bg
 extern inline void bgc_versor_combine3_fp32(const BgcVersorFP32* third, const BgcVersorFP32* second, const BgcVersorFP32* first, BgcVersorFP32* result);
 extern inline void bgc_versor_combine3_fp64(const BgcVersorFP64* third, const BgcVersorFP64* second, const BgcVersorFP64* first, BgcVersorFP64* result);
 
+extern inline void bgc_versor_exclude_fp32(const BgcVersorFP32* base, const BgcVersorFP32* excludant, BgcVersorFP32* difference);
+extern inline void bgc_versor_exclude_fp64(const BgcVersorFP64* base, const BgcVersorFP64* excludant, BgcVersorFP64* difference);
+
 extern inline void bgc_versor_get_rotation_matrix_fp32(const BgcVersorFP32* versor, BgcMatrix3x3FP32* matrix);
 extern inline void bgc_versor_get_rotation_matrix_fp64(const BgcVersorFP64* versor, BgcMatrix3x3FP64* matrix);
 

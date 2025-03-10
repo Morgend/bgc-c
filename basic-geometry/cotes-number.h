@@ -277,6 +277,26 @@ inline void bgc_cotes_number_combine_fp64(const BgcCotesNumberFP64* number1, con
     );
 }
 
+// ================= Exclusion ================== //
+
+inline void bgc_cotes_number_exclude_fp32(const BgcCotesNumberFP32* base, const BgcCotesNumberFP32* excludant, BgcCotesNumberFP32* difference)
+{
+    bgc_cotes_number_set_values_fp32(
+        base->cos * excludant->cos + base->sin * excludant->sin,
+        base->sin * excludant->cos - base->cos * excludant->sin,
+        difference
+    );
+}
+
+inline void bgc_cotes_number_exclude_fp64(const BgcCotesNumberFP64* base, const BgcCotesNumberFP64* excludant, BgcCotesNumberFP64* difference)
+{
+    bgc_cotes_number_set_values_fp64(
+        base->cos * excludant->cos + base->sin * excludant->sin,
+        base->sin * excludant->cos - base->cos * excludant->sin,
+        difference
+    );
+}
+
 // ============== Rotation Matrix =============== //
 
 inline void bgc_cotes_number_get_rotation_matrix_fp32(const BgcCotesNumberFP32* number, BgcMatrix2x2FP32* matrix)

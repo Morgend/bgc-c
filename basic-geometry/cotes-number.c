@@ -34,6 +34,9 @@ extern inline void bgc_cotes_number_get_exponation_fp64(const BgcCotesNumberFP64
 extern inline void bgc_cotes_number_combine_fp32(const BgcCotesNumberFP32* number1, const BgcCotesNumberFP32* number2, BgcCotesNumberFP32* result);
 extern inline void bgc_cotes_number_combine_fp64(const BgcCotesNumberFP64* number1, const BgcCotesNumberFP64* number2, BgcCotesNumberFP64* result);
 
+extern inline void bgc_cotes_number_exclude_fp32(const BgcCotesNumberFP32* base, const BgcCotesNumberFP32* excludant, BgcCotesNumberFP32* difference);
+extern inline void bgc_cotes_number_exclude_fp64(const BgcCotesNumberFP64* base, const BgcCotesNumberFP64* excludant, BgcCotesNumberFP64* difference);
+
 extern inline void bgc_cotes_number_get_rotation_matrix_fp32(const BgcCotesNumberFP32* number, BgcMatrix2x2FP32* matrix);
 extern inline void bgc_cotes_number_get_rotation_matrix_fp64(const BgcCotesNumberFP64* number, BgcMatrix2x2FP64* matrix);
 

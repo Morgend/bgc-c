@@ -24,7 +24,7 @@ static const BgcVersorFP32 _TEST_FP32_NON_IDENTIYTY_VERSOR_LIST[] = {
     { 0.0f, 0.0f, 1.0f, 0.0f },
     { 0.0f, 0.0f, 0.0f, 1.0f },
     { 0.5f, 0.5f, 0.5f, 0.5f },
-    { 1.0f - 1.25f * BGC_EPSYLON_FP32, 0.0f, 0.0f, 0.0f }
+    { 1.0f, -1.25f * BGC_EPSYLON_FP32, 0.0f, 0.0f }
 };
 
 void test_versor_is_identity_fp32()
@@ -72,7 +72,7 @@ static const BgcVersorFP64 _TEST_FP64_NON_IDENTIYTY_VERSOR_LIST[] = {
     { 0.0, 0.0, 1.0, 0.0 },
     { 0.0, 0.0, 0.0, 1.0 },
     { 0.5, 0.5, 0.5, 0.5 },
-    { 1.0 - 1.25 * BGC_EPSYLON_FP64, 0.0, 0.0, 0.0 }
+    { 1.0, 0.0, 1.25 * BGC_EPSYLON_FP64, 0.0 }
 };
 
 void test_versor_is_identity_fp64()

@@ -338,6 +338,30 @@ inline void bgc_versor_combine3_fp64(const BgcVersorFP64* third, const BgcVersor
     );
 }
 
+// ================= Exclusion ================== //
+
+inline void bgc_versor_exclude_fp32(const BgcVersorFP32* base, const BgcVersorFP32* excludant, BgcVersorFP32* difference)
+{
+    bgc_versor_set_values_fp32(
+        (base->s0 * excludant->s0 + base->x1 * excludant->x1) + (base->x2 * excludant->x2 + base->x3 * excludant->x3),
+        (base->x1 * excludant->s0 + base->x3 * excludant->x2) - (base->s0 * excludant->x1 + base->x2 * excludant->x3),
+        (base->x2 * excludant->s0 + base->x1 * excludant->x3) - (base->s0 * excludant->x2 + base->x3 * excludant->x1),
+        (base->x3 * excludant->s0 + base->x2 * excludant->x1) - (base->s0 * excludant->x3 + base->x1 * excludant->x2),
+        difference
+    );
+}
+
+inline void bgc_versor_exclude_fp64(const BgcVersorFP64* base, const BgcVersorFP64* excludant, BgcVersorFP64* difference)
+{
+    bgc_versor_set_values_fp64(
+        (base->s0 * excludant->s0 + base->x1 * excludant->x1) + (base->x2 * excludant->x2 + base->x3 * excludant->x3),
+        (base->x1 * excludant->s0 + base->x3 * excludant->x2) - (base->s0 * excludant->x1 + base->x2 * excludant->x3),
+        (base->x2 * excludant->s0 + base->x1 * excludant->x3) - (base->s0 * excludant->x2 + base->x3 * excludant->x1),
+        (base->x3 * excludant->s0 + base->x2 * excludant->x1) - (base->s0 * excludant->x3 + base->x1 * excludant->x2),
+        difference
+    );
+}
+
 // ================ Get Rotation ================ //
 
 void bgc_versor_get_rotation_fp32(const BgcVersorFP32* versor, BgcRotation3FP32* result);
