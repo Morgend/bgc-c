@@ -9,6 +9,7 @@
 #include "./vector2/vector2_is_zero.h"
 #include "./vector2/vector2_is_unit.h"
 #include "./vector2/vector2_modulus.h"
+#include "./vector2/vector2_arithmetics.h"
 
 void test_vector2();
 

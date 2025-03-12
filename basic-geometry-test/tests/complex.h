@@ -9,6 +9,7 @@
 #include "./complex/complex_is_zero.h"
 #include "./complex/complex_is_unit.h"
 #include "./complex/complex_modulus.h"
+#include "./complex/complex_arithmetics.h"
 
 void test_complex();
 

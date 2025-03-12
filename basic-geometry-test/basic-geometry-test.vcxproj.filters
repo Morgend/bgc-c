@@ -138,6 +138,15 @@
     <ClCompile Include="tests\complex.c">
       <Filter>tests</Filter>
     </ClCompile>
+    <ClCompile Include="tests\vector2\vector2_arithmetics.c">
+      <Filter>tests\vector2</Filter>
+    </ClCompile>
+    <ClCompile Include="tests\vector3\vector3_arithmetics.c">
+      <Filter>tests\vector3</Filter>
+    </ClCompile>
+    <ClCompile Include="tests\complex\complex_arithmetics.c">
+      <Filter>tests\complex</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="helpers.h" />
@@ -275,6 +284,15 @@
     </ClInclude>
     <ClInclude Include="tests\complex.h">
       <Filter>tests</Filter>
+    </ClInclude>
+    <ClInclude Include="tests\vector2\vector2_arithmetics.h">
+      <Filter>tests\vector2</Filter>
+    </ClInclude>
+    <ClInclude Include="tests\vector3\vector3_arithmetics.h">
+      <Filter>tests\vector3</Filter>
+    </ClInclude>
+    <ClInclude Include="tests\complex\complex_arithmetics.h">
+      <Filter>tests\complex</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

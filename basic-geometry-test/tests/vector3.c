@@ -11,4 +11,9 @@ void test_vector3()
     test_vector3_is_zero();
     test_vector3_is_unit();
     test_vector3_modulus();
+
+    test_vector3_add();
+    test_vector3_subtract();
+    test_vector3_multiply();
+    test_vector3_divide();
 }

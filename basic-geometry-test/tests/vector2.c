@@ -11,6 +11,11 @@ void test_vector2()
     test_vector2_is_zero();
     test_vector2_is_unit();
     test_vector2_modulus();
+
+    test_vector2_add();
+    test_vector2_subtract();
+    test_vector2_multiply();
+    test_vector2_divide();
 }
 
 
